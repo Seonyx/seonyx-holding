@@ -1,0 +1,37 @@
+@model Seonyx.Web.Models.ViewModels.PageViewModel
+
+<section class="page-content">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo;
+            @if (Model.Division != null)
+            {
+                <a href="/@Model.Division.Slug">@Model.Division.Name</a>
+                <text> &rsaquo; </text>
+            }
+            <span>@Model.Page.Title</span>
+        </nav>
+
+        <div class="page-layout">
+            <article class="page-main">
+                <h1>@Model.Page.Title</h1>
+                @Html.Raw(Model.Page.Content)
+            </article>
+
+            @if (Model.SiblingPages.Count > 1)
+            {
+                <aside class="page-sidebar">
+                    <h3>@Model.Division.Name</h3>
+                    <ul class="sidebar-nav">
+                        @foreach (var sibling in Model.SiblingPages)
+                        {
+                            <li class="@(sibling.PageId == Model.Page.PageId ? "active" : "")">
+                                <a href="/@Model.Division.Slug/@sibling.Slug">@sibling.Title</a>
+                            </li>
+                        }
+                    </ul>
+                </aside>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,69 @@
+@model Seonyx.Web.Models.Division
+
+<section class="division-hero" style="background-color: @Model.BackgroundColor; color: @Model.ForegroundColor;">
+    <div class="container">
+        <h1>@Model.Name</h1>
+        <p class="lead">@Model.Description</p>
+        @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+        {
+            <a href="@Model.WebsiteUrl" class="btn btn-light" target="_blank" rel="noopener">Visit Website &rarr;</a>
+        }
+    </div>
+</section>
+
+<section class="page-content">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo;
+            <a href="/@Model.Slug">@Model.Name</a>
+        </nav>
+
+        @{
+            var pages = ViewBag.Pages as List<Seonyx.Web.Models.Page>;
+        }
+
+        @if (pages != null && pages.Count > 0)
+        {
+            <div class="division-pages">
+                <h2>Explore @Model.Name</h2>
+                <div class="card-grid">
+                    @foreach (var page in pages)
+                    {
+                        <a href="/@Model.Slug/@page.Slug" class="card">
+                            <h3>@page.Title</h3>
+                            @if (!string.IsNullOrEmpty(page.MetaDescription))
+                            {
+                                <p>@page.MetaDescription</p>
+                            }
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.Slug == "literary-agency")
+        {
+            var authors = ViewBag.Authors as List<Seonyx.Web.Models.Author>;
+            if (authors != null && authors.Count > 0)
+            {
+                <div class="authors-section">
+                    <h2>Our Authors</h2>
+                    <div class="card-grid">
+                        @foreach (var author in authors)
+                        {
+                            var slug = author.PenName.ToLower().Replace(" ", "-");
+                            <a href="/literary-agency/authors/@slug" class="card author-card">
+                                @if (!string.IsNullOrEmpty(author.PhotoUrl))
+                                {
+                                    <img src="@author.PhotoUrl" alt="@author.PenName" class="author-photo" />
+                                }
+                                <h3>@author.PenName</h3>
+                                <p class="genre">@author.Genre</p>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section>

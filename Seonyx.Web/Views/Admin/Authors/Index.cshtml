@@ -1,0 +1,50 @@
+@model List<Seonyx.Web.Models.Author>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Manage Authors";
+}
+
+<div class="admin-page-header">
+    <h1>Authors</h1>
+    <a href="/admin/createauthor" class="btn btn-primary">Add Author</a>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>Pen Name</th>
+            <th>Genre</th>
+            <th>Order</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.PenName</td>
+                <td>@author.Genre</td>
+                <td>@author.SortOrder</td>
+                <td>
+                    @if (author.IsActive)
+                    {
+                        <span class="badge badge-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-draft">Inactive</span>
+                    }
+                </td>
+                <td>
+                    <a href="/admin/editauthor/@author.AuthorId" class="btn btn-sm">Edit</a>
+                    @using (Html.BeginForm("DeleteAuthor", "Admin", new { id = author.AuthorId }, FormMethod.Post, new { @class = "inline-form", onsubmit = "return confirm('Delete this author?');" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

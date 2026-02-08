@@ -1,0 +1,42 @@
+@model List<Seonyx.Web.Models.ContentBlock>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Content Blocks";
+}
+
+<h1>Content Blocks</h1>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Title</th>
+            <th>Active</th>
+            <th>Last Modified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var block in Model)
+        {
+            <tr>
+                <td><code>@block.BlockKey</code></td>
+                <td>@block.Title</td>
+                <td>
+                    @if (block.IsActive)
+                    {
+                        <span class="badge badge-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-draft">Inactive</span>
+                    }
+                </td>
+                <td>@block.ModifiedDate.ToString("dd MMM yyyy HH:mm")</td>
+                <td>
+                    <a href="/admin/editcontentblock/@block.BlockId" class="btn btn-sm">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

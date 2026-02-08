@@ -1,0 +1,107 @@
+@{
+    var db = new Seonyx.Web.Models.SeonyxContext();
+    var divisions = db.Divisions.Where(d => d.IsActive).OrderBy(d => d.SortOrder).ToList();
+    db.Dispose();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Seonyx Holdings</title>
+    @if (ViewBag.MetaDescription != null)
+    {
+        <meta name="description" content="@ViewBag.MetaDescription" />
+    }
+    @if (ViewBag.MetaKeywords != null)
+    {
+        <meta name="keywords" content="@ViewBag.MetaKeywords" />
+    }
+    <link rel="icon" type="image/svg+xml" href="~/Content/images/logo.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="navbar-brand">
+                    <svg class="brand-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+                        <path d="M 50 50 L 0 0 L 50 0 Z" fill="#7C3AED" />
+                        <path d="M 50 50 L 100 0 L 100 50 Z" fill="#10B981" />
+                        <path d="M 50 50 L 100 100 L 50 100 Z" fill="#7C3AED" />
+                        <path d="M 50 50 L 0 100 L 0 50 Z" fill="#10B981" />
+                    </svg>
+                    <span class="brand-text">
+                        <span class="brand-name">SEONYX</span>
+                        <span class="brand-tagline">Holdings</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li><a href="/about">About</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Divisions</a>
+                        <ul class="dropdown-menu">
+                            @foreach (var div in divisions)
+                            {
+                                <li><a href="/@div.Slug">@div.Name</a></li>
+                            }
+                        </ul>
+                    </li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-content">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+                        <path d="M 50 50 L 0 0 L 50 0 Z" fill="#A78BFA" />
+                        <path d="M 50 50 L 100 0 L 100 50 Z" fill="#34D399" />
+                        <path d="M 50 50 L 100 100 L 50 100 Z" fill="#A78BFA" />
+                        <path d="M 50 50 L 0 100 L 0 50 Z" fill="#34D399" />
+                    </svg>
+                    <p>&copy; @DateTime.Now.Year Seonyx Holdings. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Divisions</h4>
+                    <ul>
+                        @foreach (var div in divisions)
+                        {
+                            <li><a href="/@div.Slug">@div.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <a href="/admin" class="admin-link">Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/site.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

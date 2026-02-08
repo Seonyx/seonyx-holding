@@ -1,0 +1,38 @@
+@model Seonyx.Web.Models.ViewModels.HomeViewModel
+
+<section class="hero">
+    <div class="container">
+        @Html.Raw(Model.HeroContent)
+    </div>
+</section>
+
+<section class="divisions-showcase">
+    <div class="container">
+        <h2>Our Divisions</h2>
+        <div class="card-grid">
+            @foreach (var division in Model.Divisions)
+            {
+                <a href="/@division.Slug" class="card division-card" style="border-top: 4px solid @division.BackgroundColor">
+                    <h3>@division.Name</h3>
+                    <p>@division.Description</p>
+                    @if (!string.IsNullOrEmpty(division.WebsiteUrl))
+                    {
+                        <span class="card-link">Visit @division.Name &rarr;</span>
+                    }
+                    else
+                    {
+                        <span class="card-link">Learn More &rarr;</span>
+                    }
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Get in Touch</h2>
+        <p>Interested in learning more about our divisions or exploring partnership opportunities?</p>
+        <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+</section>

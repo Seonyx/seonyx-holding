@@ -1,0 +1,49 @@
+@model Seonyx.Web.Models.ViewModels.ContactViewModel
+
+<section class="page-content">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo; <span>Contact</span>
+        </nav>
+
+        <h1>Contact Us</h1>
+        <p class="lead">We'd love to hear from you. Please fill in the form below and we'll get back to you as soon as possible.</p>
+
+        <div class="contact-form-wrapper">
+            @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "contact-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Your name" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "your@email.com", type = "email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Subject)
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Subject (optional)" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message)
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 6, placeholder = "Your message" })
+                    @Html.ValidationMessageFor(m => m.Message, "", new { @class = "field-validation-error" })
+                </div>
+
+                <!-- Honeypot anti-spam field -->
+                <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                    @Html.TextBoxFor(m => m.Website, new { tabindex = "-1", autocomplete = "off" })
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            }
+        </div>
+    </div>
+</section>

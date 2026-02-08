@@ -1,0 +1,41 @@
+@model List<Seonyx.Web.Models.SiteSetting>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Site Settings";
+}
+
+<h1>Site Settings</h1>
+
+@using (Html.BeginForm("SaveSettings", "Admin", FormMethod.Post, new { @class = "admin-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    @foreach (var setting in Model)
+    {
+        <div class="form-group">
+            <label for="@setting.SettingKey">
+                @setting.SettingKey
+                @if (!string.IsNullOrEmpty(setting.Description))
+                {
+                    <small class="form-help">@setting.Description</small>
+                }
+            </label>
+            @if (setting.SettingKey.Contains("password") || setting.SettingKey.Contains("secret"))
+            {
+                <input type="password" name="@setting.SettingKey" value="@setting.SettingValue" class="form-control" />
+            }
+            else if (setting.SettingValue != null && setting.SettingValue.Length > 200)
+            {
+                <textarea name="@setting.SettingKey" class="form-control" rows="4">@setting.SettingValue</textarea>
+            }
+            else
+            {
+                <input type="text" name="@setting.SettingKey" value="@setting.SettingValue" class="form-control" />
+            }
+        </div>
+    }
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+    </div>
+}

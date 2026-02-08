@@ -1,0 +1,76 @@
+@model Seonyx.Web.Models.ViewModels.Admin.AdminPageViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = Model.PageId > 0 ? "Edit Page" : "Create Page";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm("SavePage", "Admin", FormMethod.Post, new { @class = "admin-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.PageId)
+
+    <div class="form-row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Slug)
+            @Html.TextBoxFor(m => m.Slug, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Slug)
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.MetaDescription)
+            @Html.TextBoxFor(m => m.MetaDescription, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MetaKeywords)
+            @Html.TextBoxFor(m => m.MetaKeywords, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Content)
+        @Html.TextAreaFor(m => m.Content, new { @class = "form-control content-editor", rows = 15 })
+        @Html.ValidationMessageFor(m => m.Content)
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>Parent Page</label>
+            @Html.DropDownListFor(m => m.ParentPageId, Model.ParentPages, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Division</label>
+            @Html.DropDownListFor(m => m.DivisionId, Model.Divisions, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            @Html.LabelFor(m => m.SortOrder)
+            @Html.TextBoxFor(m => m.SortOrder, new { @class = "form-control", type = "number" })
+        </div>
+        <div class="form-group form-checkboxes">
+            <label class="checkbox-label">
+                @Html.CheckBoxFor(m => m.IsPublished)
+                Published
+            </label>
+            <label class="checkbox-label">
+                @Html.CheckBoxFor(m => m.ShowInNavigation)
+                Show in Navigation
+            </label>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save Page</button>
+        <a href="/admin/pages" class="btn btn-secondary">Cancel</a>
+    </div>
+}

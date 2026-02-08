@@ -1,0 +1,45 @@
+@model Seonyx.Web.Models.ViewModels.Admin.AdminLoginViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Admin Login";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - Seonyx Holdings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+    <link href="~/Content/css/admin.css" rel="stylesheet" />
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+                    <path d="M 50 50 L 0 0 L 50 0 Z" fill="#7C3AED" />
+                    <path d="M 50 50 L 100 0 L 100 50 Z" fill="#10B981" />
+                    <path d="M 50 50 L 100 100 L 50 100 Z" fill="#7C3AED" />
+                    <path d="M 50 50 L 0 100 L 0 50 Z" fill="#10B981" />
+                </svg>
+                <h1>Seonyx Admin</h1>
+            </div>
+
+            @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "login-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-error" })
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter admin password", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "field-validation-error" })
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            }
+        </div>
+    </div>
+</body>
+</html>

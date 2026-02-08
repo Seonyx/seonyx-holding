@@ -1,0 +1,317 @@
+/* ============================================
+   Seonyx Holdings - Admin Stylesheet
+   ============================================ */
+
+/* ============ Admin Layout ============ */
+
+.admin-body {
+    background: var(--color-gray-50);
+}
+
+.login-body {
+    background: var(--color-gray-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ============ Login ============ */
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: var(--spacing-sm);
+}
+
+.login-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-lg);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-header h1 {
+    font-size: 1.5rem;
+    margin-top: var(--spacing-sm);
+}
+
+.login-form .btn {
+    margin-top: var(--spacing-sm);
+}
+
+/* ============ Admin Header ============ */
+
+.admin-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--color-gray-200);
+    padding: var(--spacing-sm) 0;
+}
+
+.admin-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-decoration: none;
+    color: var(--color-gray-800);
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.admin-nav {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.admin-nav a {
+    color: var(--color-gray-600);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.admin-nav a:hover {
+    color: var(--color-brand-purple);
+    background: var(--color-gray-50);
+}
+
+.btn-logout {
+    color: #EF4444 !important;
+}
+
+.btn-logout:hover {
+    background: #FEF2F2 !important;
+}
+
+/* ============ Admin Content ============ */
+
+.admin-content {
+    padding: var(--spacing-lg) 0;
+    min-height: calc(100vh - 120px);
+}
+
+.admin-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.admin-page-header h1 {
+    margin-bottom: 0;
+}
+
+/* ============ Stats Grid ============ */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-gray-800);
+    line-height: 1;
+}
+
+.stat-label {
+    display: block;
+    color: var(--color-gray-500);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.stat-highlight {
+    border-color: var(--color-brand-purple);
+    background: #FAF5FF;
+}
+
+.stat-highlight .stat-number {
+    color: var(--color-brand-purple);
+}
+
+/* ============ Quick Actions ============ */
+
+.quick-actions {
+    background: #FFFFFF;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+}
+
+.quick-actions h2 {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.quick-actions .btn {
+    margin-right: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ============ Admin Table ============ */
+
+.admin-table {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.admin-table thead {
+    background: var(--color-gray-50);
+}
+
+.admin-table th {
+    text-align: left;
+    padding: var(--spacing-sm);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.admin-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-gray-100);
+    font-size: 0.9375rem;
+    vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr.unread {
+    background: #FAF5FF;
+    font-weight: 500;
+}
+
+.admin-table tr.spam {
+    opacity: 0.5;
+}
+
+.admin-table td .btn {
+    margin-right: 4px;
+}
+
+/* ============ Admin Forms ============ */
+
+.admin-form {
+    background: #FFFFFF;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.form-checkboxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-xs);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.form-help {
+    display: block;
+    font-weight: 400;
+    color: var(--color-gray-400);
+    font-size: 0.8125rem;
+}
+
+.content-editor {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+/* ============ Responsive Admin ============ */
+
+@media (max-width: 768px) {
+    .admin-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-nav {
+        gap: var(--spacing-xs);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+}

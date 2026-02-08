@@ -1,0 +1,10 @@
+@model Seonyx.Web.Models.Page
+
+<section class="page-content">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo; <span>About</span>
+        </nav>
+        @Html.Raw(Model.Content)
+    </div>
+</section>

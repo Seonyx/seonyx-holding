@@ -1,0 +1,10 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top-left triangle (Purple) -->
+  <path d="M 50 50 L 0 0 L 50 0 Z" fill="#7C3AED" />
+  <!-- Top-right triangle (Green) -->
+  <path d="M 50 50 L 100 0 L 100 50 Z" fill="#10B981" />
+  <!-- Bottom-right triangle (Purple) -->
+  <path d="M 50 50 L 100 100 L 50 100 Z" fill="#7C3AED" />
+  <!-- Bottom-left triangle (Green) -->
+  <path d="M 50 50 L 0 100 L 0 50 Z" fill="#10B981" />
+</svg>

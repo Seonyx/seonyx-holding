@@ -1,0 +1,56 @@
+@model Seonyx.Web.Models.Book
+
+<section class="page-content">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo;
+            <a href="/literary-agency">Literary Agency</a> &rsaquo;
+            <span>@Model.Title</span>
+        </nav>
+
+        <div class="book-detail">
+            <div class="book-detail-layout">
+                @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+                {
+                    <div class="book-cover-large">
+                        <img src="@Model.CoverImageUrl" alt="@Model.Title" />
+                    </div>
+                }
+                <div class="book-detail-info">
+                    <h1>@Model.Title</h1>
+                    <p class="book-author">by @Model.Author.PenName</p>
+                    @if (!string.IsNullOrEmpty(Model.Genre))
+                    {
+                        <p class="genre-badge">@Model.Genre</p>
+                    }
+                    @if (Model.PublicationDate.HasValue)
+                    {
+                        <p class="publication-date">Published: @Model.PublicationDate.Value.ToString("MMMM yyyy")</p>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.ISBN))
+                    {
+                        <p class="book-isbn">ISBN: @Model.ISBN</p>
+                    }
+                    <div class="book-links">
+                        @if (!string.IsNullOrEmpty(Model.AmazonUrl))
+                        {
+                            <a href="@Model.AmazonUrl" target="_blank" rel="noopener" class="btn btn-primary">Buy on Amazon</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.KDPUrl))
+                        {
+                            <a href="@Model.KDPUrl" target="_blank" rel="noopener" class="btn btn-secondary">Kindle Edition</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Synopsis))
+            {
+                <div class="book-synopsis-full">
+                    <h2>Synopsis</h2>
+                    <p>@Model.Synopsis</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

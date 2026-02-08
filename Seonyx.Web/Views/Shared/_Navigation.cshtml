@@ -1,0 +1,17 @@
+@model List<Seonyx.Web.Models.Page>
+@if (Model != null && Model.Count > 0)
+{
+    <nav class="secondary-nav">
+        <ul>
+            @foreach (var page in Model)
+            {
+                <li>
+                    <a href="/@(ViewBag.DivisionSlug)/@page.Slug"
+                       class="@(ViewBag.CurrentSlug == page.Slug ? "active" : "")">
+                        @page.Title
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

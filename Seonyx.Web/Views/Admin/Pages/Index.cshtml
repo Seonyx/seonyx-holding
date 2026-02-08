@@ -1,0 +1,58 @@
+@model List<Seonyx.Web.Models.Page>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Manage Pages";
+}
+
+<div class="admin-page-header">
+    <h1>Pages</h1>
+    <a href="/admin/createpage" class="btn btn-primary">Create New Page</a>
+</div>
+
+<table class="admin-table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Slug</th>
+            <th>Division</th>
+            <th>Order</th>
+            <th>Published</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var page in Model)
+        {
+            <tr>
+                <td>
+                    @if (page.ParentPageId.HasValue)
+                    {
+                        <span class="indent">&mdash;</span>
+                    }
+                    @page.Title
+                </td>
+                <td><code>@page.Slug</code></td>
+                <td>@(page.Division != null ? page.Division.Name : "-")</td>
+                <td>@page.SortOrder</td>
+                <td>
+                    @if (page.IsPublished)
+                    {
+                        <span class="badge badge-success">Published</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-draft">Draft</span>
+                    }
+                </td>
+                <td>
+                    <a href="/admin/editpage/@page.PageId" class="btn btn-sm">Edit</a>
+                    @using (Html.BeginForm("DeletePage", "Admin", new { id = page.PageId }, FormMethod.Post, new { @class = "inline-form", onsubmit = "return confirm('Delete this page?');" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

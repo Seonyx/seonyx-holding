@@ -1,0 +1,42 @@
+@model Seonyx.Web.Models.ViewModels.Admin.AdminDashboardViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <span class="stat-number">@Model.TotalPages</span>
+        <span class="stat-label">Pages</span>
+        <a href="/admin/pages" class="stat-link">Manage &rarr;</a>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">@Model.TotalDivisions</span>
+        <span class="stat-label">Divisions</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">@Model.TotalAuthors</span>
+        <span class="stat-label">Authors</span>
+        <a href="/admin/authors" class="stat-link">Manage &rarr;</a>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">@Model.TotalBooks</span>
+        <span class="stat-label">Books</span>
+        <a href="/admin/books" class="stat-link">Manage &rarr;</a>
+    </div>
+    <div class="stat-card @(Model.UnreadSubmissions > 0 ? "stat-highlight" : "")">
+        <span class="stat-number">@Model.UnreadSubmissions</span>
+        <span class="stat-label">Unread Messages</span>
+        <a href="/admin/submissions" class="stat-link">View &rarr;</a>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <h2>Quick Actions</h2>
+    <a href="/admin/createpage" class="btn btn-primary">Create New Page</a>
+    <a href="/admin/createauthor" class="btn btn-secondary">Add Author</a>
+    <a href="/admin/createbook" class="btn btn-secondary">Add Book</a>
+    <a href="/admin/submissions" class="btn btn-secondary">View Submissions</a>
+</div>

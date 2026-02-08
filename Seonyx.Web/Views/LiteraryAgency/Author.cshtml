@@ -1,0 +1,83 @@
+@model Seonyx.Web.Models.Author
+
+<section class="page-content">
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo;
+            <a href="/literary-agency">Literary Agency</a> &rsaquo;
+            <span>@Model.PenName</span>
+        </nav>
+
+        <div class="author-profile">
+            <div class="author-header">
+                @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+                {
+                    <img src="@Model.PhotoUrl" alt="@Model.PenName" class="author-photo-large" />
+                }
+                <div class="author-info">
+                    <h1>@Model.PenName</h1>
+                    <p class="genre-badge">@Model.Genre</p>
+                    @if (!string.IsNullOrEmpty(Model.Website))
+                    {
+                        <a href="@Model.Website" target="_blank" rel="noopener" class="author-website">Visit Website &rarr;</a>
+                    }
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Biography))
+            {
+                <div class="author-biography">
+                    <h2>Biography</h2>
+                    <p>@Model.Biography</p>
+                </div>
+            }
+        </div>
+
+        @{
+            var books = ViewBag.Books as List<Seonyx.Web.Models.Book>;
+        }
+
+        @if (books != null && books.Count > 0)
+        {
+            <div class="books-section">
+                <h2>Books</h2>
+                <div class="book-grid">
+                    @foreach (var book in books)
+                    {
+                        <div class="book-card">
+                            @if (!string.IsNullOrEmpty(book.CoverImageUrl))
+                            {
+                                <img src="@book.CoverImageUrl" alt="@book.Title" class="book-cover" />
+                            }
+                            <div class="book-info">
+                                <h3>@book.Title</h3>
+                                @if (!string.IsNullOrEmpty(book.Genre))
+                                {
+                                    <p class="book-genre">@book.Genre</p>
+                                }
+                                @if (!string.IsNullOrEmpty(book.Synopsis))
+                                {
+                                    <p class="book-synopsis">@book.Synopsis</p>
+                                }
+                                @if (!string.IsNullOrEmpty(book.ISBN))
+                                {
+                                    <p class="book-isbn">ISBN: @book.ISBN</p>
+                                }
+                                <div class="book-links">
+                                    @if (!string.IsNullOrEmpty(book.AmazonUrl))
+                                    {
+                                        <a href="@book.AmazonUrl" target="_blank" rel="noopener" class="btn btn-sm">Amazon</a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(book.KDPUrl))
+                                    {
+                                        <a href="@book.KDPUrl" target="_blank" rel="noopener" class="btn btn-sm btn-secondary">Kindle</a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>
