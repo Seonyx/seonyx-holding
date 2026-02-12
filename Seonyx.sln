@@ -1,0 +1,19 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seonyx.Web", "Seonyx.csproj", "{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Release|Any CPU.Build.0 = Release|AnyCPU
+	EndGlobalSection
+EndGlobal
