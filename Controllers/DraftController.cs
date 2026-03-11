@@ -59,14 +59,14 @@ namespace Seonyx.Web.Controllers
                 AvailableDrafts = availableDrafts.Select(d => d.DraftNumber).ToList()
             };
 
-            foreach (var chapter in chapters)
+            foreach (var chap in chapters)
             {
                 var versA = db.ParagraphVersions
-                    .Where(v => v.ChapterID == chapter.ChapterID && v.DraftNumber == draftA)
+                    .Where(v => v.ChapterID == chap.ChapterID && v.DraftNumber == draftA)
                     .ToDictionary(v => v.Pid, StringComparer.OrdinalIgnoreCase);
 
                 var versB = db.ParagraphVersions
-                    .Where(v => v.ChapterID == chapter.ChapterID && v.DraftNumber == draftB)
+                    .Where(v => v.ChapterID == chap.ChapterID && v.DraftNumber == draftB)
                     .ToDictionary(v => v.Pid, StringComparer.OrdinalIgnoreCase);
 
                 if (!versA.Any() && !versB.Any())
@@ -111,7 +111,7 @@ namespace Seonyx.Web.Controllers
                 // can link directly to that paragraph in the editor.
                 var chapterPids = rows.Select(r => r.Pid).ToList();
                 var pidToParaId = db.Paragraphs
-                    .Where(p => p.ChapterID == chapter.ChapterID && chapterPids.Contains(p.UniqueID))
+                    .Where(p => p.ChapterID == chap.ChapterID && chapterPids.Contains(p.UniqueID))
                     .Select(p => new { p.UniqueID, p.ParagraphID })
                     .ToDictionary(p => p.UniqueID, p => p.ParagraphID, StringComparer.OrdinalIgnoreCase);
 
@@ -124,8 +124,8 @@ namespace Seonyx.Web.Controllers
 
                 var chDiff = new DraftDiffChapter
                 {
-                    ChapterNumber  = chapter.ChapterNumber,
-                    ChapterTitle   = chapter.ChapterTitle,
+                    ChapterNumber  = chap.ChapterNumber,
+                    ChapterTitle   = chap.ChapterTitle,
                     Rows           = rows,
                     AddedCount     = rows.Count(r => r.Status == "added"),
                     RemovedCount   = rows.Count(r => r.Status == "removed"),
