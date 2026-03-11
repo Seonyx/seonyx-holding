@@ -98,7 +98,7 @@ else
                     <td>
                         @if (d.CanDelete)
                         {
-                            @using (Html.BeginForm("DeleteDraft", "Draft", FormMethod.Post,
+                            using (Html.BeginForm("DeleteDraft", "Draft", FormMethod.Post,
                                 new { style = "display:inline",
                                       onsubmit = "return confirm('Delete Draft " + d.DraftNumber + " and all its paragraph versions? This cannot be undone.');" }))
                             {
