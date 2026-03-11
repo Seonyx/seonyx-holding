@@ -32,7 +32,7 @@
 }
 else
 {
-    @if (Model.Drafts.Count >= 2)
+    if (Model.Drafts.Count >= 2)
     {
         <div class="draft-compare-bar">
             @using (Html.BeginForm("Diff", "Draft", FormMethod.Get, new { @class = "diff-picker-form" }))
