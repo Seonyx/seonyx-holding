@@ -206,3 +206,16 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Debug screenshots and scratch files
+Buttons2.jpg
+DBSetup.jpg
+Debug1.jpg
+Debug2.jpg
+DeleteProjectIssue1.jpg
+ImportError1.jpg
+Logs1.jpg
+ProjectPage.jpg
+Projects1.jpg
+XSDError1.jpg
+compare.output.txt
