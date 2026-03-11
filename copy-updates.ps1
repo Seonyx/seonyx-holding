@@ -70,7 +70,7 @@ try {
     Write-Host "IMPORTANT - Manual steps needed:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. No SQL changes — no database scripts to run." -ForegroundColor White
+    Write-Host "1. No SQL changes - no database scripts to run." -ForegroundColor White
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
