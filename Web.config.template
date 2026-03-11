@@ -22,6 +22,7 @@
     <add key="SmtpUsername" value="YOUR_SMTP_USER" />
     <add key="SmtpPassword" value="YOUR_SMTP_PASS" />
     <add key="SmtpEnableSsl" value="true" />
+    <add key="BookEditorFilesPath" value="~/App_Data/BookEditorFiles" />
   </appSettings>
 
   <system.web>
@@ -30,7 +31,7 @@
     <authentication mode="Forms">
       <forms loginUrl="~/admin/login" timeout="120" />
     </authentication>
-    <machineKey validationKey="AUTO" decryptionKey="AUTO" validation="SHA1" />
+
   </system.web>
 
   <system.webServer>

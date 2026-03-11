@@ -66,6 +66,8 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -150,6 +152,27 @@
     <Compile Include="Models\ViewModels\Admin\AdminLoginViewModel.cs" />
     <Compile Include="Models\ViewModels\Admin\AdminDashboardViewModel.cs" />
     <Compile Include="Models\ViewModels\Admin\AdminPageViewModel.cs" />
+    <Compile Include="Models\BookProject.cs" />
+    <Compile Include="Models\Chapter.cs" />
+    <Compile Include="Models\Paragraph.cs" />
+    <Compile Include="Models\MetaNote.cs" />
+    <Compile Include="Models\EditNote.cs" />
+    <Compile Include="Models\Draft.cs" />
+    <Compile Include="Models\ParagraphVersion.cs" />
+    <Compile Include="Models\ImportLog.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\BookProjectViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\FileUploadViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\ParagraphEditViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\ExportViewModel.cs" />
+    <Compile Include="Services\BookFileParser.cs" />
+    <Compile Include="Services\BookmlImporter.cs" />
+    <Compile Include="Controllers\BookProjectController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\EditorController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
+    <Compile Include="Controllers\ImportLogController.cs" />
+    <Compile Include="Controllers\DraftController.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\DraftDiffViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\site.css" />
@@ -191,6 +214,23 @@
     <Content Include="Views\Admin\ContentBlocks\Edit.cshtml" />
     <Content Include="Views\Admin\ContactSubmissions\Index.cshtml" />
     <Content Include="Views\Admin\Settings\Index.cshtml" />
+    <Content Include="Views\Shared\_BookEditorLayout.cshtml" />
+    <Content Include="Views\BookProject\Index.cshtml" />
+    <Content Include="Views\BookProject\Create.cshtml" />
+    <Content Include="Views\BookProject\Edit.cshtml" />
+    <Content Include="Views\FileUpload\Index.cshtml" />
+    <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\Export\Index.cshtml" />
+    <Content Include="Views\ImportLog\Index.cshtml" />
+    <Content Include="Views\ImportLog\Detail.cshtml" />
+    <Content Include="Views\Draft\Diff.cshtml" />
+    <Content Include="Content\css\book-editor.css" />
+    <Content Include="Scripts\book-editor.js" />
+    <Content Include="App_Data\BookML\bookml-common.xsd" />
+    <Content Include="App_Data\BookML\bookml-book.xsd" />
+    <Content Include="App_Data\BookML\bookml-chapter.xsd" />
+    <Content Include="App_Data\BookML\bookml-meta.xsd" />
+    <Content Include="App_Data\BookML\bookml-notes.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

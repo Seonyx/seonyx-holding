@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
 
-    @foreach (var setting in Model)
+    foreach (var setting in Model)
     {
         <div class="form-group">
             <label for="@setting.SettingKey">

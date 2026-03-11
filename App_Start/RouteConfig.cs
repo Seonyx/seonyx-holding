@@ -58,6 +58,43 @@ namespace Seonyx.Web
                 defaults: new { controller = "Admin", action = "Settings" }
             );
 
+            // Book Editor routes (must be before generic Admin route)
+            routes.MapRoute(
+                name: "BookEditorProjects",
+                url: "admin/bookeditor/projects/{action}/{id}",
+                defaults: new { controller = "BookProject", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "BookEditorFiles",
+                url: "admin/bookeditor/files/{action}/{id}",
+                defaults: new { controller = "FileUpload", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "BookEditorEditor",
+                url: "admin/bookeditor/editor/{action}/{id}",
+                defaults: new { controller = "Editor", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "BookEditorExport",
+                url: "admin/bookeditor/export/{action}/{id}",
+                defaults: new { controller = "Export", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "BookEditorImportLog",
+                url: "admin/bookeditor/importlog/{action}/{id}",
+                defaults: new { controller = "ImportLog", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "BookEditorDraft",
+                url: "admin/bookeditor/draft/{action}/{id}",
+                defaults: new { controller = "Draft", action = "Diff", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Admin",
                 url: "admin/{action}/{id}",
