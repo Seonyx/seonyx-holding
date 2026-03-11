@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bml="https://bookml.org/ns/1.0"
+           targetNamespace="https://bookml.org/ns/1.0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- ============================================================
+       BookML Common Types Library v1.0
+       https://bookml.org/ns/1.0
+
+       Shared simple and complex types used across all BookML
+       schema files. Import this schema; do not use directly.
+
+       Designed for:
+         - AI-generated prose interchange
+         - Paragraph-level unique keying
+         - Multi-draft versioning with full lineage
+         - Fiction and non-fiction works
+  ============================================================ -->
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Version string
+  ============================================================ -->
+
+  <xs:simpleType name="BookmlVersionType">
+    <xs:annotation>
+      <xs:documentation>
+        Schema version. Currently only "1.0" is valid.
+        Allows importers to reject files built for future
+        incompatible versions.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d+\.\d+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: PID — Paragraph/Element Identity Key
+       Format:  CHAPTERID-TYPECODE-SEQUENCE
+       Example: CH01-P0010  CH01-H0005  CH01-F0001
+
+       Type codes:
+         P   = paragraph
+         H   = heading
+         F   = figure
+         T   = table
+         EP  = epigraph paragraph
+         FN  = footnote anchor
+
+       Rules:
+         - Assigned once at generation time; NEVER changed
+         - Zero-padded 4-digit sequence
+         - All uppercase
+         - Used as foreign key in meta and notes files
+         - Sequence reflects GENERATION ORDER, not display order
+           (display order is governed by seq attribute)
+  ============================================================ -->
+
+  <xs:simpleType name="PidType">
+    <xs:annotation>
+      <xs:documentation>
+        Immutable paragraph/element identity key.
+        Format: CHAPTERID-TYPECODE-SEQUENCE
+        Example: CH01-P0010
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z0-9]+-[A-Z]+[0-9]{3,4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: SeqType — Ordinal display position
+       - Mutable: may be rebalanced by the application
+       - AI generators assign in multiples of 1000
+       - Rebalancing trigger: when gap between adjacent
+         elements falls below 10
+       - Rebalancing MUST NOT alter any pid value
+       - Unique within parent element scope
+  ============================================================ -->
+
+  <xs:simpleType name="SeqType">
+    <xs:annotation>
+      <xs:documentation>
+        Mutable display ordinal. AI generators assign in
+        multiples of 1000. Application rebalances when gaps
+        fall below 10. Never used as a foreign key.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Draft number
+  ============================================================ -->
+
+  <xs:simpleType name="DraftNumberType">
+    <xs:restriction base="xs:positiveInteger"/>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Draft status
+  ============================================================ -->
+
+  <xs:simpleType name="DraftStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="in-progress">
+        <xs:annotation>
+          <xs:documentation>
+            Current working draft. Only one draft per book
+            may carry this status at any time.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="snapshot">
+        <xs:annotation>
+          <xs:documentation>
+            Immutable archived draft. Never modified after
+            status transitions to snapshot.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="abandoned">
+        <xs:annotation>
+          <xs:documentation>
+            Exploratory branch that was not pursued.
+            Retained for reference.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Author type (human or AI)
+  ============================================================ -->
+
+  <xs:simpleType name="AuthorTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="human"/>
+      <xs:enumeration value="ai"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Paragraph content type
+  ============================================================ -->
+
+  <xs:simpleType name="ParaTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="normal"/>
+      <xs:enumeration value="dialogue"/>
+      <xs:enumeration value="thought"/>
+      <xs:enumeration value="letter"/>       <!-- embedded letter/document -->
+      <xs:enumeration value="extract"/>      <!-- quoted passage -->
+      <xs:enumeration value="verse"/>        <!-- poetry within prose -->
+      <xs:enumeration value="caption"/>      <!-- figure caption -->
+      <xs:enumeration value="pullquote"/>    <!-- non-fiction callout -->
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Section break type
+  ============================================================ -->
+
+  <xs:simpleType name="BreakTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="scene">
+        <xs:annotation>
+          <xs:documentation>
+            Scene break within a chapter. Renders as *** 
+            or decorative separator.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="section">
+        <xs:annotation>
+          <xs:documentation>
+            Major section division. Renders as whitespace 
+            or horizontal rule.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="page">
+        <xs:annotation>
+          <xs:documentation>
+            Explicit page break. For print layout use.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Image format
+  ============================================================ -->
+
+  <xs:simpleType name="ImageFormatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="JPEG"/>
+      <xs:enumeration value="PNG"/>
+      <xs:enumeration value="WebP"/>
+      <xs:enumeration value="SVG"/>
+      <xs:enumeration value="TIFF"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Genre
+  ============================================================ -->
+
+  <xs:simpleType name="GenreType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fiction"/>
+      <xs:enumeration value="non-fiction"/>
+      <xs:enumeration value="reference"/>
+      <xs:enumeration value="biography"/>
+      <xs:enumeration value="memoir"/>
+      <xs:enumeration value="poetry"/>
+      <xs:enumeration value="drama"/>
+      <xs:enumeration value="mixed"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Paragraph editorial status
+  ============================================================ -->
+
+  <xs:simpleType name="EditStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="draft"/>
+      <xs:enumeration value="reviewed"/>
+      <xs:enumeration value="final"/>
+      <xs:enumeration value="queried"/>     <!-- flagged for attention -->
+      <xs:enumeration value="cut"/>         <!-- soft delete, retained for reference -->
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Note type
+  ============================================================ -->
+
+  <xs:simpleType name="NoteTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="craft">
+        <xs:annotation>
+          <xs:documentation>
+            Editorial or craft observation about the writing.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="research">
+        <xs:annotation>
+          <xs:documentation>
+            Factual research or source reference.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="continuity">
+        <xs:annotation>
+          <xs:documentation>
+            Cross-reference flag for continuity checking.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="query">
+        <xs:annotation>
+          <xs:documentation>
+            Open question requiring resolution.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="diff-hint">
+        <xs:annotation>
+          <xs:documentation>
+            AI-generated explanation of what changed between
+            drafts and why. Invaluable for editorial lineage.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="footnote">
+        <xs:annotation>
+          <xs:documentation>
+            Footnote or endnote. Non-fiction use. See display
+            attribute for rendering preference.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="general"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Change type (for diff/versioning)
+  ============================================================ -->
+
+  <xs:simpleType name="ChangeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="created"/>
+      <xs:enumeration value="modified"/>
+      <xs:enumeration value="moved"/>
+      <xs:enumeration value="deleted"/>
+      <xs:enumeration value="unchanged"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: Component/chapter type
+  ============================================================ -->
+
+  <xs:simpleType name="ComponentTypeType">
+    <xs:restriction base="xs:string">
+      <!-- Front matter -->
+      <xs:enumeration value="halftitle"/>
+      <xs:enumeration value="titlepage"/>
+      <xs:enumeration value="copyright"/>
+      <xs:enumeration value="dedication"/>
+      <xs:enumeration value="epigraph"/>
+      <xs:enumeration value="toc"/>
+      <xs:enumeration value="foreword"/>
+      <xs:enumeration value="preface"/>
+      <xs:enumeration value="introduction"/>
+      <xs:enumeration value="acknowledgements"/>
+      <!-- Body matter -->
+      <xs:enumeration value="part"/>
+      <xs:enumeration value="chapter"/>
+      <xs:enumeration value="prologue"/>
+      <xs:enumeration value="epilogue"/>
+      <xs:enumeration value="interlude"/>
+      <!-- Back matter -->
+      <xs:enumeration value="appendix"/>
+      <xs:enumeration value="bibliography"/>
+      <xs:enumeration value="glossary"/>
+      <xs:enumeration value="index"/>
+      <xs:enumeration value="about-author"/>
+      <xs:enumeration value="colophon"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ImageType
+       Reused by cover images, author photo, and figure elements.
+  ============================================================ -->
+
+  <xs:complexType name="ImageType">
+    <xs:attribute name="src"    type="xs:string"      use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Relative path from book.xml root to image file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="format" type="bml:ImageFormatType" use="required"/>
+    <xs:attribute name="width"  type="xs:positiveInteger"  use="required">
+      <xs:annotation>
+        <xs:documentation>Width in pixels.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="height" type="xs:positiveInteger"  use="required">
+      <xs:annotation>
+        <xs:documentation>Height in pixels.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="alt"    type="xs:string"      use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Accessibility alt text. Also used as fallback label
+          if image file is missing.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="credit" type="xs:string"      use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Copyright or attribution credit for the image.
+          Particularly important for commissioned cover art
+          and author photographs.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: Paragraph provenance attributes
+       Mixin applied to para, heading, figure, table elements
+       to track versioning lineage.
+  ============================================================ -->
+
+  <xs:attributeGroup name="ProvenanceAttributes">
+    <xs:attribute name="draft-created"  type="bml:DraftNumberType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Draft number in which this element was first introduced.
+          Set at generation/creation time; never changed.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="draft-modified" type="bml:DraftNumberType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Draft number in which this element's content was
+          last changed. Updated by application on edit.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="modified-by"    type="bml:AuthorTypeType"  use="required"/>
+    <xs:attribute name="modified-date"  type="xs:dateTime"         use="optional"/>
+    <xs:attribute name="change-type"    type="bml:ChangeType"      use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Populated during import to record the nature of
+          change from previous draft. Optional at generation
+          time; required during diff operations.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+</xs:schema>

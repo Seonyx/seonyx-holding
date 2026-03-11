@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bml="https://bookml.org/ns/1.0"
+           targetNamespace="https://bookml.org/ns/1.0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- ============================================================
+       BookML Meta Schema v1.0
+       bookml-meta.xsd
+
+       Validates:  *-meta.xml files
+       Imports:    bookml-common.xsd
+
+       The meta file carries paragraph-level metadata for one
+       chapter component. It is joined to the chapter file by
+       the pid attribute (the immutable paragraph identity key).
+
+       Not every paragraph requires a meta record — the meta
+       file is sparse. The importer treats absent meta records
+       as paragraphs with all fields at default values.
+
+       Meta records may exist for any keyed element: paragraphs,
+       headings, figures, and tables.
+  ============================================================ -->
+
+  <xs:import namespace="https://bookml.org/ns/1.0"
+             schemaLocation="bookml-common.xsd"/>
+
+
+  <!-- ============================================================
+       ROOT ELEMENT: meta
+  ============================================================ -->
+
+  <xs:element name="meta">
+    <xs:annotation>
+      <xs:documentation>
+        Root element of a BookML meta file.
+        Contains zero or more para-meta records, each keyed
+        by pid to its corresponding element in the chapter file.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="para-meta" type="bml:ParaMetaType"
+                    minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="xmlns"          type="xs:anyURI"             use="required"/>
+      <xs:attribute name="bookml-version" type="bml:BookmlVersionType" use="required"/>
+      <xs:attribute name="chapter-id"     type="xs:string"             use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Must match the id attribute of the corresponding
+            chapter root element. Validates the join target.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="book-id"        type="xs:string"             use="required"/>
+      <xs:attribute name="draft"          type="bml:DraftNumberType"   use="required"/>
+    </xs:complexType>
+
+    <!-- Uniqueness constraint: one meta record per pid -->
+    <xs:unique name="UniqueParaMetaPid">
+      <xs:selector xpath="bml:para-meta"/>
+      <xs:field xpath="@pid"/>
+    </xs:unique>
+  </xs:element>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ParaMetaType
+       Metadata record for one paragraph or keyed element.
+       All fields are optional — include only what is relevant.
+  ============================================================ -->
+
+  <xs:complexType name="ParaMetaType">
+    <xs:sequence>
+
+      <!-- Editorial workflow -->
+      <xs:element name="status"     type="bml:EditStatusType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Editorial status of this paragraph.
+            Default (when absent): draft
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Fiction-specific context -->
+      <xs:element name="pov" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Point of view for this paragraph. Useful for
+            multi-POV fiction to track perspective consistency.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="first-person"/>
+            <xs:enumeration value="second-person"/>
+            <xs:enumeration value="third-limited"/>
+            <xs:enumeration value="third-omniscient"/>
+            <xs:enumeration value="third-objective"/>
+            <xs:enumeration value="unreliable"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <xs:element name="location"  type="xs:string"   minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Physical location where this passage is set.
+            For continuity tracking.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="timepoint" type="xs:string"   minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            In-story time for this passage. May be a full
+            dateTime for historically precise fiction, or a
+            free-form narrative time such as "Late afternoon,
+            third day of the journey".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Character tracking -->
+      <xs:element name="characters" type="bml:CharactersType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Characters present in or referenced by this paragraph.
+            Used for character arc tracking and scene analysis.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Thematic classification -->
+      <xs:element name="tags"       type="bml:TagsType"       minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Freeform thematic or functional tags.
+            Examples: atmosphere, establishing, backstory,
+            foreshadowing, conflict, resolution, exposition
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Tone tracking (fiction) -->
+      <xs:element name="tone" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Emotional/narrative tone. Useful for pacing analysis.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="tense"/>
+            <xs:enumeration value="melancholic"/>
+            <xs:enumeration value="joyful"/>
+            <xs:enumeration value="comic"/>
+            <xs:enumeration value="sinister"/>
+            <xs:enumeration value="contemplative"/>
+            <xs:enumeration value="urgent"/>
+            <xs:enumeration value="neutral"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+
+      <!-- Quantitative data -->
+      <xs:element name="word-count"  type="xs:nonNegativeInteger" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Word count of this paragraph's text content.
+            May be set at generation time or computed on import.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Non-fiction: topic and source tracking -->
+      <xs:element name="topic"       type="xs:string"   minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Non-fiction subject classification for this paragraph.
+            Supports content auditing (e.g. "is all the
+            economics content consistent?").
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="sources"     type="bml:SourcesType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Research sources drawn upon for this paragraph.
+            Non-fiction use primarily.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Administrative timestamps -->
+      <xs:element name="created"  type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="modified" type="xs:dateTime" minOccurs="0"/>
+
+    </xs:sequence>
+
+    <xs:attribute name="pid" type="bml:PidType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Foreign key to the pid attribute of the corresponding
+          element in the chapter file. This is the join key.
+          Must exactly match a pid in the associated chapter file.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: CharactersType
+  ============================================================ -->
+
+  <xs:complexType name="CharactersType">
+    <xs:sequence>
+      <xs:element name="character" type="bml:CharacterRefType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CharacterRefType">
+    <xs:attribute name="ref"  type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Character identifier. Should match a character
+          registry if one exists in the application.
+          Use lowercase-hyphenated form. Example: elspeth-vane
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="role" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="present">
+            <xs:annotation>
+              <xs:documentation>
+                Character is physically present in the scene.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="absent">
+            <xs:annotation>
+              <xs:documentation>
+                Character is referenced but not present.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="mentioned"/>
+          <xs:enumeration value="narrator"/>
+          <xs:enumeration value="speaking"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: TagsType
+  ============================================================ -->
+
+  <xs:complexType name="TagsType">
+    <xs:sequence>
+      <xs:element name="tag" type="xs:string"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: SourcesType (non-fiction)
+  ============================================================ -->
+
+  <xs:complexType name="SourcesType">
+    <xs:sequence>
+      <xs:element name="source" type="bml:SourceType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SourceType">
+    <xs:sequence>
+      <xs:element name="author"    type="xs:string"          minOccurs="0"/>
+      <xs:element name="title"     type="xs:string"/>
+      <xs:element name="year"      type="xs:gYear"           minOccurs="0"/>
+      <xs:element name="publisher" type="xs:string"          minOccurs="0"/>
+      <xs:element name="page"      type="xs:string"          minOccurs="0"/>
+      <xs:element name="url"       type="xs:anyURI"          minOccurs="0"/>
+      <xs:element name="accessed"  type="xs:date"            minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Date URL was last accessed. Web sources only.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="type" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="book"/>
+          <xs:enumeration value="journal"/>
+          <xs:enumeration value="newspaper"/>
+          <xs:enumeration value="web"/>
+          <xs:enumeration value="archive"/>
+          <xs:enumeration value="interview"/>
+          <xs:enumeration value="personal-communication"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+</xs:schema>
