@@ -1,0 +1,120 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.DraftListViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Manage Drafts - " + Model.ProjectName;
+    var defaultA = Model.Drafts.Count >= 2 ? Model.Drafts[Model.Drafts.Count - 2].DraftNumber : 0;
+    var defaultB = Model.Drafts.Count >= 1 ? Model.Drafts[Model.Drafts.Count - 1].DraftNumber : 0;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Drafts: @Model.ProjectName</h1>
+    <a href="@Url.Action("Index", "BookProject")" class="btn btn-secondary">Back to Projects</a>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@if (Model.Drafts.Count == 0)
+{
+    <div class="empty-state">
+        <p>No drafts found for this project. Import a BookML file to create the first draft.</p>
+    </div>
+}
+else
+{
+    @if (Model.Drafts.Count >= 2)
+    {
+        <div class="draft-compare-bar">
+            @using (Html.BeginForm("Diff", "Draft", FormMethod.Get, new { @class = "diff-picker-form" }))
+            {
+                <input type="hidden" name="projectId" value="@Model.BookProjectID" />
+                <label>Compare</label>
+                <select name="draftA" class="form-control-inline">
+                    @foreach (var d in Model.Drafts)
+                    {
+                        <option value="@d.DraftNumber" @(d.DraftNumber == defaultA ? "selected" : "")>
+                            Draft @d.DraftNumber@(string.IsNullOrEmpty(d.Label) ? "" : " - " + d.Label)
+                        </option>
+                    }
+                </select>
+                <label>vs</label>
+                <select name="draftB" class="form-control-inline">
+                    @foreach (var d in Model.Drafts)
+                    {
+                        <option value="@d.DraftNumber" @(d.DraftNumber == defaultB ? "selected" : "")>
+                            Draft @d.DraftNumber@(string.IsNullOrEmpty(d.Label) ? "" : " - " + d.Label)
+                        </option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary">Compare</button>
+            }
+        </div>
+    }
+
+    <table class="draft-table">
+        <thead>
+            <tr>
+                <th>Draft</th>
+                <th>Label / Status</th>
+                <th>Author</th>
+                <th>Based On</th>
+                <th>Paragraphs</th>
+                <th>Imported</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model.Drafts)
+            {
+                <tr class="@(d.DraftNumber == Model.CurrentDraftNumber ? "draft-row-current" : "")">
+                    <td>
+                        <strong>Draft @d.DraftNumber</strong>
+                        @if (d.DraftNumber == Model.CurrentDraftNumber)
+                        {
+                            <span class="badge-working">working</span>
+                        }
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(d.Label))
+                        {
+                            <span class="draft-label">@d.Label</span>
+                        }
+                        <span class="draft-status draft-status-@d.Status">@d.Status</span>
+                    </td>
+                    <td>@d.Author <span class="draft-author-type">(@d.AuthorType)</span></td>
+                    <td>@(d.BasedOn == 0 ? "initial" : "Draft " + d.BasedOn)</td>
+                    <td>@d.ParagraphCount</td>
+                    <td>@d.CreatedDate.ToString("MMM d, yyyy")</td>
+                    <td>
+                        @if (d.CanDelete)
+                        {
+                            @using (Html.BeginForm("DeleteDraft", "Draft", FormMethod.Post,
+                                new { style = "display:inline",
+                                      onsubmit = "return confirm('Delete Draft " + d.DraftNumber + " and all its paragraph versions? This cannot be undone.');" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="projectId" value="@Model.BookProjectID" />
+                                <input type="hidden" name="draftNumber" value="@d.DraftNumber" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            }
+                        }
+                        else
+                        {
+                            <span class="draft-only-label">only draft</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

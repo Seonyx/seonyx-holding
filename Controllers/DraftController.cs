@@ -153,6 +153,96 @@ namespace Seonyx.Web.Controllers
             return View(vm);
         }
 
+        // GET: admin/bookeditor/draft/Index?projectId=N
+        public ActionResult Index(int projectId)
+        {
+            var project = db.BookProjects.Find(projectId);
+            if (project == null)
+                return HttpNotFound();
+
+            var drafts = db.Drafts
+                .Where(d => d.BookProjectID == projectId)
+                .OrderBy(d => d.DraftNumber)
+                .ToList();
+
+            var chapterIds = db.Chapters
+                .Where(c => c.BookProjectID == projectId)
+                .Select(c => c.ChapterID)
+                .ToList();
+
+            var paraCounts = db.ParagraphVersions
+                .Where(pv => chapterIds.Contains(pv.ChapterID))
+                .GroupBy(pv => pv.DraftNumber)
+                .Select(g => new { DraftNumber = g.Key, Count = g.Count() })
+                .ToDictionary(x => x.DraftNumber, x => x.Count);
+
+            var vm = new DraftListViewModel
+            {
+                BookProjectID      = projectId,
+                ProjectName        = project.ProjectName,
+                CurrentDraftNumber = project.CurrentDraftNumber
+            };
+
+            foreach (var d in drafts)
+            {
+                int paraCount;
+                paraCounts.TryGetValue(d.DraftNumber, out paraCount);
+                vm.Drafts.Add(new DraftListItem
+                {
+                    DraftNumber    = d.DraftNumber,
+                    Label          = d.Label,
+                    Status         = d.Status,
+                    AuthorType     = d.AuthorType,
+                    Author         = d.Author,
+                    BasedOn        = d.BasedOn,
+                    CreatedDate    = d.CreatedDate,
+                    ParagraphCount = paraCount,
+                    CanDelete      = drafts.Count > 1
+                });
+            }
+
+            return View(vm);
+        }
+
+        // POST: admin/bookeditor/draft/DeleteDraft
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDraft(int projectId, int draftNumber)
+        {
+            var project = db.BookProjects.Find(projectId);
+            if (project == null)
+                return HttpNotFound();
+
+            var draftCount = db.Drafts.Count(d => d.BookProjectID == projectId);
+            if (draftCount <= 1)
+            {
+                TempData["Error"] = "Cannot delete the only draft.";
+                return RedirectToAction("Index", new { projectId });
+            }
+
+            var draft = db.Drafts.FirstOrDefault(d => d.BookProjectID == projectId && d.DraftNumber == draftNumber);
+            if (draft == null)
+                return HttpNotFound();
+
+            // Bulk-delete paragraph versions via SQL (avoids loading potentially thousands of rows into memory)
+            db.Database.ExecuteSqlCommand(
+                "DELETE pv FROM ParagraphVersions pv JOIN Chapters c ON c.ChapterID = pv.ChapterID WHERE c.BookProjectID = @p0 AND pv.DraftNumber = @p1",
+                projectId, draftNumber);
+
+            db.Drafts.Remove(draft);
+
+            // Keep CurrentDraftNumber pointing at the highest remaining draft
+            var newCurrent = db.Drafts
+                .Where(d => d.BookProjectID == projectId && d.DraftNumber != draftNumber)
+                .Max(d => (int?)d.DraftNumber) ?? 1;
+            project.CurrentDraftNumber = newCurrent;
+
+            db.SaveChanges();
+
+            TempData["Message"] = string.Format("Draft {0} deleted.", draftNumber);
+            return RedirectToAction("Index", new { projectId });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing) db.Dispose();

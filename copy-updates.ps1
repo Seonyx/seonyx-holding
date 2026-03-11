@@ -1,5 +1,5 @@
 # ============================================
-# BookML Importer + Draft Compare - Copy Script for Dibbler
+# Draft Management - Copy Script for Dibbler
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Draft Compare: Chapter-by-chapter pagination" -ForegroundColor Cyan
+    Write-Host "Draft Management: list, compare, delete" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -27,10 +27,6 @@ try {
     # Create new directories if needed
     Write-Host "Creating directories..." -ForegroundColor Yellow
     $dirs = @(
-        "App_Data\BookML",
-        "Database",
-        "Services",
-        "Views\ImportLog",
         "Views\Draft"
     )
     foreach ($d in $dirs) {
@@ -45,6 +41,7 @@ try {
     Write-Host ""
     Write-Host "Copying new files..." -ForegroundColor Yellow
     $newFiles = @(
+        "Views\Draft\Index.cshtml"
     )
     foreach ($f in $newFiles) {
         Copy-Item (Join-Path $src $f) (Join-Path $dst $f) -Force
@@ -57,7 +54,7 @@ try {
     $modifiedFiles = @(
         "Models\ViewModels\BookEditor\DraftDiffViewModel.cs",
         "Controllers\DraftController.cs",
-        "Views\Draft\Diff.cshtml",
+        "Views\BookProject\Index.cshtml",
         "Content\css\book-editor.css"
     )
     foreach ($f in $modifiedFiles) {
@@ -74,11 +71,11 @@ try {
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. Open Compare Drafts for any project with two drafts and verify:" -ForegroundColor White
-    Write-Host "   - Only one chapter is shown at a time" -ForegroundColor Gray
-    Write-Host "   - Prev/Next buttons navigate between chapters" -ForegroundColor Gray
-    Write-Host "   - Chapter dropdown lets you jump directly to any chapter" -ForegroundColor Gray
-    Write-Host "   - Overall totals (across all chapters) still shown in the summary bar" -ForegroundColor Gray
+    Write-Host "3. On the Projects page, projects with any draft now show a 'Manage Drafts' button." -ForegroundColor White
+    Write-Host "   The Manage Drafts page shows:" -ForegroundColor Gray
+    Write-Host "   - All drafts with status, author, para count and import date" -ForegroundColor Gray
+    Write-Host "   - Delete button per draft (disabled when only one draft remains)" -ForegroundColor Gray
+    Write-Host "   - Compare bar at the top when two or more drafts exist" -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

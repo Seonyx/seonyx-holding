@@ -1,7 +1,34 @@
+using System;
 using System.Collections.Generic;
 
 namespace Seonyx.Web.Models.ViewModels.BookEditor
 {
+    public class DraftListItem
+    {
+        public int      DraftNumber    { get; set; }
+        public string   Label          { get; set; }
+        public string   Status         { get; set; }
+        public string   AuthorType     { get; set; }
+        public string   Author         { get; set; }
+        public int      BasedOn        { get; set; }
+        public DateTime CreatedDate    { get; set; }
+        public int      ParagraphCount { get; set; }
+        public bool     CanDelete      { get; set; }
+    }
+
+    public class DraftListViewModel
+    {
+        public int                  BookProjectID      { get; set; }
+        public string               ProjectName        { get; set; }
+        public int                  CurrentDraftNumber { get; set; }
+        public List<DraftListItem>  Drafts             { get; set; }
+
+        public DraftListViewModel()
+        {
+            Drafts = new List<DraftListItem>();
+        }
+    }
+
     public class DraftDiffRow
     {
         public string Pid      { get; set; }

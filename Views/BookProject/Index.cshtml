@@ -63,6 +63,10 @@ else
                     {
                         <a href="@Url.Action("Index", "Export", new { projectId = project.BookProjectID })" class="btn btn-secondary btn-sm">Export</a>
                     }
+                    @if (project.CurrentDraftNumber >= 1)
+                    {
+                        <a href="@Url.Action("Index", "Draft", new { projectId = project.BookProjectID })" class="btn btn-secondary btn-sm">Manage Drafts</a>
+                    }
                     @if (project.CurrentDraftNumber >= 2)
                     {
                         <a href="@Url.Action("Diff", "Draft", new { projectId = project.BookProjectID })" class="btn btn-secondary btn-sm">Compare Drafts</a>
