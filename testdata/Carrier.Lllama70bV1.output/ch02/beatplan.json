@@ -1,0 +1,135 @@
+{
+  "chapterId": "CH02",
+  "title": "The Paper Nobody Cites",
+  "beatsN": 17,
+  "pov": "zoe",
+  "act": "I",
+  "generated": "2026-03-03T14:06:52+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Zoë's cluttered office, University of Barcelona",
+        "time": "Late morning, Monday",
+        "tone": "Dry wit, hinting unease",
+        "intent": "Zoë struggles to focus on her research as Mateo's cryptic message lingers in her mind.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Mateo's cluttered office, UCM campus",
+        "time": "Late morning, after Mateo's lecture",
+        "tone": "Dry wit, underlying unease",
+        "intent": "Zoë tries to decipher cryptic notes on Mateo's research project",
+        "prev": "Just before: Zoë struggles to focus on her research as Mateo's cryptic message lingers in her mind."
+      },
+      {
+        "loc": "Mateo's cluttered office, University of Barcelona",
+        "time": "Late afternoon, sunlight fading",
+        "tone": "Dry wit, creeping unease",
+        "intent": "Zoë tries to decipher Mateo's cryptic notes on Dr. Baeza's research.",
+        "prev": "Just before: Zoë tries to decipher cryptic notes on Mateo's research project"
+      },
+      {
+        "loc": "Mateo's cluttered office, late evening",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden research on Dr. Baeza's project, sparking her growing suspicion.",
+        "prev": "Just before: Zoë tries to decipher Mateo's cryptic notes on Dr. Baeza's research."
+      },
+      {
+        "loc": "Zoë's cluttered office, late afternoon",
+        "time": "16:45",
+        "tone": "dry wit, growing unease",
+        "intent": "Zoë discovers Mateo's hastily deleted email about an unexplained lab anomaly.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on Dr. Baeza's project, sparking her growing suspicion."
+      },
+      {
+        "loc": "Zoë's cluttered office, late afternoon",
+        "time": "16:45",
+        "tone": "dry wit, growing unease",
+        "intent": "Zoë discovers Mateo's paper has been quietly removed from the university database.",
+        "prev": "Just before: Zoë discovers Mateo's hastily deleted email about an unexplained lab anomaly."
+      },
+      {
+        "loc": "Mateo's cluttered office, late afternoon",
+        "time": "16:45",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Zoë confronts Mateo about Marina's cryptic message and the eerie lab atmosphere.",
+        "prev": "Just before: Zoë discovers Mateo's paper has been quietly removed from the university database."
+      },
+      {
+        "loc": "Mateo's cluttered office, Madrid",
+        "time": "Late afternoon, dimly lit",
+        "tone": "Dry wit amidst growing unease",
+        "intent": "Zoë tries to decipher Mateo's cryptic warnings about Dr. Baeza's research.",
+        "prev": "Just before: Zoë confronts Mateo about Marina's cryptic message and the eerie lab atmosphere."
+      },
+      {
+        "loc": "Mateo's cluttered office, late afternoon",
+        "time": "16:45",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Zoë confronts Mateo about his evasive responses to her questions on Dr. Baeza's research.",
+        "prev": "Just before: Zoë tries to decipher Mateo's cryptic warnings about Dr. Baeza's research."
+      },
+      {
+        "loc": "Mateo's cluttered office, late afternoon",
+        "time": "16:45",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Zoë presses Mateo for more on Dr. Baeza's research, sensing evasions.",
+        "prev": "Just before: Zoë confronts Mateo about his evasive responses to her questions on Dr. Baeza's research."
+      },
+      {
+        "loc": "Mateo's cluttered office, University of Seville",
+        "time": "Late afternoon, sunlight fading",
+        "tone": "Dry wit, growing unease",
+        "intent": "Zoë tries to make sense of Mateo's research on Dr. Baeza's project",
+        "prev": "Just before: Zoë presses Mateo for more on Dr. Baeza's research, sensing evasions."
+      },
+      {
+        "loc": "Mateo's cluttered office, late afternoon",
+        "time": "17:45",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Zoë tries to understand Mateo's motives for sharing the paper.",
+        "prev": "Just before: Zoë tries to make sense of Mateo's research on Dr. Baeza's project"
+      },
+      {
+        "loc": "Mateo's cluttered office, late evening",
+        "time": "22:47",
+        "tone": "unease creeping in",
+        "intent": "Zoë discovers Mateo's hidden research on Dr. Baeza's project",
+        "prev": "Just before: Zoë tries to understand Mateo's motives for sharing the paper."
+      },
+      {
+        "loc": "Zoë's cluttered office, late at night",
+        "time": "23:47",
+        "tone": "unease",
+        "intent": "Zoë discovers a disturbing connection between Dr. Baeza's research and the recent lab accidents.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on Dr. Baeza's project"
+      },
+      {
+        "loc": "Zoë's cluttered office, University of Madrid",
+        "time": "Late afternoon, dimly lit",
+        "tone": "Foreboding unease",
+        "intent": "Mateo's cryptic message sparks Zoë's investigation into Dr. Baeza's research.",
+        "prev": "Just before: Zoë discovers a disturbing connection between Dr. Baeza's research and the recent lab accidents."
+      },
+      {
+        "loc": "Mateo's cluttered office, late afternoon",
+        "time": "16:45",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden research on Dr. Baeza's project, fuelling her growing suspicion.",
+        "prev": "Just before: Mateo's cryptic message sparks Zoë's investigation into Dr. Baeza's research."
+      },
+      {
+        "loc": "Zoë's cluttered apartment, dimly lit by a single flickering lamp",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë's escalating paranoia solidifies as she deletes her research, severing ties to the incriminating paper.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on Dr. Baeza's project, fuelling her growing suspicion."
+      }
+    ]
+  }
+}

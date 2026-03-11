@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xmlns="https://bookml.org/ns/1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://bookml.org/ns/1.0 ../schema/bookml-chapter.xsd"
+         bookml-version="1.0"
+         id="ch08"
+         book-id="carrier-to-yesterday"
+         draft="1"
+         snapshot-date="2026-03-04T19:23:38+01:00">
+
+  <chapterinfo>
+    <chapternumber>8</chapternumber>
+    <title>Signal-to-Noise</title>
+  </chapterinfo>
+
+  <section seq="1000">
+
+    <para pid="CH08-P0010" seq="1000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes scanned the lines of code on her laptop screen, the glow illuminating the cluttered space around her. Zoë's fingers flew across the keyboard with practiced ease, but her mind was beginning to wander - a sign that it was time for a break. Just as she was about to refocus, a notification popped up on her phone, shrill in its insistence. The message was brief and unremarkable, except for one thing: the sender's number was unknown, and the words themselves sent a shiver down her spine - 'You're not as invisible as you think.'
+    </para>
+
+    <para pid="CH08-P0020" seq="2000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes darted wildly around the cluttered room as she scrambled to find some respite from the oppressive stillness that had settled over her. The anonymous message had unsettled Zoë Kwan more than she cared to admit, and now every creak of the old apartment building seemed amplified in the silence. She pushed aside tangled cords and discarded papers on her desk, searching for a noise-cancelling headset that would block out the eerie quiet. Her fingers trembled slightly as she rummaged through the mess, her mind racing with worst-case scenarios. The dim glow of her computer screens cast an unsettling light on the room's disarray, making it seem like the very chaos was closing in around her.
+    </para>
+
+    <para pid="CH08-P0030" seq="3000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her fingers trailed across the dusty bookshelves, searching for anything that might distract Zoë Kwan from the oppressive silence. The faint hum of the refrigerator in the kitchen seemed to grow louder with each passing moment, making her skin crawl. As she pushed aside a stack of dog-eared novels, a small notebook tumbled onto the floor, its worn cover creaking as it opened. Pages filled with scribbled equations and charts spilled out, revealing Mateo Salas's hidden research on statistical anomalies. A chill crept up her spine as she realized he had been investigating something more sinister than mere chance.
+    </para>
+
+    <para pid="CH08-P0040" seq="4000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Zoë Kwan's eyes drifted back to the scribbled notes and printouts scattered across her cluttered desk, but Mateo Salas' message lingered in her mind like a faint hum. The dim glow of her computer screen cast eerie shadows on the walls as she stared blankly at the lines of code, trying to focus on the task at hand. Her thoughts kept circling back to Mateo's research and the cryptic warning that had accompanied it: "The odds are not what they seem."
+    </para>
+
+    <para pid="CH08-P0050" seq="5000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Zoë Kwan's eyes scanned every inch of the cluttered space, the dim glow of the computer screen casting eerie shadows on the walls as she frantically searched for any sign of a hidden tracking device. Her fingers trembled slightly as she rummaged through her bag, dumping its contents onto the floor in a tangled mess of cords and papers. The air was thick with tension, her mind racing with worst-case scenarios as she checked each item, her breath catching in her throat at every faint rustle or creak. Mateo Salas's message had unsettled her, but this – the possibility that someone had been watching her, monitoring her every move – sent a chill down her spine.
+    </para>
+
+    <para pid="CH08-P0060" seq="6000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes narrowed as she stared at Mateo's laptop screen, the dim glow illuminating her tense features. The cryptic message he had left for her seemed to sear itself into her brain - 'They're watching you through Dr. Baeza's eyes.' A shiver ran down her spine as she wondered what Mateo meant by those ominous words. Her mind began to spin with possibilities, and a growing sense of unease pushed her to investigate further. She recalled the countless hours she had spent working under Dr. Baeza's supervision, but now those memories seemed tainted with an air of suspicion. The silence in her apartment felt oppressive as she typed out a search query - 'Dr. Baeza research' - and waited for the results to reveal what Mateo might have been trying to tell her.
+    </para>
+
+    <break seq="7500" type="scene"/>
+
+    <para pid="CH08-P0070" seq="7000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes scanned the dimly lit room, Mateo's scattered notes and papers casting eerie shadows on the walls. A faint hum of the refrigerator in the kitchen provided a steady background noise as she moved closer to his desk. Her gaze fell upon a scribbled equation, Dr. Baeza's research referenced multiple times, each notation more cryptic than the last. A chill crept up her spine as she realized Mateo had been searching for something specific within those lines of code. His scribbled warnings and hastily crossed-out equations seemed to whisper a haunting message: he had uncovered something that was never meant to be found.
+    </para>
+
+    <para pid="CH08-P0080" seq="8000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes scanned the cluttered space, the dim glow of the computer monitor casting eerie shadows on Mateo's walls. The air was thick with the smell of stale coffee and neglect. Her gaze lingered on the scattered notes, her mind reeling from the implications of what she had just discovered – Dr. Baeza's research, all connected in a web of secrets and deceit. Her attention drifted to the floor, where a tangle of wires and cables seemed to lead to a small, unassuming server. A shiver ran down her spine as she realized this must be Mateo's hidden setup – the key to unlocking the truth.
+    </para>
+
+    <para pid="CH08-P0090" seq="9000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes scanned the lines of code on Mateo's screen, the dim glow illuminating her pale face as she pored over the algorithm's inner workings. At first, everything seemed normal - a complex web of statistical models designed to ensure fairness and unpredictability. But then, a small discrepancy caught her attention: a single line of code that didn't quite add up, a tiny anomaly in an otherwise flawless system. A shiver ran down her spine as she realized the implications - someone had tampered with the algorithm, deliberately introducing a bias into the supposedly random draws. The room seemed to grow colder around her, the shadows cast by Mateo's equipment twisting into sinister forms on the walls.
+    </para>
+
+    <para pid="CH08-P0100" seq="10000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes narrowed as she scrolled through the lines of code on Mateo's laptop screen, her mind still reeling from the discrepancy she had just uncovered. The dim glow of the computer cast an eerie light on the darkened room, making the shadows seem to twist and writhe like living things. Suddenly, a new window popped open, displaying a message that made her breath catch in her throat: "El día del eclipse." The words seemed to leap off the screen, their ominous warning sending a shiver down her spine. What did it mean? And what kind of chaos was Mateo expecting?
+    </para>
+
+    <para pid="CH08-P0110" seq="11000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes narrowed as she pored over the rows of numbers on her computer screen, searching for any inconsistencies in the data. The cryptic message on Mateo Salas' computer still lingered in her mind, casting a shadow of unease over her thoughts. As she delved deeper into the statistics, a disturbing pattern began to emerge - an improbable sequence that defied the laws of probability. Zoë Kwan's fingers flew across the keyboard, running simulations and testing hypotheses, but the results only reinforced her growing suspicion: something was manipulating the outcomes, exerting an unseen influence over the supposedly random draws.
+    </para>
+
+    <para pid="CH08-P0120" seq="12000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Zoë Kwan's eyes adjusted slowly to the dim light of Mateo Salas' apartment, her gaze drifting from the scattered papers on his desk to the rows of computer screens lining the walls. The soft hum of machinery and the faint glow of LED lights created an eerie atmosphere, like a waiting room for some unknown reckoning. As she stepped further into the room, her foot creaked against the floorboard, and her heart skipped a beat. Her eyes landed on a small door hidden behind a tattered curtain, almost invisible in the shadows. A server's gentle whir emanated from within, sending a shiver down her spine as she realized Mateo had been hiding something – and she was about to uncover it.
+    </para>
+
+    <break seq="13500" type="scene"/>
+
+    <para pid="CH08-P0130" seq="13000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Mateo's eyes snapped up from his screen as Zoë stepped into the cramped office, her presence a sudden invasion of his private space. The dim glow of the computer screens cast an eerie light on his features, making his sharp jawline seem even more angular. His gaze narrowed, a silent warning that she had crossed some unspoken boundary. But Zoë's focus was fixed on the hidden server humming behind him, its existence a tangible proof of secrets kept and lies told. The cryptic message from Marina still lingered in her mind, its ominous tone echoing through every fiber of her being. Where was Dr. Baeza? Why had she gone silent all of a sudden? The questions swirled in Zoë's thoughts like a gathering storm, their answers hidden behind Mateo's guarded expression.
+    </para>
+
+    <para pid="CH08-P0140" seq="14000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Zoë's gaze lingered on Mateo's laptop screen as he pored over lines of code, his brow furrowed in concentration. The dim glow of the display cast an eerie light on his features, and for a moment, she felt like she was staring at a stranger. His fingers flew across the keyboard with a speed that belied his earlier nonchalance, and Zoë's unease grew as he muttered to himself about patterns and probability. Suddenly, Mateo's eyes snapped up from the screen, his expression twisted in a mixture of fascination and horror. "It can't be," he whispered, his voice barely audible over the creaks of the old apartment building. The words on the screen seemed to blur together as Zoë felt her heart sink – Mateo had found something that connected Dr. Baeza's research to an unsettling code in a way that made her skin crawl.
+    </para>
+
+    <para pid="CH08-P0150" seq="15000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-04T19:23:38+01:00">
+      Her eyes narrowed as she stared at the laptop screen, the dim glow illuminating her pale features in an eerie light. Mateo's analysis had revealed a disturbing pattern - every lottery win coincided with one of Dr. Baeza's experiments, but since this was before Chapter 6, Zoë Kwan focused on another aspect: the unsettling precision of dates aligned with Dr. Baeza's experiments. The connection between the seemingly unrelated events reeled in her mind as she tried to grasp it, but one thing became clear: Mateo Salas' luck was not his own.
+    </para>
+
+  </section>
+
+</chapter>

@@ -1,0 +1,128 @@
+{
+  "chapterId": "CH07",
+  "title": "A Modest Win",
+  "beatsN": 16,
+  "pov": "mateo",
+  "act": "II",
+  "generated": "2026-03-04T14:27:21+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's dimly lit apartment",
+        "time": "02:47 AM",
+        "tone": "uneasy stillness",
+        "intent": "Mateo tries to shake off the feeling of being watched, but his eyes keep drifting to the window.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo discovers a cryptic message on his computer from an unknown sender.",
+        "prev": "Just before: Mateo tries to shake off the feeling of being watched, but his eyes keep drifting to the window."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "Ominous unease",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his encrypted phone.",
+        "prev": "Just before: Mateo discovers a cryptic message on his computer from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "ominous dread",
+        "intent": "Mateo discovers a suspicious lottery ticket in his jacket pocket.",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his encrypted phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "Foreboding unease",
+        "intent": "Mateo's research on the lottery algorithm yields an unsettling correlation with recent murders.",
+        "prev": "Just before: Mateo discovers a suspicious lottery ticket in his jacket pocket."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo anxiously ponders the implications of his lottery win on his already fragile life.",
+        "prev": "Just before: Mateo's research on the lottery algorithm yields an unsettling correlation with recent murders."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "ominous foreboding",
+        "intent": "Mateo's uneasy sleep is disrupted by a cryptic message from an unknown sender.",
+        "prev": "Just before: Mateo anxiously ponders the implications of his lottery win on his already fragile life."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM, March 15th",
+        "tone": "ominous dread",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his encrypted phone.",
+        "prev": "Just before: Mateo's uneasy sleep is disrupted by a cryptic message from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a suspicious lottery ticket in his jacket pocket.",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his encrypted phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM, March 15th",
+        "tone": "Ominous unease",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his encrypted phone.",
+        "prev": "Just before: Mateo discovers a suspicious lottery ticket in his jacket pocket."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's lottery win sparks a sense of disquieting responsibility",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his encrypted phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo ponders the lottery numbers, feeling an unsettling connection to the digits.",
+        "prev": "Just before: Mateo's lottery win sparks a sense of disquieting responsibility"
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "Ominous unease",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his encrypted phone.",
+        "prev": "Just before: Mateo ponders the lottery numbers, feeling an unsettling connection to the digits."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo frantically searches for any mention of the lottery in his encrypted files.",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his encrypted phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "ominous dread",
+        "intent": "Mateo frantically searches for a hidden tracking device in his flat.",
+        "prev": "Just before: Mateo frantically searches for any mention of the lottery in his encrypted files."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo deletes the lottery ticket image from his phone, but can't shake off the feeling of being watched.",
+        "prev": "Just before: Mateo frantically searches for a hidden tracking device in his flat."
+      }
+    ]
+  }
+}

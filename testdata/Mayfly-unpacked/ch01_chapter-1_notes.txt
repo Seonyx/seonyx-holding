@@ -1,0 +1,32 @@
+﻿CH01-P0010|[query] Uses the dreaded emdash. There maybe better terms for the words eternal and habitat
+CH01-P0030|[query] Another emdash. The phrases 'Elom guide my steps' and 'Elom guide my hands to serve.' are described as thoughts, so perhaps they should be in single quotes. Research alternative ways of expressing thoughts, as these don't leap out as changing from reported speech to the third person.
+CH01-P0040|[query] Another emdash. The paragraph described the unusual nature of the death of a master but the final sentence is a bit clunky.
+CH01-P0050|[query] Starts with a conjunction. Two more emdashes.
+CH01-P0070|[query] The phrase 'her door' is confusing. It is the door of her destination for sure, but it would be better to describe it as such. Her doot could mean her house or her door of the transport. Rework this.
+CH01-P0080|[query] More emdashes and the first mention of Musk (Musk's arrival,) - change this to Elom or the founder as we don't want to give the game away too soon.
+CH01-P0090|[query] Yet more emdashes
+CH01-P0100|[query] First meeting of Elara (Mortal in Greek myth - impregnated by Zeus and died during childbirth due to the size of her massive baby)
+CH01-P0130|[query] This mentions a 'marble' floor. Marble is unlikely to be found naturally occurring on Mars as it requires limestone normally associated with life. A better choice might be polished basalt (see additional research)
+CH01-P0150|[query] First mention of Elder Maris
+CH01-P0160|[query] Elder Maris is revealed to be a Salve not a 'Master'. This seems wrong. Frost with his seperation from the salves would only know about this if Elder Maris had been personally assigned to another Master he knew personally. See if this comes to light. It may be preferable to add a little backstory as to why he had heard of her.
+CH01-P0200|[query] First exposition of age disparity
+CH01-P0210|[query] This paragraph puts to age of the colony at 700+ years and names Elon Musk. I want the mythology to be more ingrained, so consider not mentioning that Frost new the founder. Musk should still not be named.
+CH01-P0250|[query] Description of the view of other Martian habitats could possibly include Martian concrete (Marscrete - see additional research)
+CH01-P0280|[query] Lots of comparisons in this paragraph that I didn't warm to - hair as white as fresh snow etc - maybe revisit if there are no less pressing problems ahead to deal with.
+CH01-P0310|[query] Note that 'colorless' has an American spelling. Need to choose a spelling language and stick with it.
+CH01-P0350|[query] Repeat description of his snow white hair - that will have to go.
+CH01-P0360|[query] Frost pictured someone older - poses a question as to whether he can tell the age of someone centuries younger - it might be better to reflect that all the salves look young to him
+CH01-P0430|[query] Mentions the age of Elder Maris when she died. Is it consistent(yes)?
+CH01-P0440|[query] The question of lifespan limits is conservative - why not 100 or 500?
+CH01-P0530|[query] Caution here about Earth being the reason Mars was necessary.
+CH01-P0700|[query] Toward the green is an odd phrase that needs looking at.
+CH01-P0890|[query] Reuse of the rattling adjective to describe Frosts laugh. Change this
+CH01-P0900|[query] Yest another emdash!
+CH01-P0980|[query] Words on a screen - would salves be able to read - well I guess so to follow basic instructions. It's what they were allowed to read that would be censored.
+CH01-P1000|[query] Mentions Elon Musk as the founder - I still think too early for my liking.- also it says she new Elon Musk was the founder. I want her to discover that her God was really a man.
+CH01-P1010|[query] Eugenics revealed - maybe the reveal of man's shaping of the split should start in the previous paragraph.
+CH01-P1020|[query] Genetic sequencing description probably needs a rewrite - lacks tension.
+CH01-P1160|[query] A bit of repetition here - biological castes etc that needs tightening
+CH01-P1180|[query] Weak paragraph - consider rewriting.
+CH01-P1190|[query] Weak paragraph - possible repetition of trying to sleep - twinkling stars etc.
+CH01-P1200|[query] Again, weak - nice summation of her thoughts going to bed but with repetition of the red dust motif. Consider rewrite.

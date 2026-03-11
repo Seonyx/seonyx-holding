@@ -1,0 +1,118 @@
+{
+  "chapterId": "CH06",
+  "title": "Proof of Yesterday",
+  "beatsN": 17,
+  "pov": "zoe",
+  "act": "II",
+  "generated": "2026-03-04T09:31:47+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's Robledo apartment",
+        "time": "Late morning",
+        "tone": "Tense, foreboding",
+        "intent": "Zoë and Mateo discuss their plan to infiltrate Dr. Baeza's lab."
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Midday",
+        "tone": "Dry humour, cautious optimism",
+        "intent": "Mateo briefs Zoë on the layout of Dr. Baeza's lab and security measures."
+      },
+      {
+        "loc": "Dr. Baeza's lab (exterior)",
+        "time": "Early afternoon",
+        "tone": "Apprehensive, focused",
+        "intent": "Zoë and Mateo scope out the lab, searching for an entry point."
+      },
+      {
+        "loc": "Lab ventilation system",
+        "time": "Afternoon",
+        "tone": "Tense, claustrophobic",
+        "intent": "Zoë navigates the cramped ventilation system to reach Dr. Baeza's office."
+      },
+      {
+        "loc": "Dr. Baeza's office",
+        "time": "Late afternoon",
+        "tone": "Eerie, anticipatory",
+        "intent": "Zoë discovers evidence of Dr. Baeza's experiments and a mysterious data storage device."
+      },
+      {
+        "loc": "Lab corridors",
+        "time": "Early evening",
+        "tone": "Urgent, evasive",
+        "intent": "Zoë narrowly avoids detection by lab security personnel."
+      },
+      {
+        "loc": "Mateo's car (parked outside the lab)",
+        "time": "Evening",
+        "tone": "Relieved, cautious",
+        "intent": "Zoë and Mateo reunite, discussing their next move."
+      },
+      {
+        "loc": "Robledo café",
+        "time": "Night",
+        "tone": "Dry humour, introspective",
+        "intent": "Zoë reflects on her situation and the implications of Dr. Baeza's research."
+      },
+      {
+        "loc": "Mateo's apartment (night)",
+        "time": "Late night",
+        "tone": "Tense, foreboding",
+        "intent": "Mateo reveals a cryptic message from an unknown sender, hinting at a larger conspiracy."
+      },
+      {
+        "loc": "Zoë's hotel room",
+        "time": "Early morning",
+        "tone": "Apprehensive, anticipatory",
+        "intent": "Zoë tries to process the events of the previous day and her growing unease."
+      },
+      {
+        "loc": "Chief Ortega's office",
+        "time": "Morning",
+        "tone": "Formal, inquisitive",
+        "intent": "Chief Ortega questions Mateo about his involvement with Zoë and Dr. Baeza."
+      },
+      {
+        "loc": "Mateo's apartment (day)",
+        "time": "Late morning",
+        "tone": "Tense, urgent",
+        "intent": "Zoë and Mateo realize they must act quickly to uncover the truth before Chief Ortega closes in."
+      },
+      {
+        "loc": "Marina Ríos' office",
+        "time": "Afternoon",
+        "tone": "Dry humour, cautious optimism",
+        "intent": "Marina provides Zoë with information about Dr. Baeza's research and a possible lead on her location."
+      },
+      {
+        "loc": "Javi's workshop",
+        "time": "Evening",
+        "tone": "Eerie, anticipatory",
+        "intent": "Zoë discovers Javi's involvement in Dr. Baeza's experiments and the true nature of his 'art'."
+      },
+      {
+        "loc": "Dr. Baeza's lab (interior)",
+        "time": "Night",
+        "tone": "Tense, foreboding",
+        "intent": "Zoë infiltrates the lab, searching for Dr. Baeza and the truth about her research."
+      },
+      {
+        "loc": "Lab corridors (night)",
+        "time": "Late night",
+        "tone": "Urgent, evasive",
+        "intent": "Zoë navigates the lab, avoiding security personnel and confronting the consequences of her actions."
+      },
+      {
+        "loc": "Dr. Baeza's office (night)",
+        "time": "Very late night",
+        "tone": "Eerie, revelatory",
+        "intent": "Zoë uncovers a shocking truth about Dr. Baeza's research and its connection to her own past."
+      }
+    ]
+  }
+}

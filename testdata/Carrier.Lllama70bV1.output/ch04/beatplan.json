@@ -1,0 +1,121 @@
+{
+  "chapterId": "CH04",
+  "title": "Robledo Recon",
+  "beatsN": 15,
+  "pov": "zoe",
+  "act": "I",
+  "generated": "2026-03-04T00:25:01+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Zoë's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë reviews cryptic messages from Mateo, sensing a trap in his request for an urgent meeting.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit office in the Robledo police station",
+        "time": "Late morning, after a hasty breakfast",
+        "tone": "Tense, with flashes of dry humour",
+        "intent": "Zoë tries to get Mateo on board with her theory about Marina Ríos' murder.",
+        "prev": "Just before: Zoë reviews cryptic messages from Mateo, sensing a trap in his request for an urgent meeting."
+      },
+      {
+        "loc": "Zoë's cramped, dimly lit apartment in Robledo",
+        "time": "02:47 AM",
+        "tone": "Foreboding unease",
+        "intent": "Zoë frantically searches for any mention of Dr. Baeza's research online.",
+        "prev": "Just before: Zoë tries to get Mateo on board with her theory about Marina Ríos' murder."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit van",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë tries to shake off the feeling of being watched while hacking into Robledo's security system.",
+        "prev": "Just before: Zoë frantically searches for any mention of Dr. Baeza's research online."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "ominous unease",
+        "intent": "Zoë discovers Mateo's hidden research on Robledo's biometric data, fuelling her growing suspicion.",
+        "prev": "Just before: Zoë tries to shake off the feeling of being watched while hacking into Robledo's security system."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit office",
+        "time": "Late evening",
+        "tone": "Foreboding unease",
+        "intent": "Zoë confronts Mateo about the inconsistencies in Dr. Baeza's research, sensing a hidden agenda.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on Robledo's biometric data, fuelling her growing suspicion."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit office",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë confronts Mateo about the inconsistencies in Dr. Baeza's research, sensing a hidden agenda.",
+        "prev": "Just before: Zoë confronts Mateo about the inconsistencies in Dr. Baeza's research, sensing a hidden agenda."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit office",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a cryptic message on Mateo's computer, hinting at an imminent catastrophe.",
+        "prev": "Just before: Zoë confronts Mateo about the inconsistencies in Dr. Baeza's research, sensing a hidden agenda."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's secret research on Dr. Baeza's encrypted files.",
+        "prev": "Just before: Zoë discovers a cryptic message on Mateo's computer, hinting at an imminent catastrophe."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Robledo",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë and Mateo analyze the cryptic message from Dr. Baeza, their theories diverging.",
+        "prev": "Just before: Zoë discovers Mateo's secret research on Dr. Baeza's encrypted files."
+      },
+      {
+        "loc": "Mateo's dimly lit, cluttered office",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë confronts Mateo about his suspicious behavior and possible involvement in the lab sabotage.",
+        "prev": "Just before: Zoë and Mateo analyze the cryptic message from Dr. Baeza, their theories diverging."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit office in the Robledo police station",
+        "time": "Late evening, after a long day of reviewing case files",
+        "tone": "Foreboding unease with dry undertones",
+        "intent": "Zoë tries to piece together the evidence, but inconsistencies nag her.",
+        "prev": "Just before: Zoë confronts Mateo about his suspicious behavior and possible involvement in the lab sabotage."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden research on Dr. Baeza's project",
+        "prev": "Just before: Zoë tries to piece together the evidence, but inconsistencies nag her."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Robledo",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden research on Dr. Baeza's project, sparking a growing sense of dread.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on Dr. Baeza's project"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Robledo",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë's research yields a disturbing connection between the murders and an obscure neuroscience paper.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on Dr. Baeza's project, sparking a growing sense of dread."
+      }
+    ]
+  }
+}

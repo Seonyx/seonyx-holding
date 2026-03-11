@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="https://bookml.org/ns/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://bookml.org/ns/1.0 ../schema/bookml-meta.xsd"
+      bookml-version="1.0"
+      chapter-id="ch01"
+      book-id="carrier-to-yesterday"
+      draft="1">
+
+  <para-meta pid="CH01-P0010">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's small, cluttered apartment in Madrid</location>
+    <timepoint>Chapter 1, Beat 1</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>establishing</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>comic</tone>
+    <word-count>138</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0020">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered office, University of Madrid</location>
+    <timepoint>Chapter 1, Beat 2</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>110</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0030">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment, Mateo staring at his computer screen</location>
+    <timepoint>Chapter 1, Beat 3</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>114</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0040">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment, Mateo staring at his computer screen</location>
+    <timepoint>Chapter 1, Beat 4</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>126</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0050">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment, Mateo staring at his computer screen</location>
+    <timepoint>Chapter 1, Beat 5</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>107</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0060">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment, Mateo staring at a cryptic message on his computer screen</location>
+    <timepoint>Chapter 1, Beat 6</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>112</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0070">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's car, parked outside the university</location>
+    <timepoint>Chapter 1, Beat 7</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>137</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0080">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered office, late afternoon</location>
+    <timepoint>Chapter 1, Beat 8</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>comic</tone>
+    <word-count>132</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0090">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment, Mateo staring at his computer screen</location>
+    <timepoint>Chapter 1, Beat 9</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>106</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0100">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered office, late evening</location>
+    <timepoint>Chapter 1, Beat 10</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>comic</tone>
+    <word-count>134</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0110">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cramped office, surrounded by stacks of dusty papers and flickering computer screens</location>
+    <timepoint>Chapter 1, Beat 11</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>126</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0120">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered apartment, Mateo staring at a whiteboard filled with equations and diagrams</location>
+    <timepoint>Chapter 1, Beat 12</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>comic</tone>
+    <word-count>99</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0130">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered office, late evening</location>
+    <timepoint>Chapter 1, Beat 13</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>99</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0140">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered office, late evening</location>
+    <timepoint>Chapter 1, Beat 14</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>comic</tone>
+    <word-count>143</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0150">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cluttered apartment, Mateo staring at his computer screen</location>
+    <timepoint>Chapter 1, Beat 15</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>117</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0160">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Mateo staring at his computer screen</location>
+    <timepoint>Chapter 1, Beat 16</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>130</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0170">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 1, Beat 17</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>121</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH01-P0180">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's car, parked outside the university</location>
+    <timepoint>Chapter 1, Beat 18</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>135</word-count>
+    <created>2026-03-03T08:04:32+01:00</created>
+    <modified>2026-03-03T08:04:32+01:00</modified>
+  </para-meta>
+
+</meta>

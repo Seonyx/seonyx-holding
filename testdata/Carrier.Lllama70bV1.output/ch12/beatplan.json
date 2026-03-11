@@ -1,0 +1,121 @@
+{
+  "chapterId": "CH12",
+  "title": "All-In",
+  "beatsN": 15,
+  "pov": "zoe",
+  "act": "III",
+  "generated": "2026-03-05T20:52:16+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's dimly lit, cluttered office",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë confronts Mateo about the cryptic message from Dr. Baeza.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop on her coffee table",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a hidden folder with cryptic files from Dr. Baeza.",
+        "prev": "Just before: Zoë confronts Mateo about the cryptic message from Dr. Baeza."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47",
+        "tone": "ominous foreboding",
+        "intent": "Mateo reveals a disturbing connection between lottery winners and a mysterious biotech firm.",
+        "prev": "Just before: Zoë discovers a hidden folder with cryptic files from Dr. Baeza."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "ominous foreboding",
+        "intent": "Mateo's cryptic message sparks Zoë's growing unease about their investigation.",
+        "prev": "Just before: Mateo reveals a disturbing connection between lottery winners and a mysterious biotech firm."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a disturbing connection between lottery winners and an obscure neuroscience paper.",
+        "prev": "Just before: Mateo's cryptic message sparks Zoë's growing unease about their investigation."
+      },
+      {
+        "loc": "Mateo's high-rise apartment, Madrid",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's cryptic lottery ticket stash and a disturbing surveillance system.",
+        "prev": "Just before: Zoë discovers a disturbing connection between lottery winners and an obscure neuroscience paper."
+      },
+      {
+        "loc": "CH12.All-In",
+        "time": "23:47",
+        "tone": "Foreboding unease",
+        "intent": "Zoë's escalating paranoia forces her to re-examine the lottery's true purpose and potential consequences.",
+        "prev": "Just before: Zoë discovers Mateo's cryptic lottery ticket stash and a disturbing surveillance system."
+      },
+      {
+        "loc": "Mateo's dimly lit, cluttered apartment",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's secret lottery winnings research, fuelling her growing suspicion.",
+        "prev": "Just before: Zoë's escalating paranoia forces her to re-examine the lottery's true purpose and potential consequences."
+      },
+      {
+        "loc": "CH12.All-In",
+        "time": "23:47",
+        "tone": "Ominous foreboding",
+        "intent": "Zoë's unease grows as she realizes Mateo's plan relies on an untested, high-stakes algorithm.",
+        "prev": "Just before: Zoë discovers Mateo's secret lottery winnings research, fuelling her growing suspicion."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "ominous dread creeping in",
+        "intent": "Mateo's hacking progress sparks unease in Zoë",
+        "prev": "Just before: Zoë's unease grows as she realizes Mateo's plan relies on an untested, high-stakes algorithm."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë and Mateo frantically analyze the lottery winner's encrypted data.",
+        "prev": "Just before: Mateo's hacking progress sparks unease in Zoë"
+      },
+      {
+        "loc": "Mateo's dimly lit, cluttered office",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë confronts Mateo about the lottery's true purpose and his involvement.",
+        "prev": "Just before: Zoë and Mateo frantically analyze the lottery winner's encrypted data."
+      },
+      {
+        "loc": "CH12.All-In",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë's growing suspicion of Mateo forces her to secretly investigate his past.",
+        "prev": "Just before: Zoë confronts Mateo about the lottery's true purpose and his involvement."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's lottery algorithm yields a disturbing probability of catastrophic failure.",
+        "prev": "Just before: Zoë's growing suspicion of Mateo forces her to secretly investigate his past."
+      },
+      {
+        "loc": "CH12.All-In",
+        "time": "23:59",
+        "tone": "Foreboding dread",
+        "intent": "Zoë's last resort to prevent catastrophe is met with an unsettling, calculated silence from Mateo.",
+        "prev": "Just before: Mateo's lottery algorithm yields a disturbing probability of catastrophic failure."
+      }
+    ]
+  }
+}

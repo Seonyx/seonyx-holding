@@ -1,0 +1,114 @@
+{
+  "chapterId": "CH13",
+  "title": "The Road to Robledo",
+  "beatsN": 14,
+  "pov": "mateo",
+  "act": "III",
+  "generated": "2026-03-06T13:22:04+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      12
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's dimly lit hotel room in Robledo",
+        "time": "02:47 AM, March 15th",
+        "tone": "foreboding unease",
+        "intent": "Mateo frantically researches Dr. Baeza's disappearance on his encrypted laptop.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Mateo's rented flat in Robledo, Spain",
+        "time": "02:45 AM",
+        "tone": "unease",
+        "intent": "Mateo reviews surveillance footage of Dr. Baeza's lab, searching for anomalies.",
+        "prev": "Just before: Mateo frantically researches Dr. Baeza's disappearance on his encrypted laptop."
+      },
+      {
+        "loc": "Mateo's car, speeding down the deserted highway to Robledo",
+        "time": "2:47 AM",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo's anxiety spikes as he ponders the true purpose of Dr. Baeza's mysterious experiment.",
+        "prev": "Just before: Mateo reviews surveillance footage of Dr. Baeza's lab, searching for anomalies."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "02:47",
+        "tone": "ominous dread",
+        "intent": "Mateo's anxiety spikes as he considers the implications of Dr. Baeza's research on human brain activity",
+        "prev": "Just before: Mateo's anxiety spikes as he ponders the true purpose of Dr. Baeza's mysterious experiment."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo's outskirts",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo's growing dread solidifies as he nears the isolated research facility",
+        "prev": "Just before: Mateo's anxiety spikes as he considers the implications of Dr. Baeza's research on human brain activity"
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo receives a cryptic message from an unknown sender about Dr. Baeza's research.",
+        "prev": "Just before: Mateo's growing dread solidifies as he nears the isolated research facility"
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "02:47",
+        "tone": "foreboding dread",
+        "intent": "Mateo's anxiety spikes as he ponders the implications of Dr. Baeza's cryptic warnings.",
+        "prev": "Just before: Mateo receives a cryptic message from an unknown sender about Dr. Baeza's research."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo's anxiety spikes as he nears the isolated research facility",
+        "prev": "Just before: Mateo's anxiety spikes as he ponders the implications of Dr. Baeza's cryptic warnings."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo ponders the implications of Dr. Baeza's cryptic warning about Marina.",
+        "prev": "Just before: Mateo's anxiety spikes as he nears the isolated research facility"
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo's outskirts",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo's anxiety spikes as he nears the lottery-rigged town, suspecting a sinister connection.",
+        "prev": "Just before: Mateo ponders the implications of Dr. Baeza's cryptic warning about Marina."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "03:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo's anxiety spikes as he ponders the lottery's true purpose and Dr. Baeza's cryptic warnings.",
+        "prev": "Just before: Mateo's anxiety spikes as he nears the lottery-rigged town, suspecting a sinister connection."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "23:47",
+        "tone": "foreboding dread",
+        "intent": "Mateo receives a cryptic message from an unknown number, foreshadowing the sinister forces awaiting him in Robledo.",
+        "prev": "Just before: Mateo's anxiety spikes as he ponders the lottery's true purpose and Dr. Baeza's cryptic warnings."
+      },
+      {
+        "loc": "Mateo's car, approaching Robledo",
+        "time": "Late afternoon, sun dipping below horizon",
+        "tone": "Foreboding unease",
+        "intent": "Mateo's anxiety grows as he nears the isolated research facility.",
+        "prev": "Just before: Mateo receives a cryptic message from an unknown number, foreshadowing the sinister forces awaiting him in Robledo."
+      },
+      {
+        "loc": "Mateo's hotel room, Robledo",
+        "time": "02:47",
+        "tone": "foreboding dread",
+        "intent": "Mateo's search for Zoë yields a cryptic message hinting at her involvement with Dr. Baeza.",
+        "prev": "Just before: Mateo's anxiety grows as he nears the isolated research facility."
+      }
+    ]
+  }
+}

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="https://bookml.org/ns/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://bookml.org/ns/1.0 ../schema/bookml-meta.xsd"
+      bookml-version="1.0"
+      chapter-id="ch10"
+      book-id="carrier-to-yesterday"
+      draft="1">
+
+  <para-meta pid="CH10-P0010">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 10, Beat 1</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>establishing</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>110</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0020">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cluttered office, late evening</location>
+    <timepoint>Chapter 10, Beat 2</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>109</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0030">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo pacing in the background</location>
+    <timepoint>Chapter 10, Beat 3</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>126</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0040">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo pacing outside her door</location>
+    <timepoint>Chapter 10, Beat 4</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>131</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0050">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo's laptop open on the coffee table</location>
+    <timepoint>Chapter 10, Beat 5</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>130</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0060">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cluttered apartment, Mateo's makeshift lab in the corner</location>
+    <timepoint>Chapter 10, Beat 6</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>138</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0070">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's lab, underground server room</location>
+    <timepoint>Chapter 10, Beat 7</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>128</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0080">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo's laptop on the coffee table</location>
+    <timepoint>Chapter 10, Beat 8</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>145</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0090">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo Salas' laptop open on the coffee table</location>
+    <timepoint>Chapter 10, Beat 9</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>117</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0100">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 10, Beat 10</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>127</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0110">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>CH10 - Zoë's apartment, Mateo's makeshift lab</location>
+    <timepoint>Chapter 10, Beat 11</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>137</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0120">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 10, Beat 12</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>108</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0130">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 10, Beat 13</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>97</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH10-P0140">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo's cryptic message on her phone</location>
+    <timepoint>Chapter 10, Beat 14</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>138</word-count>
+    <created>2026-03-05T04:27:23+01:00</created>
+    <modified>2026-03-05T04:27:23+01:00</modified>
+  </para-meta>
+
+</meta>

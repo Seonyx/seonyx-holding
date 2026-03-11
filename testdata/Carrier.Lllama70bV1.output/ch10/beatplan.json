@@ -1,0 +1,114 @@
+{
+  "chapterId": "CH10",
+  "title": "Feedback",
+  "beatsN": 14,
+  "pov": "zoe",
+  "act": "II",
+  "generated": "2026-03-05T04:27:23+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      12
+    ],
+    "beats": [
+      {
+        "loc": "Zoë's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë reviews Mateo's cryptic message, trying to decipher its meaning",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Zoë's cluttered office, late evening",
+        "time": "23:47",
+        "tone": "Dry wit amidst growing unease",
+        "intent": "Mateo's cryptic message sparks Zoë's investigation into the lab's true purpose.",
+        "prev": "Just before: Zoë reviews Mateo's cryptic message, trying to decipher its meaning"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo pacing in the background",
+        "time": "02:47 AM",
+        "tone": "uneasy anticipation",
+        "intent": "Mateo reveals disturbing findings from his investigation into Dr. Baeza's research.",
+        "prev": "Just before: Mateo's cryptic message sparks Zoë's investigation into the lab's true purpose."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo pacing outside her door",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's unannounced visit sparks Zoë's growing distrust.",
+        "prev": "Just before: Mateo reveals disturbing findings from his investigation into Dr. Baeza's research."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47",
+        "tone": "ominous foreboding",
+        "intent": "Mateo's latest findings spark a disturbing connection between lottery winners and unexplained brain activity.",
+        "prev": "Just before: Mateo's unannounced visit sparks Zoë's growing distrust."
+      },
+      {
+        "loc": "Zoë's cluttered apartment, Mateo's makeshift lab in the corner",
+        "time": "23:47",
+        "tone": "Uneasy anticipation",
+        "intent": "Mateo reveals his latest findings on the lottery algorithm, fueling Zoë's growing unease about their involvement.",
+        "prev": "Just before: Mateo's latest findings spark a disturbing connection between lottery winners and unexplained brain activity."
+      },
+      {
+        "loc": "Mateo's lab, underground server room",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's secret lottery-related project, sparking a mix of curiosity and dread",
+        "prev": "Just before: Mateo reveals his latest findings on the lottery algorithm, fueling Zoë's growing unease about their involvement."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's lottery code analysis sparks Zoë's growing concern about their investigation's implications.",
+        "prev": "Just before: Zoë discovers Mateo's secret lottery-related project, sparking a mix of curiosity and dread"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo Salas' laptop open on the coffee table",
+        "time": "23:47",
+        "tone": "ominous foreboding",
+        "intent": "Zoë discovers a disturbing anomaly in the lottery data, fuelling her growing unease.",
+        "prev": "Just before: Mateo's lottery code analysis sparks Zoë's growing concern about their investigation's implications."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "ominous dread",
+        "intent": "Zoë discovers Mateo's cryptic notes on the lottery's algorithm and its unsettling implications",
+        "prev": "Just before: Zoë discovers a disturbing anomaly in the lottery data, fuelling her growing unease."
+      },
+      {
+        "loc": "CH10 - Zoë's apartment, Mateo's makeshift lab",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers an unsettling anomaly in the lottery data, hinting at a sinister force manipulating the system.",
+        "prev": "Just before: Zoë discovers Mateo's cryptic notes on the lottery's algorithm and its unsettling implications"
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden server room, escalating her suspicions about his involvement.",
+        "prev": "Just before: Zoë discovers an unsettling anomaly in the lottery data, hinting at a sinister force manipulating the system."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM, March 15th",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's cryptic notes on the lottery algorithm, fuelling her growing suspicion.",
+        "prev": "Just before: Zoë discovers Mateo's hidden server room, escalating her suspicions about his involvement."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's cryptic message on her phone",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë's anxiety spikes as she realizes Mateo may be in grave danger.",
+        "prev": "Just before: Zoë discovers Mateo's cryptic notes on the lottery algorithm, fuelling her growing suspicion."
+      }
+    ]
+  }
+}

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="https://bookml.org/ns/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://bookml.org/ns/1.0 ../schema/bookml-meta.xsd"
+      bookml-version="1.0"
+      chapter-id="ch15"
+      book-id="carrier-to-yesterday"
+      draft="1">
+
+  <para-meta pid="CH15-P0010">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's flat</location>
+    <timepoint>Chapter 15, Beat 1</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>establishing</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>128</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0020">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's flat</location>
+    <timepoint>Chapter 15, Beat 2</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>126</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0030">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo streets</location>
+    <timepoint>Chapter 15, Beat 3</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>115</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0040">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Café near work</location>
+    <timepoint>Chapter 15, Beat 4</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>119</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0050">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Work office</location>
+    <timepoint>Chapter 15, Beat 5</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>130</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0060">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Work office</location>
+    <timepoint>Chapter 15, Beat 6</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>105</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0070">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Dr. Baeza's lab</location>
+    <timepoint>Chapter 15, Beat 7</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>97</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0080">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Dr. Baeza's office</location>
+    <timepoint>Chapter 15, Beat 8</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>urgent</tone>
+    <word-count>81</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0090">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo streets</location>
+    <timepoint>Chapter 15, Beat 9</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>87</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0100">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Abandoned warehouse</location>
+    <timepoint>Chapter 15, Beat 10</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>109</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0110">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Marina's flat</location>
+    <timepoint>Chapter 15, Beat 11</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>128</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0120">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Marina's flat</location>
+    <timepoint>Chapter 15, Beat 12</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>117</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH15-P0130">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's memories</location>
+    <timepoint>Chapter 15, Beat 13</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>123</word-count>
+    <created>2026-03-06T22:21:49+01:00</created>
+    <modified>2026-03-06T22:21:49+01:00</modified>
+  </para-meta>
+
+</meta>

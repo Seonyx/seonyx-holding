@@ -1,0 +1,100 @@
+{
+  "chapterId": "CH05",
+  "title": "The First Bounce",
+  "beatsN": 14,
+  "pov": "mateo",
+  "act": "I",
+  "generated": "2026-03-04T05:20:04+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's apartment",
+        "time": "Early morning",
+        "tone": "Dry humour",
+        "intent": "Mateo wakes up to an unusual dream and can't shake the feeling it's more than just a dream"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "Same time",
+        "tone": "Creeping dread",
+        "intent": "Mateo starts experiencing strange, unexplainable glitches on his computer and phone"
+      },
+      {
+        "loc": "Robledo lab",
+        "time": "Later that morning",
+        "tone": "Techno-thriller",
+        "intent": "Mateo arrives at the lab to find Dr. Baeza working on a new experiment"
+      },
+      {
+        "loc": "Robledo lab",
+        "time": "Same time",
+        "tone": "Cautious curiosity",
+        "intent": "Mateo asks Dr. Baeza about her project and she's hesitant to share details"
+      },
+      {
+        "loc": "Robledo lab",
+        "time": "Same time",
+        "tone": "Dry humour",
+        "intent": "Javi teases Mateo about his lack of technical knowledge"
+      },
+      {
+        "loc": "Robledo lab",
+        "time": "Same time",
+        "tone": "Professional concern",
+        "intent": "Chief Ortega arrives, asking about the project's progress and potential risks"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "That evening",
+        "tone": "Unsettling unease",
+        "intent": "Mateo starts experiencing more glitches and strange occurrences at home"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "Same time",
+        "tone": "Frustrated anxiety",
+        "intent": "Mateo tries to troubleshoot the issues but can't find a logical explanation"
+      },
+      {
+        "loc": "Zoë's flat",
+        "time": "Later that evening",
+        "tone": "Concerned empathy",
+        "intent": "Mateo confides in Zoë about his experiences and she offers to help him investigate"
+      },
+      {
+        "loc": "Robledo lab",
+        "time": "Next day, morning",
+        "tone": "Investigative curiosity",
+        "intent": "Mateo and Zoë start digging into the lab's experiments and possible connections to Mateo's glitches"
+      },
+      {
+        "loc": "Robledo lab",
+        "time": "Same time",
+        "tone": "Cautious unease",
+        "intent": "Dr. Baeza warns them about the risks of meddling with her project"
+      },
+      {
+        "loc": "Marina's office",
+        "time": "Later that day",
+        "tone": "Professional concern",
+        "intent": "Mateo and Zoë meet with Marina to discuss their findings and potential consequences"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "That evening",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo starts experiencing more intense, disturbing glitches and visions"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "Same time",
+        "tone": "Desperate urgency",
+        "intent": "Mateo realizes he needs to take drastic action to stop the anomalies"
+      }
+    ]
+  }
+}

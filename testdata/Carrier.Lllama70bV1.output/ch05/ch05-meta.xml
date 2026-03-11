@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="https://bookml.org/ns/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://bookml.org/ns/1.0 ../schema/bookml-meta.xsd"
+      bookml-version="1.0"
+      chapter-id="ch05"
+      book-id="carrier-to-yesterday"
+      draft="1">
+
+  <para-meta pid="CH05-P0010">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment</location>
+    <timepoint>Chapter 5, Beat 1</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>establishing</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>132</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0020">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment</location>
+    <timepoint>Chapter 5, Beat 2</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>sinister</tone>
+    <word-count>123</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0030">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo lab</location>
+    <timepoint>Chapter 5, Beat 3</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>105</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0040">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo lab</location>
+    <timepoint>Chapter 5, Beat 4</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>142</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0050">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo lab</location>
+    <timepoint>Chapter 5, Beat 5</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>129</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0060">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo lab</location>
+    <timepoint>Chapter 5, Beat 6</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>114</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0070">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment</location>
+    <timepoint>Chapter 5, Beat 7</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>118</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0080">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment</location>
+    <timepoint>Chapter 5, Beat 8</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>121</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0090">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's flat</location>
+    <timepoint>Chapter 5, Beat 9</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>107</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0100">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo lab</location>
+    <timepoint>Chapter 5, Beat 10</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>126</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0110">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Robledo lab</location>
+    <timepoint>Chapter 5, Beat 11</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>122</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0120">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Marina's office</location>
+    <timepoint>Chapter 5, Beat 12</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>110</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0130">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment</location>
+    <timepoint>Chapter 5, Beat 13</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>135</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH05-P0140">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's apartment</location>
+    <timepoint>Chapter 5, Beat 14</timepoint>
+    <characters>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>133</word-count>
+    <created>2026-03-04T05:20:04+01:00</created>
+    <modified>2026-03-04T05:20:04+01:00</modified>
+  </para-meta>
+
+</meta>

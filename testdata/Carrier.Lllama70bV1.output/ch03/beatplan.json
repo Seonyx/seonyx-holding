@@ -1,0 +1,112 @@
+{
+  "chapterId": "CH03",
+  "title": "Voyager''s Whisper",
+  "beatsN": 16,
+  "pov": "mateo",
+  "act": "I",
+  "generated": "2026-03-03T19:47:14+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's apartment",
+        "time": "Early morning",
+        "tone": "Dry humour",
+        "intent": "Mateo wakes up to a cryptic message from an unknown sender"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "Same time",
+        "tone": "Intrigue",
+        "intent": "Mateo tries to decipher the message, feeling uneasy"
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Morning commute",
+        "tone": "Ordinary",
+        "intent": "Mateo heads to work, lost in thought"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "9:00 AM",
+        "tone": "Routine",
+        "intent": "Mateo starts his day at the office, checking emails and reports"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "Same time",
+        "tone": "Dry humour",
+        "intent": "Mateo's coworker, Javi, teases him about his lack of social life"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "10:00 AM",
+        "tone": "Professional",
+        "intent": "Dr. Baeza briefs Mateo on a new project, involving an innovative encryption method"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "Same time",
+        "tone": "Intrigue",
+        "intent": "Mateo senses that Dr. Baeza is hiding something about the project"
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Lunch break",
+        "tone": "Ordinary",
+        "intent": "Mateo meets Zoë at a café, discussing their plans for the weekend"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "2:00 PM",
+        "tone": "Tense",
+        "intent": "Chief Ortega summons Mateo to her office, regarding a sensitive matter"
+      },
+      {
+        "loc": "Chief's office",
+        "time": "Same time",
+        "tone": "Formal",
+        "intent": "Mateo learns about a potential security breach in the company's system"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "3:00 PM",
+        "tone": "Focused",
+        "intent": "Mateo starts investigating the breach, following a trail of digital clues"
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Evening commute",
+        "tone": "Creeping dread",
+        "intent": "Mateo feels like he's being watched, noticing strange coincidences"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "Night",
+        "tone": "Unease",
+        "intent": "Mateo tries to shake off the feeling of unease, but can't sleep"
+      },
+      {
+        "loc": "Mateo's apartment",
+        "time": "Same time",
+        "tone": "Intrigue",
+        "intent": "Mateo discovers a hidden message on his computer, hinting at a larger conspiracy"
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Late night",
+        "tone": "Dry humour",
+        "intent": "Mateo meets Marina, who's working late, and they share a laugh about their jobs"
+      },
+      {
+        "loc": "Cybersecurity office",
+        "time": "Next morning",
+        "tone": "Tense",
+        "intent": "Mateo confronts Dr. Baeza about the hidden message and the project's true purpose"
+      }
+    ]
+  }
+}

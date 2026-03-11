@@ -1,0 +1,142 @@
+{
+  "chapterId": "CH01",
+  "title": "Static in the Seminar",
+  "beatsN": 18,
+  "pov": "mateo",
+  "act": "I",
+  "generated": "2026-03-03T08:04:32+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's small, cluttered apartment in Madrid",
+        "time": "02:47 AM on a sweltering summer night",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Mateo is woken by an unsettling phone call from Dr. Baeza.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Mateo's cluttered office, University of Madrid",
+        "time": "Late evening, after the seminar",
+        "tone": "Dry wit, growing unease",
+        "intent": "Mateo tries to shake off Zoë's unsettling presentation on AI-driven predictive policing.",
+        "prev": "Just before: Mateo is woken by an unsettling phone call from Dr. Baeza."
+      },
+      {
+        "loc": "Mateo's apartment, Mateo staring at his computer screen",
+        "time": "02:47 AM",
+        "tone": "unease creeping in",
+        "intent": "Mateo discovers an anomaly in the data he's been analyzing for Dr. Baeza.",
+        "prev": "Just before: Mateo tries to shake off Zoë's unsettling presentation on AI-driven predictive policing."
+      },
+      {
+        "loc": "Mateo's apartment, Mateo staring at his computer screen",
+        "time": "02:47 AM",
+        "tone": "unease creeping in",
+        "intent": "Mateo discovers an encrypted message from Dr. Baeza on the university server.",
+        "prev": "Just before: Mateo discovers an anomaly in the data he's been analyzing for Dr. Baeza."
+      },
+      {
+        "loc": "Mateo's apartment, Mateo staring at his computer screen",
+        "time": "02:47 AM",
+        "tone": "unease creeping in",
+        "intent": "Mateo discovers an encrypted message from Dr. Baeza on the university server",
+        "prev": "Just before: Mateo discovers an encrypted message from Dr. Baeza on the university server."
+      },
+      {
+        "loc": "Mateo's apartment, Mateo staring at a cryptic message on his computer screen",
+        "time": "23:45",
+        "tone": "ominous foreboding",
+        "intent": "Mateo tries to decipher the meaning behind the strange message",
+        "prev": "Just before: Mateo discovers an encrypted message from Dr. Baeza on the university server"
+      },
+      {
+        "loc": "Mateo's car, parked outside the university",
+        "time": "Late morning",
+        "tone": "Tense unease",
+        "intent": "Mateo receives a cryptic message from an unknown sender about Dr. Baeza's research.",
+        "prev": "Just before: Mateo tries to decipher the meaning behind the strange message"
+      },
+      {
+        "loc": "Mateo's cluttered office, late afternoon",
+        "time": "4:45 PM",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Mateo discovers a disturbing anomaly in the lab's data logs.",
+        "prev": "Just before: Mateo receives a cryptic message from an unknown sender about Dr. Baeza's research."
+      },
+      {
+        "loc": "Mateo's apartment, Mateo staring at his computer screen",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a hidden folder on the seminar's shared drive, containing an encrypted file named 'Erebus'.",
+        "prev": "Just before: Mateo discovers a disturbing anomaly in the lab's data logs."
+      },
+      {
+        "loc": "Mateo's cluttered office, late evening",
+        "time": "23:47",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Mateo discovers a disturbing anomaly in the lab's data logs.",
+        "prev": "Just before: Mateo discovers a hidden folder on the seminar's shared drive, containing an encrypted file named 'Erebus'."
+      },
+      {
+        "loc": "Mateo's cramped office, surrounded by stacks of dusty papers and flickering computer screens",
+        "time": "Late afternoon, just before the seminar",
+        "tone": "Dry wit, creeping unease",
+        "intent": "Mateo tries to focus on his presentation but can't shake off the feeling that something is off",
+        "prev": "Just before: Mateo discovers a disturbing anomaly in the lab's data logs."
+      },
+      {
+        "loc": "Mateo's cluttered apartment, Mateo staring at a whiteboard filled with equations and diagrams",
+        "time": "Late evening, after the seminar",
+        "tone": "Creeping unease, dry humour",
+        "intent": "Mateo tries to make sense of Dr. Baeza's cryptic presentation, but his mind keeps drifting back to Zoë's unnerving warning.",
+        "prev": "Just before: Mateo tries to focus on his presentation but can't shake off the feeling that something is off"
+      },
+      {
+        "loc": "Mateo's cluttered office, late evening",
+        "time": "10:45 PM",
+        "tone": "unease creeping in",
+        "intent": "Mateo discovers a suspicious discrepancy in the lab's data logs.",
+        "prev": "Just before: Mateo tries to make sense of Dr. Baeza's cryptic presentation, but his mind keeps drifting back to Zoë's unnerving warning."
+      },
+      {
+        "loc": "Mateo's cluttered office, late evening",
+        "time": "23:47",
+        "tone": "unease creeping beneath dry wit",
+        "intent": "Mateo discovers a disturbing anomaly in the lab's data logs.",
+        "prev": "Just before: Mateo discovers a suspicious discrepancy in the lab's data logs."
+      },
+      {
+        "loc": "Mateo's cluttered apartment, Mateo staring at his computer screen",
+        "time": "02:47 AM",
+        "tone": "unease creeping in",
+        "intent": "Mateo discovers a hidden folder on the university server with an ominous name.",
+        "prev": "Just before: Mateo discovers a disturbing anomaly in the lab's data logs."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Mateo staring at his computer screen",
+        "time": "02:47 AM",
+        "tone": "Ominous unease",
+        "intent": "Mateo discovers an encrypted message from Dr. Baeza, hinting at a catastrophic event.",
+        "prev": "Just before: Mateo discovers a hidden folder on the university server with an ominous name."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's research on Dr. Baeza's project sparks a disturbing connection to the seminar's strange occurrences.",
+        "prev": "Just before: Mateo discovers an encrypted message from Dr. Baeza, hinting at a catastrophic event."
+      },
+      {
+        "loc": "Mateo's car, parked outside the university",
+        "time": "Late evening",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo's phone buzzed with an encrypted message from an unknown sender.",
+        "prev": "Just before: Mateo's research on Dr. Baeza's project sparks a disturbing connection to the seminar's strange occurrences."
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+﻿CH02-P0010|[query] Not sure about false down - do we need it? (See additional notes)
+CH02-P0190|[query] Frost says his grandmother lived until 92 - this is WAY too young - 692 perhaps?
+CH02-P0220|[query] Mention of Tharsis mountains
+CH02-P0370|[query] Remove the mention of Musk
+CH02-P0430|[query] Mentions 'the great optimization' - do we later learn what that is?
+CH02-P0540|[query] Introduce character Thomas?
+CH02-P0570|[query] Description of the great optimization.
+CH02-P0670|[query] Mention of Elon Musk and people who had met him - this needs to go.
+CH02-P0850|[query] How credible is the description of her reaction to the ageing photos?
+CH02-P0860|[query] Be careful with the term optimization here
+CH02-P0890|[query] Introduced salve Elena - first colonist who lived to 80
+CH02-P0930|[query] Phrase 'planned for centuries' should be 'in place for centuries'

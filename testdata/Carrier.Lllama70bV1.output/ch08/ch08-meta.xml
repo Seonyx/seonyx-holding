@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="https://bookml.org/ns/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://bookml.org/ns/1.0 ../schema/bookml-meta.xsd"
+      bookml-version="1.0"
+      chapter-id="ch08"
+      book-id="carrier-to-yesterday"
+      draft="1">
+
+  <para-meta pid="CH08-P0010">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cluttered apartment, Madrid</location>
+    <timepoint>Chapter 8, Beat 1</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+    </characters>
+    <tags>
+      <tag>establishing</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>comic</tone>
+    <word-count>95</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0020">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cluttered apartment, Madrid</location>
+    <timepoint>Chapter 8, Beat 2</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>117</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0030">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 8, Beat 3</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>99</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0040">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cluttered, dimly lit apartment</location>
+    <timepoint>Chapter 8, Beat 4</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>81</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0050">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cramped, dimly lit apartment</location>
+    <timepoint>Chapter 8, Beat 5</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>114</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0060">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo's laptop open on the coffee table</location>
+    <timepoint>Chapter 8, Beat 6</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>130</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0070">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 8, Beat 7</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>104</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0080">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's cramped, dimly lit apartment</location>
+    <timepoint>Chapter 8, Beat 8</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>104</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0090">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's cluttered apartment, Mateo's makeshift workstation</location>
+    <timepoint>Chapter 8, Beat 9</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>115</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0100">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 8, Beat 10</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>102</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0110">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>CH08, Zoë's lab, late evening</location>
+    <timepoint>Chapter 8, Beat 11</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>98</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0120">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Mateo's dimly lit apartment, Madrid</location>
+    <timepoint>Chapter 8, Beat 12</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>120</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0130">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>CH08, Mateo's cramped office</location>
+    <timepoint>Chapter 8, Beat 13</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>133</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0140">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo's laptop open on the coffee table</location>
+    <timepoint>Chapter 8, Beat 14</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>145</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+  <para-meta pid="CH08-P0150">
+    <status>draft</status>
+    <pov>third-limited</pov>
+    <location>Zoë's dimly lit apartment, Mateo's laptop open on the coffee table</location>
+    <timepoint>Chapter 8, Beat 15</timepoint>
+    <characters>
+      <character ref="zoe-kwan" role="present"/>
+      <character ref="mateo-salas" role="present"/>
+    </characters>
+    <tags>
+      <tag>escalation</tag>
+      <tag>foreshadowing</tag>
+    </tags>
+    <tone>neutral</tone>
+    <word-count>90</word-count>
+    <created>2026-03-04T19:23:38+01:00</created>
+    <modified>2026-03-04T19:23:38+01:00</modified>
+  </para-meta>
+
+</meta>

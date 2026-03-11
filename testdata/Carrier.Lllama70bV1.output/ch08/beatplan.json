@@ -1,0 +1,121 @@
+{
+  "chapterId": "CH08",
+  "title": "Signal-to-Noise",
+  "beatsN": 15,
+  "pov": "zoe",
+  "act": "II",
+  "generated": "2026-03-04T19:23:38+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Zoë's cluttered apartment, Madrid",
+        "time": "02:47 AM, March 15th",
+        "tone": "unease, dry wit",
+        "intent": "Zoë's late-night coding session is disrupted by an unsettling, anonymous message.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Zoë's cluttered apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "unease",
+        "intent": "Zoë frantically searches for a noise-cancelling headset to block out the eerie silence.",
+        "prev": "Just before: Zoë's late-night coding session is disrupted by an unsettling, anonymous message."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "Ominous foreboding",
+        "intent": "Zoë discovers Mateo's hidden research on the lottery's statistical anomalies.",
+        "prev": "Just before: Zoë frantically searches for a noise-cancelling headset to block out the eerie silence."
+      },
+      {
+        "loc": "Zoë's cluttered, dimly lit apartment",
+        "time": "02:47 AM",
+        "tone": "uneasy stillness",
+        "intent": "Zoë ponders Mateo's cryptic message as she tries to focus on her work.",
+        "prev": "Just before: Zoë discovers Mateo's hidden research on the lottery's statistical anomalies."
+      },
+      {
+        "loc": "Zoë's cramped, dimly lit apartment",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë frantically searches for a hidden tracking device in her belongings.",
+        "prev": "Just before: Zoë ponders Mateo's cryptic message as she tries to focus on her work."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's cryptic message sparks Zoë's investigation into Dr. Baeza's research.",
+        "prev": "Just before: Zoë frantically searches for a hidden tracking device in her belongings."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's cryptic notes on the lottery algorithm and its unsettling connection to Dr. Baeza's research.",
+        "prev": "Just before: Mateo's cryptic message sparks Zoë's investigation into Dr. Baeza's research."
+      },
+      {
+        "loc": "Mateo's cramped, dimly lit apartment",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden server, sparking a desperate search for answers",
+        "prev": "Just before: Zoë discovers Mateo's cryptic notes on the lottery algorithm and its unsettling connection to Dr. Baeza's research."
+      },
+      {
+        "loc": "Zoë's cluttered apartment, Mateo's makeshift workstation",
+        "time": "02:47 AM, Thursday, March 16th",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a suspicious discrepancy in the lottery algorithm's code.",
+        "prev": "Just before: Zoë discovers Mateo's hidden server, sparking a desperate search for answers"
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a cryptic message on Mateo's computer, hinting at an imminent catastrophe.",
+        "prev": "Just before: Zoë discovers a suspicious discrepancy in the lottery algorithm's code."
+      },
+      {
+        "loc": "CH08, Zoë's lab, late evening",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a disturbing pattern in the lottery data, hinting at an unknown force manipulating the outcomes.",
+        "prev": "Just before: Zoë discovers a cryptic message on Mateo's computer, hinting at an imminent catastrophe."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers Mateo's hidden server, sparking a desperate search for answers",
+        "prev": "Just before: Zoë discovers a disturbing pattern in the lottery data, hinting at an unknown force manipulating the outcomes."
+      },
+      {
+        "loc": "CH08, Mateo's cramped office",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë confronts Mateo about Marina's cryptic message and the eerie silence from Dr. Baeza.",
+        "prev": "Just before: Zoë discovers Mateo's hidden server, sparking a desperate search for answers"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47",
+        "tone": "Foreboding unease",
+        "intent": "Mateo's lottery code analysis sparks a disturbing connection to Dr. Baeza's research.",
+        "prev": "Just before: Zoë confronts Mateo about Marina's cryptic message and the eerie silence from Dr. Baeza."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë realizes Mateo's lottery wins are linked to the anomalies.",
+        "prev": "Just before: Mateo's lottery code analysis sparks a disturbing connection to Dr. Baeza's research."
+      }
+    ]
+  }
+}

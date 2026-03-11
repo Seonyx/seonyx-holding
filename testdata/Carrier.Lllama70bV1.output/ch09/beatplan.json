@@ -1,0 +1,114 @@
+{
+  "chapterId": "CH09",
+  "title": "The Dish Notices",
+  "beatsN": 14,
+  "pov": "mateo",
+  "act": "II",
+  "generated": "2026-03-05T00:12:05+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      12
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's uneasy sleep is disrupted by an unsettling, unexplained noise.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message on his computer from an unknown sender.",
+        "prev": "Just before: Mateo's uneasy sleep is disrupted by an unsettling, unexplained noise."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his encrypted phone.",
+        "prev": "Just before: Mateo discovers a cryptic message on his computer from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM, March 15th",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message on his computer from an unknown sender.",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his encrypted phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "03:47 AM",
+        "tone": "ominous dread",
+        "intent": "Mateo discovers a cryptic message on his encrypted phone from an unknown sender.",
+        "prev": "Just before: Mateo discovers a cryptic message on his computer from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message on his encrypted phone from an unknown sender.",
+        "prev": "Just before: Mateo discovers a cryptic message on his encrypted phone from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his secure phone.",
+        "prev": "Just before: Mateo discovers a cryptic message on his encrypted phone from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message on his encrypted phone from an unknown sender.",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his secure phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo discovers a cryptic message on his computer from an unknown sender.",
+        "prev": "Just before: Mateo discovers a cryptic message on his encrypted phone from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo discovers a cryptic message from an unknown sender on his encrypted phone.",
+        "prev": "Just before: Mateo discovers a cryptic message on his computer from an unknown sender."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "23:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo analyzes the lottery algorithm, searching for a hidden pattern or clue.",
+        "prev": "Just before: Mateo discovers a cryptic message from an unknown sender on his encrypted phone."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Mateo staring at a lottery ticket on his phone screen",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's anxiety spikes as he realizes the improbable odds of winning.",
+        "prev": "Just before: Mateo analyzes the lottery algorithm, searching for a hidden pattern or clue."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo discovers a cryptic message on his computer from an unknown sender.",
+        "prev": "Just before: Mateo's anxiety spikes as he realizes the improbable odds of winning."
+      },
+      {
+        "loc": "Mateo's dimly lit apartment",
+        "time": "02:47 AM",
+        "tone": "foreboding dread",
+        "intent": "Mateo's paranoia peaks as he deletes the lottery app, sensing an unseen observer.",
+        "prev": "Just before: Mateo discovers a cryptic message on his computer from an unknown sender."
+      }
+    ]
+  }
+}

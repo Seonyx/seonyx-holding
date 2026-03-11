@@ -1,0 +1,94 @@
+{
+  "chapterId": "CH15",
+  "title": "Carrier to Yesterday (Coda)",
+  "beatsN": 13,
+  "pov": "mateo",
+  "act": "III",
+  "generated": "2026-03-06T22:21:49+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      13
+    ],
+    "beats": [
+      {
+        "loc": "Mateo's flat",
+        "time": "Early morning",
+        "tone": "Uneasy calm",
+        "intent": "Mateo wakes up to an unsettling feeling, sensing something is off"
+      },
+      {
+        "loc": "Mateo's flat",
+        "time": "Same time",
+        "tone": "Dry humour",
+        "intent": "Mateo tries to shake off the feeling with a sarcastic remark about his paranoia"
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Morning commute",
+        "tone": "Foreboding",
+        "intent": "Mateo notices an unusual number of police cars patrolling the area"
+      },
+      {
+        "loc": "Café near work",
+        "time": "Pre-work coffee break",
+        "tone": "Normalcy",
+        "intent": "Mateo meets Zoë, discussing their plan to investigate Dr. Baeza's research"
+      },
+      {
+        "loc": "Work office",
+        "time": "Morning meeting",
+        "tone": "Tense",
+        "intent": "Chief Ortega announces a sudden change in the investigation's direction"
+      },
+      {
+        "loc": "Work office",
+        "time": "Same time",
+        "tone": "Confusion",
+        "intent": "Mateo and Zoë exchange worried glances, unsure what this means for their plan"
+      },
+      {
+        "loc": "Dr. Baeza's lab",
+        "time": "Afternoon visit",
+        "tone": "Creeping dread",
+        "intent": "Mateo discovers a disturbing experiment in progress, hinting at the true purpose of Dr. Baeza's research"
+      },
+      {
+        "loc": "Dr. Baeza's office",
+        "time": "Confrontation",
+        "tone": "Intense",
+        "intent": "Mateo confronts Dr. Baeza about her research and its implications"
+      },
+      {
+        "loc": "Robledo streets",
+        "time": "Nightfall",
+        "tone": "Pursuit",
+        "intent": "Mateo is chased by unknown agents, forcing him to flee for his life"
+      },
+      {
+        "loc": "Abandoned warehouse",
+        "time": "Late night",
+        "tone": "Desperate",
+        "intent": "Mateo calls Zoë for help, trying to escape his pursuers"
+      },
+      {
+        "loc": "Marina's flat",
+        "time": "Same time",
+        "tone": "Temporary safety",
+        "intent": "Zoë and Mateo find temporary refuge at Marina's place, but the danger is far from over"
+      },
+      {
+        "loc": "Marina's flat",
+        "time": "Same time",
+        "tone": "Metaphysical dread",
+        "intent": "Mateo starts to question his perception of reality as strange events unfold"
+      },
+      {
+        "loc": "Mateo's memories",
+        "time": "Flashback",
+        "tone": "Unsettling revelation",
+        "intent": "Mateo recalls a disturbing event from his past, hinting at a larger conspiracy"
+      }
+    ]
+  }
+}

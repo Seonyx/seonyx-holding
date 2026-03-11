@@ -1,0 +1,114 @@
+{
+  "chapterId": "CH14",
+  "title": "Impact",
+  "beatsN": 14,
+  "pov": "zoe",
+  "act": "III",
+  "generated": "2026-03-06T17:40:31+01:00",
+  "plan": {
+    "breakAfter": [
+      7,
+      12
+    ],
+    "beats": [
+      {
+        "loc": "Zoë's dimly lit apartment, Madrid",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë's restless sleep is disrupted by an unsettling, unshakeable feeling of being watched.",
+        "prev": "Start of chapter."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo pacing in the background",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo reveals a disturbing connection between Dr. Baeza and Marina Ríos.",
+        "prev": "Just before: Zoë's restless sleep is disrupted by an unsettling, unshakeable feeling of being watched."
+      },
+      {
+        "loc": "Zoë's cluttered apartment, Madrid",
+        "time": "02:47 AM, March 14th",
+        "tone": "Creeping unease",
+        "intent": "Zoë frantically searches for a hidden tracking device in her home.",
+        "prev": "Just before: Mateo reveals a disturbing connection between Dr. Baeza and Marina Ríos."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's latest discovery sparks a disturbing connection between lottery winners and neuroscience research.",
+        "prev": "Just before: Zoë frantically searches for a hidden tracking device in her home."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's makeshift lab in the background",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë tries to understand Mateo's cryptic warnings about Dr. Baeza's research.",
+        "prev": "Just before: Mateo's latest discovery sparks a disturbing connection between lottery winners and neuroscience research."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë discovers a cryptic message from an unknown sender, hinting at Marina's involvement in the lottery conspiracy.",
+        "prev": "Just before: Zoë tries to understand Mateo's cryptic warnings about Dr. Baeza's research."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo pacing in the background",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo reveals a disturbing connection between lottery winners and a mysterious biotech firm",
+        "prev": "Just before: Zoë discovers a cryptic message from an unknown sender, hinting at Marina's involvement in the lottery conspiracy."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Zoë frantically searches for any clue to Marina's disappearance.",
+        "prev": "Just before: Mateo reveals a disturbing connection between lottery winners and a mysterious biotech firm"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM, March 15th",
+        "tone": "foreboding unease",
+        "intent": "Mateo's latest findings spark a chilling connection between lottery winners and an obscure neuroscience paper.",
+        "prev": "Just before: Zoë frantically searches for any clue to Marina's disappearance."
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo pacing outside her door",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Mateo's presence unnerves Zoë as she ponders the lottery's true purpose",
+        "prev": "Just before: Mateo's latest findings spark a chilling connection between lottery winners and an obscure neuroscience paper."
+      },
+      {
+        "loc": "Zoë's dimly lit hotel room, Madrid",
+        "time": "02:47",
+        "tone": "foreboding unease",
+        "intent": "Zoë frantically searches for a hidden tracking device in her belongings.",
+        "prev": "Just before: Mateo's presence unnerves Zoë as she ponders the lottery's true purpose"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "Ominous foreboding",
+        "intent": "Mateo's frantic search for a solution yields an unsettling discovery",
+        "prev": "Just before: Zoë frantically searches for a hidden tracking device in her belongings."
+      },
+      {
+        "loc": "Abandoned warehouse on outskirts of Madrid",
+        "time": "23:47",
+        "tone": "Foreboding unease",
+        "intent": "Zoë discovers Mateo's cryptic message, hinting at a catastrophic event.",
+        "prev": "Just before: Mateo's frantic search for a solution yields an unsettling discovery"
+      },
+      {
+        "loc": "Zoë's dimly lit apartment, Mateo's laptop open on the coffee table",
+        "time": "02:47 AM",
+        "tone": "foreboding unease",
+        "intent": "Mateo's lottery hack reveals a catastrophic probability, leaving Zoë questioning their next move.",
+        "prev": "Just before: Zoë discovers Mateo's cryptic message, hinting at a catastrophic event."
+      }
+    ]
+  }
+}
