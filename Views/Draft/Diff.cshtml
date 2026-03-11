@@ -76,9 +76,13 @@ else
                 var url = Url.Action("Diff", "Draft", new { projectId = Model.BookProjectID, draftA = Model.DraftA, draftB = Model.DraftB, chapter = ch.ChapterNumber });
                 var label = "Ch " + ch.ChapterNumber + (string.IsNullOrEmpty(ch.ChapterTitle) ? "" : ": " + ch.ChapterTitle);
                 if (ch.HasChanges)
+                {
                     label += " (" + (ch.AddedCount > 0 ? "+" + ch.AddedCount : "") + (ch.RemovedCount > 0 ? " -" + ch.RemovedCount : "") + (ch.ModifiedCount > 0 ? " ~" + ch.ModifiedCount : "") + ")";
+                }
                 else
-                    label += " — no changes";
+                {
+                    label += " - no changes";
+                }
                 <option value="@url" @(ch.ChapterNumber == Model.CurrentChapterNumber ? "selected" : "")>@label</option>
             }
         </select>
