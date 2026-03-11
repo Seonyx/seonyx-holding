@@ -1,0 +1,73 @@
+@model IEnumerable<Seonyx.Web.Models.ImportLog>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Import Log - " + ViewBag.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Import Log: @ViewBag.ProjectName</h1>
+    <a href="@Url.Action("Index", "FileUpload", new { projectId = ViewBag.ProjectId })" class="btn btn-secondary">Back to Files</a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <p>No import history for this project yet.</p>
+    </div>
+}
+else
+{
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>File</th>
+                <th>Result</th>
+                <th>Draft</th>
+                <th>Chapters</th>
+                <th>Added</th>
+                <th>Updated</th>
+                <th>Versions</th>
+                <th>Warnings</th>
+                <th>Errors</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var log in Model)
+            {
+                <tr>
+                    <td>@log.ImportedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td title="@log.SourceFileName">@(string.IsNullOrEmpty(log.SourceFileName) ? "—" : log.SourceFileName)</td>
+                    <td>
+                        @if (log.Success)
+                        {
+                            <span class="status-badge status-ok">OK</span>
+                        }
+                        else
+                        {
+                            <span class="status-badge status-fail">Failed</span>
+                        }
+                    </td>
+                    <td>@(log.DraftNumber > 0 ? log.DraftNumber.ToString() : "-")</td>
+                    <td>@log.ChaptersProcessed</td>
+                    <td>@log.ParagraphsAdded</td>
+                    <td>@log.ParagraphsUpdated</td>
+                    <td>@log.VersionsRecorded</td>
+                    <td>@(log.WarningCount > 0 ? log.WarningCount.ToString() : "-")</td>
+                    <td>@(log.ErrorCount > 0 ? log.ErrorCount.ToString() : "-")</td>
+                    <td>
+                        @if (log.WarningCount > 0 || log.ErrorCount > 0 || !log.Success)
+                        {
+                            <a href="@Url.Action("Detail", new { id = log.ImportLogID })" class="btn btn-secondary btn-sm">Details</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

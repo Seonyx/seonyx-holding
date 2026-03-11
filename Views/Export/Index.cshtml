@@ -1,0 +1,68 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.ExportViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Export - " + Model.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Export: @Model.ProjectName</h1>
+    <a href="@Url.Action("Index", "BookProject")" class="btn btn-secondary">Back to Projects</a>
+</div>
+
+<div class="export-options">
+    <div class="export-option">
+        <div class="export-option-info">
+            <h3>Complete Export</h3>
+            <p>All chapters with META notes and edit notes as separate files in a ZIP archive.</p>
+        </div>
+        <a href="@Url.Action("ExportProject", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Download ZIP</a>
+    </div>
+
+    <div class="export-option">
+        <div class="export-option-info">
+            <h3>Manuscript Only</h3>
+            <p>Chapter files only (no META or notes). Clean manuscript export.</p>
+        </div>
+        <a href="@Url.Action("ExportManuscriptOnly", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Download ZIP</a>
+    </div>
+</div>
+
+@if (Model.Chapters.Count > 0)
+{
+    <hr />
+
+    <h2>Export Individual Chapters</h2>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Chapter</th>
+                <th>Title</th>
+                <th>Paragraphs</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ch in Model.Chapters)
+            {
+                <tr>
+                    <td>@ch.ChapterNumber</td>
+                    <td>@ch.ChapterTitle</td>
+                    <td>@ch.ParagraphCount</td>
+                    <td>
+                        <a href="@Url.Action("ExportChapter", new { chapterId = ch.ChapterID })" class="btn btn-secondary btn-sm">Download</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="empty-state">
+        <p>No chapters to export. Import files first.</p>
+    </div>
+}

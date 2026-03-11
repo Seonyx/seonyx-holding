@@ -1,0 +1,143 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.FileUploadViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Manage Files - " + Model.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Manage Files: @Model.ProjectName</h1>
+    <div class="page-header-actions">
+        <a href="@Url.Action("Index", "ImportLog", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Import Log</a>
+        <a href="@Url.Action("Index", "BookProject")" class="btn btn-secondary">Back to Projects</a>
+    </div>
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@Html.Raw(TempData["Message"])</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@Html.Raw(TempData["Error"])</div>
+}
+
+<div class="file-upload-section">
+    <h2>Upload Files</h2>
+    <p class="form-help">
+        Upload a <strong>BookML .zip package</strong> (contains book.xml and chapter XML files),
+        or legacy chapter files (.md/.txt).
+    </p>
+
+    @using (Html.BeginForm("Upload", "FileUpload", new { projectId = Model.BookProjectID }, FormMethod.Post, new { enctype = "multipart/form-data", @class = "admin-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label for="files">Select Files (.zip, .md, or .txt, max 10 MB each)</label>
+            <input type="file" name="files" id="files" multiple accept=".zip,.md,.txt" class="form-control" />
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Upload Files</button>
+        </div>
+    }
+</div>
+
+<hr />
+
+@if (Model.BookmlPackagePresent)
+{
+    <div class="file-list-section">
+        <h2>BookML Package</h2>
+        <p class="form-help alert alert-success">
+            A BookML XML package is ready to import (<code>book.xml</code> found).
+        </p>
+
+        @using (Html.BeginForm("ImportFiles", "FileUpload", new { projectId = Model.BookProjectID }, FormMethod.Post, new { @class = "admin-form", onsubmit = "return confirm('Import BookML package? All chapters and paragraphs will be merged into the database.');" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Import BookML Package</button>
+            </div>
+        }
+    </div>
+
+    <hr />
+}
+
+<div class="file-list-section">
+    <h2>Uploaded Text Files (@Model.ExistingFiles.Count)</h2>
+
+    @if (Model.ExistingFiles.Count == 0)
+    {
+        <p class="empty-state">No legacy text files uploaded.</p>
+    }
+    else
+    {
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Uploaded</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var file in Model.ExistingFiles)
+                {
+                    <tr>
+                        <td>@file.FileName</td>
+                        <td>
+                            <span class="badge badge-@(file.FileType == "Chapter" ? "primary" : file.FileType == "Meta" ? "info" : "warning")">
+                                @file.FileType
+                            </span>
+                        </td>
+                        <td>@FormatFileSize(file.FileSize)</td>
+                        <td>@file.UploadDate.ToString("MMM d, yyyy h:mm tt")</td>
+                        <td>
+                            @{Html.BeginForm("DeleteFile", "FileUpload", new { projectId = Model.BookProjectID, fileName = file.FileName }, FormMethod.Post, new { style = "display:inline", onsubmit = "return confirm('Delete this file?');" });}
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            @{Html.EndForm();}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <hr />
+
+        <div class="file-list-section">
+            <h2>Import Legacy Text Files</h2>
+            <p class="form-help">
+                This will parse all uploaded chapter files and merge them into the database.
+                For each chapter: new paragraphs are added, existing paragraphs (matched by ID) are updated,
+                and paragraphs no longer in the file are removed. Other chapters are not affected.
+            </p>
+
+            @using (Html.BeginForm("ImportFiles", "FileUpload", new { projectId = Model.BookProjectID }, FormMethod.Post, new { @class = "admin-form", onsubmit = "return confirm('Import uploaded files? Existing chapters will be merged (new paragraphs added, matching ones updated, removed ones deleted).');" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Import All Files to Database</button>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@functions {
+    string FormatFileSize(long bytes)
+    {
+        if (bytes < 1024) return bytes + " B";
+        if (bytes < 1024 * 1024) return (bytes / 1024.0).ToString("F1") + " KB";
+        return (bytes / (1024.0 * 1024.0)).ToString("F1") + " MB";
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Book Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+    <link href="~/Content/css/admin.css" rel="stylesheet" />
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body class="editor-body">
+    <header class="editor-header">
+        <div class="editor-header-left">
+            <a href="/admin/bookeditor/projects" class="editor-brand">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                    <path d="M 50 50 L 0 0 L 50 0 Z" fill="#7C3AED" />
+                    <path d="M 50 50 L 100 0 L 100 50 Z" fill="#10B981" />
+                    <path d="M 50 50 L 100 100 L 50 100 Z" fill="#7C3AED" />
+                    <path d="M 50 50 L 0 100 L 0 50 Z" fill="#10B981" />
+                </svg>
+                <span>Book Editor</span>
+            </a>
+        </div>
+        <div class="editor-header-center">
+            @RenderSection("HeaderCenter", required: false)
+        </div>
+        <div class="editor-header-right">
+            <a href="/admin" class="editor-nav-link">Admin</a>
+            <a href="/admin/logout" class="editor-nav-link">Logout</a>
+        </div>
+    </header>
+
+    <main class="editor-main">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">@TempData["Message"]</div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Error"]</div>
+        }
+        @RenderBody()
+    </main>
+
+    <script src="~/Scripts/site.js"></script>
+    @RenderSection("Scripts", required: false)
+    <script src="~/Scripts/book-editor.js"></script>
+</body>
+</html>

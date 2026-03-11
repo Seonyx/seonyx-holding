@@ -1,0 +1,36 @@
+@model Seonyx.Web.Models.ImportLog
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Import Detail";
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Import Detail: @ViewBag.ProjectName</h1>
+    <a href="@Url.Action("Index", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Back to Log</a>
+</div>
+
+<div class="detail-card">
+    <table class="detail-table">
+        <tr><th>Date</th><td>@Model.ImportedAt.ToString("yyyy-MM-dd HH:mm:ss")</td></tr>
+        <tr><th>Source file</th><td>@(string.IsNullOrEmpty(Model.SourceFileName) ? "—" : Model.SourceFileName)</td></tr>
+        <tr><th>Result</th><td>@(Model.Success ? "Success" : "Failed")</td></tr>
+        <tr><th>Draft</th><td>@(Model.DraftNumber > 0 ? Model.DraftNumber.ToString() : "-")</td></tr>
+        <tr><th>Chapters processed</th><td>@Model.ChaptersProcessed</td></tr>
+        <tr><th>Paragraphs added</th><td>@Model.ParagraphsAdded</td></tr>
+        <tr><th>Paragraphs updated</th><td>@Model.ParagraphsUpdated</td></tr>
+        <tr><th>Paragraphs removed</th><td>@Model.ParagraphsRemoved</td></tr>
+        <tr><th>Versions recorded</th><td>@Model.VersionsRecorded</td></tr>
+        <tr><th>Warnings</th><td>@Model.WarningCount</td></tr>
+        <tr><th>Errors</th><td>@Model.ErrorCount</td></tr>
+    </table>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.FullLog))
+{
+    <h2>Full Log</h2>
+    <pre class="import-log-text">@Model.FullLog</pre>
+}

@@ -1,0 +1,28 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.BookProjectViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Create Book Project";
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<h1>Create New Book Project</h1>
+
+@using (Html.BeginForm("Create", "BookProject", FormMethod.Post, new { @class = "admin-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProjectName)
+        @Html.TextBoxFor(m => m.ProjectName, new { @class = "form-control", placeholder = "e.g. My Novel Title" })
+        @Html.ValidationMessageFor(m => m.ProjectName, "", new { @class = "text-danger" })
+        <small class="form-help">Letters, numbers, spaces, and hyphens only.</small>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Create Project</button>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Cancel</a>
+    </div>
+}

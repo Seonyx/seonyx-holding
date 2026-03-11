@@ -1,0 +1,79 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.BookProjectListViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Book Editor - Projects";
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Book Editor Projects</h1>
+    <a href="@Url.Action("Create")" class="btn btn-primary">Create New Project</a>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (Model.Projects.Count == 0)
+{
+    <div class="empty-state">
+        <p>No book projects yet. Create your first project to get started.</p>
+    </div>
+}
+else
+{
+    <div class="project-grid">
+        @foreach (var project in Model.Projects)
+        {
+            <div class="project-card">
+                <div class="project-card-cover">
+                    @if (!string.IsNullOrEmpty(project.CoverImagePath) && System.IO.File.Exists(project.CoverImagePath))
+                    {
+                        <img src="@Url.Action("CoverThumbnail", "BookProject", new { id = project.BookProjectID })" alt="@project.ProjectName cover" />
+                    }
+                    else
+                    {
+                        <div class="project-card-placeholder">
+                            <span>No Cover</span>
+                        </div>
+                    }
+                </div>
+                <div class="project-card-body">
+                    <h3>@project.ProjectName</h3>
+                    <p class="project-stats">
+                        @project.TotalChapters chapter@(project.TotalChapters != 1 ? "s" : "") &bull;
+                        @project.TotalParagraphs paragraph@(project.TotalParagraphs != 1 ? "s" : "")
+                    </p>
+                    <p class="project-date">
+                        Last modified: @project.LastModifiedDate.ToString("MMM d, yyyy h:mm tt")
+                    </p>
+                </div>
+                <div class="project-card-actions">
+                    @if (project.TotalParagraphs > 0)
+                    {
+                        <a href="@Url.Action("Index", "Editor", new { projectId = project.BookProjectID })" class="btn btn-primary btn-sm">Open Editor</a>
+                    }
+                    <a href="@Url.Action("Index", "FileUpload", new { projectId = project.BookProjectID })" class="btn btn-secondary btn-sm">Manage Files</a>
+                    <a href="@Url.Action("Edit", new { id = project.BookProjectID })" class="btn btn-secondary btn-sm">Edit</a>
+                    @if (project.TotalParagraphs > 0)
+                    {
+                        <a href="@Url.Action("Index", "Export", new { projectId = project.BookProjectID })" class="btn btn-secondary btn-sm">Export</a>
+                    }
+                    @if (project.CurrentDraftNumber >= 2)
+                    {
+                        <a href="@Url.Action("Diff", "Draft", new { projectId = project.BookProjectID })" class="btn btn-secondary btn-sm">Compare Drafts</a>
+                    }
+                    @using (Html.BeginForm("Delete", "BookProject", new { id = project.BookProjectID }, FormMethod.Post, new { style = "display:inline", onsubmit = "return confirm('Delete this project and all its data? This cannot be undone.');" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}

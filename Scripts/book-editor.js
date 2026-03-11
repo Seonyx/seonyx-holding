@@ -1,0 +1,176 @@
+// ============================================
+// Book Editor JavaScript
+// ============================================
+
+(function () {
+    'use strict';
+
+    var autoSaveTimer = null;
+    var hasUnsavedChanges = false;
+    var isAutoSaveEnabled = true;
+
+    // Only run on editor page
+    if (typeof editorConfig === 'undefined') return;
+
+    var paragraphText = document.getElementById('paragraphText');
+    var metaText = document.getElementById('metaText');
+    var editNoteText = document.getElementById('editNoteText');
+    var saveStatus = document.getElementById('saveStatus');
+    var paragraphId = editorConfig.paragraphId;
+
+    // Track changes in all textareas
+    var textareas = [paragraphText, metaText, editNoteText];
+    textareas.forEach(function (el) {
+        if (!el) return;
+        el.addEventListener('input', function () {
+            hasUnsavedChanges = true;
+            if (isAutoSaveEnabled) {
+                clearTimeout(autoSaveTimer);
+                autoSaveTimer = setTimeout(autoSave, 3000);
+            }
+        });
+    });
+
+    // Auto-save function
+    function autoSave() {
+        if (!hasUnsavedChanges) return;
+
+        updateStatus('Saving...', 'saving');
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', editorConfig.autoSaveUrl, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState !== 4) return;
+
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        hasUnsavedChanges = false;
+                        updateStatus('Saved at ' + response.timestamp, 'saved');
+                    } else {
+                        updateStatus('Save failed: ' + (response.message || 'Unknown error'), 'error');
+                    }
+                } catch (e) {
+                    updateStatus('Save failed', 'error');
+                }
+            } else {
+                updateStatus('Save failed (HTTP ' + xhr.status + ')', 'error');
+            }
+        };
+
+        var data = 'paragraphId=' + encodeURIComponent(paragraphId) +
+            '&paragraphText=' + encodeURIComponent(paragraphText ? paragraphText.value : '') +
+            '&metaText=' + encodeURIComponent(metaText ? metaText.value : '') +
+            '&editNoteText=' + encodeURIComponent(editNoteText ? editNoteText.value : '');
+        xhr.send(data);
+    }
+
+    function updateStatus(text, className) {
+        if (!saveStatus) return;
+        saveStatus.textContent = text;
+        saveStatus.className = 'save-status ' + (className || '');
+    }
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function (e) {
+        // Ctrl+S: Save
+        if (e.ctrlKey && e.key === 's') {
+            e.preventDefault();
+            autoSave();
+        }
+
+        // Ctrl+Left: Previous paragraph
+        if (e.ctrlKey && e.key === 'ArrowLeft') {
+            e.preventDefault();
+            if (editorConfig.prevUrl) {
+                saveAndNavigate(editorConfig.prevUrl);
+            }
+        }
+
+        // Ctrl+Right: Next paragraph
+        if (e.ctrlKey && e.key === 'ArrowRight') {
+            e.preventDefault();
+            if (editorConfig.nextUrl) {
+                saveAndNavigate(editorConfig.nextUrl);
+            }
+        }
+
+        // Ctrl+Home: First paragraph
+        if (e.ctrlKey && e.key === 'Home') {
+            e.preventDefault();
+            if (editorConfig.firstUrl) {
+                saveAndNavigate(editorConfig.firstUrl);
+            }
+        }
+
+        // Ctrl+End: Last paragraph
+        if (e.ctrlKey && e.key === 'End') {
+            e.preventDefault();
+            if (editorConfig.lastUrl) {
+                saveAndNavigate(editorConfig.lastUrl);
+            }
+        }
+
+        // Ctrl+I: Insert paragraph after
+        if (e.ctrlKey && !e.shiftKey && e.key === 'i') {
+            e.preventDefault();
+            var insertForm = document.querySelector('[action*="InsertParagraph"]:not([action*="before"])');
+            if (insertForm) insertForm.submit();
+        }
+
+        // Ctrl+D: Delete paragraph
+        if (e.ctrlKey && e.key === 'd') {
+            e.preventDefault();
+            var deleteForm = document.getElementById('deleteForm');
+            if (deleteForm && confirm('Delete this paragraph? This cannot be undone.')) {
+                deleteForm.submit();
+            }
+        }
+    });
+
+    function saveAndNavigate(url) {
+        if (hasUnsavedChanges) {
+            // Save first, then navigate
+            updateStatus('Saving...', 'saving');
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', editorConfig.autoSaveUrl, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    window.location.href = url;
+                }
+            };
+            var data = 'paragraphId=' + encodeURIComponent(paragraphId) +
+                '&paragraphText=' + encodeURIComponent(paragraphText ? paragraphText.value : '') +
+                '&metaText=' + encodeURIComponent(metaText ? metaText.value : '') +
+                '&editNoteText=' + encodeURIComponent(editNoteText ? editNoteText.value : '');
+            xhr.send(data);
+        } else {
+            window.location.href = url;
+        }
+    }
+
+    // Chapter jump dropdown — navigate directly; option values are full URLs.
+    // Using window.location.href directly avoids the async save-then-navigate
+    // race that caused nav buttons to be out of sync after a chapter jump.
+    // Unsaved changes are handled by the beforeunload warning below.
+    var chapterJump = document.getElementById('chapterJump');
+    if (chapterJump) {
+        chapterJump.addEventListener('change', function () {
+            if (this.value) {
+                window.location.href = this.value;
+            }
+        });
+    }
+
+    // Warn on page navigation with unsaved changes
+    window.addEventListener('beforeunload', function (e) {
+        if (hasUnsavedChanges) {
+            e.preventDefault();
+            e.returnValue = '';
+        }
+    });
+
+})();

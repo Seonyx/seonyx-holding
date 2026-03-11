@@ -1,0 +1,146 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.ParagraphEditViewModel
+@{
+    Layout = "~/Views/Shared/_BookEditorLayout.cshtml";
+    ViewBag.Title = Model.ProjectName + " - Editor";
+}
+
+@section HeaderCenter {
+    <span class="editor-project-name">@Model.ProjectName</span>
+    <span class="editor-chapter-info">Ch @Model.ChapterNumber: @Model.ChapterTitle</span>
+}
+
+<div class="editor-container">
+    <!-- Editor Panels -->
+    <form id="editorForm" method="post" action="@Url.Action("SaveParagraph", "Editor")">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="bookProjectID" value="@Model.BookProjectID" />
+        <input type="hidden" name="paragraphID" id="paragraphID" value="@Model.ParagraphID" />
+
+        <div class="editor-panels">
+            <!-- Paragraph Panel -->
+            <div class="editor-panel panel-paragraph">
+                <div class="panel-header">
+                    <h3>Paragraph</h3>
+                    <span class="panel-uid">[@Model.UniqueID]</span>
+                </div>
+                <textarea name="paragraphText" id="paragraphText" class="editor-textarea"
+                          rows="10" placeholder="Paragraph text...">@Model.ParagraphText</textarea>
+            </div>
+
+            <!-- META Panel -->
+            <div class="editor-panel panel-meta">
+                <div class="panel-header">
+                    <h3>META</h3>
+                </div>
+                <textarea name="metaText" id="metaText" class="editor-textarea"
+                          rows="6" placeholder="META explanation...">@Model.MetaText</textarea>
+            </div>
+
+            <!-- Notes Panel -->
+            <div class="editor-panel panel-notes">
+                <div class="panel-header">
+                    <h3>Edit Notes</h3>
+                </div>
+                <textarea name="editNoteText" id="editNoteText" class="editor-textarea"
+                          rows="4" placeholder="Your editing notes...">@Model.EditNoteText</textarea>
+            </div>
+        </div>
+
+        <!-- Navigation + Controls Bar -->
+        <div class="editor-nav-bar">
+            <div class="editor-nav-buttons">
+                <a href="@(Model.PrevParagraphID.HasValue ? Url.Action("Index", new { projectId = Model.BookProjectID, paragraphId = Model.FirstParagraphID }) : "#")"
+                   class="btn btn-sm btn-secondary @(Model.PrevParagraphID.HasValue ? "" : "disabled")"
+                   title="First paragraph (Ctrl+Home)">First</a>
+
+                <a href="@(Model.PrevParagraphID.HasValue ? Url.Action("Index", new { projectId = Model.BookProjectID, paragraphId = Model.PrevParagraphID }) : "#")"
+                   class="btn btn-sm btn-secondary @(Model.PrevParagraphID.HasValue ? "" : "disabled")"
+                   id="btnPrev" title="Previous paragraph (Ctrl+Left)">Prev</a>
+
+                <a href="@(Model.NextParagraphID.HasValue ? Url.Action("Index", new { projectId = Model.BookProjectID, paragraphId = Model.NextParagraphID }) : "#")"
+                   class="btn btn-sm btn-secondary @(Model.NextParagraphID.HasValue ? "" : "disabled")"
+                   id="btnNext" title="Next paragraph (Ctrl+Right)">Next</a>
+
+                <a href="@(Model.NextParagraphID.HasValue ? Url.Action("Index", new { projectId = Model.BookProjectID, paragraphId = Model.LastParagraphID }) : "#")"
+                   class="btn btn-sm btn-secondary @(Model.NextParagraphID.HasValue ? "" : "disabled")"
+                   title="Last paragraph (Ctrl+End)">Last</a>
+            </div>
+
+            <div class="editor-position">
+                <span class="editor-pos-label">Position:</span>
+                <strong>@Model.GlobalPosition</strong> of <strong>@Model.TotalParagraphs</strong>
+                <span class="editor-sep">|</span>
+                <span class="editor-pos-label">Chapter:</span>
+                <select id="chapterJump" class="editor-chapter-select">
+                    @foreach (var ch in Model.ChapterList)
+                    {
+                        <option value="@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = ch.FirstParagraphID })"
+                                @(ch.ChapterID == Model.ChapterID ? "selected" : "")>
+                            Ch @ch.ChapterNumber - @ch.ChapterTitle (@ch.ParagraphCount paras)
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="editor-actions">
+                <button type="submit" class="btn btn-sm btn-primary" id="btnSave" title="Save changes (Ctrl+S)">Save</button>
+                <span id="saveStatus" class="save-status"></span>
+            </div>
+        </div>
+
+    </form>
+
+    <!-- Bookmark controls (outside main form, both forms rendered to avoid Razor nesting) -->
+    <div class="editor-bookmark-bar">
+        @{Html.BeginForm("ClearBookmark", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.ParagraphID }, FormMethod.Post, new { style = Model.IsBookmarked ? "display:inline" : "display:none" });}
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-warning" title="Remove bookmark from this paragraph">Clear Bookmark</button>
+        @{Html.EndForm();}
+        @{Html.BeginForm("SetBookmark", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.ParagraphID }, FormMethod.Post, new { style = Model.IsBookmarked ? "display:none" : "display:inline" });}
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-secondary" title="Set bookmark on this paragraph">Set Bookmark</button>
+        @{Html.EndForm();}
+        @if (Model.BookmarkParagraphID.HasValue)
+        {
+            <a href="@Url.Action("Index", new { projectId = Model.BookProjectID, paragraphId = Model.BookmarkParagraphID.Value })"
+               class="btn btn-sm btn-info @(Model.IsBookmarked ? "disabled" : "")"
+               title="Go to bookmarked paragraph">Go to Bookmark</a>
+        }
+        else
+        {
+            <span class="btn btn-sm btn-secondary disabled">No Bookmark</span>
+        }
+    </div>
+
+    <!-- Action Bar (outside main form to avoid nested forms) -->
+    <div class="editor-footer">
+        @{Html.BeginForm("InsertParagraph", "Editor", new { projectId = Model.BookProjectID, currentParagraphId = Model.ParagraphID, before = true }, FormMethod.Post, new { style = "display:inline" });}
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-secondary" title="Insert paragraph before current">Ins Before</button>
+        @{Html.EndForm();}
+        @{Html.BeginForm("InsertParagraph", "Editor", new { projectId = Model.BookProjectID, currentParagraphId = Model.ParagraphID }, FormMethod.Post, new { style = "display:inline" });}
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-secondary" title="Insert paragraph after current (Ctrl+I)">Ins After</button>
+        @{Html.EndForm();}
+        @{Html.BeginForm("DeleteParagraph", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.ParagraphID }, FormMethod.Post, new { style = "display:inline", id = "deleteForm", onsubmit = "return confirm('Delete this paragraph? This cannot be undone.');" });}
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-danger" title="Delete paragraph (Ctrl+D)">Delete</button>
+        @{Html.EndForm();}
+        <a href="@Url.Action("Index", "FileUpload", new { projectId = Model.BookProjectID })" class="btn btn-sm btn-secondary">Files</a>
+        <a href="@Url.Action("Index", "Export", new { projectId = Model.BookProjectID })" class="btn btn-sm btn-secondary">Export</a>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        var editorConfig = {
+            autoSaveUrl: '@Url.Action("AutoSave", "Editor")',
+            paragraphId: @Model.ParagraphID,
+            prevUrl: '@(Model.PrevParagraphID.HasValue ? Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.PrevParagraphID }) : "")',
+            nextUrl: '@(Model.NextParagraphID.HasValue ? Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.NextParagraphID }) : "")',
+            firstUrl: '@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.FirstParagraphID })',
+            lastUrl: '@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.LastParagraphID })'
+        };
+    </script>
+}

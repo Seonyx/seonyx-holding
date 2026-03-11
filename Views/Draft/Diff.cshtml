@@ -1,0 +1,106 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.DraftDiffViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Draft Compare - " + Model.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Draft Compare: @Model.ProjectName</h1>
+    <a href="@Url.Action("Index", "BookProject")" class="btn btn-secondary">Back to Projects</a>
+</div>
+
+<div class="diff-controls">
+    @using (Html.BeginForm("Diff", "Draft", FormMethod.Get, new { @class = "diff-picker-form" }))
+    {
+        <input type="hidden" name="projectId" value="@Model.BookProjectID" />
+        <label>Compare</label>
+        <select name="draftA" class="form-control-inline">
+            @foreach (var d in Model.AvailableDrafts)
+            {
+                <option value="@d" @(d == Model.DraftA ? "selected" : "")>Draft @d</option>
+            }
+        </select>
+        <label>vs</label>
+        <select name="draftB" class="form-control-inline">
+            @foreach (var d in Model.AvailableDrafts)
+            {
+                <option value="@d" @(d == Model.DraftB ? "selected" : "")>Draft @d</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-secondary">Compare</button>
+    }
+</div>
+
+<div class="diff-summary">
+    <span class="diff-label">@Model.LabelA</span>
+    <span class="diff-arrow">&rarr;</span>
+    <span class="diff-label">@Model.LabelB</span>
+    <span class="diff-stats">
+        @if (Model.TotalAdded > 0)   { <span class="badge-added">+@Model.TotalAdded added</span> }
+        @if (Model.TotalRemoved > 0) { <span class="badge-removed">-@Model.TotalRemoved removed</span> }
+        @if (Model.TotalModified > 0){ <span class="badge-modified">~@Model.TotalModified modified</span> }
+        @if (Model.TotalUnchanged > 0){ <span class="badge-unchanged">@Model.TotalUnchanged unchanged</span> }
+    </span>
+</div>
+
+@if (!Model.Chapters.Any())
+{
+    <div class="empty-state">
+        <p>No paragraph version data found for these drafts. Import both drafts first.</p>
+    </div>
+}
+
+@foreach (var chapter in Model.Chapters.Where(c => c.HasChanges))
+{
+    <div class="diff-chapter @(chapter.HasChanges ? "" : "diff-chapter-clean")">
+        <div class="diff-chapter-header">
+            <h2>Chapter @chapter.ChapterNumber: @chapter.ChapterTitle</h2>
+            <span class="diff-chapter-stats">
+                @if (chapter.AddedCount > 0)   { <span class="badge-added">@chapter.AddedCount added</span> }
+                @if (chapter.RemovedCount > 0) { <span class="badge-removed">@chapter.RemovedCount removed</span> }
+                @if (chapter.ModifiedCount > 0){ <span class="badge-modified">@chapter.ModifiedCount modified</span> }
+                @if (!chapter.HasChanges)      { <span class="badge-unchanged">no changes</span> }
+            </span>
+        </div>
+
+        @if (chapter.HasChanges)
+        {
+            <div class="diff-rows">
+                @foreach (var row in chapter.Rows)
+                {
+                    if (row.Status == "unchanged") { continue; }
+
+                    <div class="diff-row diff-@row.Status">
+                        <div class="diff-pid">
+                            @row.Pid
+                            @if (row.CurrentParagraphID.HasValue)
+                            {
+                                <a href="@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = row.CurrentParagraphID.Value })"
+                                   class="diff-edit-link" title="Open in editor">&#8599; view</a>
+                            }
+                        </div>
+                        @if (row.Status == "added")
+                        {
+                            <div class="diff-cell diff-cell-empty">(not in draft @Model.DraftA)</div>
+                            <div class="diff-cell diff-cell-added">@row.TextB</div>
+                        }
+                        else if (row.Status == "removed")
+                        {
+                            <div class="diff-cell diff-cell-removed">@row.TextA</div>
+                            <div class="diff-cell diff-cell-empty">(removed in draft @Model.DraftB)</div>
+                        }
+                        else if (row.Status == "modified")
+                        {
+                            <div class="diff-cell diff-cell-old">@row.TextA</div>
+                            <div class="diff-cell diff-cell-new">@row.TextB</div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
