@@ -12,8 +12,8 @@ namespace Seonyx.Web.Controllers
     {
         private readonly SeonyxContext db = new SeonyxContext();
 
-        // GET: admin/bookeditor/draft/diff?projectId=N[&draftA=1&draftB=2]
-        public ActionResult Diff(int projectId, int draftA = 0, int draftB = 0)
+        // GET: admin/bookeditor/draft/diff?projectId=N[&draftA=1&draftB=2[&chapter=N]]
+        public ActionResult Diff(int projectId, int draftA = 0, int draftB = 0, int chapter = 0)
         {
             var project = db.BookProjects.Find(projectId);
             if (project == null)
@@ -139,6 +139,16 @@ namespace Seonyx.Web.Controllers
                 vm.TotalModified  += chDiff.ModifiedCount;
                 vm.TotalUnchanged += chDiff.UnchangedCount;
             }
+
+            // Chapter pagination: default to first chapter that has data
+            var chapterNumbers = vm.Chapters.Select(c => c.ChapterNumber).ToList();
+            if (chapter == 0 || !chapterNumbers.Contains(chapter))
+                chapter = chapterNumbers.FirstOrDefault();
+
+            var idx = chapterNumbers.IndexOf(chapter);
+            vm.CurrentChapterNumber = chapter;
+            vm.PrevChapterNumber    = idx > 0                          ? chapterNumbers[idx - 1] : (int?)null;
+            vm.NextChapterNumber    = idx < chapterNumbers.Count - 1   ? chapterNumbers[idx + 1] : (int?)null;
 
             return View(vm);
         }

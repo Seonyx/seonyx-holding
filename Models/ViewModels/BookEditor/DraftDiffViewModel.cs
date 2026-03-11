@@ -46,6 +46,11 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         public int                        TotalUnchanged { get; set; }
         public List<int>                  AvailableDrafts { get; set; }
 
+        // Chapter pagination
+        public int  CurrentChapterNumber { get; set; }
+        public int? PrevChapterNumber    { get; set; }
+        public int? NextChapterNumber    { get; set; }
+
         public DraftDiffViewModel()
         {
             Chapters        = new List<DraftDiffChapter>();
