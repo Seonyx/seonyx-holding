@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch09" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH08-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Elom is merciful in his design.&quot; Evidence of genetic engineering spreads. &quot;Design&quot; becomes visible as cruelty, not mercy. Readers who remember this aphorism from earlier chapters will feel the irony sharpen.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0010">
+    <tags><tag>Sets time jump: Marnette returns to Frost&apos;s Archive for a final visit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0020">
+    <tags><tag>Raises stakes: residence is being cleared; Archive assessment and dispersal imminent.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0030">
+    <tags><tag>Introduces Elara&apos;s covert salve network and the brief access window.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0040">
+    <tags><tag>Punches urgency: this is the only chance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0050">
+    <tags><tag>Shows infiltration and changed atmosphere: Frost&apos;s home stripped and sanitized.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0060">
+    <tags><tag>Isolates the target: the Archive alone remains untouched.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0070">
+    <tags><tag>Highlights Frost&apos;s lingering access and hints he anticipated her return.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0080">
+    <tags><tag>Defines her purpose: find origins and motives, not just evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0090">
+    <tags><tag>Frames unresolved questions within the growing network (now 41 members).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0100">
+    <tags><tag>Establishes ticking clock: find answers before the Archive is sealed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0110">
+    <tags><tag>Opens the &quot;origin hunt&quot; by turning to the oldest primary sources.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0120">
+    <tags><tag>Reveals the key artifact: an ancient journal signed &quot;E.M.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0130">
+    <tags><tag>Names the bombshell: Elon Musk, later mythologized as Elom.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0140">
+    <tags><tag>Sets method and tone: careful reading of the expedition&apos;s last years.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0150">
+    <tags><tag>Turns mundane logs into foreboding: Earth is getting worse.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0160">
+    <tags><tag>Journal: news of geopolitical/ecological collapse ratchets existential pressure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0170">
+    <tags><tag>Journal: Earth&apos;s final transmission, &quot;we are the last hope,&quot; crystalizes the stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0180">
+    <tags><tag>Reframes founders: evokes sympathy for their impossible position without excusing them.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0190">
+    <tags><tag>Journal: refugees arrive; projections show unsustainable growth and moral tradeoffs.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0200">
+    <tags><tag>Shows escalating desperation through repeated failed resource solutions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0210">
+    <tags><tag>Journal: Dr. Chen&apos;s proposal introduces engineered shorter lifespans for workers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0220">
+    <tags><tag>Marks the origin point: oppression begins as survival math, not open malice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0230">
+    <tags><tag>Keeps narrative momentum: she reads on.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0240">
+    <tags><tag>Journal: council debate pits ethics of &quot;playing god&quot; against extinction.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0250">
+    <tags><tag>Journal: founder&apos;s private conflict; he won&apos;t risk giving workers a choice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0260">
+    <tags><tag>Journal: rhetorical justification that compromise beats extinction.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0270">
+    <tags><tag>Journal: the 712-389 vote locks in the &quot;Sustainability Protocol.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0280">
+    <tags><tag>Connects to Frost&apos;s dying numbers, recasting his guilt as a survival vote.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0290">
+    <tags><tag>Details how the Protocol was engineered and phased in over generations.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0300">
+    <tags><tag>Journal: &quot;kindness&quot; rationale exposes self-justifying moral contortions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0310">
+    <tags><tag>Signals mounting doubt as technical certainty becomes ethical unease.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0320">
+    <tags><tag>Journal: first modified workers live in ignorance; kindness vs cruelty question.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0330">
+    <tags><tag>Journal: a worker&apos;s scheduled death and the Elom-thanking daughter sharpen the horror.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0340">
+    <tags><tag>Journal: proposes manufactured religion to prevent resentment and maintain control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0350">
+    <tags><tag>States the Church&apos;s true origin: engineered belief, approved as a tool.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0360">
+    <tags><tag>Final journal entry: founder&apos;s long life, guilt, and fear the sin will be inherited.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0370">
+    <tags><tag>Marnette&apos;s reaction: villain-hunt turns into tragic comprehension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0380">
+    <tags><tag>Summarizes founders&apos; fear and how the &quot;choice&quot; became a self-propagating system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0390">
+    <tags><tag>Underlines moral tension: explanation isn&apos;t absolution, and that deepens the pain.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0400">
+    <tags><tag>Shows her piecing together the colony&apos;s drift from crisis measure to caste system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0410">
+    <tags><tag>Explains generational forgetting: the lie becomes &quot;nature&quot; through inheritance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0420">
+    <tags><tag>Shows most Masters&apos; ignorance and complacent acceptance of hierarchy and faith.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0430">
+    <tags><tag>Reveals the knowing minority; positions Frost as a truth-seeker with a conscience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0440">
+    <tags><tag>Introduces precedent: a secret meeting of 12 Masters debates reform vs silence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0450">
+    <tags><tag>Records reformist argument: resources/tech improved, so keeping the system is self-interest.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0460">
+    <tags><tag>Records fearful argument: disclosure risks upheaval and justified hatred.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0470">
+    <tags><tag>Shows the choice for silence, driven by fear rather than pure malice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0480">
+    <tags><tag>Explains longevity of oppression as inertia dressed up as &quot;protection.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0490">
+    <tags><tag>Introduces the most painful find: a modern proposal to tighten lifespan limits.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0500">
+    <tags><tag>Shows modern logic: outliers live long, remember, and start asking questions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0510">
+    <tags><tag>Quotes the proposal&apos;s chilling metrics and &quot;security concern&quot; framing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0520">
+    <tags><tag>Connects policy to lived memory: designed to erase elders like Marcus&apos;s grandmother.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0530">
+    <tags><tag>Shifts culpability to descendants who actively tightened an inherited system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0540">
+    <tags><tag>Reveals the damning modern vote (847-312), bigger than the founding one.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0550">
+    <tags><tag>States the chapter&apos;s key distinction: tragedy-founded system vs convenience-maintained cruelty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0560">
+    <tags><tag>Poses the moral line: founding might be &quot;understandable,&quot; Optimization is not.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0570">
+    <tags><tag>Hammers it home: the Optimization is categorically different.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0580">
+    <tags><tag>Shows her assembling the &quot;case file&quot; of origins, complicity, and recent tightening.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0590">
+    <tags><tag>Declares completeness: she now understands the full causal chain.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0600">
+    <tags><tag>Restates thematic inversion: monsters aren&apos;t monsters, they&apos;re fearful humans.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0610">
+    <tags><tag>Proves present-day guilt: current Masters maintain and even voted to worsen it.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0620">
+    <tags><tag>Turns insight into leverage: if it&apos;s a choice, it can be unchosen.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0630">
+    <tags><tag>Shows the one-way door: Archive dispersal will scatter or bury the evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0640">
+    <tags><tag>Affirms mission shift: she carries the complete truth to the network.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0650">
+    <tags><tag>Reframes the corridor world through history: salves as heirs of engineered tragedy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0660">
+    <tags><tag>Complicates morality: rejects a simple villains-and-victims story.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0670">
+    <tags><tag>Summarizes founders&apos; humanity and the terrible choice they lived with.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0680">
+    <tags><tag>Summarizes current Masters&apos; humanity and split between ignorance and knowing complicity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0690">
+    <tags><tag>Affirms salves&apos; full humanity: community and meaning survive inside constraints.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0700">
+    <tags><tag>Defines what she&apos;ll teach: systems thinking plus empathy, not just rage.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0710">
+    <tags><tag>Stages the meeting: seven gather in secret; documents spread like contraband.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0720">
+    <tags><tag>Summarizes her briefing: founder, vote, church, and generational silence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0730">
+    <tags><tag>Spotlights the modern smoking gun: Optimization as convenience-driven tightening.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0740">
+    <tags><tag>Shows emotional complexity in the group&apos;s reactions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0750">
+    <tags><tag>Voices the instinct for hate through Thomas&apos;s challenge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0760">
+    <tags><tag>Offers strategy: condemn actions, understand causes, and recruit potential allies.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0770">
+    <tags><tag>Vera draws the crucial line between ignorant Masters and knowing perpetrators.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0780">
+    <tags><tag>Argues for human-changeability; Frost becomes proof of concept.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0790">
+    <tags><tag>Counters with cynicism: Jonas calls Frost an anomaly.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0800">
+    <tags><tag>Petra reframes: one conscience starts a cascade, like their own network.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0810">
+    <tags><tag>Captures internal strategy debate: partial outrage vs full complexity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0820">
+    <tags><tag>Chen warns partial truth could accidentally legitimize the original system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0830">
+    <tags><tag>Thomas fears full truth could dilute anger into misplaced forgiveness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0840">
+    <tags><tag>Marnette defines the ethic: understanding is not forgiveness; truth must be shared whole.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0850">
+    <tags><tag>Shows the outcome: they leave with documents and clarified purpose.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0860">
+    <tags><tag>States the movement&apos;s aim: transformation, not revenge or total annihilation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0870">
+    <tags><tag>Raises difficulty: building a new order needs empathy, patience, and courage.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0880">
+    <tags><tag>Closes the meeting arc: only transformation offers a livable future.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0890">
+    <tags><tag>Tracks diffusion: whispers carry documents through the district.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0900">
+    <tags><tag>Reiterates the payoff: system-understanding enables change without scorched-earth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0910">
+    <tags><tag>Honors Frost&apos;s arc: centuries of burden, then a final seed-planting choice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0920">
+    <tags><tag>Marnette addresses Frost, explaining why discovery had to be earned.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0930">
+    <tags><tag>Returns to personal space and shows abandoned faith symbols (carving, beads).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0940">
+    <tags><tag>Sets tomorrow&apos;s action: spread truth, grow network, widen cracks.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0950">
+    <tags><tag>Grants emotional resolution: a hard, honest peace in understanding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0960">
+    <tags><tag>States the thesis: &quot;Elom&quot; is a manufactured god-story about human choices.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0970">
+    <tags><tag>Offers the antidote: humans can change what humans built.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0980">
+    <tags><tag>Closes with seed imagery: Frost&apos;s planted truth now bears fruit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH09-P0990">
+    <tags><tag>Final beat: Marnette will plant her own seeds tomorrow.</tag></tags>
+  </para-meta>
+</meta>

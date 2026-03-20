@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch08" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH07-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;The Master order is Elom&apos;s order.&quot; The network forms. Salves and even sympathetic Masters begin to question the order. The aphorism states what is being undermined.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0010">
+    <tags><tag>Introduces Petra and the hydroponics setting; hints salve aging is engineered.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0020">
+    <tags><tag>Marnette approaches Petra; establishes high-stakes &quot;truth reveal&quot; moment via Thomas.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0030">
+    <tags><tag>Petra&apos;s guardedness; labels Thomas &quot;the doubter&quot;; tees up church-abandonment thread.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0040">
+    <tags><tag>Marnette reframes topic: not Petra&apos;s church, but Marnette&apos;s lost belief; secrecy tone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0050">
+    <tags><tag>Petra&apos;s guarded hope; shows she&apos;s been alone with doubt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0060">
+    <tags><tag>Marnette&apos;s confession of former devotion; sets contrast before the revelation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0070">
+    <tags><tag>Petra tests sincerity; shows doubters&apos; learned suspicion in a believer culture.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0080">
+    <tags><tag>Petra&apos;s mother&apos;s sudden death; personal wound that drove doubt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0090">
+    <tags><tag>Marnette&apos;s empathy; reinforces shared &quot;this doesn&apos;t add up&quot; feeling.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0100">
+    <tags><tag>Marnette articulates the pattern questions (age variance, schedule-like deaths).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0110">
+    <tags><tag>Petra confirms; injustice comparison (healthy dies, reckless lives) sharpens anger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0120">
+    <tags><tag>Marnette produces documentary proof; pivot from doubt to evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0130">
+    <tags><tag>&quot;Watcher&quot; paragraph: tracks Petra&apos;s cognitive journey; slows time for impact.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0140">
+    <tags><tag>Petra reads specifics; horror crystallizes into the words she repeats back.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0150">
+    <tags><tag>Marnette expands scope: Church as control-tool paired with genetic kill-switch.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0160">
+    <tags><tag>Petra collapses into grief; gives space for emotional processing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0170">
+    <tags><tag>Shift from grief to anger; signals recruit readiness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0180">
+    <tags><tag>Petra claims vindication; condemns sermons as lies; asks who else knows.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0190">
+    <tags><tag>Marnette names Thomas; proposes careful, one-at-a-time recruitment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0200">
+    <tags><tag>Petra commits immediately; adds moral fuel (mother deserved truth).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0210">
+    <tags><tag>Marnette&apos;s burden lightens; closes mini-arc with &quot;beginning&quot; motif.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0220">
+    <tags><tag>Introduces Marcus: elder maintenance worker, unusually old, pre-Optimization memory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0230">
+    <tags><tag>Secret meeting logistics; Thomas vouches, establishing trust chain.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0240">
+    <tags><tag>Marcus&apos;s unreadable attention; suspense about his reaction.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0250">
+    <tags><tag>Marcus studies the document tactilely; amplifies weight of &quot;proof.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0260">
+    <tags><tag>Marcus admits he&apos;s been waiting for proof; implies long underground doubt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0270">
+    <tags><tag>Marnette&apos;s shock; reveals the conspiracy has older roots than her discovery.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0280">
+    <tags><tag>Marcus explains decades of suspicion and subtle doctrinal edits.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0290">
+    <tags><tag>Prompts specifics; invites exposition without dumping it all at once.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0300">
+    <tags><tag>Details doctrinal shift toward &quot;acceptance&quot; and &quot;designated time&quot;; conditioning theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0310">
+    <tags><tag>Thomas anchors it to &quot;The Great Optimization&quot;; timeline clarity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0320">
+    <tags><tag>Reveals lifespans once ranged wider; the system tightened over time.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0330">
+    <tags><tag>Marnette&apos;s chill reaction; raises stakes with &quot;it used to be possible.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0340">
+    <tags><tag>Marcus narrates tightening upper bounds; slow, bureaucratic cruelty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0350">
+    <tags><tag>Marnette names it: parameter tuning, &quot;kill switch&quot; tightening.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0360">
+    <tags><tag>Marcus had only prayer and suspicion; deepens his character frustration.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0370">
+    <tags><tag>Why he stayed silent: discrediting, &quot;old man&quot; dismissal, fear.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0380">
+    <tags><tag>Marnette asks consequences; foreshadows suppression.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0390">
+    <tags><tag>Clara anecdote: a prior questioner disappeared; concrete threat example.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0400">
+    <tags><tag>Connects to &quot;isolation protocols&quot;; worldbuilding mechanism of control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0410">
+    <tags><tag>Marcus reframes moment: proof enables action; poses the central strategic question.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0420">
+    <tags><tag>Marnette answers: recruit carefully; strategy becomes explicit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0430">
+    <tags><tag>Marcus offers a network of other doubters; movement infrastructure appears.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0440">
+    <tags><tag>Thomas asks &quot;how many&quot;; pushes toward scale.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0450">
+    <tags><tag>Marcus estimates and names Jonas; seeds next scene&apos;s cast.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0460">
+    <tags><tag>&quot;Circle growing&quot; line; thematic crack-in-the-lie beat.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0470">
+    <tags><tag>Sets first meeting in cramped quarters; conspiratorial intimacy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0480">
+    <tags><tag>Roll-call with character snapshots (Thomas, Petra, Marcus, Vera, Jonas); expands ensemble.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0490">
+    <tags><tag>Restates weight: six truth-bearers vs centuries of lies.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0500">
+    <tags><tag>Vera introduces pragmatic pressure: knowledge must become action.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0510">
+    <tags><tag>Jonas injects realism: no leverage, no weapons; &quot;so what now?&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0520">
+    <tags><tag>Marnette affirms caution; heightens risk if Masters learn of documents.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0530">
+    <tags><tag>Marcus underlines suppression tactic: isolation like Clara.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0540">
+    <tags><tag>Thomas pushes urgency; moral impatience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0550">
+    <tags><tag>Marnette proposes the core method: quiet conversations, one at a time.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0560">
+    <tags><tag>Vera challenges feasibility/time; strategic tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0570">
+    <tags><tag>Petra argues movements start small; uses history and seed metaphor to justify pace.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0580">
+    <tags><tag>Marnette defines identity: network/family, not an army; values statement.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0590">
+    <tags><tag>Jonas asks the bleak endgame question: truth doesn&apos;t stop genetic murder.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0600">
+    <tags><tag>Narration lets the dilemma hang; thematic gravity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0610">
+    <tags><tag>Frost memory bridges past confession to present mission; moral continuity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0620">
+    <tags><tag>Marnette frames truth as first step to breaking control (faith to compliance).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0630">
+    <tags><tag>Vera notes denial; acknowledges psychological resistance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0640">
+    <tags><tag>Marnette explains &quot;behavioral sabotage&quot;: believers change how they pray/work/die.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0650">
+    <tags><tag>Thomas sees public questioning as next stage; escalation vector.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0660">
+    <tags><tag>Petra adds contagion: doubt spreads socially.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0670">
+    <tags><tag>Marnette clarifies goal: break the mechanism (manufactured faith), not win a battle today.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0680">
+    <tags><tag>Thomas asks about a tipping point; hope enters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0690">
+    <tags><tag>Marcus predicts Masters must respond once belief erodes; foreshadows conflict.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0700">
+    <tags><tag>Jonas invokes Clara again; personalizes risk and precedent.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0710">
+    <tags><tag>Marnette diagnoses Clara&apos;s weakness: isolation; reinforces why a network matters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0720">
+    <tags><tag>Vera validates &quot;safety in numbers&quot;; practical buy-in to the plan.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0730">
+    <tags><tag>Marcus adds mutual protection ethic; shared responsibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0740">
+    <tags><tag>Silent beat: the enormity lands; tension breath.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0750">
+    <tags><tag>Punchy sentence: terror is acknowledged, not avoided.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0760">
+    <tags><tag>Marnette formalizes the pact; mission statement for the group.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0770">
+    <tags><tag>Agreement via nods; collective commitment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0780">
+    <tags><tag>Closing refrain: &quot;beginning&quot; again; seals the meeting&apos;s outcome.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0790">
+    <tags><tag>Planning montage opener: candidates, approaches, contingency thinking.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0800">
+    <tags><tag>Vera proposes territory division; introduces operational structure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0810">
+    <tags><tag>Marcus takes older workers; leverages long-held doubts.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0820">
+    <tags><tag>Thomas targets youth; generational doubt angle.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0830">
+    <tags><tag>Petra targets the grieving; grief as an &quot;open door.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0840">
+    <tags><tag>Jonas targets water-facility workers; hints class/inequality awareness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0850">
+    <tags><tag>Marnette reframes caregiving as access point; mission integrates with daily work.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0860">
+    <tags><tag>Thomas raises Lena; personal stakes and ticking complication.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0870">
+    <tags><tag>Marnette&apos;s visceral reaction; shows emotional cost of secrecy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0880">
+    <tags><tag>Jonas bluntly states risk: Lena could report them &quot;out of love.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0890">
+    <tags><tag>Marnette confirms; articulates tragic conflict of loyalties (friends vs faith).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0900">
+    <tags><tag>Thomas yields reluctantly; family tension parked for later.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0910">
+    <tags><tag>Marnette&apos;s justification: better &quot;betrayal&quot; than deadly isolation; protective ethic.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0920">
+    <tags><tag>Meeting ends at artificial dawn; cinematic closure, documents distributed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0930">
+    <tags><tag>Marnette lingers; sets intimate epilogue beat with Marcus.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0940">
+    <tags><tag>Marnette thanks Marcus; strengthens trust and group cohesion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0950">
+    <tags><tag>Marcus credits Frost; complicates &quot;Masters = monsters&quot; narrative.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0960">
+    <tags><tag>Marnette reminds Frost signed the proposal; sharpens moral paradox.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0970">
+    <tags><tag>Marcus argues guilt across centuries can change a Master; introduces redemption theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0980">
+    <tags><tag>Marnette&apos;s partial understanding (not forgiveness); &quot;seeds&quot; motif echoes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P0990">
+    <tags><tag>Quiet work montage begins; shows sustained, careful spread.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1000">
+    <tags><tag>Depicts rejection and danger (Vera&apos;s contact recoils); paranoia tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1010">
+    <tags><tag>Another rejection (Marcus called senile); shows defenses of faith and social pressure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1020">
+    <tags><tag>Reflects on faith&apos;s comfort and roots; explains why evidence isn&apos;t always enough.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1030">
+    <tags><tag>Turn to successes; momentum returns.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1040">
+    <tags><tag>Example recruit Sera via grief; validates Petra&apos;s &quot;grieving&quot; strategy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1050">
+    <tags><tag>Example recruit Chen via analysis; broadens movement beyond the emotional.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1060">
+    <tags><tag>Quantifies growth over months to 41; stakes escalate.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1070">
+    <tags><tag>Operational security details (rotating locations, small groups); realism and danger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1080">
+    <tags><tag>Marnette becomes reluctant leader; character evolution through circumstance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1090">
+    <tags><tag>Defines her leadership style: conversation over hierarchy; avoids &quot;army&quot; framing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1100">
+    <tags><tag>Repeats &quot;family not army&quot; mantra to new members; reinforces culture/identity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1110">
+    <tags><tag>Symbolic hope: Elom carving turned away; Marnette allows hope back in.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1120">
+    <tags><tag>Reframes 41 as &quot;cracks&quot; but not victory; keeps tension for next chapters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH08-P1130">
+    <tags><tag>Closing inevitability: truth spreads person by person; no going back.</tag></tags>
+  </para-meta>
+</meta>

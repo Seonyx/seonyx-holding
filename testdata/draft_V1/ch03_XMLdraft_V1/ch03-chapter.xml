@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter bookml-version="1.0" id="ch03" book-id="mayfly-mutiny" draft="1"
+         xmlns="https://bookml.org/ns/1.0">
+  <chapterinfo>
+    <chapternumber>3</chapternumber>
+    <title>Chapter 3</title>
+  </chapterinfo>
+  <section seq="1000">
+    <para pid="CH02-B0001" seq="100" type="normal" draft-created="1" draft-modified="1" modified-by="ai">Your lifespan is a gift. Use it well.</para>
+    <para pid="CH03-P0010" seq="1000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The scream tore through the darkness, sharp and raw and utterly unfamiliar. Marnette was out of bed and moving before her mind had fully registered the sound, her body responding to years of training, to instincts honed in countless night watches beside dying patients. Her bare feet made no sound on the cool floor as she raced toward the adjoining door, her heart already pounding with the terrible certainty that something was very wrong.
+    </para>
+    <para pid="CH03-P0020" seq="2000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Master Frost&apos;s room was in chaos. The monitor above his bed blared a piercing alarm, red lights flashing across the displays that normally showed steady green vital signs. In the dim emergency lighting, she could see him thrashing in the bed, his thin body arching upward, his hands clawing at the air as if trying to catch something only he could see.
+    </para>
+    <para pid="CH03-P0030" seq="3000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Master Frost!&quot; She rushed to his side, her hands automatically finding the emergency controls on the medical console. &quot;It&apos;s Marnette. You&apos;re safe. You&apos;re having a crisis.&quot;
+    </para>
+    <para pid="CH03-P0040" seq="4000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      His eyes were open but unfocused, the pale blue that usually tracked her every movement now clouded with pain and confusion. Sweat beaded on his forehead, his skin burning to the touch. The monitor showed his heart racing at one hundred forty beats per minute, his blood pressure dangerously high, his oxygen levels dropping despite the ventilator&apos;s assistance.
+    </para>
+    <para pid="CH03-P0050" seq="5000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Marnette,&quot; he gasped, his fingers closing around her wrist with surprising strength. &quot;Can&apos;t let them... have to tell you...&quot;
+    </para>
+    <para pid="CH03-P0060" seq="6000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Shh, don&apos;t try to talk.&quot; She worked quickly, her movements efficient despite the tremor in her hands. This was worse than any of his previous episodes. This was a full-system crisis, the kind her training manuals described only in theoretical terms. Masters didn&apos;t have crises like this. Their bodies were too resilient, their medical care too advanced. But then, most Masters didn&apos;t live to be seven hundred ninety-three years old.
+    </para>
+    <para pid="CH03-P0070" seq="7000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She administered the emergency cardiac stabilizer, her fingers finding the injection port without needing to look. The medication should have worked immediately&#x2014;it was designed specifically for Master physiology, expensive and effective enough to stop a heart attack in seconds. But Frost&apos;s heart continued to race, the alarm continuing its relentless wail.
+    </para>
+    <para pid="CH03-P0080" seq="8000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The engineers... they said... optimal...&quot; His words were fragmented, disconnected, his mind lost somewhere between past and present. &quot;Fifty years... resource efficiency... renewable...&quot;
+    </para>
+    <para pid="CH03-P0090" seq="9000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette adjusted the oxygen flow, her eyes scanning the monitors for clues. His temperature was one hundred three degrees&#x2014;fever, in a man whose advanced immune system should have made that impossible. His cellular decay markers, usually stable, were spiking dramatically. Something was happening to him, something beyond normal dying.
+    </para>
+    <para pid="CH03-P0100" seq="10000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What engineers, Master Frost?&quot; she asked, more to keep him conscious than from any real curiosity. &quot;Stay with me. Focus on my voice.&quot;
+    </para>
+    <para pid="CH03-P0110" seq="11000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Not Elon... no, he wanted... but the engineers... they knew better...&quot; His grip on her wrist tightened, his nails digging into her skin. &quot;I voted yes. God forgive me, I voted yes.&quot;
+    </para>
+    <para pid="CH03-P0120" seq="12000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Voted yes on what?&quot; She was checking his pupils now&#x2014;unequal, unresponsive to light. Bad sign. Very bad sign. The emergency physician should have been called immediately, but something held her back. The fragments he was saying, the names and numbers, they felt important. They felt like pieces of a puzzle she hadn&apos;t known she was trying to solve.
+    </para>
+    <para pid="CH03-P0130" seq="13000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Bio-caste system... necessary for... colony survival...&quot; His breathing became more ragged, the ventilator struggling to keep up with his body&apos;s demands. &quot;They didn&apos;t tell us... not at first... just experimental... just temporary...&quot;
+    </para>
+    <para pid="CH03-P0140" seq="14000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette made a decision. Instead of calling the physician, she activated the deep scan function on the medical console. It would give her detailed information about what was happening in his body, information that might help her treat him more effectively. The scan would take thirty seconds, precious time she wasn&apos;t sure he had.
+    </para>
+    <para pid="CH03-P0150" seq="15000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Tell me about the engineers,&quot; she said, stroking his forehead with a cool cloth. The physical contact seemed to calm him slightly, his thrashing reducing to weak tremors.
+    </para>
+    <para pid="CH03-P0160" seq="16000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Earth engineers... brought from... old world... genetics... they said... necessary sacrifice...&quot; His eyes rolled back in his head, and for a terrifying moment, Marnette thought she was losing him. But then his breathing evened out slightly, his heart rate dropping from one forty to one twenty. Still dangerous, but survivable.
+    </para>
+    <para pid="CH03-P0170" seq="17000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The scan results appeared on the screen, and Marnette stared at them in disbelief. This wasn&apos;t normal cellular decay. This wasn&apos;t even accelerated aging. This was something she had never seen before, something her training materials didn&apos;t cover. His cells weren&apos;t just dying&#x2014;they were actively terminating themselves, as if responding to some signal she couldn&apos;t detect. Apoptosis on a massive scale, programmed cell death triggered throughout his body simultaneously.
+    </para>
+    <para pid="CH03-P0180" seq="18000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Elon wouldn&apos;t have... wanted this...&quot; Frost&apos;s voice was weaker now, but the words were clearer. &quot;He wanted... to save humanity... not... divide it...&quot;
+    </para>
+    <para pid="CH03-P0190" seq="19000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette adjusted the medication flow, her mind racing. If this was some kind of programmed termination, then standard cardiac stabilizers wouldn&apos;t work. She needed to understand the trigger, the mechanism. But how? She was a caregiver, not a geneticist. She could comfort and monitor and maintain, but she couldn&apos;t decode the mysteries of Master biology.
+    </para>
+    <para pid="CH03-P0200" seq="20000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The vote... seven hundred twelve to three hundred eighty-nine... I was... on the winning side...&quot; He laughed, a dry, painful sound. &quot;Winning side... God, what does that even mean when you&apos;re sentencing... generations to...&quot;
+    </para>
+    <para pid="CH03-P0210" seq="21000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      His eyes focused on her suddenly, the clarity returning with terrifying intensity. &quot;Marnette. Don&apos;t let them... make you forget... what I&apos;ve told you.&quot;
+    </para>
+    <para pid="CH03-P0220" seq="22000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Forget what, Master Frost? You haven&apos;t told me anything coherent.&quot; But even as she said it, she knew it wasn&apos;t true. He had told her things, fragments that were starting to form a pattern she didn&apos;t want to see.
+    </para>
+    <para pid="CH03-P0230" seq="23000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The Archive,&quot; he whispered, his voice fading. &quot;In the Archive... everything... the original plan... before they... cleaned it up...&quot;
+    </para>
+    <para pid="CH03-P0240" seq="24000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The emergency alarm finally fell silent as his vital signs stabilized, though they remained dangerously elevated. His heart rate was still over one hundred, his temperature still hovering around one hundred one. But the immediate crisis had passed. He was alive. For now.
+    </para>
+    <para pid="CH03-P0250" seq="25000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette sank into the chair beside his bed, her body trembling with delayed reaction. Her wrist throbbed where he had gripped her, the bruises already forming. She had been through medical emergencies before, but never like this. Never with a patient whose body seemed to be actively working against itself, whose mind seemed to be lost between centuries of memory.
+    </para>
+    <para pid="CH03-P0260" seq="26000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What engineers?&quot; she asked again, though he was already drifting toward unconsciousness. &quot;What vote?&quot;
+    </para>
+    <para pid="CH03-P0270" seq="27000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The Beginning... it wasn&apos;t... supposed to be... like this...&quot; His breathing evened out, his eyes closing. &quot;Fifty years... they said... optimal resource allocation... renewable workforce...&quot;
+    </para>
+    <para pid="CH03-P0280" seq="28000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette watched him sleep, watched the tension gradually leave his face, watched his vital signs slowly return to something approaching normal. But the words echoed in her mind, fragments that refused to disappear. Engineers. Vote. Fifty years. Resource allocation. Renewable workforce. Elon. Archive. The Beginning.
+    </para>
+    <para pid="CH03-P0290" seq="29000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She should call the physician. She should document everything in the official log. She should report his delirious ramblings, his strange references to things she didn&apos;t understand. But she didn&apos;t. Instead, she sat there in the darkness, watching him breathe, and wondered what secrets a dying man might carry through seven centuries, what burdens he might finally feel compelled to share in his final weeks.
+    </para>
+    <para pid="CH03-P0300" seq="30000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The red dust of Mars was visible through the massive windows, faintly illuminated by the colony&apos;s external lights. An entire world of red dust waiting just beyond their protective dome, waiting for the moment their carefully controlled environment failed. Waiting to reclaim what humanity had tried to build in this hostile place.
+    </para>
+    <para pid="CH03-P0310" seq="31000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette thought of the engineers Frost had mentioned, the ones who had apparently designed systems she had never questioned. She thought of his vote, his guilt about something that had happened centuries before she was born. She thought of the Archive he kept mentioning, the place that held the original plans, the uncleaned history.
+    </para>
+    <para pid="CH03-P0320" seq="32000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And she wondered, with a sudden cold certainty that felt like betrayal, what else she didn&apos;t know about the world she had always accepted as natural, as divinely ordained, as perfect in its design.
+    </para>
+    <para pid="CH03-P0330" seq="33000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The morning light filtered through the windows, revealing the devastation of the night. Medical equipment had been moved and hastily repositioned, emergency supplies lay scattered across the floor, and the room carried the unmistakable scent of crisis&#x2014;antiseptic, sweat, and the metallic tang of fear. Marnette moved quietly, restoring order while keeping one eye on the monitors. Master Frost was sleeping now, his vital signs stable but weak, his body exhausted by the ordeal.
+    </para>
+    <para pid="CH03-P0340" seq="34000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She was cleaning the area around his bed when his eyes opened, focusing on her with a clarity that seemed at odds with his condition. He looked... diminished. Thinner, more fragile, as if the crisis had burned away whatever reserve he had been clinging to. But his mind was sharp, sharper than it had been in weeks.
+    </para>
+    <para pid="CH03-P0350" seq="35000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You stayed,&quot; he said, his voice rough but steady. &quot;All night.&quot;
+    </para>
+    <para pid="CH03-P0360" seq="36000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;There was a crisis.&quot; Marnette kept her back to him, focusing on her tasks. &quot;Your vital signs stabilized around fourth hour. You should rest now.&quot;
+    </para>
+    <para pid="CH03-P0370" seq="37000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Marnette.&quot; He shifted slightly, wincing at the movement. &quot;Look at me.&quot;
+    </para>
+    <para pid="CH03-P0380" seq="38000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She turned, her professional mask firmly in place. &quot;Yes, Master Frost?&quot;
+    </para>
+    <para pid="CH03-P0390" seq="39000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Do you remember what I said?&quot; His eyes searched hers, looking for... what? Understanding? Confirmation? Something she couldn&apos;t name.
+    </para>
+    <para pid="CH03-P0400" seq="40000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You were delirious. The fever, the pain... you said things that didn&apos;t make sense.&quot; She smoothed his blanket, her hands deliberately avoiding his gaze.
+    </para>
+    <para pid="CH03-P0410" seq="41000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Did they?&quot; He settled back against the pillows, his breathing shallow. &quot;Or did they make too much sense?&quot;
+    </para>
+    <para pid="CH03-P0420" seq="42000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette didn&apos;t answer. She couldn&apos;t. The fragments from his delirium echoed in her mind&#x2014;engineers and votes, fifty years and resource allocation, Elon and the Archive. They were nonsense, of course. The ramblings of a dying mind lost in centuries of memory. But they were also... intriguing. Disturbingly so.
+    </para>
+    <para pid="CH03-P0430" seq="43000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You mentioned engineers,&quot; she said, before she could stop herself. &quot;And a vote. And something about fifty years being optimal.&quot;
+    </para>
+    <para pid="CH03-P0440" seq="44000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Frost&apos;s expression didn&apos;t change, but something shifted in his eyes. Relief? Regret? &quot;Old men talk nonsense when they&apos;re dying, Marnette. You shouldn&apos;t pay attention to every word that falls from their lips.&quot;
+    </para>
+    <para pid="CH03-P0450" seq="45000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You mentioned Elon too,&quot; she persisted, despite the warning voice in her mind telling her to stop, to let it go, to retreat into the safety of her role. &quot;Not Elom. Elon.&quot;
+    </para>
+    <para pid="CH03-P0460" seq="46000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He was silent for a long moment, his gaze fixed on something beyond the room, something only he could see. &quot;Names matter, don&apos;t they? The names we choose, the names we change, the names we forget.&quot;
+    </para>
+    <para pid="CH03-P0470" seq="47000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What does that mean?&quot;
+    </para>
+    <para pid="CH03-P0480" seq="48000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He turned his attention back to her, his eyes holding the same unnerving clarity they had held during the crisis. &quot;It means that history isn&apos;t always what they teach you in the schools. Sometimes it&apos;s written in the margins, in the names no one uses anymore, in the details no one thinks are important.&quot;
+    </para>
+    <para pid="CH03-P0490" seq="49000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The awkwardness between them was palpable, a heavy weight in the air that had nothing to do with his illness. This was different from their previous conversations, different from his pointed questions about her faith, different from her defensive responses. This was something new, something dangerous, something that felt like crossing a threshold she couldn&apos;t uncross.
+    </para>
+    <para pid="CH03-P0500" seq="50000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I should document the crisis in your medical log,&quot; Marnette said, changing the subject back to professional territory. &quot;The physician will want to review the scan results.&quot;
+    </para>
+    <para pid="CH03-P0510" seq="51000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Ah, yes. The scan.&quot; He smiled slightly, a painful expression on his ancient face. &quot;What did it show, I wonder? Did it show anything about why my cells suddenly decided to terminate themselves? Anything about why my body, which has survived for nearly eight centuries, suddenly chose last night to stage a rebellion?&quot;
+    </para>
+    <para pid="CH03-P0520" seq="52000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette froze, her hand halfway to the medical console. &quot;How did you know I ran a deep scan?&quot;
+    </para>
+    <para pid="CH03-P0530" seq="53000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Because you&apos;re not just a caregiver following protocols. You&apos;re curious. You want to understand.&quot; He paused, his expression softening. &quot;That&apos;s why I chose you, Marnette. Not just because of your skill with Elder Maris, not just because of your reputation. Because you have a mind that asks questions, even when your faith tells you not to.&quot;
+    </para>
+    <para pid="CH03-P0540" seq="54000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The compliment felt like an accusation, and Marnette found herself unable to meet his gaze. &quot;Your cells are experiencing accelerated apoptosis. It&apos;s rare, but not unheard of in Masters your age.&quot;
+    </para>
+    <para pid="CH03-P0550" seq="55000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Is it?&quot; He raised a skeptical eyebrow. &quot;And what causes this rare but not unheard of phenomenon, in your professional medical opinion?&quot;
+    </para>
+    <para pid="CH03-P0560" seq="56000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The advanced cellular decay protocols become unstable after seven hundred fifty years. The systems that maintain your body begin to fail in unpredictable ways.&quot; The words came from her training, from the medical manuals she had studied, from the physicians who had trained her. But for the first time, they felt rehearsed, memorized, less like truth and more like... explanation. Explanation that covered something else.
+    </para>
+    <para pid="CH03-P0570" seq="57000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Unpredictable ways,&quot; he repeated softly. &quot;Like a system that was designed to fail after a certain period? Like planned obsolescence, but on a biological scale?&quot;
+    </para>
+    <para pid="CH03-P0580" seq="58000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette turned away sharply, her hands clenched at her sides. &quot;Master Frost, you shouldn&apos;t say such things. It&apos;s... it&apos;s heretical.&quot;
+    </para>
+    <para pid="CH03-P0590" seq="59000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Is it heretical to wonder why things happen? Or is it heretical to accept without question?&quot; He shifted again, and this time she heard the pain in his sharp intake of breath. &quot;Marnette, I need something from my Archive. Will you retrieve it for me?&quot;
+    </para>
+    <para pid="CH03-P0600" seq="60000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The Archive?&quot; She turned back, surprised. &quot;You usually go there yourself. Or you ask Elara.&quot;
+    </para>
+    <para pid="CH03-P0610" seq="61000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I can&apos;t walk today. And Elara... she wouldn&apos;t understand what to look for.&quot; He gestured toward the door on the far side of his chambers. &quot;The second door on the left. There&apos;s a book on the center table&#x2014;brown leather, no title on the spine. Bring it to me.&quot;
+    </para>
+    <para pid="CH03-P0620" seq="62000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette hesitated. The Archive was his private sanctuary, the one place in his residence that had always been off-limits to her. In the three weeks she had been caring for him, she had never seen inside that room. But he was asking, and he was weak, and her duty was to serve his needs within reasonable bounds.
+    </para>
+    <para pid="CH03-P0630" seq="63000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Of course, Master Frost.&quot; She moved toward the door, her steps reluctant. &quot;I&apos;ll be right back.&quot;
+    </para>
+    <para pid="CH03-P0640" seq="64000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The Archive door was unlike the others in his residence. It wasn&apos;t decorated with expensive panels or advanced security systems. It was simple, unadorned, almost humble. But when she placed her hand on the identification panel, it recognized her touch immediately, granting her access. He had programmed her clearance without telling her.
+    </para>
+    <para pid="CH03-P0650" seq="65000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The door slid open, and Marnette caught her breath.
+    </para>
+    <para pid="CH03-P0660" seq="66000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The Archive was nothing like she had imagined. She had pictured a small study, perhaps with some data screens and a few shelves of books. What she found was overwhelming, breathtaking in its scope and complexity. The room was larger than his entire sleeping chamber, with walls lined floor-to-ceiling with shelves that groaned under the weight of books, scrolls, data crystals, and artifacts she couldn&apos;t begin to identify.
+    </para>
+    <para pid="CH03-P0670" seq="67000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The air smelled of old paper and leather, of dust that had settled over centuries, of the metallic tang of ancient electronics. Multiple data screens glowed softly around the room, each displaying different types of information&#x2014;star charts, genetic sequences, historical timelines, architectural diagrams. It wasn&apos;t chaos; it was organized in a way she couldn&apos;t comprehend, a system that made sense only to the man who had created it over hundreds of years of collecting.
+    </para>
+    <para pid="CH03-P0680" seq="68000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette stepped inside, feeling like an intruder in someone&apos;s mind. This wasn&apos;t just a collection of information; it was a lifetime of curiosity, of questions, of secrets. There were books bound in materials she had never seen&#x2014;actual paper from Earth, perhaps, or early Martian manufacturing attempts. There were data crystals in formats so ancient that the readers required custom-built interfaces. There were objects that looked like tools, others like art, others like technology she couldn&apos;t identify.
+    </para>
+    <para pid="CH03-P0690" seq="69000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But what struck her most was the sheer volume of it. No single mind, even a Master&apos;s mind, should have been able to accumulate this much knowledge, this much history, this much... evidence. This was the personal library of a man who had been collecting not just information, but truth. Whatever that meant.
+    </para>
+    <para pid="CH03-P0700" seq="70000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She found the book on the center table exactly as he had described&#x2014;brown leather, no title on the spine, worn smooth at the edges as if it had been handled frequently. It was heavier than it looked, the leather warm under her fingers as if it had been sitting in sunlight.
+    </para>
+    <para pid="CH03-P0710" seq="71000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But as she reached for it, her eyes caught something else on the table&#x2014;a stack of photographs held down by a paperweight. Not the formal portraits of Masters she had seen in official displays, but candid images of people who looked like salves. People working in fields, people sitting around tables, people celebrating events she didn&apos;t recognize. And in one of them, a woman who looked remarkably like her grandmother, only older, much older than fifty-three, surrounded by children and grandchildren.
+    </para>
+    <para pid="CH03-P0720" seq="72000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette forced herself to look away, focusing on the book she had been sent to retrieve. She shouldn&apos;t be looking at these things, shouldn&apos;t be seeing these images that raised questions she wasn&apos;t prepared to answer. Her duty was simple: get the book, return to her patient, maintain professional distance.
+    </para>
+    <para pid="CH03-P0730" seq="73000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But as she picked up the book, it fell open to a marked page, and her eyes caught a phrase that made her breath catch: &quot;Project Mayfly - Initial Implementation Phase.&quot; Below it, in smaller text: &quot;Subject Population: 85% of colonists designated as biological workforce with optimized 50-year lifecycle parameters.&quot;
+    </para>
+    <para pid="CH03-P0740" seq="74000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette closed the book quickly, her hands trembling. Project Mayfly. Optimized 50-year lifecycle parameters. The words sounded like medical jargon, like technical specifications, but they also sounded like... design. Like engineering.
+    </para>
+    <para pid="CH03-P0750" seq="75000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She returned to Frost&apos;s chambers, the book clutched in her hand, her mind racing with questions she didn&apos;t want to acknowledge. He was watching her as she entered, his eyes knowing, expectant.
+    </para>
+    <para pid="CH03-P0760" seq="76000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Did you find it?&quot; he asked.
+    </para>
+    <para pid="CH03-P0770" seq="77000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The book is here.&quot; She placed it on his bedside table, her movements careful, controlled. &quot;Master Frost... what is Project Mayfly?&quot;
+    </para>
+    <para pid="CH03-P0780" seq="78000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      His expression didn&apos;t change, but something flickered in his eyes&#x2014;surprise, perhaps, or regret. &quot;You&apos;re more observant than I gave you credit for. You saw the page it was marked to.&quot;
+    </para>
+    <para pid="CH03-P0790" seq="79000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I saw words that don&apos;t make sense. Project Mayfly. Optimized lifecycle parameters.&quot; Marnette heard the tremor in her voice and hated it. &quot;What does that mean?&quot;
+    </para>
+    <para pid="CH03-P0800" seq="80000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;It means history is complicated, Marnette. It means that what we call design sometimes starts as engineering. What we call natural sometimes starts as artificial. What we call divine sometimes starts as... human.&quot;
+    </para>
+    <para pid="CH03-P0810" seq="81000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He reached for the book with trembling hands, his fingers stroking the leather cover with something like reverence. &quot;This book contains the original colony charters. The ones before they were... revised. The ones that show what the founders actually intended, not what their successors implemented.&quot;
+    </para>
+    <para pid="CH03-P0820" seq="82000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And what did they intend?&quot;
+    </para>
+    <para pid="CH03-P0830" seq="83000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He looked at her, his expression sad but resolved. &quot;They intended to save humanity. Not divide it.&quot;
+    </para>
+    <para pid="CH03-P0840" seq="84000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The afternoon sunlight cast long shadows across the room as Frost grew stronger, the crisis of the night before seeming to have burned away some of his weakness along with his restraint. He sat propped against his pillows, the book resting on his lap, his eyes fixed on the distant Martian landscape visible through his massive windows.
+    </para>
+    <para pid="CH03-P0850" seq="85000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You&apos;ve been here three weeks now,&quot; he said suddenly, breaking the comfortable silence that had settled between them. &quot;Have you ever wondered how old I am exactly?&quot;
+    </para>
+    <para pid="CH03-P0860" seq="86000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You&apos;re seven hundred ninety-three years old,&quot; Marnette replied automatically. &quot;Elara mentioned it when I first arrived.&quot;
+    </para>
+    <para pid="CH03-P0870" seq="87000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Seven hundred ninety-three,&quot; he repeated softly. &quot;Do you know what that means, Marnette? Do you understand the weight of that many years?&quot;
+    </para>
+    <para pid="CH03-P0880" seq="88000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette considered the question. She had never really thought about it, not beyond the abstract knowledge that Masters lived much longer than salves. &quot;It means you&apos;ve seen centuries pass. You&apos;ve watched generations come and go.&quot;
+    </para>
+    <para pid="CH03-P0890" seq="89000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;ve watched fifteen generations of salves live and die,&quot; he corrected gently. &quot;Fifteen complete lifetimes, start to finish. I&apos;ve known people who knew Elon Musk personally. I remember when this dome was being built, when we first stepped out onto Martian soil, when the first salves were born here.&quot;
+    </para>
+    <para pid="CH03-P0900" seq="90000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The scale of it was impossible to comprehend. &quot;That&apos;s... that&apos;s a blessing from Elom,&quot; she said, the words feeling inadequate even as she spoke them. &quot;To live so long, to see so much.&quot;
+    </para>
+    <para pid="CH03-P0910" seq="91000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Frost turned his gaze from the window to look at her, and the pain in his eyes was so profound it took her breath away. &quot;Is it? Is it a blessing to watch everyone you&apos;ve ever loved die? To outlive your children, your grandchildren, your great-grandchildren, until the family tree becomes too vast to track, until grief becomes a constant companion rather than an occasional visitor?&quot;
+    </para>
+    <para pid="CH03-P0920" seq="92000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette had no answer. She had never thought about longevity from that perspective, had never considered that living so long might be its own kind of suffering.
+    </para>
+    <para pid="CH03-P0930" seq="93000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Do you think blessing and curse are so different?&quot; he asked. &quot;Two sides of the same coin, perhaps. The same gift seen from different angles?&quot;
+    </para>
+    <para pid="CH03-P0940" seq="94000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I was taught that long life is a reward for faithful service,&quot; she said, but the words sounded hollow even to her own ears.
+    </para>
+    <para pid="CH03-P0950" seq="95000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Was it faithful service to vote for the biological caste system? Was it faithful service to implement protocols that would ensure salves died before they accumulated too much knowledge, too much power to question their place?&quot; His voice grew bitter, angry. &quot;Was it faithful service to stand by while generations were born, lived, and died under a lie?&quot;
+    </para>
+    <para pid="CH03-P0960" seq="96000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette stepped back, unsettled by the sudden intensity in his voice. &quot;Master Frost, you shouldn&apos;t speak this way. It&apos;s dangerous.&quot;
+    </para>
+    <para pid="CH03-P0970" seq="97000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Dangerous for whom?&quot; he demanded. &quot;Dangerous for the Masters who benefit from the system? Or dangerous for you, because once you hear the truth, you can&apos;t unhear it?&quot;
+    </para>
+    <para pid="CH03-P0980" seq="98000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He struggled to sit up straighter, his movements pained but determined. &quot;I have lived through the entire history of this colony, Marnette. I remember when it was just an idea in Elon Musk&apos;s mind. I remember the early debates about how to structure society on Mars. I remember the original plans, the ones that didn&apos;t include genetic castes or predetermined lifespans.&quot;
+    </para>
+    <para pid="CH03-P0990" seq="99000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He paused, catching his breath, his eyes never leaving hers. &quot;I remember the vote. Seven hundred twelve to three hundred eighty-nine. I voted with the majority. I voted for the system that would create the salve class, that would implement the biological controls, that would ensure the colony&apos;s &apos;stability&apos; through... managed population dynamics.&quot;
+    </para>
+    <para pid="CH03-P1000" seq="100000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The admission hung in the air between them, raw and terrible. He wasn&apos;t just talking about historical events; he was confessing his own complicity, his own guilt.
+    </para>
+    <para pid="CH03-P1010" seq="101000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Why?&quot; The question escaped before she could stop it. &quot;Why would anyone vote for that?&quot;
+    </para>
+    <para pid="CH03-P1020" seq="102000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Because we were afraid,&quot; he said, his voice dropping to a whisper. &quot;Earth was still fresh in our minds. We remembered the wars, the chaos, the way humanity had nearly destroyed itself through uncontrolled growth and competition. We thought... we thought we could prevent that here. Thought we could build a stable society by controlling variables, by managing population through biological means instead of warfare.&quot;
+    </para>
+    <para pid="CH03-P1030" seq="103000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He looked away, his gaze returning to the red landscape outside. &quot;We told ourselves it was for the greater good. We told ourselves it was necessary for survival. We told ourselves that a shorter but focused life was better than a longer but chaotic one.&quot;
+    </para>
+    <para pid="CH03-P1040" seq="104000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;But it wasn&apos;t your choice to make,&quot; Marnette said, the words quiet but firm. &quot;You didn&apos;t have the right to determine how long other people should live.&quot;
+    </para>
+    <para pid="CH03-P1050" seq="105000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Don&apos;t you think I know that?&quot; Frost&apos;s voice broke with the weight of centuries of regret. &quot;Don&apos;t you think that&apos;s what has kept me awake at night for seven hundred years? The knowledge that we took away something essential, something that should never have been ours to take?&quot;
+    </para>
+    <para pid="CH03-P1060" seq="106000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The silence stretched between them, heavy with unspoken truths and difficult questions. Marnette found herself looking at her hands, at the strong capable fingers that had cared for so many dying people, at the wrists that still bore faint bruises from his grip during the crisis.
+    </para>
+    <para pid="CH03-P1070" seq="107000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What if the order isn&apos;t natural at all?&quot; he asked softly, repeating the question he had asked her days before. &quot;What if it&apos;s just... engineered? What if the entire system that maintains the colony, that defines everyone&apos;s place and purpose, is just an elaborate mechanism for control?&quot;
+    </para>
+    <para pid="CH03-P1080" seq="108000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette shook her head, unable to accept the implications. &quot;But the Church... Elom&apos;s teachings... they can&apos;t all be lies.&quot;
+    </para>
+    <para pid="CH03-P1090" seq="109000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Can&apos;t they?&quot; He gestured toward the book on his lap. &quot;What if Elom wasn&apos;t a divine creator but a man named Elon? What if the Church wasn&apos;t founded on spiritual revelation but on practical necessity? What if the entire religious framework was designed to give meaning to a system that was originally implemented for purely practical reasons?&quot;
+    </para>
+    <para pid="CH03-P1100" seq="110000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The questions were overwhelming, terrifying in their implications. Marnette felt like she was standing on the edge of a cliff, with Frost asking her to step off into a void where nothing she had ever believed was true.
+    </para>
+    <para pid="CH03-P1110" seq="111000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I need to check your medication,&quot; she said, retreating into the familiar safety of her professional role. &quot;The physician will be here soon for his rounds.&quot;
+    </para>
+    <para pid="CH03-P1120" seq="112000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But as she worked, adjusting the IV flow, checking the monitor settings, documenting his vital signs, his questions echoed in her mind. What if blessing and curse were the same thing? What if natural order was just engineered control? What if her entire understanding of reality was built on a foundation of carefully constructed lies?
+    </para>
+    <para pid="CH03-P1130" seq="113000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      That evening, Marnette sat alone in her room, trying to read but finding herself unable to focus on the words. The day&apos;s revelations played through her mind&#x2014;Frost&apos;s delirium, his confession about the vote, his questions about the nature of blessing and control, the phrase she had seen in the book: Project Mayfly. Optimized 50-year lifecycle parameters.
+    </para>
+    <para pid="CH03-P1140" seq="114000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She knelt by her bed and took out her prayer beads, the smooth coolness of the stones familiar against her skin. The evening prayer came automatically, the words she had recited thousands of times since childhood.
+    </para>
+    <para pid="CH03-P1150" seq="115000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Elom, creator and guide, who designed us for purpose, who gave each of us our role in the great colony, who sees all and knows all, help us to serve with devotion, to accept with grace, to find joy in our designated time.&quot;
+    </para>
+    <para pid="CH03-P1160" seq="116000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But tonight, the words felt different. Not wrong, exactly, but... incomplete. Designed us for purpose. Was that the same as engineered us for function? Gave each of us our role. Was that the same as assigned each of us our place? Designated time. Was that the same as predetermined lifespan?
+    </para>
+    <para pid="CH03-P1170" seq="117000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The questions came unbidden, dangerous thoughts that felt like betrayal. Elom or Elon? Divine design or genetic engineering? Natural order or artificial control?
+    </para>
+    <para pid="CH03-P1180" seq="118000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette rose from her knees and paced the small room, her movements restless. This was wrong. These were not thoughts she should be having. Frost was dying, his mind clouded with age and pain and regret. He was projecting his own guilt onto her, trying to drag her into his crisis of faith before he died. She shouldn&apos;t listen to him. She shouldn&apos;t entertain these doubts.
+    </para>
+    <para pid="CH03-P1190" seq="119000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She went to the window, looking out at the agricultural domes glowing in the artificial night. Green life against red death. That&apos;s what she had always thought, what she had been taught. But now she wondered if it was green life against red termination. If the contrast wasn&apos;t natural but manufactured.
+    </para>
+    <para pid="CH03-P1200" seq="120000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The thought came with such clarity that it shocked her. Manufactured. Like the goods in the Master residences, like the carefully maintained gardens, like the entire colony that survived in an environment that should have been hostile to human life. Everything here was manufactured. Everything here was controlled. Why should the people be any different?
+    </para>
+    <para pid="CH03-P1210" seq="121000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;No,&quot; she said aloud, her voice sharp in the quiet room. &quot;That&apos;s not true. We&apos;re not manufactured. We&apos;re not controlled. We&apos;re serving Elom&apos;s purpose.&quot;
+    </para>
+    <para pid="CH03-P1220" seq="122000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But the words felt hollow, and she knew it. She could no more convince herself of their truth than she could unsee what she had seen, unhear what she had heard, unknow what she now knew.
+    </para>
+    <para pid="CH03-P1230" seq="123000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette sat on the edge of her bed, her head in her hands. She was caught between two worlds, two realities, two versions of the truth. One was familiar, comfortable, the foundation of her entire life and identity. The other was terrifying, revolutionary, the kind of truth that could destroy everything she thought she knew about herself and her place in the world.
+    </para>
+    <para pid="CH03-P1240" seq="124000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She made a decision then. She would be more careful. She would not engage with Frost&apos;s questions, not encourage his revelations, not allow herself to be drawn deeper into his crisis of faith. She would maintain professional distance, focus on his physical care, and retreat into the safety of her established beliefs.
+    </para>
+    <para pid="CH03-P1250" seq="125000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Tomorrow, she would be the perfect caregiver&#x2014;compassionate but distant, skilled but obedient, faithful to her role and her understanding of Elom&apos;s plan. She would not question, not wonder, not doubt. She would serve as she had always served, with devotion and acceptance.
+    </para>
+    <para pid="CH03-P1260" seq="126000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But as she lay down and pulled the blanket over her shoulders, Marnette understood with a sinking certainty that it was too late. The seed had been planted, the questions had been asked, the possibility had been introduced. She could try to ignore it, suppress it, deny it, but she could never again be the person she had been when she arrived at Master Frost&apos;s residence three weeks ago.
+    </para>
+    <para pid="CH03-P1270" seq="127000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The red dust of Mars waited outside the dome, patient and eternal. And in the quiet darkness of her room, Marnette Croft, faithful servant of Elom, began to understand that sometimes the most dangerous heresies were not spoken aloud, but whispered in the heart where no one else could hear them.
+    </para>
+    
+  </section>
+</chapter>

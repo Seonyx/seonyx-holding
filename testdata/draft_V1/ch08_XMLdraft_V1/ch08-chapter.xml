@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter bookml-version="1.0" id="ch08" book-id="mayfly-mutiny" draft="1"
+         xmlns="https://bookml.org/ns/1.0">
+  <chapterinfo>
+    <chapternumber>8</chapternumber>
+    <title>Chapter 8</title>
+  </chapterinfo>
+  <section seq="1000">
+    <para pid="CH07-B0001" seq="100" type="normal" draft-created="1" draft-modified="1" modified-by="ai">The Master order is Elom&apos;s order.</para>
+    <para pid="CH08-P0010" seq="1000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Petra worked in the agricultural section, tending the hydroponic beds where most of the colony&apos;s food was grown. Marnette found her during the midday break, sitting alone at a table in the agricultural workers&apos; common area, her gray tunic marked with the green stains that came from handling nutrient solutions. She was perhaps forty, her face already showing the lines that came to salves in their middle years&#x2014;the beginning of the decline that Marnette now knew was engineered rather than natural. Perhaps ten years left, perhaps fifteen, depending on the variables that the documents had called &quot;lifecycle parameter variations.&quot;
+    </para>
+    <para pid="CH08-P0020" seq="2000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Petra?&quot; Marnette approached slowly, aware that she was about to change this woman&apos;s life forever. There was no gentle way to do this, no kind way to shatter someone&apos;s understanding of reality. All she could do was be present, be patient, and let the truth do its work. &quot;I&apos;m Marnette. Thomas mentioned you.&quot;
+    </para>
+    <para pid="CH08-P0030" seq="3000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Petra looked up, her expression guarded. &quot;Thomas. Lena&apos;s brother. The doubter.&quot; She said the word without judgment, as if naming a condition rather than passing sentence. &quot;He said you wanted to talk to me. About why I stopped going to church.&quot;
+    </para>
+    <para pid="CH08-P0040" seq="4000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Not exactly.&quot; Marnette sat down across from her, keeping her voice low despite the empty room. &quot;I wanted to talk to you about why I stopped believing.&quot;
+    </para>
+    <para pid="CH08-P0050" seq="5000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Something shifted in Petra&apos;s eyes&#x2014;surprise, then interest, then the careful hope of someone who had been alone with her questions for too long. &quot;You? But you&apos;re a caregiver. You help people die with faith. Everyone says you&apos;re one of the most devout in the district.&quot;
+    </para>
+    <para pid="CH08-P0060" seq="6000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I was. I believed everything I was taught, said every prayer with my whole heart, found genuine comfort in Elom&apos;s teachings.&quot; Marnette felt the familiar ache of that loss, the grief for the woman she had been. &quot;Until I learned something that made devotion impossible. Until I found out what we really are and why we really die.&quot;
+    </para>
+    <para pid="CH08-P0070" seq="7000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Petra was silent for a long moment, her hands wrapped around her cup of nutrient tea, her eyes searching Marnette&apos;s face for something&#x2014;sincerity, perhaps, or the trap that experience had taught her to expect. Living as a doubter in a community of believers made you cautious. Made you suspect kindness of ulterior motives.
+    </para>
+    <para pid="CH08-P0080" seq="8000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;My mother died fourteen months ago,&quot; she finally said, her voice dropping to barely above a whisper. &quot;She was fifty-one. Healthy one day, gone the next. She woke up feeling tired, went to the medical center, and by evening she was dead. The medics said it was cellular breakdown&#x2014;natural, inevitable, part of Elom&apos;s design.&quot; Her voice hardened, the grief transforming into something sharper. &quot;But she wasn&apos;t old. She wasn&apos;t sick. She just... stopped. Like a machine that had been switched off.&quot;
+    </para>
+    <para pid="CH08-P0090" seq="9000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette felt her chest tighten. She knew that feeling&#x2014;the wrongness of it, the sense that something didn&apos;t add up, the questions that faith couldn&apos;t answer no matter how hard you tried to believe.
+    </para>
+    <para pid="CH08-P0100" seq="10000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And you started wondering,&quot; Marnette said gently. &quot;Why some salves die in their forties and others make it to sixty. Why the breakdown seems to happen on a schedule that has nothing to do with health or lifestyle. Why the priests never have good answers for the variations.&quot;
+    </para>
+    <para pid="CH08-P0110" seq="11000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Yes.&quot; Petra&apos;s grip on her cup tightened until her knuckles went white. &quot;I started wondering if maybe we weren&apos;t dying naturally at all. If maybe something else was happening that they weren&apos;t telling us. My mother never smoked, never drank, worked hard and lived clean her whole life. And she died at fifty-one, while the woman next door who did everything wrong is still going strong at fifty-seven. It doesn&apos;t make sense. None of it makes sense.&quot;
+    </para>
+    <para pid="CH08-P0120" seq="12000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You&apos;re not crazy.&quot; Marnette reached into her bag and pulled out a single document&#x2014;the proposal, the one with the signatures at the bottom, the cold language about workforce units and lifecycle parameters. She had made copies now, careful reproductions that could be shared without risking the originals. &quot;You&apos;re right. About everything. And I can prove it.&quot;
+    </para>
+    <para pid="CH08-P0130" seq="13000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She handed the paper to Petra and watched as another person traveled the same terrible road she had traveled. Watched the confusion as Petra&apos;s eyes scanned the bureaucratic language. Watched the comprehension dawn as the meaning sank in. Watched the horror spread across her face as she understood what she was reading.
+    </para>
+    <para pid="CH08-P0140" seq="14000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Petra&apos;s hands trembled as she held the document. &quot;Fifty-year lifecycle parameters,&quot; she whispered, her voice cracking. &quot;Workforce units. Genetic modification protocols.&quot; She looked up at Marnette, tears streaming down her face. &quot;They... they designed us to die? They programmed it into us?&quot;
+    </para>
+    <para pid="CH08-P0150" seq="15000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They designed everything. Our lifespans, our faith, our understanding of ourselves and our place in the world. The Church was created at the same time as the genetic modifications&#x2014;a tool to make us accept what was done to us, to make us grateful for our own destruction.&quot; Marnette&apos;s voice was steady now, practiced from having this conversation with Thomas, but the pain was still there beneath the words. &quot;Your mother didn&apos;t die naturally, Petra. She was killed by programming written into her cells before she was born. She never had a chance to live longer, no matter how healthy she was, because her death date was decided by people who have been dead for centuries.&quot;
+    </para>
+    <para pid="CH08-P0160" seq="16000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Petra set the document down and pressed her hands against her face, her shoulders shaking with sobs. Marnette waited, giving her space, understanding that this grief needed to be felt before it could be transformed into something else.
+    </para>
+    <para pid="CH08-P0170" seq="17000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      When Petra finally looked up, her eyes were red and swollen, but something had changed in them. The grief was still there, but so was something else&#x2014;a cold, burning anger that Marnette recognized because she felt it in her own chest every day.
+    </para>
+    <para pid="CH08-P0180" seq="18000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I knew it,&quot; Petra said, her voice shaking but determined. &quot;I knew something was wrong. I could feel it every time I stood in that church and listened to Priest Malachi talk about Elom&apos;s beautiful design. It felt like lies, but I couldn&apos;t prove it, and everyone kept telling me I was just grieving, that I needed to pray more, that faith would heal my doubt.&quot; She picked up the document again, studying it like a weapon she had just been handed. &quot;Who else knows about this?&quot;
+    </para>
+    <para pid="CH08-P0190" seq="19000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Thomas. And now you.&quot; Marnette took a deep breath, feeling the weight of what she was about to propose. &quot;We&apos;re going to tell others. Carefully, one at a time, people we think might be ready to hear it. We want to build something&#x2014;a group of people who know the truth, who can support each other, who can figure out together what to do with this knowledge.&quot;
+    </para>
+    <para pid="CH08-P0200" seq="20000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;m in,&quot; Petra said without hesitation. &quot;Whatever you need. Whatever it takes. My mother deserved to know the truth about why she died. Every salve who ever lived and died in ignorance deserved to know. And every salve still living deserves to know what&apos;s waiting for them.&quot;
+    </para>
+    <para pid="CH08-P0210" seq="21000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette felt something ease in her chest&#x2014;the burden that had been crushing her since the Archive, shared now among three people instead of one. It wasn&apos;t much. It wasn&apos;t nearly enough. But it was a beginning.
+    </para>
+    <para pid="CH08-P0220" seq="22000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The older maintenance worker was named Marcus. He was fifty-four years old, one of the oldest salves Marnette had ever met, his face deeply lined and his hands gnarled from decades of physical labor. His gray hair was thinning, his back slightly bent from years of crawling through maintenance tunnels and lifting heavy equipment. Thomas had said Marcus was one of the ones who remembered the pre-Optimization days, who told stories about how things had been different when he was young.
+    </para>
+    <para pid="CH08-P0230" seq="23000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      They met him in the maintenance break room after the evening shift ended, when the space was empty and the corridors outside were quiet. Thomas had made the introduction, vouching for Marnette, explaining that she had something important to share&#x2014;something that might finally answer the questions Marcus had been carrying for decades.
+    </para>
+    <para pid="CH08-P0240" seq="24000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marcus listened to her explanation with an expression that Marnette couldn&apos;t read&#x2014;neither surprise nor disbelief, neither anger nor acceptance. Just attention, careful and complete, the attention of someone who had learned to listen before reacting.
+    </para>
+    <para pid="CH08-P0250" seq="25000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      When she finished and handed him the document, he looked at it for a long moment without speaking. His gnarled fingers traced the words on the page, following the lines of text like they were paths he had been seeking his whole life.
+    </para>
+    <para pid="CH08-P0260" seq="26000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I wondered when someone would finally find proof,&quot; he said.
+    </para>
+    <para pid="CH08-P0270" seq="27000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette stared at him. &quot;You knew?&quot;
+    </para>
+    <para pid="CH08-P0280" seq="28000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I suspected. For thirty years, I suspected.&quot; Marcus set the document down carefully, treating it with the respect of something long sought and finally found. &quot;When I was young&#x2014;younger than Thomas is now&#x2014;the Church changed some of its teachings. Small changes, things most people didn&apos;t notice. A word here, a phrase there, a shift in emphasis that seemed insignificant. But I noticed. I had the prayers memorized from childhood, and I noticed when they started saying something different.&quot;
+    </para>
+    <para pid="CH08-P0290" seq="29000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What changed?&quot;
+    </para>
+    <para pid="CH08-P0300" seq="30000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The emphasis on acceptance. The language about &apos;designated time&apos; and &apos;sacred cycle&apos; and &apos;finding joy in our brief service.&apos;&quot; Marcus&apos;s voice was thoughtful, distant, traveling back through decades of memory. &quot;When I was a boy, the prayers talked more about service and purpose and less about death. The priests spoke of Elom&apos;s love for his children, not Elom&apos;s design for their termination. It was like they were preparing us for something. Training us to accept what was coming.&quot;
+    </para>
+    <para pid="CH08-P0310" seq="31000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The Great Optimization,&quot; Thomas said. &quot;Twenty years ago. When they standardized the lifespans.&quot;
+    </para>
+    <para pid="CH08-P0320" seq="32000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Before that, the variations were wider. Much wider.&quot; Marcus leaned back in his chair, his old bones creaking with the movement. &quot;Some salves lived into their seventies, believe it or not. My grandmother made it to sixty-eight. She used to tell me stories about people she knew who lived even longer&#x2014;one old man in her district who claimed to be eighty-three when he finally died.&quot;
+    </para>
+    <para pid="CH08-P0330" seq="33000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette felt a chill run through her. Eighty-three. A salve who had lived eighty-three years, before the Optimization tightened the parameters.
+    </para>
+    <para pid="CH08-P0340" seq="34000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;After the Optimization, the upper range dropped,&quot; Marcus continued. &quot;Suddenly no one was making it past sixty-five, then sixty, then fifty-eight. Now almost no one makes it past sixty, and most don&apos;t reach fifty-five. They said it was natural variation settling into optimal patterns. They said it was Elom&apos;s design becoming clearer as the colony matured.&quot;
+    </para>
+    <para pid="CH08-P0350" seq="35000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;But it wasn&apos;t natural,&quot; Marnette said. &quot;They were adjusting the parameters. Tightening the kill switch.&quot;
+    </para>
+    <para pid="CH08-P0360" seq="36000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That&apos;s what I suspected. But I couldn&apos;t prove it. I had no documents, no evidence, just memories and suspicions and a feeling that wouldn&apos;t go away no matter how hard I prayed.&quot; Marcus picked up the document again, studying Frost&apos;s signature at the bottom. &quot;Why didn&apos;t you say anything?&quot; Marnette asked. &quot;If you suspected for thirty years&#x2014;&quot;
+    </para>
+    <para pid="CH08-P0370" seq="37000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Who would have believed me? An old maintenance worker with failing memory and heretical suspicions? They would have called it age, called it bitterness, called it the doubt that comes to salves who have lived too long and seen too much.&quot; Marcus&apos;s eyes were haunted now, dark with decades of suppressed truth. &quot;And I watched what happened to others who asked too many questions.&quot;
+    </para>
+    <para pid="CH08-P0380" seq="38000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What happened?&quot;
+    </para>
+    <para pid="CH08-P0390" seq="39000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;There was a woman, years ago. Clara. She worked in the water reclamation facility, same as my friend Jonas still does. She started talking about the changes she&apos;d noticed&#x2014;the way the lifespans had shifted, the way the Church&apos;s teachings had evolved, the way everything seemed designed to make us accept shorter and shorter lives.&quot; Marcus&apos;s voice dropped. &quot;One day she was here; the next she was gone. Transferred to a remote facility, they said. For her health, they said. I never saw her again. None of us did.&quot;
+    </para>
+    <para pid="CH08-P0400" seq="40000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Isolation protocols. The documents had mentioned them&#x2014;mechanisms for handling outlier individuals who couldn&apos;t be brought back into compliance. Community pressure and, where necessary, removal from the community entirely.
+    </para>
+    <para pid="CH08-P0410" seq="41000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;But now you have proof,&quot; Marcus continued, tapping the document with one gnarled finger. &quot;Now we have something we can show people, something they can hold in their hands and read with their own eyes. The question is: what do we do with it?&quot;
+    </para>
+    <para pid="CH08-P0420" seq="42000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We tell others,&quot; Marnette said, feeling the strategy crystallize as she spoke it. &quot;Carefully, quietly, person by person. We build a group of people who know the truth, who can support each other, who can decide together what comes next.&quot;
+    </para>
+    <para pid="CH08-P0430" seq="43000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marcus nodded slowly. &quot;There are others who should know. People I&apos;ve talked to over the years, people who had their own suspicions but couldn&apos;t prove anything. They&apos;ve been waiting, some of them. Waiting for permission to speak what they&apos;ve always suspected.&quot;
+    </para>
+    <para pid="CH08-P0440" seq="44000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;How many?&quot; Thomas asked.
+    </para>
+    <para pid="CH08-P0450" seq="45000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Three, maybe four that I trust completely. People who&apos;ve been carrying questions for years, waiting for answers that never came.&quot; Marcus paused, considering. &quot;And Jonas&#x2014;my friend at the water facility. The one who knew Clara. He&apos;s been asking questions since she disappeared.&quot;
+    </para>
+    <para pid="CH08-P0460" seq="46000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The circle was growing. Three had become four, and four would soon become more. The lie was beginning to crack.
+    </para>
+    <para pid="CH08-P0470" seq="47000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The first meeting happened three days later, in Marcus&apos;s quarters after the night shift ended. The space was cramped&#x2014;barely room for the six people who had gathered&#x2014;but the closeness felt appropriate somehow. They were conspirators now, bound together by dangerous knowledge, and the intimacy of the space reflected the intimacy of what they shared.
+    </para>
+    <para pid="CH08-P0480" seq="48000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette looked around the room at the faces illuminated by the dim lighting. Thomas, young and fierce with the energy of someone who had finally found a cause worthy of his doubt, his whole body tense with readiness. Petra, her grief transformed into quiet determination, the documents she had studied now memorized like scripture she actually believed. Marcus, the elder among them, his decades of suspicion finally validated, something like peace settling into his lined face. And two others Marcus had brought: Vera, a woman in her late forties who worked in the medical supply distribution center, her sharp eyes taking in everything with organizational precision, and Jonas, a man around Marcus&apos;s age who had spent his life in the water reclamation facility and had never stopped wondering what had happened to Clara.
+    </para>
+    <para pid="CH08-P0490" seq="49000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Six people who knew the truth. Six people carrying the weight of seven hundred years of lies.
+    </para>
+    <para pid="CH08-P0500" seq="50000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We need to decide what we&apos;re doing,&quot; Vera said. Her voice was sharp, practical&#x2014;the voice of someone accustomed to organizing and managing, someone who saw problems as puzzles to be solved rather than disasters to be mourned. &quot;It&apos;s not enough to just know. Knowledge without action is just a heavier burden.&quot;
+    </para>
+    <para pid="CH08-P0510" seq="51000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Action how?&quot; Jonas asked. His reaction to the documents had been the quietest of all&#x2014;not anger or grief, but a kind of exhausted acceptance, as if he had been waiting his whole life for confirmation of something he had always sensed. &quot;We can&apos;t exactly march up to the Masters and demand they stop killing us. We have no power. No weapons. No leverage.&quot;
+    </para>
+    <para pid="CH08-P0520" seq="52000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;No,&quot; Marnette agreed. &quot;And we can&apos;t risk open confrontation. Not yet. Not until we understand what we&apos;re dealing with, what resources we might have, who might be allies. If they find out we have these documents, if they realize we know&#x2014;&quot;
+    </para>
+    <para pid="CH08-P0530" seq="53000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They&apos;ll isolate us,&quot; Marcus finished. &quot;Silence us. The way they silenced Clara, the way they&apos;ve silenced everyone who asked too many questions over the centuries.&quot;
+    </para>
+    <para pid="CH08-P0540" seq="54000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;So what do we do?&quot; Thomas leaned forward, his young face intense with frustrated energy. &quot;Just sit here knowing the truth while everyone else lives and dies in ignorance? Wait for our own cells to terminate while we keep the secret to ourselves?&quot;
+    </para>
+    <para pid="CH08-P0550" seq="55000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We share the truth,&quot; Marnette said. &quot;But carefully. Not speeches or announcements&#x2014;conversations. One person at a time, the way I told each of you. We find people who might be ready to hear it, people who&apos;ve already started doubting, and we show them what we&apos;ve found.&quot;
+    </para>
+    <para pid="CH08-P0560" seq="56000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That could take years,&quot; Vera objected. &quot;Decades. One person at a time, in a colony of thousands? We&apos;ll all be dead before we make any real impact.&quot;
+    </para>
+    <para pid="CH08-P0570" seq="57000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;It&apos;s how movements begin.&quot; Petra&apos;s voice was quiet but certain, carrying a conviction that came from somewhere deep. &quot;I&apos;ve been reading the historical records&#x2014;the ones they let us access, anyway. Every change that ever happened started with small groups of people talking to each other, sharing ideas, building trust. It spreads like... like seeds in a garden. Slowly at first, then faster as roots take hold and plants begin to reproduce.&quot;
+    </para>
+    <para pid="CH08-P0580" seq="58000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Relationship by relationship,&quot; Marnette added. &quot;We&apos;re not recruiting soldiers. We&apos;re not building an army. We&apos;re creating a network of people who know the truth and choose to carry it together. We support each other. We protect each other. And we share what we know, one relationship at a time, until the lie can no longer hold.&quot;
+    </para>
+    <para pid="CH08-P0590" seq="59000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And then what?&quot; Jonas&apos;s voice carried the weariness of someone who had seen too much, lived too long, carried too many questions without answers. &quot;Even if we tell a hundred people, a thousand&#x2014;what changes? The Masters still control everything. The genetic modifications are already in us. Knowing we&apos;ve been murdered doesn&apos;t stop the murder.&quot;
+    </para>
+    <para pid="CH08-P0600" seq="60000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The question hung in the air, heavy with implications none of them could fully address. What was the point of knowing the truth if you couldn&apos;t change it? What good was awareness if it only transformed ignorant suffering into informed suffering?
+    </para>
+    <para pid="CH08-P0610" seq="61000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette thought of Frost, dying in his bed, desperate to confess before the end claimed him. He had known the truth for nearly eight centuries, and the knowing had tormented him. But he had still wanted to tell her. He had still believed that the truth mattered, even if he couldn&apos;t see how it would lead to change.
+    </para>
+    <para pid="CH08-P0620" seq="62000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Knowledge is the first step,&quot; she said slowly, working through the thought as she spoke it. &quot;We can&apos;t change what we don&apos;t understand. We can&apos;t fight what we can&apos;t see. Right now, most salves accept their deaths because they believe those deaths are natural, sacred, part of Elom&apos;s design. What happens when they learn the truth? When they understand that their acceptance has been engineered, that their faith has been manufactured, that their &apos;designated time&apos; is actually engineered murder?&quot;
+    </para>
+    <para pid="CH08-P0630" seq="63000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Some will reject it,&quot; Vera said. &quot;Denial is easier than truth.&quot;
+    </para>
+    <para pid="CH08-P0640" seq="64000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Some will,&quot; Marnette agreed. &quot;But not all. And the ones who accept it&#x2014;their acceptance of the system will break. They won&apos;t pray the same way, won&apos;t say the words with the same conviction. They won&apos;t work the same way, won&apos;t serve with the same willing gratitude. They won&apos;t die the same way, won&apos;t go peacefully into their &apos;designated time&apos; with faith and acceptance.&quot;
+    </para>
+    <para pid="CH08-P0650" seq="65000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They&apos;ll start asking questions,&quot; Thomas said, understanding dawning in his eyes. &quot;Out loud. In public. They&apos;ll start saying the things we&apos;ve been saying in secret.&quot;
+    </para>
+    <para pid="CH08-P0660" seq="66000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And their questions will plant doubt in others,&quot; Petra added. &quot;People who never doubted before will start to wonder why their neighbors and friends have changed.&quot;
+    </para>
+    <para pid="CH08-P0670" seq="67000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We&apos;re not just sharing information.&quot; Marnette looked around the room, meeting each pair of eyes in turn. &quot;We&apos;re breaking the mechanism of control. Every person who learns the truth is one less person the lie can use. Every salve who stops believing is one less voice speaking the prayers that keep everyone else docile.&quot;
+    </para>
+    <para pid="CH08-P0680" seq="68000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And if enough people stop believing?&quot; Thomas&apos;s eyes were bright with something that might have been hope. &quot;If enough people refuse to accept?&quot;
+    </para>
+    <para pid="CH08-P0690" seq="69000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Then the Masters will have to respond. They&apos;ll have to acknowledge what was done, or try to suppress it by force.&quot; Marcus&apos;s voice was thoughtful. &quot;Either way, things change. The system only works because we believe in it. Take away the belief, and the system has to find something else to stand on.&quot;
+    </para>
+    <para pid="CH08-P0700" seq="70000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Jonas was quiet for a long moment, his weathered face working through the implications. &quot;Clara,&quot; he finally said. &quot;She was trying to do this. Trying to share what she suspected, trying to get others to see. And they silenced her.&quot;
+    </para>
+    <para pid="CH08-P0710" seq="71000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Because she was alone,&quot; Marnette said. &quot;Because there was only one of her, asking questions, making people uncomfortable. One person is easy to silence. But what about ten? Twenty? A hundred?&quot;
+    </para>
+    <para pid="CH08-P0720" seq="72000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;There&apos;s safety in numbers,&quot; Vera said, her practical mind engaging with the strategy. &quot;If enough people know, they can&apos;t isolate all of us. The knowledge becomes too widespread to suppress.&quot;
+    </para>
+    <para pid="CH08-P0730" seq="73000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And we protect each other,&quot; Marcus added. &quot;We look out for each other, watch for signs of trouble, help each other if things get dangerous. We&apos;re not alone anymore. None of us are.&quot;
+    </para>
+    <para pid="CH08-P0740" seq="74000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The room fell silent as the implications sank in. They were proposing something that had never been done in seven hundred years of colonial history&#x2014;a coordinated effort to spread truth that the system had been specifically designed to suppress. They were proposing to become exactly what the documents had warned against: a network of outlier individuals sharing dangerous knowledge.
+    </para>
+    <para pid="CH08-P0750" seq="75000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It was terrifying. And it was necessary.
+    </para>
+    <para pid="CH08-P0760" seq="76000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;So we&apos;re agreed?&quot; Marnette asked. &quot;We tell people, one at a time. We support them through the breaking of their faith. We build a network of people who know, who can support each other, who can help others when they&apos;re ready. And we see what happens when enough people stop believing the lie.&quot;
+    </para>
+    <para pid="CH08-P0770" seq="77000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      One by one, they nodded. Six people in a cramped room, agreeing to attempt something that might get them all killed or isolated or worse. Six people choosing truth over safety, connection over isolation, hope over resignation.
+    </para>
+    <para pid="CH08-P0780" seq="78000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It wasn&apos;t much. But it was a beginning.
+    </para>
+    <para pid="CH08-P0790" seq="79000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      They talked for hours, working through the practicalities of what they were attempting. Who else might be ready to hear the truth. How to approach people without raising suspicion. What to do if someone rejected the evidence or threatened to report them. How to recognize the signs that someone might be a danger rather than an ally.
+    </para>
+    <para pid="CH08-P0800" seq="80000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Vera, with her organizational mind, suggested they divide the salve district into sections, each of them responsible for identifying potential candidates in their own area. &quot;We know our own communities,&quot; she said. &quot;We know who&apos;s been asking questions, who&apos;s lost someone and can&apos;t quite accept it, who looks at the Church with something other than devotion.&quot;
+    </para>
+    <para pid="CH08-P0810" seq="81000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marcus offered to focus on the older workers, the ones who remembered how things had been different before the Optimization. &quot;They&apos;ve been carrying doubts the longest,&quot; he said. &quot;Some of them are just waiting for permission to speak what they&apos;ve always suspected.&quot;
+    </para>
+    <para pid="CH08-P0820" seq="82000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Thomas volunteered to approach the younger salves, the ones like himself who had grown up with questions they couldn&apos;t answer. &quot;We&apos;re supposed to be the faithful generation,&quot; he said bitterly. &quot;But faith is harder when you&apos;ve never seen what you&apos;re supposed to believe in. A lot of my friends say the prayers without feeling them. They might be ready to hear why.&quot;
+    </para>
+    <para pid="CH08-P0830" seq="83000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Petra would work with the grieving&#x2014;the ones who had lost family members to sudden cellular breakdown, who had been told to accept with grace what felt wrong in their bones. &quot;Grief opens doors,&quot; she said quietly. &quot;When you&apos;re already broken, the truth can feel like explanation instead of destruction.&quot;
+    </para>
+    <para pid="CH08-P0840" seq="84000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Jonas would focus on the water reclamation workers, the people he had known for decades. &quot;We work in the guts of the colony,&quot; he said. &quot;We see how everything connects, how fragile the systems really are. Some of my colleagues have wondered for years why the Masters get the best water, the best air, the best of everything, while we maintain the systems that keep them alive.&quot;
+    </para>
+    <para pid="CH08-P0850" seq="85000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And Marnette would continue her work as a caregiver, but with new purpose. She would talk to the families of the dying, the people already confronting mortality, already asking the questions that faith was supposed to answer. Perhaps some of them would be ready to hear that their questions had answers&#x2014;just not the answers the Church provided.
+    </para>
+    <para pid="CH08-P0860" seq="86000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What about Lena?&quot; Thomas asked, his voice careful. &quot;She&apos;s been asking about me. About my doubts, about who I&apos;ve been talking to. She can tell something has changed.&quot;
+    </para>
+    <para pid="CH08-P0870" seq="87000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette felt her chest tighten at the mention of her friend&apos;s name. &quot;Not yet. She believes too deeply. If we tell her now, before we&apos;re established, before we have enough people to support her through the breaking&#x2014;&quot;
+    </para>
+    <para pid="CH08-P0880" seq="88000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;She could report us,&quot; Jonas said flatly. &quot;Out of love, out of fear for her brother&apos;s soul, out of genuine belief that she&apos;s saving us from dangerous heresy. I&apos;ve seen it happen. People who love you can destroy you when they think they&apos;re helping.&quot;
+    </para>
+    <para pid="CH08-P0890" seq="89000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Yes.&quot; The word was painful to speak. &quot;Lena loves me. She loves Thomas. But she loves Elom too, and if she has to choose between us and her faith...&quot; Marnette shook her head. &quot;We wait. We build our network. And when the time comes, when we&apos;re strong enough, we tell her together. All of us. So she can see that it&apos;s not just one doubter&apos;s madness&#x2014;it&apos;s a truth that dozens of people have accepted.&quot;
+    </para>
+    <para pid="CH08-P0900" seq="90000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Thomas looked unhappy but nodded. &quot;She&apos;s going to feel betrayed. When she finds out we knew and didn&apos;t tell her.&quot;
+    </para>
+    <para pid="CH08-P0910" seq="91000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I know. But betrayal she can recover from. Isolation she might not.&quot; Marnette thought of Clara, Marcus&apos;s friend who had asked too many questions and vanished one day. &quot;We protect the people we love by being careful. Even if that care looks like deception right now.&quot;
+    </para>
+    <para pid="CH08-P0920" seq="92000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The meeting ended as the artificial dawn began to brighten the corridors outside. They agreed to meet again in a week, to share progress and discuss the people they had approached. Each of them left with copies of the most important documents&#x2014;carefully hidden, treated like the precious and dangerous things they were.
+    </para>
+    <para pid="CH08-P0930" seq="93000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette was the last to leave, lingering in Marcus&apos;s doorway for a moment.
+    </para>
+    <para pid="CH08-P0940" seq="94000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Thank you,&quot; she said. &quot;For believing. For being willing to act after thirty years of carrying this alone.&quot;
+    </para>
+    <para pid="CH08-P0950" seq="95000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marcus shook his head. &quot;Thank Frost. He&apos;s the one who kept the evidence, who chose you to find it, who made sure the truth survived long enough to matter.&quot; He paused, his old eyes thoughtful. &quot;I never met him. Never even saw him except in the memorial displays. But I think maybe he was different from the other Masters. Or became different, over all those centuries.&quot;
+    </para>
+    <para pid="CH08-P0960" seq="96000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;He signed the original proposal,&quot; Marnette said. &quot;He voted to create us.&quot;
+    </para>
+    <para pid="CH08-P0970" seq="97000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And then he spent eight hundred years living with what he&apos;d done.&quot; Marcus&apos;s voice was gentle. &quot;That&apos;s not nothing. Guilt like that... it changes a person. Maybe it&apos;s the only thing that can change a Master. It made him want to set things right, even if he couldn&apos;t figure out how.&quot;
+    </para>
+    <para pid="CH08-P0980" seq="98000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette nodded slowly. She still didn&apos;t know if she could forgive Frost. But she could understand him&#x2014;the weight he had carried, the attempt he had made at the end. He had planted seeds in her, seeds of truth that were now beginning to grow. Perhaps that was the closest thing to redemption someone like him could achieve.
+    </para>
+    <para pid="CH08-P0990" seq="99000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The weeks that followed were careful, quiet work. Conversations in break rooms and corridors, in private quarters after shifts ended, in the shadowed corners of the agricultural domes where no one thought to look for conspiracy. One person at a time, just as they had planned.
+    </para>
+    <para pid="CH08-P1000" seq="100000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Not everyone believed. Some rejected the documents as fakes, as heresy, as the delusions of grief-maddened doubters. Vera approached a woman she had known for years, a colleague in the medical supply section, only to have the woman recoil in horror and refuse to speak to her again. The woman hadn&apos;t reported them&#x2014;yet&#x2014;but she avoided Vera&apos;s eyes in the corridors now, and the tension was palpable.
+    </para>
+    <para pid="CH08-P1010" seq="101000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marcus tried to share the truth with an old friend from the maintenance crews, and the friend accused him of losing his mind to age and bitterness. &quot;You&apos;ve been asking these questions for thirty years,&quot; the friend said, his voice trembling with something between anger and fear. &quot;And now you have some papers that prove everything you&apos;ve always wanted to believe? Don&apos;t you see how convenient that is? Don&apos;t you see that you&apos;re just looking for excuses for your doubt?&quot;
+    </para>
+    <para pid="CH08-P1020" seq="102000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It was a reminder that faith, even manufactured faith, had deep roots. The lie was comfortable. The lie provided meaning. The lie made death bearable. Some people would choose the lie over the truth, no matter how much evidence was placed in front of them, because the truth was simply too terrible to accept.
+    </para>
+    <para pid="CH08-P1030" seq="103000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But others listened. Others read the documents with trembling hands and recognized the truth they had always sensed without being able to name. Others wept and raged and asked questions that had no good answers, and then asked how they could help.
+    </para>
+    <para pid="CH08-P1040" seq="104000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      A young woman named Sera, who had watched her father die at forty-eight and never understood why, broke down sobbing when Petra showed her the documents. &quot;I knew,&quot; she kept saying through her tears. &quot;I knew it wasn&apos;t natural. I knew something was wrong. Everyone told me I was just grieving, but I knew.&quot;
+    </para>
+    <para pid="CH08-P1050" seq="105000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      An older man named Chen, who had worked in the fusion reactor maintenance for forty years, read the proposal with the careful attention of an engineer and then said, &quot;The math always bothered me. The way the lifespans clustered, the way the distributions followed patterns that looked designed rather than natural. I ran probability analyses years ago and the numbers never made sense. Now I understand why.&quot;
+    </para>
+    <para pid="CH08-P1060" seq="106000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Within a month, the circle had grown from six to fourteen. Within two months, it was twenty-three. Within three months, it was forty-one&#x2014;forty-one salves scattered across the district, connected by shared knowledge and careful trust, each one a crack in the foundation of a system that had stood for seven centuries.
+    </para>
+    <para pid="CH08-P1070" seq="107000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      They met in rotating locations, never the same place twice, never more than seven or eight at a time. The full group never gathered&#x2014;too dangerous, too visible, too easy to notice and suppress. But they shared information, passed along names of people who might be ready, supported each other through the grief and rage that came with understanding what had been done to them.
+    </para>
+    <para pid="CH08-P1080" seq="108000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And Marnette, who had started this with a dying man&apos;s words and a promise she hadn&apos;t understood, found herself becoming something she had never imagined: a leader. Not by choice or ambition, but by circumstance and necessity. She was the one who had found the documents, the one who had first broken the silence, the one whose voice carried the weight of someone who had traveled the full journey from faith to understanding.
+    </para>
+    <para pid="CH08-P1090" seq="109000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The others looked to her for guidance, and she did her best to provide it&#x2014;not commands or directives, but conversations. Questions. A method of engaging that built connection rather than hierarchy.
+    </para>
+    <para pid="CH08-P1100" seq="110000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We&apos;re not building an army,&quot; she told each new person who joined them. &quot;We&apos;re building a family. A family of people who know the truth and choose to carry it together. We support each other. We protect each other. And we share what we know, one relationship at a time, until the lie can no longer hold.&quot;
+    </para>
+    <para pid="CH08-P1110" seq="111000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Three months after she had fled Frost&apos;s Archive with the folder hidden beneath her tunic, Marnette stood in her small quarters, looking at the carving of Elom still turned to face the wall, and allowed herself to feel something she had almost forgotten: hope.
+    </para>
+    <para pid="CH08-P1120" seq="112000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Forty-one people knew the truth. Forty-one cracks in the foundation of seven hundred years of lies. It wasn&apos;t enough to change anything yet&#x2014;not enough to confront the Masters, not enough to demand justice, not enough to force the system to acknowledge what it had done. But it was a beginning. And beginnings, she was learning, were how everything started.
+    </para>
+    <para pid="CH08-P1130" seq="113000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The truth was spreading. Slowly, carefully, person by person. And there was no going back.
+    </para>
+    
+  </section>
+</chapter>

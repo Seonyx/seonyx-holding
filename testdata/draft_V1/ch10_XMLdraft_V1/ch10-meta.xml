@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch10" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH09-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Trust in the Plan.&quot; The Council moves to contain the uprising. Masters panic; salves wonder if they&apos;ve made a catastrophic mistake. Trust is fractured. The Plan is revealed as exploitation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0010">
+    <tags><tag>Time jump; network surpasses 100; truth spreading quietly.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0020">
+    <tags><tag>Growth creates pressure; central question demands strategy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0030">
+    <tags><tag>Secret meeting setting; key players present; newcomers widen stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0040">
+    <tags><tag>Thomas pushes from secrecy to action; moral urgency voiced.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0050">
+    <tags><tag>Vera forces concreteness; challenges vague rebellion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0060">
+    <tags><tag>Thomas proposes confrontation and equality, admits uncertainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0070">
+    <tags><tag>Jonas raises consequences: isolation and repression precedent.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0080">
+    <tags><tag>Thomas prefers doomed action over silent complicity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0090">
+    <tags><tag>Helena personalizes fear; recalls family loss; protects children.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0100">
+    <tags><tag>Thomas frames inaction as condemning next generation to lies.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0110">
+    <tags><tag>Marcus mediates; urges strategic caution.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0120">
+    <tags><tag>Thomas equates caution with cowardice; escalates conflict.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0130">
+    <tags><tag>Jonas reframes caution as survival; reminds differing time left.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0140">
+    <tags><tag>Group fractures into competing tactics; tension peaks.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0150">
+    <tags><tag>Marnette weighs ethics: action needed, but reckless equals death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0160">
+    <tags><tag>Sela suggests low-harm sabotage to weaken control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0170">
+    <tags><tag>Chen explains system monitoring; sabotage likely traced.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0180">
+    <tags><tag>Thomas despairs at endless debate; impatience grows.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0190">
+    <tags><tag>Marnette asserts leadership; introduces alternative path.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0200">
+    <tags><tag>Marnette defines strength as relationships and widespread truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0210">
+    <tags><tag>Thomas insists they've already spread it to 100.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0220">
+    <tags><tag>Marnette highlights scale problem; needs thousands, not hundreds.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0230">
+    <tags><tag>Petra notes long timeline; patience required.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0240">
+    <tags><tag>Marnette accepts decades-long cost; names tradeoff explicitly.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0250">
+    <tags><tag>Thomas bitterly summarizes strategy as mere whispering.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0260">
+    <tags><tag>Marnette coins mission: bearing witness, building community.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0270">
+    <tags><tag>Jonas doubts; hears only waiting and hope.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0280">
+    <tags><tag>Marnette argues this is the only non-suicidal strategy; warns crackdown.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0290">
+    <tags><tag>Silence settles; group absorbs harsh realism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0300">
+    <tags><tag>Marnette adds nuance: Masters differ; some ignorant, some guilty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0310">
+    <tags><tag>Thomas rejects 'remorseful Masters' as irrelevant injustice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0320">
+    <tags><tag>Marnette proposes recruiting sympathetic Masters; alliance pivot.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0330">
+    <tags><tag>Thomas reacts with outrage; moral line drawn.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0340">
+    <tags><tag>Marnette reframes Masters as inheritors who might change system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0350">
+    <tags><tag>Fear voiced: wrong Master means betrayal.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0360">
+    <tags><tag>Marnette outlines cautious vetting and observation protocol.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0370">
+    <tags><tag>Debate broadens; child-safety vs complicity arguments clash.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0380">
+    <tags><tag>Consensus reached: expand network, watch Masters, practice patience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0390">
+    <tags><tag>Patience tested; Marnette caregiving shifts from faith to humanism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0400">
+    <tags><tag>Recurring dilemma: tell grieving families now or later?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0410">
+    <tags><tag>She chooses restraint; guilt grows; 'presence' becomes radical act.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0420">
+    <tags><tag>Introduces Miriam's scheduled death; intimate case study begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0430">
+    <tags><tag>Miriam signals Marnette's reputation; invitation to trust.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0440">
+    <tags><tag>Bedside details show breakdown's physical reality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0450">
+    <tags><tag>Miriam praises Marnette's listening; contrasts official caretaking.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0460">
+    <tags><tag>Marnette states new ethic: people, not units.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0470">
+    <tags><tag>Miriam names the central doubt: why 54, not longer?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0480">
+    <tags><tag>Marnette feels the story's core pressure tighten.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0490">
+    <tags><tag>Marnette prompts Miriam to articulate suspicion safely.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0500">
+    <tags><tag>Miriam repeats doctrine but reveals uncertainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0510">
+    <tags><tag>Marnette validates grandmother's perspective; rapport deepens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0520">
+    <tags><tag>Grandmother's longevity + advice to notice; Miriam's lifelong observation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0530">
+    <tags><tag>Marnette recognizes intuitive truth-seeing without documents.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0540">
+    <tags><tag>Marnette confirms lie exists; whispers the crack open.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0550">
+    <tags><tag>Miriam asks for legacy: tell daughter to keep noticing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0560">
+    <tags><tag>Marnette commits to passing truth onward.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0570">
+    <tags><tag>Miriam seeks authentic spirituality; rejects official prayers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0580">
+    <tags><tag>Marnette offers human prayer/comfort; connection replaces doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0590">
+    <tags><tag>Slow vigil; hallucinations and grief texture the death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0600">
+    <tags><tag>Ada explains Miriam's questioning history; Church conflict shown.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0610">
+    <tags><tag>Marnette affirms Miriam; reinforces respect.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0620">
+    <tags><tag>Ada credits mother's independent thinking; probes Marnette's difference.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0630">
+    <tags><tag>Marnette admits questioning and transformative answers; foreshadowing recruitment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0640">
+    <tags><tag>Wordless pact forms; trust seed planted.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0650">
+    <tags><tag>Miriam dies; Ada's grief bonds her to Marnette; future truth-sharing implied.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0660">
+    <tags><tag>Motif refrain: relationships and witnessing as revolution.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0670">
+    <tags><tag>Network growth quantified; momentum established.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0680">
+    <tags><tag>Varied reactions to truth: retreat, denial, caution.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0690">
+    <tags><tag>Core believers form decentralized web; resilience through no center.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0700">
+    <tags><tag>Marnette's role evolves into teacher and guide.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0710">
+    <tags><tag>Kira's question introduces burnout and despair theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0720">
+    <tags><tag>Marnette confesses ongoing grief; perseverance grounded in duty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0730">
+    <tags><tag>Kira expresses hopeless scale problem.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0740">
+    <tags><tag>Marnette reframes change as accumulation; encourages Kira's agency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0750">
+    <tags><tag>Kira's personal loss turns doctrine into 'murder' accusation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0760">
+    <tags><tag>Marnette states purpose: honor dead, save living.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0770">
+    <tags><tag>Kira hardens into determination; hope replaced by resolve.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0780">
+    <tags><tag>Marnette observes collective determination as movement fuel.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0790">
+    <tags><tag>Reflection: empathy and connection as revolutionary weapons.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0800">
+    <tags><tag>Major turn: first sympathetic Master contact announced.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0810">
+    <tags><tag>Setup: Chen's workplace and Lydia's unusual respectfulness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0820">
+    <tags><tag>Chen's months-long vetting underscores caution and method.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0830">
+    <tags><tag>Chen tests Lydia with a risky lifespan question.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0840">
+    <tags><tag>Lydia recites official explanation; guard up.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0850">
+    <tags><tag>Chen challenges her sincerity; pressure applied.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0860">
+    <tags><tag>Lydia probes Chen's motive; tension spikes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0870">
+    <tags><tag>Chen argues from data; hints at deliberate design.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0880">
+    <tags><tag>Lydia's reaction signals she already carries doubts.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0890">
+    <tags><tag>Lydia reveals Sustainability Protocol traces; access restrictions noted.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0900">
+    <tags><tag>Chen offers full truth; invitation to cross line.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0910">
+    <tags><tag>Lydia responds with hope and readiness; alliance confirmed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0920">
+    <tags><tag>Chen brings Lydia to Marnette; bridge built.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0930">
+    <tags><tag>Network meets Lydia; distrust and hostility surface.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0940">
+    <tags><tag>Lydia reads evidence; undergoes horror and grief.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0950">
+    <tags><tag>Lydia recounts childhood doubt; caretaker death as origin wound.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0960">
+    <tags><tag>Marnette probes whether Lydia's family knows truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0970">
+    <tags><tag>Lydia distinguishes ignorance from complicity; some Masters knowingly maintain system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0980">
+    <tags><tag>Marnette links guilt to Optimization decision-makers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P0990">
+    <tags><tag>Lydia confirms deliberate shortening; names intent: control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1000">
+    <tags><tag>Thomas confronts Lydia with privilege and stolen years.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1010">
+    <tags><tag>Lydia owns complicity and chooses to help; moral credibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1020">
+    <tags><tag>Group processes; Petra breaks silence with measured welcome.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1030">
+    <tags><tag>Petra recognizes courage; validates alliance concept.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1040">
+    <tags><tag>Lydia admits uncertainty but refuses normalcy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1050">
+    <tags><tag>Tension eases into tentative acceptance; trust deferred.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1060">
+    <tags><tag>Marnette notes limits yet significance: first cross-class ally.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1070">
+    <tags><tag>Theme statement: one relationship can alter the revolution's shape.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1080">
+    <tags><tag>Lydia delivers intel: names, discussions, growing Master unease.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1090">
+    <tags><tag>Lydia suggests more potential allies among younger Masters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1100">
+    <tags><tag>Marnette asks about recruitment possibilities.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1110">
+    <tags><tag>Lydia warns of severe penalties; stakes for Masters clarified.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1120">
+    <tags><tag>Marnette points out consequence: Lydia would become mortal like them.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1130">
+    <tags><tag>Lydia wrestles with fear and stolen privilege; ethical shift deepens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1140">
+    <tags><tag>Marnette reflects on unprecedented dialogue about complicity and awakening.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH10-P1150">
+    <tags><tag>Closing momentum: network expands; boundaries begin to blur.</tag></tags>
+  </para-meta>
+</meta>

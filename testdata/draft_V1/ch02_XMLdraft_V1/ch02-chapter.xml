@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter bookml-version="1.0" id="ch02" book-id="mayfly-mutiny" draft="1"
+         xmlns="https://bookml.org/ns/1.0">
+  <chapterinfo>
+    <chapternumber>2</chapternumber>
+    <title>Chapter 2</title>
+  </chapterinfo>
+  <section seq="1000">
+    <para pid="CH01-B0001" seq="100" type="normal" draft-created="1" draft-modified="1" modified-by="ai">Duty is the highest calling.</para>
+    <para pid="CH02-P0010" seq="1000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The first light of false dawn filtered through the habitat dome when Marnette&apos;s fingers found the pulse point on Master Frost&apos;s wrist. His skin was cool to the touch, thinner than yesterday, the blue veins beneath it standing out like rivers on a map. She counted beats against her watch: seventy-two, weak but steady. His breathing had improved during the night, the rattling in his chest less pronounced. Another day survived, though what survival meant to a man like him, she couldn&apos;t imagine.
+    </para>
+    <para pid="CH02-P0020" seq="2000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Good morning, Master Frost,&quot; she said softly, adjusting the blanket that had slipped down his chest.
+    </para>
+    <para pid="CH02-P0030" seq="3000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      His eyes opened slowly, the pale blue focusing on her face with the same unnerving clarity she had noticed yesterday. &quot;Marnette. You sleep well?&quot;
+    </para>
+    <para pid="CH02-P0040" seq="4000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I did, thank you.&quot; She moved to the IV stand, checking the fluid levels, adjusting the drip rate according to the physician&apos;s orders. &quot;Your vital signs stabilized during the night. The pain medication seems to be working better now.&quot;
+    </para>
+    <para pid="CH02-P0050" seq="5000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He watched her hands as they worked, practiced, efficient. &quot;You&apos;re not afraid of touching me.&quot;
+    </para>
+    <para pid="CH02-P0060" seq="6000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette paused, her fingers on the ventilator settings. &quot;Should I be?&quot;
+    </para>
+    <para pid="CH02-P0070" seq="7000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Most people are. They think they&apos;ll break me. Or catch death like a disease.&quot; He tried to shift his position, winced, and fell back against the pillows. &quot;Or maybe they&apos;re just afraid of dying themselves.&quot;
+    </para>
+    <para pid="CH02-P0080" seq="8000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Dying is part of Elom&apos;s plan,&quot; she said, the words automatic but sincere. &quot;My role is to make your passage comfortable, not to fear it.&quot;
+    </para>
+    <para pid="CH02-P0090" seq="9000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She washed her hands in the small basin, the water warm on her skin. The morning routine had its own rhythm, its own quiet dignity. First, vitals and medication adjustments. Then, gentle exercises to prevent muscle atrophy&#x2014;slow, careful movements of his arms and legs, his body light as dried grass in her hands. Then, washing and dressing him in fresh nightclothes, the fine fabric feeling decadent against her work-worn fingers.
+    </para>
+    <para pid="CH02-P0100" seq="10000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Your grandmother died at fifty-three,&quot; Frost said suddenly, as she was helping him sit up slightly for his morning meal. &quot;I read it in your service record.&quot;
+    </para>
+    <para pid="CH02-P0110" seq="11000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette froze for a moment, then continued arranging the pillows. &quot;Yes. She lived a good long life.&quot;
+    </para>
+    <para pid="CH02-P0120" seq="12000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Fifty-three years. Did you think that was a long life then?&quot;
+    </para>
+    <para pid="CH02-P0130" seq="13000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;She helped raise me and my two brothers after our parents died. She worked in the agricultural domes for forty-two years. She saw the colony expand from three habitats to twelve. She prayed every morning and never missed a service.&quot; Marnette paused, meeting his eyes. &quot;Yes, I thought that was a very long life. A full life.&quot;
+    </para>
+    <para pid="CH02-P0140" seq="14000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What did she die of?&quot;
+    </para>
+    <para pid="CH02-P0150" seq="15000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Cellular breakdown. Same as most salves who live to their full years.&quot; Marnette picked up the nutrient bowl from the bedside table. The liquid was thick and pale green, fortified with vitamins and minerals specifically formulated for Masters&apos; declining systems. &quot;It was peaceful. She was ready.&quot;
+    </para>
+    <para pid="CH02-P0160" seq="16000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Frost ate slowly, each swallow visible in his thin throat. Marnette supported his back, her strength surprising him perhaps, though she had done this a hundred times before. She had helped people die who weighed twice what he did, her body conditioned by years of lifting, turning, supporting those who could no longer support themselves.
+    </para>
+    <para pid="CH02-P0170" seq="17000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Do you wonder what she would have been like at sixty?&quot; he asked between spoonfuls. &quot;Or seventy?&quot;
+    </para>
+    <para pid="CH02-P0180" seq="18000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Why would I? Elom gave her fifty-three years. That was her purpose, her time.&quot;
+    </para>
+    <para pid="CH02-P0190" seq="19000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;But don&apos;t you see her sometimes? In dreams? Older than she ever got to be?&quot; His spoon trembled, and Marnette automatically reached to steady it. &quot;My mother lived to be ninety-two. I have memories of her at seventy, eighty, with wrinkles like mine and hands that could still garden. Do you have those memories of your grandmother? Or did they never get the chance to form?&quot;
+    </para>
+    <para pid="CH02-P0200" seq="20000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette placed the empty bowl on the table, her movements precise. &quot;Master Frost, you&apos;re speaking like a man who&apos;s had too much time to think about the past. My grandmother was content. She was faithful. She died knowing she had served Elom well.&quot;
+    </para>
+    <para pid="CH02-P0210" seq="21000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;m not questioning her contentment,&quot; he said, his voice softer now, almost apologetic. &quot;I&apos;m questioning the container. Does it never strike you as strange that your containers all hold exactly the same amount of time? Fifty years, sixty years, never more? Like they were all manufactured to the same specifications?&quot;
+    </para>
+    <para pid="CH02-P0220" seq="22000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The word hung between them&#x2014;manufactured. But he was old, dying, his mind wandering in ways she couldn&apos;t follow. She changed the subject, smoothing his blanket as if that could smooth away the strange tension in the room. &quot;The window is clear today. You can see the Tharsis mountains from here. They must look beautiful in this light.&quot;
+    </para>
+    <para pid="CH02-P0230" seq="23000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He let her redirect him, his gaze following hers to the massive windows. Beyond the dome&apos;s glass, the Martian landscape stretched red and empty under the artificial sky of the habitat. The Tharsis range rose in the distance, their peaks sharp against the thin atmosphere, ancient volcanoes that had died millions of years before humans had ever looked up at them and thought: we could live there.
+    </para>
+    <para pid="CH02-P0240" seq="24000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They say the first colonists named them after Greek gods,&quot; Frost said, his voice distant. &quot;Mount Olympus, Mount Ascraeus. As if they were creating mythology themselves. As if they understood that to survive on Mars, they needed stories. Needed something bigger than themselves to believe in.&quot;
+    </para>
+    <para pid="CH02-P0250" seq="25000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette finished her morning tasks, checking the medication schedules, documenting his vital signs on the datapad, adjusting the room temperature to his preferred setting. The routine was familiar, comforting in its precision. She knew what she was doing. She knew who she was. His questions were strange, but his condition was stable, and her duty was clear.
+    </para>
+    <para pid="CH02-P0260" seq="26000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I have the evening off tonight,&quot; she said, collecting the breakfast tray. &quot;There&apos;s a service at seventh hour. Would you like me to read something to you before I go?&quot;
+    </para>
+    <para pid="CH02-P0270" seq="27000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The service,&quot; he repeated. &quot;The Church of Elom.&quot; His eyes found hers again. &quot;Tell me about your faith, Marnette. What do they teach you there?&quot;
+    </para>
+    <para pid="CH02-P0280" seq="28000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The question caught her off guard. Not the question itself&#x2014;Masters sometimes asked about salve beliefs, usually with detached curiosity&#x2014;but the intensity in his voice, the way he leaned forward slightly despite the obvious pain it caused him.
+    </para>
+    <para pid="CH02-P0290" seq="29000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They teach us that Elom designed us for purpose,&quot; she said, her voice steady. &quot;That each of us has a role to play in the colony&apos;s survival, in Elom&apos;s great design. They teach us that our lives, though brief, are sacred because they serve something greater than ourselves.&quot;
+    </para>
+    <para pid="CH02-P0300" seq="30000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Greater than yourselves,&quot; he mused. &quot;And what exactly is that something greater? The colony? The continuation of the species?&quot;
+    </para>
+    <para pid="CH02-P0310" seq="31000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The continuation of Elom&apos;s plan,&quot; she corrected gently. &quot;We&apos;re each part of a tapestry. Some threads are longer than others, but each has its place, its beauty, its necessity.&quot;
+    </para>
+    <para pid="CH02-P0320" seq="32000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;A tapestry,&quot; he repeated, settling back against his pillows. The conversation seemed to have tired him. &quot;Go to your service, Marnette. Think about what you learn there. Think about what you believe, not just what you&apos;ve been taught.&quot;
+    </para>
+    <para pid="CH02-P0330" seq="33000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That&apos;s the same thing,&quot; she said, confused.
+    </para>
+    <para pid="CH02-P0340" seq="34000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Is it?&quot; He closed his eyes. &quot;We&apos;ll talk more when you return.&quot;
+    </para>
+    <para pid="CH02-P0350" seq="35000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The transport ride to the salve district took thirty-seven minutes through the colony&apos;s connecting tubes. Marnette found herself watching the landscape change, the Master residences giving way to neutral zones, then finally to the simpler, more functional buildings where salves lived and worked. Even the light seemed different here&#x2014;flatter, more uniform, the artificial illumination lacking the depth and shadow play of Frost&apos;s sunlit rooms.
+    </para>
+    <para pid="CH02-P0360" seq="36000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But as she walked toward the Church of Elom, something inside her settled. This was her world, her community, her place. The familiar red dust that coated every surface, the muted colors of salve clothing, the quiet dignity of people moving through their days with purpose. This felt real in a way that Frost&apos;s luxury didn&apos;t, couldn&apos;t.
+    </para>
+    <para pid="CH02-P0370" seq="37000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The Church of Elom was built into the habitat wall itself, its ceiling curving up into the dome&apos;s interior. The space was humble but beautiful, the walls decorated with mosaics depicting scenes from the colony&apos;s founding&#x2014;Elom Musk gazing up at the red planet, the first habitats rising from the Martian soil, the first salves being born into their designated roles. There was no gold leaf here, no expensive tapestries. Everything was functional, meaningful, designed to inspire rather than impress.
+    </para>
+    <para pid="CH02-P0380" seq="38000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Lena was already there when Marnette arrived, seated near the front as always. Her friend waved her over, saving a place beside her. Lena worked in hydroponics, her hands perpetually stained green from the nutrient solutions, her face perpetually cheerful despite the physical demands of her job.
+    </para>
+    <para pid="CH02-P0390" seq="39000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You look tired,&quot; Lena said as Marnette sat. &quot;Master Frost keeping you busy?&quot;
+    </para>
+    <para pid="CH02-P0400" seq="40000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;He has his moments.&quot; Marnette smoothed her gray tunic, automatically checking that her prayer beads were in place. &quot;Mostly he sleeps. Or asks strange questions.&quot;
+    </para>
+    <para pid="CH02-P0410" seq="41000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Aren&apos;t all Masters strange?&quot; Lena grinned, but her expression softened. &quot;How is he? Really?&quot;
+    </para>
+    <para pid="CH02-P0420" seq="42000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Dying,&quot; Marnette said, and the word felt heavier here than it had in Frost&apos;s residence. &quot;He knows it too.&quot;
+    </para>
+    <para pid="CH02-P0430" seq="43000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Priest Malachi approached the altar, his white robes stark against the simple wood. He was older than most salves, fifty-seven if Marnette remembered correctly. Born before the Great Optimization, some said. His hair was silver, his face lined with decades of faith and service. When he raised his hands to begin the service, the congregation fell silent.
+    </para>
+    <para pid="CH02-P0440" seq="44000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Elom&apos;s children,&quot; he began, his voice carrying through the modest space. &quot;We gather again in gratitude, in purpose, in acceptance of our sacred design.&quot;
+    </para>
+    <para pid="CH02-P0450" seq="45000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The opening prayer was familiar, the words Marnette had known since childhood. &quot;Elom, creator and guide, who designed us for purpose, who gave each of us our role in the great colony, who sees all and knows all, help us to serve with devotion, to accept with grace, to find joy in our designated time.&quot;
+    </para>
+    <para pid="CH02-P0460" seq="46000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette&apos;s voice joined with others, the combined sound creating something greater than any individual voice. This was what she believed. This was what sustained her. Frost&apos;s questions were strange, but this&#x2014;this was truth.
+    </para>
+    <para pid="CH02-P0470" seq="47000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Priest Malachi&apos;s sermon for the evening was on the beauty of brief lives. &quot;Some look at the Masters,&quot; he said, his voice warm and passionate, &quot;and see only longevity. They see hundreds of years and think: that is blessing. But Elom teaches us that blessing is not measured in time, but in impact, in purpose, in devotion.&quot;
+    </para>
+    <para pid="CH02-P0480" seq="48000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The congregation nodded, murmuring agreement.
+    </para>
+    <para pid="CH02-P0490" seq="49000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;A salve who lives fifty years but serves faithfully, who raises children in the faith, who contributes to the colony&apos;s survival&#x2014;that life has more meaning than a Master who lives eight hundred years in idle luxury. Why? Because your lives are focused. Your time is precious. Every moment matters because every moment is limited.&quot;
+    </para>
+    <para pid="CH02-P0500" seq="50000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette felt tears prick her eyes. Yes. This was it. This was the comfort and purpose that anchored her life.
+    </para>
+    <para pid="CH02-P0510" seq="51000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Some ask why,&quot; Priest Malachi continued, his voice dropping slightly. &quot;Some look at our limited years and question Elom&apos;s wisdom. But understand this: Elom did not limit you. He optimized you. He designed you for maximum efficiency, for maximum impact. A life of fifty years devoted entirely to purpose is more valuable to Elom&apos;s plan than a life of centuries wasted in leisure.&quot;
+    </para>
+    <para pid="CH02-P0520" seq="52000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He paused, looking out over the congregation. &quot;When you feel doubt, remember this: you are not less than the Masters. You are different. You are specialized. You are essential.&quot;
+    </para>
+    <para pid="CH02-P0530" seq="53000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette&apos;s hands tightened around her prayer beads. Essential. That&apos;s what she was. What they all were.
+    </para>
+    <para pid="CH02-P0540" seq="54000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      After the service, as people lingered to talk, Lena caught her arm. &quot;Walk with me? I need to talk about Thomas.&quot;
+    </para>
+    <para pid="CH02-P0550" seq="55000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Thomas was Lena&apos;s younger brother, just nineteen and recently assigned to maintenance in the industrial sector. &quot;Is he having trouble with his work?&quot; Marnette asked as they stepped outside into the corridor.
+    </para>
+    <para pid="CH02-P0560" seq="56000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Not exactly.&quot; Lena lowered her voice. &quot;He&apos;s been talking to some of the older workers. The ones who were around before... you know.&quot;
+    </para>
+    <para pid="CH02-P0570" seq="57000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette nodded. Before the Great Optimization twenty years ago, when the Church had clarified its teachings, when certain questions had been definitively answered and certain doubts laid to rest.
+    </para>
+    <para pid="CH02-P0580" seq="58000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Thomas keeps asking why. Why can&apos;t some salves live longer? Why do some die in their forties while others make it to sixty? He thinks it&apos;s not... fair.&quot;
+    </para>
+    <para pid="CH02-P0590" seq="59000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Fair has nothing to do with it,&quot; Marnette said, though the word felt foreign in her mouth. &quot;Elom&apos;s design isn&apos;t about fairness. It&apos;s about purpose.&quot;
+    </para>
+    <para pid="CH02-P0600" seq="60000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That&apos;s what I told him. But he keeps pointing to the pre-optimization records. The ones they released. Said there was more variation before.&quot; Lena shook her head. &quot;I&apos;m worried about him. Doubt is like rust, you know? It spreads.&quot;
+    </para>
+    <para pid="CH02-P0610" seq="61000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Doubt is dangerous,&quot; Marnette agreed, though Frost&apos;s questions echoed in her mind. &quot;Pray for him. Bring him to talk to Priest Malachi.&quot;
+    </para>
+    <para pid="CH02-P0620" seq="62000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I will. But Marnette...&quot; Lena hesitated. &quot;Be careful at your assignment. Some Masters, when they&apos;re dying, they get strange ideas. They forget their place, or they try to test yours.&quot;
+    </para>
+    <para pid="CH02-P0630" seq="63000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;It&apos;s strange,&quot; Marnette said softly. &quot;He asked me that exact question today. Whether it ever seemed strange that we all die at the same age.&quot;
+    </para>
+    <para pid="CH02-P0640" seq="64000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And what did you say?&quot;
+    </para>
+    <para pid="CH02-P0650" seq="65000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That we don&apos;t all die at the same age. We just live to our designated time. And that Elom&apos;s design is perfect.&quot;
+    </para>
+    <para pid="CH02-P0660" seq="66000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Lena nodded, satisfied. &quot;Good. Just... remember who you are. Remember what you believe.&quot;
+    </para>
+    <para pid="CH02-P0670" seq="67000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The transport ride back to Residence 7B felt different this time. Marnette found herself looking at the Master residences with new eyes, not just with awe at their luxury, but with... something else. What did it mean to live for centuries? To watch generations come and go? To remember people who had known Elon Musk himself, as Elara had said of Frost?
+    </para>
+    <para pid="CH02-P0680" seq="68000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Elara met her at the door. &quot;Master Frost had some pain while you were gone. He asked for you specifically.&quot;
+    </para>
+    <para pid="CH02-P0690" seq="69000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Is he stable now?&quot;
+    </para>
+    <para pid="CH02-P0700" seq="70000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;For now. But the physician adjusted his medication. He might be... confused.&quot;
+    </para>
+    <para pid="CH02-P0710" seq="71000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette entered Frost&apos;s chambers quietly. The room was dimmer now, the lights adjusted for evening. He was propped up against his pillows, his face pale and damp with sweat. But his eyes were clear, focused on her as she approached.
+    </para>
+    <para pid="CH02-P0720" seq="72000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You went to the service,&quot; he said, his voice weaker than before.
+    </para>
+    <para pid="CH02-P0730" seq="73000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I did. Priest Malachi spoke on the beauty of brief lives.&quot;
+    </para>
+    <para pid="CH02-P0740" seq="74000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Frost smiled slightly. &quot;Did he now? And what did he say?&quot;
+    </para>
+    <para pid="CH02-P0750" seq="75000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That our lives are precious because they&apos;re focused. That we&apos;re optimized for purpose, not limited by it.&quot; Marnette smoothed his blanket, her hands automatically checking for comfort. &quot;That being specialized is better than being generalized.&quot;
+    </para>
+    <para pid="CH02-P0760" seq="76000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Optimized for purpose,&quot; Frost repeated. &quot;That&apos;s an interesting way to phrase it. And what purpose are you optimized for, Marnette?&quot;
+    </para>
+    <para pid="CH02-P0770" seq="77000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Caring for others. Serving those who can&apos;t serve themselves.&quot;
+    </para>
+    <para pid="CH02-P0780" seq="78000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And when you&apos;re forty? Or fifty? When your hands start to shake and your back hurts from lifting people who weigh twice what you do? What then?&quot;
+    </para>
+    <para pid="CH02-P0790" seq="79000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Then I&apos;ll train younger caregivers. I&apos;ll share my experience.&quot; Marnette paused. &quot;If I live that long. My grandmother died at fifty-three.&quot;
+    </para>
+    <para pid="CH02-P0800" seq="80000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Because her cells broke down. Because that&apos;s what they&apos;re designed to do.&quot; Frost&apos;s voice had grown stronger, despite his obvious pain. He shifted again, wincing. &quot;Help me sit up more. There&apos;s something I need to show you.&quot;
+    </para>
+    <para pid="CH02-P0810" seq="81000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette adjusted the pillows, supporting his back as he moved. The effort left him breathless, his skin even paler than before.
+    </para>
+    <para pid="CH02-P0820" seq="82000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;By the window,&quot; he said. &quot;On the table. The black folder.&quot;
+    </para>
+    <para pid="CH02-P0830" seq="83000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She crossed the room, her footsteps silent on the expensive flooring. The folder was exactly where he said, made of some material that felt like leather but had the weight of metal. When she brought it to him, his trembling fingers struggled with the clasp.
+    </para>
+    <para pid="CH02-P0840" seq="84000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Open it,&quot; he said.
+    </para>
+    <para pid="CH02-P0850" seq="85000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The contents shocked her. Not documents or data slates, but photographs. Actual photographs printed on paper, ancient technology that only Masters would possess. People smiling, people celebrating, people growing old. But what caught her attention was the age progression in some of them. A woman who looked like she might be a salve, her face showing the passage of decades&#x2014;thirty, forty, fifty, sixty, seventy.
+    </para>
+    <para pid="CH02-P0860" seq="86000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;These are from before,&quot; Frost said quietly. &quot;Before the colony stabilized. Before the Church established its teachings. Before... optimization.&quot;
+    </para>
+    <para pid="CH02-P0870" seq="87000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette stared at the photographs. The woman in them looked happy at every age. At seventy, her face was lined and silver-haired, but her eyes were bright, her smile genuine. She was surrounded by family&#x2014;children, grandchildren, people who loved her.
+    </para>
+    <para pid="CH02-P0880" seq="88000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Who is she?&quot; Marnette asked, her voice barely audible.
+    </para>
+    <para pid="CH02-P0890" seq="89000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Her name was Elena. She was one of the first salves born on Mars. She lived to be eighty-seven years old.&quot; Frost took a shallow breath. &quot;Died in her garden, tending her tomato plants. Heart just gave out, they said. Old age, the physician wrote. Not cellular breakdown. Not planned obsolescence.&quot;
+    </para>
+    <para pid="CH02-P0900" seq="90000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette couldn&apos;t take her eyes off the photographs. Elena at seventy, her arms around a grandchild. Elena at eighty, her face a roadmap of joy and sorrow and life. Eighty-seven years. More than half again as long as the longest salve lifespans today.
+    </para>
+    <para pid="CH02-P0910" seq="91000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Marnette,&quot; Frost said, his voice gaining strength despite his weakness. &quot;Look at me.&quot;
+    </para>
+    <para pid="CH02-P0920" seq="92000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She forced herself to meet his gaze.
+    </para>
+    <para pid="CH02-P0930" seq="93000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What if I told you that your grandmother could have lived to be seventy? Or eighty? What if I told you that fifty years isn&apos;t a design feature, it&apos;s a limitation? What if I told you that the Great Optimization twenty years ago wasn&apos;t about clarifying teachings, it was about implementing biological controls that had been planned for centuries?&quot;
+    </para>
+    <para pid="CH02-P0940" seq="94000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The room felt suddenly cold, despite the climate control. Marnette stepped back, the folder slipping from her fingers and falling to the floor. &quot;Master Frost, you shouldn&apos;t say these things. They&apos;re... they&apos;re dangerous.&quot;
+    </para>
+    <para pid="CH02-P0950" seq="95000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Dangerous to whom? To the Masters who need a compliant workforce? To the system that depends on salves dying before they accumulate too much knowledge, too much power?&quot; He coughed, a wet, painful sound that left him gasping. &quot;Or dangerous to you, because once you see it, you can&apos;t unsee it?&quot;
+    </para>
+    <para pid="CH02-P0960" seq="96000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You&apos;re dying,&quot; she said, her voice trembling. &quot;The pain medication is making you confused. Saying things that aren&apos;t true.&quot;
+    </para>
+    <para pid="CH02-P0970" seq="97000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Am I? Or am I finally saying things that are true?&quot; He gestured weakly toward the photographs scattered on the floor. &quot;That&apos;s your history, Marnette. Not the cleaned-up version they teach in the schools, not the religious explanation that keeps everyone obedient. The real history.&quot;
+    </para>
+    <para pid="CH02-P0980" seq="98000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette backed away further, until she reached the door. &quot;I need to check your medication schedule. I need to...&quot;
+    </para>
+    <para pid="CH02-P0990" seq="99000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You need to think,&quot; he said, his voice rising with sudden urgency. &quot;Think about why all salve lifespans fall within such a narrow range. Think about why the Church of Elom was established at the same time as the genetic protocols. Think about why your prayers talk about &apos;designated time&apos; instead of &apos;natural time.&apos;&quot;
+    </para>
+    <para pid="CH02-P1000" seq="100000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He was breathing heavily now, his face flushed with fever or passion, she couldn&apos;t tell which. &quot;Think about who benefits from you dying at fifty-two instead of eighty-two. Think about who gains when your experience, your wisdom, your memories are cut short before they can accumulate into something dangerous.&quot;
+    </para>
+    <para pid="CH02-P1010" seq="101000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Stop,&quot; she whispered, but he continued relentlessly.
+    </para>
+    <para pid="CH02-P1020" seq="102000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Your Church teaches that you&apos;re specialized, that you&apos;re optimized. But optimization for what purpose? For the colony&apos;s survival? Or for Masters&apos; comfort? For your own fulfillment? Or for their control?&quot;
+    </para>
+    <para pid="CH02-P1030" seq="103000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette fled the room, closing the door behind her and leaning against it, her heart racing. The corridor was quiet, the expensive lighting suddenly feeling harsh, exposing. She wanted to run, to take the next transport back to the salve district, to lose herself in the familiar comfort of her community, her faith, her unquestioning acceptance of her place.
+    </para>
+    <para pid="CH02-P1040" seq="104000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But she was his caregiver. This was her duty. Elom guide me, she prayed, the words feeling hollow even as she thought them. Elom give me strength.
+    </para>
+    <para pid="CH02-P1050" seq="105000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She took a deep breath, composed herself, and reentered the room. Frost was watching her, his breathing labored but his eyes unchanged.
+    </para>
+    <para pid="CH02-P1060" seq="106000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Master Frost,&quot; she said, her voice professional but distant. &quot;It&apos;s time for your evening medication. You need to rest.&quot;
+    </para>
+    <para pid="CH02-P1070" seq="107000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He didn&apos;t resist as she administered the drugs, didn&apos;t speak as she adjusted his pillows and covered him with the blanket. He simply watched her, his expression sad but knowing, as if he understood exactly what she was doing&#x2014;building walls, retreating into the familiar safety of her role.
+    </para>
+    <para pid="CH02-P1080" seq="108000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Marnette,&quot; he said as she turned to leave. &quot;What if I told you it wasn&apos;t meant to be this way?&quot;
+    </para>
+    <para pid="CH02-P1090" seq="109000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She paused at the door, her back to him. &quot;What way, Master Frost?&quot;
+    </para>
+    <para pid="CH02-P1100" seq="110000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Any of it.&quot;
+    </para>
+    <para pid="CH02-P1110" seq="111000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She didn&apos;t answer. She couldn&apos;t. The question echoed in the silence of the room, in the corridors of her mind, in the suddenly uncertain spaces of her heart.
+    </para>
+    <para pid="CH02-P1120" seq="112000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      In her own room, Marnette knelt by the bed and took out her prayer beads. The familiar smoothness grounded her, the automatic rhythm of the prayers centering her thoughts. &quot;Elom, creator and guide, who designed us for purpose, who gave each of us our role in the great colony...&quot;
+    </para>
+    <para pid="CH02-P1130" seq="113000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But the words were different now. Not hollow exactly, but... questioning. Not in their meaning, but in their resonance. Designed for purpose. Each of us our role. Designated time.
+    </para>
+    <para pid="CH02-P1140" seq="114000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The phrases she had repeated a thousand times now carried echoes of Frost&apos;s questions. What if design meant engineering? What if purpose meant function? What if designated time meant planned obsolescence?
+    </para>
+    <para pid="CH02-P1150" seq="115000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She rose from her knees and went to the window, looking out at the agricultural domes. Green life against red death. That&apos;s what she had always thought. But now she wondered: was it death at all? Or was it just... termination? Like a machine that had served its purpose and was now being decommissioned?
+    </para>
+    <para pid="CH02-P1160" seq="116000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The thought came unbidden, unwelcome, dangerous. And she realized with sudden clarity that Frost had done exactly what he intended to do. He had planted a seed of doubt that would now grow in the darkness of her mind, watered by his questions, fed by his revelations, nurtured by the terrible possibility that her entire life, her entire understanding of reality, might be built on a foundation of carefully constructed lies.
+    </para>
+    <para pid="CH02-P1170" seq="117000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette lay down on the bed, pulling the blanket over her shoulders as if it could protect her from these thoughts. She closed her eyes, but sleep wouldn&apos;t come. Instead, she saw the woman from the photographs&#x2014;Elena, living to eighty-seven, dying in her garden surrounded by loved ones. She saw her grandmother, dead at fifty-three from cellular breakdown that was now beginning to sound less like natural processes and more like planned failure.
+    </para>
+    <para pid="CH02-P1180" seq="118000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She saw Frost&apos;s pale blue eyes watching her, knowing exactly what he was doing to her faith, to her certainty, to her acceptance of the life she had always believed was sacred.
+    </para>
+    <para pid="CH02-P1190" seq="119000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And in the darkness of her assigned room, with the red dust of Mars waiting outside the habitat walls, Marnette understood that she was no longer just unsettled. She was beginning to question. And questioning, as Frost seemed to understand perfectly, was the first step toward a truth that might be more terrible than any lie she had ever been taught.
+    </para>
+    
+  </section>
+</chapter>

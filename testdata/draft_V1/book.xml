@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book bookml-version="1.0" id="mayfly-mutiny"
+      xmlns="https://bookml.org/ns/1.0">
+  <bookinfo>
+    <title>Mayfly Mutiny</title>
+    <author>
+      <firstname>Stephen</firstname>
+      <surname>Gould</surname>
+    </author>
+    <genre>fiction</genre>
+    <language>en</language>
+    <versioning>
+      <draft number="1" status="in-progress"
+             created="2026-03-17T00:00:00"
+             based-on="0"
+             author-type="ai"
+             author="Claude Sonnet 4.6"
+             label="Initial AI generation"/>
+    </versioning>
+    <created>2026-03-17</created>
+    <modified>2026-03-17</modified>
+  </bookinfo>
+  <contents>
+    <bodymatter>
+      <component id="ch01" type="chapter" seq="1000"
+                 chapter-file="ch01_XMLdraft_V1/ch01-chapter.xml"
+                 meta-file="ch01_XMLdraft_V1/ch01-meta.xml"
+                 notes-file="ch01_XMLdraft_V1/ch01-notes.xml"
+                 title="Chapter 1" draft="1"/>
+      <component id="ch02" type="chapter" seq="2000"
+                 chapter-file="ch02_XMLdraft_V1/ch02-chapter.xml"
+                 meta-file="ch02_XMLdraft_V1/ch02-meta.xml"
+                 notes-file="ch02_XMLdraft_V1/ch02-notes.xml"
+                 title="Chapter 2" draft="1"/>
+      <component id="ch03" type="chapter" seq="3000"
+                 chapter-file="ch03_XMLdraft_V1/ch03-chapter.xml"
+                 meta-file="ch03_XMLdraft_V1/ch03-meta.xml"
+                 notes-file="ch03_XMLdraft_V1/ch03-notes.xml"
+                 title="Chapter 3" draft="1"/>
+      <component id="ch04" type="chapter" seq="4000"
+                 chapter-file="ch04_XMLdraft_V1/ch04-chapter.xml"
+                 meta-file="ch04_XMLdraft_V1/ch04-meta.xml"
+                 notes-file="ch04_XMLdraft_V1/ch04-notes.xml"
+                 title="Chapter 4" draft="1"/>
+      <component id="ch05" type="chapter" seq="5000"
+                 chapter-file="ch05_XMLdraft_V1/ch05-chapter.xml"
+                 meta-file="ch05_XMLdraft_V1/ch05-meta.xml"
+                 notes-file="ch05_XMLdraft_V1/ch05-notes.xml"
+                 title="Chapter 5" draft="1"/>
+      <component id="ch06" type="chapter" seq="6000"
+                 chapter-file="ch06_XMLdraft_V1/ch06-chapter.xml"
+                 meta-file="ch06_XMLdraft_V1/ch06-meta.xml"
+                 notes-file="ch06_XMLdraft_V1/ch06-notes.xml"
+                 title="Chapter 6" draft="1"/>
+      <component id="ch07" type="chapter" seq="7000"
+                 chapter-file="ch07_XMLdraft_V1/ch07-chapter.xml"
+                 meta-file="ch07_XMLdraft_V1/ch07-meta.xml"
+                 notes-file="ch07_XMLdraft_V1/ch07-notes.xml"
+                 title="Chapter 7" draft="1"/>
+      <component id="ch08" type="chapter" seq="8000"
+                 chapter-file="ch08_XMLdraft_V1/ch08-chapter.xml"
+                 meta-file="ch08_XMLdraft_V1/ch08-meta.xml"
+                 notes-file="ch08_XMLdraft_V1/ch08-notes.xml"
+                 title="Chapter 8" draft="1"/>
+      <component id="ch09" type="chapter" seq="9000"
+                 chapter-file="ch09_XMLdraft_V1/ch09-chapter.xml"
+                 meta-file="ch09_XMLdraft_V1/ch09-meta.xml"
+                 notes-file="ch09_XMLdraft_V1/ch09-notes.xml"
+                 title="Chapter 9" draft="1"/>
+      <component id="ch10" type="chapter" seq="10000"
+                 chapter-file="ch10_XMLdraft_V1/ch10-chapter.xml"
+                 meta-file="ch10_XMLdraft_V1/ch10-meta.xml"
+                 notes-file="ch10_XMLdraft_V1/ch10-notes.xml"
+                 title="Chapter 10" draft="1"/>
+      <component id="ch11" type="chapter" seq="11000"
+                 chapter-file="ch11_XMLdraft_V1/ch11-chapter.xml"
+                 meta-file="ch11_XMLdraft_V1/ch11-meta.xml"
+                 notes-file="ch11_XMLdraft_V1/ch11-notes.xml"
+                 title="Chapter 11" draft="1"/>
+      <component id="ch12" type="chapter" seq="12000"
+                 chapter-file="ch12_XMLdraft_V1/ch12-chapter.xml"
+                 meta-file="ch12_XMLdraft_V1/ch12-meta.xml"
+                 notes-file="ch12_XMLdraft_V1/ch12-notes.xml"
+                 title="Chapter 12" draft="1"/>
+    </bodymatter>
+  </contents>
+</book>

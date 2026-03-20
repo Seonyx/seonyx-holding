@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch04" book-id="mayfly-mutiny" draft="1"
+     xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH03-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;A good salve seeks a life of contented service.&quot; Marnette has attended the Church service and heard the sermon. She is still trying to be content, but Frost&apos;s questions are eroding contentment. The aphorism is what she&apos;s been taught; the chapter ahead will show her struggling to actually believe it.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0010">
+    <tags><tag>Opens with arrival and the &quot;clean&quot; death certificate, signaling official cover-up vs messy reality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0020">
+    <tags><tag>Recaps the 72 hours since the crisis and shows the relationship has shifted into dangerous honesty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0030">
+    <tags><tag>Introduces urgency via Elara: Frost is declining fast, time is running out.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0040">
+    <tags><tag>Confirms Marnette&apos;s duty-driven resolve: she goes to him.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0050">
+    <tags><tag>Introduces Master Valerius and implies political complication around Frost&apos;s death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0060">
+    <tags><tag>Shows Marnette&apos;s ignorance of high politics, underscoring her outsider status.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0070">
+    <tags><tag>Establishes Valerius as adversary and reveals Masters&apos; cynicism about death as logistics.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0080">
+    <tags><tag>Highlights Marnette&apos;s moral shock, widening the gap between salve values and Master callousness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0090">
+    <tags><tag>Foreshadows dangerous truths: dying Masters speak carelessly and power circles listen.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0100">
+    <tags><tag>The room&apos;s medical downgrade (cure → comfort) confirms death is now the plan, not a risk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0110">
+    <tags><tag>Visual vulnerability: Frost&apos;s frailty lands emotionally and signals final-scene gravity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0120">
+    <tags><tag>Frost&apos;s sudden clarity sets the stage for a deliberate confession instead of delirium.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0130">
+    <tags><tag>Marnette clings to routine caregiving, trying to reassert &quot;normal.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0140">
+    <tags><tag>Frost frames his end as a clock winding down, raising urgency and scale (eight centuries).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0150">
+    <tags><tag>Shows Marnette&apos;s practiced efficiency masking mental panic and avoidance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0160">
+    <tags><tag>Frost names the truth plainly (dying) and asks for real listening, starting the &quot;reveal&quot; arc.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0170">
+    <tags><tag>Marnette resists, prioritizing comfort and containment over truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0180">
+    <tags><tag>Frost contrasts strength with time; introduces fear of what survives him.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0190">
+    <tags><tag>Marnette&apos;s compassion attempts to steer him toward peace, not disclosure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0200">
+    <tags><tag>Frost insists she must &quot;know,&quot; physically struggling to sit, embodying the cost of speech.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0210">
+    <tags><tag>Marnette asks anyway, signaling dread and curiosity colliding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0220">
+    <tags><tag>Frost promises worldview-destruction, raising stakes to identity-level.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0230">
+    <tags><tag>Marnette senses this is planned and intentional, escalating tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0240">
+    <tags><tag>Her plea to stop shows fear of what knowledge will do to them both.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0250">
+    <tags><tag>The core bomb drops: salves weren&apos;t born that way, they were made.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0260">
+    <tags><tag>Marnette reflexively defends lineage and normalcy, anchoring her belief system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0270">
+    <tags><tag>Frost explains engineered genetics and artificial lifespan limits, defining the system&apos;s cruelty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0280">
+    <tags><tag>Marnette invokes Church teaching, setting doctrine against evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0290">
+    <tags><tag>Frost attacks the Church as designed indoctrination, widening conspiracy scope.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0300">
+    <tags><tag>&quot;Manufacturing&quot; lands as dehumanization; Marnette feels the ugliness of the idea.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0310">
+    <tags><tag>Frost uses colony-wide engineering logic to make &quot;engineered people&quot; feel inevitable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0320">
+    <tags><tag>Marnette&apos;s recoil turns to moral questions: who would do this and why?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0330">
+    <tags><tag>Frost implicates the Masters and himself, introducing historical guilt and responsibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0340">
+    <tags><tag>Marnette presses &quot;why,&quot; making it personal, not abstract politics.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0350">
+    <tags><tag>Frost explains fear of Earth repeating itself, exposing the &quot;noble&quot; rationale behind atrocity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0360">
+    <tags><tag>Marnette clings to faith, showing how costly belief revision will be.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0370">
+    <tags><tag>Frost pivots to the name &quot;Elom,&quot; prepping the next twist.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0380">
+    <tags><tag>Marnette senses danger, dread sharpening before the reveal.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0390">
+    <tags><tag>Huge reveal: Elom originates from Elon Musk; religion as control mechanism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0400">
+    <tags><tag>Marnette realizes the obviousness of the corruption (Elon/Elom), intensifying her shock.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0410">
+    <tags><tag>She tries denial (medication, confusion), a last defense of worldview.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0420">
+    <tags><tag>Frost asserts credibility: he stopped meds to die clear-minded.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0430">
+    <tags><tag>Marnette&apos;s flight impulse clashes with duty, showing her trapped in the moment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0440">
+    <tags><tag>She attempts to end the conversation with &quot;rest,&quot; restoring order.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0450">
+    <tags><tag>Frost insists truth is the only comfort and reaches for her hand, raising intimacy and urgency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0460">
+    <tags><tag>Marnette argues it&apos;s irrelevant because he&apos;s dying, trying to make truth &quot;pointless.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0470">
+    <tags><tag>Frost reframes: it matters for her life and premature death, pulling moral focus onto her.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0480">
+    <tags><tag>Marnette fears heresy, showing the social/ideological risk of believing him.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0490">
+    <tags><tag>Frost anchors claims in documentation: &quot;It&apos;s all in the Archive.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0500">
+    <tags><tag>Marnette remembers &quot;Project Mayfly&quot; and lifecycle parameters, linking this chapter to prior clues.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0510">
+    <tags><tag>A cut-off response builds suspense and keeps Frost in control of the narrative.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0520">
+    <tags><tag>Frost asks for a specific promise: look deeper in the Archive after he&apos;s gone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0530">
+    <tags><tag>Marnette rationalizes the promise as small, revealing how she underestimates the danger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0540">
+    <tags><tag>She promises, triggering the investigation plotline.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0550">
+    <tags><tag>Frost gives a breadcrumb map (charters, genetic records), directing future chapters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0560">
+    <tags><tag>Marnette returns to caregiver mode, trying to close the revelation door.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0570">
+    <tags><tag>Frost asks forgiveness, revealing guilt as his final emotional currency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0580">
+    <tags><tag>Marnette watches him and tries to minimize the promise&apos;s meaning, but can&apos;t unhear him.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0590">
+    <tags><tag>She admits something has already changed; the chapter turns from info to consequence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0600">
+    <tags><tag>Scene shift to the night vigil, deepening intimacy and blurring Master/salve boundaries.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0610">
+    <tags><tag>Frost wakes and calls her name, emphasizing fragility and connection.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0620">
+    <tags><tag>Marnette comforts him with practical care, reinforcing her humanity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0630">
+    <tags><tag>Frost asks for normal conversation, humanizing him beyond &quot;revelation machine.&quot;</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0640">
+    <tags><tag>Marnette narrates mundane details; the ordinary becomes a life raft against collapsing reality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0650">
+    <tags><tag>Frost praises her perception, strengthening their bond and mutual respect.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0660">
+    <tags><tag>Marnette reframes life as &quot;just life,&quot; elevating quiet dignity over status.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0670">
+    <tags><tag>Frost labels himself selfish, sharpening his remorse theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0680">
+    <tags><tag>Marnette reassures him, though her words wobble under new knowledge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0690">
+    <tags><tag>Frost&apos;s &quot;dragon hoarding years&quot; metaphor crystallizes the horror of extreme longevity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0700">
+    <tags><tag>Marnette insists he cared, especially for her, giving emotional stakes to his confession.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0710">
+    <tags><tag>Frost weakens and asks the promise again, urgency tightening like a noose.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0720">
+    <tags><tag>Marnette repeats the promise with new weight, signaling genuine commitment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0730">
+    <tags><tag>Frost reframes the mission as what she and everyone needs, passing the torch.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0740">
+    <tags><tag>He sleeps; Marnette becomes sentinel, building suspense toward death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0750">
+    <tags><tag>Frost&apos;s final murmurs return to the Archive and truth, a last echo for the reader.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0760">
+    <tags><tag>Marnette affirms she knows, staying present and compassionate.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0770">
+    <tags><tag>Frost repeats the key clues (beginning, Elon), ensuring the mystery locks in.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0780">
+    <tags><tag>&quot;Tell them…&quot; introduces a broader mission beyond Marnette, expanding stakes to society.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0790">
+    <tags><tag>The unanswered &quot;who&quot; creates forward tension and future conflict.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0800">
+    <tags><tag>&quot;Fifty years… not meant…&quot; reinforces the engineered injustice as the chapter&apos;s sting.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0810">
+    <tags><tag>Marnette watches peace settle; the body&apos;s surrender becomes quiet inevitability.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0820">
+    <tags><tag>Frost dies, delivering the chapter&apos;s major plot event and emotional pivot.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0830">
+    <tags><tag>Shock and the silent monitors show he chose a death without spectacle.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0840">
+    <tags><tag>Marnette&apos;s grief is sharper because this death changes her world, not just her day.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0850">
+    <tags><tag>She closes his eyes in a reverent act, giving ritual closure and respect.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0860">
+    <tags><tag>Dawn vigil + echoing fragments show how the words have lodged inside her.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0870">
+    <tags><tag>Marnette faces the practical impossibility of the burden: what does she do now?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0880">
+    <tags><tag>Window scene contrasts Mars&apos;s beauty with the lie-built foundation, sharpening theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0890">
+    <tags><tag>She prays automatically, showing the depth of indoctrination and habit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0900">
+    <tags><tag>The prayer fails under &quot;Elon not Elom,&quot; marking faith&apos;s first real fracture.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0910">
+    <tags><tag>Kneeling dramatizes internal collapse: grief, doubt, and awakening collide.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0920">
+    <tags><tag>Re-centers the sacred promise as the engine for next steps.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0930">
+    <tags><tag>Raises consequences: telling others risks heresy, disbelief, and danger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0940">
+    <tags><tag>Frost looks younger in death, underlining tragedy of what he could&apos;ve been.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0950">
+    <tags><tag>Marnette vows again, cementing her as the new carrier of the truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0960">
+    <tags><tag>Elara&apos;s entrance returns the social world and the machinery of aftermath.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0970">
+    <tags><tag>Marnette confirms death with steadier voice, showing shock turning into resolve.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0980">
+    <tags><tag>Elara&apos;s &quot;Good&quot; signals pragmatic acceptance and hints at her complicated relationship to Masters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P0990">
+    <tags><tag>Introduces the public weight: mourning year, ceremonies, and constant scrutiny.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P1000">
+    <tags><tag>Marnette recognizes this isn&apos;t an ending; it&apos;s the start of a destabilizing journey.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH04-P1010">
+    <tags><tag>Final line lands the pivot cleanly: the beginning (propulsive hook into Chapter 5).</tag></tags>
+  </para-meta>
+</meta>

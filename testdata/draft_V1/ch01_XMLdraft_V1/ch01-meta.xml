@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch01" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+  <para-meta pid="CH01-P0010">
+    <tags><tag>Opens with arrival; Mars dust motif and urgency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0020">
+    <tags><tag>Announces destination and her role; sets immediate objective.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0030">
+    <tags><tag>Introduces Marnette&apos;s faith and grounding ritual (beads).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0040">
+    <tags><tag>Establishes colony transit system and her unfamiliarity with Masters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0050">
+    <tags><tag>Reveals she was specifically requested; raises mystery/importance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0060">
+    <tags><tag>Shows anxiety; frames duty/calling and stakes of performance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0070">
+    <tags><tag>First glimpse of Master-sector privilege via corridor and sunlight.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0080">
+    <tags><tag>Worldbuilds elite aesthetics; secular history vs sacred upbringing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0090">
+    <tags><tag>Introduces Elara, an older salve with status in household.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0100">
+    <tags><tag>Elara identifies herself; sets guide/mentor dynamic.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0110">
+    <tags><tag>Marnette&apos;s deference and &apos;honor&apos; mindset.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0120">
+    <tags><tag>Elara hints challenge; Frost awake and waiting (tension).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0130">
+    <tags><tag>Contrasts class markers; Marnette&apos;s professional observational habit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0140">
+    <tags><tag>Marnette probes Frost&apos;s temperament; foreshadows difficulty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0150">
+    <tags><tag>Elara characterizes Frost as &apos;thoughtful&apos;; he chose Marnette (hook).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0160">
+    <tags><tag>Backstory: Elder Maris case; proves Marnette&apos;s competence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0170">
+    <tags><tag>Elara acknowledges Maris&apos;s reputation; social context.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0180">
+    <tags><tag>Marnette frames death as peace and readiness; her worldview.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0190">
+    <tags><tag>Elara&apos;s &apos;for a salve&apos; line underscores caste cruelty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0200">
+    <tags><tag>Unpacks phrase as comfort/condemnation; deepens theme of design.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0210">
+    <tags><tag>Reveals Frost&apos;s age and historical proximity; raises awe.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0220">
+    <tags><tag>Marnette&apos;s reaction: longevity as curse; contrasts castes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0230">
+    <tags><tag>Timeline: Frost dying soon; urgency escalates.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0240">
+    <tags><tag>Entering Frost&apos;s suite; reinforces opulence and scale.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0250">
+    <tags><tag>Panoramic view beyond dome; expands Mars setting and isolation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0260">
+    <tags><tag>Visual center: frail man in bed; mortality amid luxury.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0270">
+    <tags><tag>Names Frost; anchors antagonist/mentor figure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0280">
+    <tags><tag>Describes Frost&apos;s body vs sharp mind; intriguing contradiction.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0290">
+    <tags><tag>Maps room zones, books; hints scholarship and secrets.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0300">
+    <tags><tag>Contextualizes Frost&apos;s public legend vs present fragility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0310">
+    <tags><tag>Focus on Frost&apos;s eyes; establishes his piercing intelligence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0320">
+    <tags><tag>Marnette formally introduces herself; respect protocol.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0330">
+    <tags><tag>Frost tests her up close; power dynamic begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0340">
+    <tags><tag>Marnette shifts into caregiver mode; sensory detail and tech.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0350">
+    <tags><tag>Close-up of Frost&apos;s frailty; flags clinical concerns.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0360">
+    <tags><tag>Frost notes her youth; challenges expectations.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0370">
+    <tags><tag>Marnette states age/experience; asserts credibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0380">
+    <tags><tag>Frost&apos;s scrutiny feels invasive; builds unease.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0390">
+    <tags><tag>Marnette states credo of purpose; reinforces doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0400">
+    <tags><tag>Frost probes sincerity of faith; introduces skepticism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0410">
+    <tags><tag>Marnette equates doubt with blasphemy; shows rigidity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0420">
+    <tags><tag>Frost resists help; pride and cost of movement; asks about Maris.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0430">
+    <tags><tag>Marnette answers carefully; demonstrates training and taboos.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0440">
+    <tags><tag>Frost questions salve lifespan limits; plants first heresy-seed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0450">
+    <tags><tag>Marnette deflects with doctrine; tension between belief and inquiry.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0460">
+    <tags><tag>Frost compliments her professionalism; establishes his perceptiveness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0470">
+    <tags><tag>Marnette generalizes &apos;born for work&apos;; reinforces caste ideology.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0480">
+    <tags><tag>Frost feigns weariness; ends meeting but promises more.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0490">
+    <tags><tag>Marnette offers blessing; closes first encounter politely.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0500">
+    <tags><tag>Frost calls her back; signals unfinished agenda.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0510">
+    <tags><tag>Marnette responds; keeps servant-master rhythm.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0520">
+    <tags><tag>Frost asks about dreaming of Earth; key thematic hook.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0530">
+    <tags><tag>Explains Earth taboo/history; shows cultural conditioning.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0540">
+    <tags><tag>Marnette denies Earth longing; chooses safe answer.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0550">
+    <tags><tag>Frost warns history returns; ominous foreshadowing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0560">
+    <tags><tag>Transition back to corridor; removes spotlight.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0570">
+    <tags><tag>Elara observes Frost&apos;s rare approval; raises Marnette&apos;s stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0580">
+    <tags><tag>Marnette reports Earth question; shows her uncertainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0590">
+    <tags><tag>Elara&apos;s pause signals danger; validates weirdness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0600">
+    <tags><tag>Marnette asks if unusual; seeks guidance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0610">
+    <tags><tag>Elara frames &apos;real history&apos; vs official; caution introduced.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0620">
+    <tags><tag>Marnette asks what &apos;careful&apos; means; invites rule explanation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0630">
+    <tags><tag>Elara delivers aphorism about unsafe questions; sets thriller tone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0640">
+    <tags><tag>Introduces Marnette&apos;s room and access door; practical stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0650">
+    <tags><tag>Logistics: belongings, dinner, routines; grounds new setting.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0660">
+    <tags><tag>Marnette&apos;s gratitude; shows her modest baseline.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0670">
+    <tags><tag>Elara explains funeral/mourning; widens consequences of assignment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0680">
+    <tags><tag>Marnette acknowledges rarity; shows foreknowledge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0690">
+    <tags><tag>Elara warns about being &apos;too observant&apos;; paranoia escalates.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0700">
+    <tags><tag>Marnette alone; unpacks personal items; humanizes her.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0710">
+    <tags><tag>Hunger vs duty; she prioritizes patient over self.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0720">
+    <tags><tag>Night check: equipment, meds; establishes competence and routine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0730">
+    <tags><tag>Frost wakes; confirms her presence and duty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0740">
+    <tags><tag>Marnette affirms assignment; loyalty established.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0750">
+    <tags><tag>Frost plays with &apos;need&apos;; flips dependency/power theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0760">
+    <tags><tag>Marnette differentiates service from need; self-definition.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0770">
+    <tags><tag>Frost praises her gentleness; contrasts others&apos; impatience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0780">
+    <tags><tag>Marnette articulates empathy about dying; emotional truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0790">
+    <tags><tag>Frost notes her experience with death; draws her out.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0800">
+    <tags><tag>Marnette lists past deaths; validates expertise and trauma.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0810">
+    <tags><tag>Frost asks what she learned; philosophical turn.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0820">
+    <tags><tag>Marnette observes universal fear; deepens mortality theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0830">
+    <tags><tag>Frost asks if she fears death; personal stakes sharpen.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0840">
+    <tags><tag>Marnette defers to Elom; shows avoidance and obedience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0850">
+    <tags><tag>Frost questions Elom&apos;s inner life; destabilizes theology.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0860">
+    <tags><tag>Marnette insists Elom beyond boredom; defensive faith.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0870">
+    <tags><tag>Frost suggests doctrine may be control; foreshadows revelation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0880">
+    <tags><tag>Marnette recites stability dogma; frames change as chaos.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0890">
+    <tags><tag>Frost links &apos;working&apos; to enforced ignorance; reaches for device.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0900">
+    <tags><tag>Marnette protests; recognizes boundary being crossed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0910">
+    <tags><tag>Frost insists she read; tactile contact and &apos;open eyes&apos; motif.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0920">
+    <tags><tag>Marnette asks what device is; curiosity awakens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0930">
+    <tags><tag>Frost defines it as un-sanitized stories; hands off inciting object.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0940">
+    <tags><tag>Marnette retreats with device; senses taboo and danger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0950">
+    <tags><tag>Rationalizes as death-delirium; compares to prior patients.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0960">
+    <tags><tag>Dinner scene: food tastes like ash; device&apos;s gravitational pull.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0970">
+    <tags><tag>Prayer for guidance; duty vs temptation sharpened.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0980">
+    <tags><tag>Device activation and old interface; hints authenticity/age.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P0990">
+    <tags><tag>Title &apos;Early Colony Records&apos;; promises forbidden content.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1000">
+    <tags><tag>Reading marathon; cognitive dissonance begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1010">
+    <tags><tag>Revelation: selection by Musk/genetics, not divine choice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1020">
+    <tags><tag>More records: longevity experiments and redactions; mystery deepens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1030">
+    <tags><tag>Key concepts: castes, lifespan limits, population control; stakes explode.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1040">
+    <tags><tag>Church origin reframed as engineered propaganda; core myth threatened.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1050">
+    <tags><tag>She shuts device; fear and intrusive phrases echo.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1060">
+    <tags><tag>Prayer attempt; shows coping and desire for certainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1070">
+    <tags><tag>Prayer feels hollow; internal shift and seed of doubt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1080">
+    <tags><tag>Window reflection: colony paradox of life on Mars; thematic lens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1090">
+    <tags><tag>One-line punch: possibility of manipulation; crystallizes suspicion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1100">
+    <tags><tag>She tries to reject thought; Earth question resurfaces.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1110">
+    <tags><tag>Childhood Earth dream; introduces buried longing and sensory contrast.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1120">
+    <tags><tag>Escalating &apos;what if&apos; questions; reframes colony as experiment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1130">
+    <tags><tag>Spoken denial; shows panic and taboo awareness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1140">
+    <tags><tag>Bed scene: considers reporting; highlights moral crossroads.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1150">
+    <tags><tag>Justifies listening as caregiving; chooses secrecy for now.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1160">
+    <tags><tag>Insomnia and looping phrases; tension sustains into night.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1170">
+    <tags><tag>Sets tomorrow&apos;s mask of professionalism; promises internal conflict.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1180">
+    <tags><tag>Admits she is wondering; marks point-of-no-return trajectory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1190">
+    <tags><tag>Looks out at domes; temptation of answers vs risk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH01-P1200">
+    <tags><tag>Extended closing: transformation underway; dust-as-knowledge metaphor.</tag></tags>
+  </para-meta>
+</meta>

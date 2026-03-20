@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch11" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH10-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Elom is all-seeing.&quot; The Masters realize they cannot control the information spread. The surveillance state is not omniscient&#x2014;it is panicking. The aphorism becomes a threat that does not deliver.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0010">
+    <tags><tag>Establishes the tipping point as quiet absence, not violence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0020">
+    <tags><tag>Brings the news via Petra; sets a private-space conversation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0030">
+    <tags><tag>Anecdote: Malachi rattled; first public walkout occurs.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0040">
+    <tags><tag>Marnette's shock; reinforces Church's former untouchable authority.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0050">
+    <tags><tag>Names Jonas and Marcus; makes defiance concrete and personal.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0060">
+    <tags><tag>Shows how radical Jonas's shift is; stakes rise via public risk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0070">
+    <tags><tag>Marnette acknowledges momentum is outrunning plans.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0080">
+    <tags><tag>Petra confirms loss of control; foreshadows chaos and backlash.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0090">
+    <tags><tag>Accelerating collapse of attendance; priests try countermeasures.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0100">
+    <tags><tag>Declares institutional responses are failing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0110">
+    <tags><tag>Frames 'critical mass': truth now self-propagating.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0120">
+    <tags><tag>Wide-angle social impact: whispers, documents, children's questions, grief.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0130">
+    <tags><tag>Condenses the movement into a mantra that names betrayal.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0140">
+    <tags><tag>Mantra becomes social glue: password, solidarity, gratitude to Marnette.</tag></tags>
+  </para-meta>
+  <!-- Line 15 (778068A9CD9A = ***) skipped -->
+  <para-meta pid="CH11-P0150">
+    <tags><tag>Scene break: shifts from salve world to Master reaction.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0160">
+    <tags><tag>Announces the Masters are paying attention now.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0170">
+    <tags><tag>Lydia as inside source; meeting logistics and increasing risk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0180">
+    <tags><tag>Defines Master fear spectrum; introduces 'salve hysteria' minimizers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0190">
+    <tags><tag>Prompts specifics: what 'different' looks like in daily behavior.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0200">
+    <tags><tag>Describes loss of deference; tension of 'waiting' salves.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0210">
+    <tags><tag>Marnette underlines asymmetry of knowledge and power.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0220">
+    <tags><tag>Rumor seepage into Master district; Council discomfort begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0230">
+    <tags><tag>Sets up the key question: what kind of cracks are forming?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0240">
+    <tags><tag>Introduces Orin, a biologist; direct challenge to classified protocol.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0250">
+    <tags><tag>Invites Lydia's choice; tests courage and strategy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0260">
+    <tags><tag>Confirms Orin recruited; counts Master allies; network growth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0270">
+    <tags><tag>Asks for the official stance: what the Council is saying/doing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0280">
+    <tags><tag>Council split revealed; hardliners push 'stability' and old removals.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0290">
+    <tags><tag>Links threat to Optimization trauma; chills the room.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0300">
+    <tags><tag>Details pushback: harshness validates rumors; Feng's moral stand.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0310">
+    <tags><tag>Predicts inevitable confrontation; narrative momentum tightens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0320">
+    <tags><tag>Announces a full Council assembly, not just inner circle.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0330">
+    <tags><tag>Asks when; converts abstract threat into timetable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0340">
+    <tags><tag>'Three days' drops a hard deadline.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0350">
+    <tags><tag>Marnette's mind races; old assumptions shatter; replanning begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0360">
+    <tags><tag>Marnette seeks forecast; uncertainty heightens suspense.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0370">
+    <tags><tag>Explains Master confusion and identity-shock; mirrors salve faith-break.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0380">
+    <tags><tag>Names the parallel explicitly; strengthens empathy bridge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0390">
+    <tags><tag>Frames Master identity crisis: hero vs villain story.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0400">
+    <tags><tag>Asks for numbers: how many Masters are reachable?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0410">
+    <tags><tag>Gives a rough count; introduces paranoia about informants.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0420">
+    <tags><tag>Lydia imagines decisive act: undeniable proof presented to Council.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0430">
+    <tags><tag>Articulates the plan: expose the truth at the meeting.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0440">
+    <tags><tag>Argues for moral appeal; humanizes many Masters.</tag></tags>
+  </para-meta>
+  <!-- Line 46 (AC09BDC7FE8B = ***) skipped -->
+  <para-meta pid="CH11-P0450">
+    <tags><tag>Scene break: moves into mobilization phase.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0460">
+    <tags><tag>Compresses three days into a blur; urgency and coordination.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0470">
+    <tags><tag>Network instruction: visibility; no more hiding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0480">
+    <tags><tag>Immediate results; circle symbol emerges organically.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0490">
+    <tags><tag>Circles become ubiquitous; silent defiance saturates labor systems.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0500">
+    <tags><tag>Church attendance nearly gone; Malachi preaching to emptiness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0510">
+    <tags><tag>Marnette witnesses Malachi's grief; complicates antagonist.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0520">
+    <tags><tag>Near-empathy, then restraint; keeps conflict alive.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0530">
+    <tags><tag>Re-centers anger with personal losses; renews moral fuel.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0540">
+    <tags><tag>Moral accounting: Malachi complicit even if deceived.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0550">
+    <tags><tag>Marnette chooses silence and departure; no reconciliation yet.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0560">
+    <tags><tag>Masters patrol salve district; emotions vary; cracks visible.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0570">
+    <tags><tag>A curious Master asks for truth directly; conversion possibility opens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0580">
+    <tags><tag>Dara answers without flinching; models new salve posture.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0590">
+    <tags><tag>Master reacts like a first crack; shows minds can shift.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0600">
+    <tags><tag>Rumors of such encounters spread; authority erodes further.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0610">
+    <tags><tag>Introduces petitions: escalation from symbol to formal demand.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0620">
+    <tags><tag>Petitions spread on walls and hand-to-hand; organization deepens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0630">
+    <tags><tag>Presents petition demands: records, treatments, equality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0640">
+    <tags><tag>Shows mass public signing; scale becomes undeniable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0650">
+    <tags><tag>Spotlights familiar faces signing; continuity with earlier arcs.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0660">
+    <tags><tag>Thomas arrives; personalizes the public moment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0670">
+    <tags><tag>Thomas names the irreversible threshold.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0680">
+    <tags><tag>Marnette confirms no return; shared commitment hardens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0690">
+    <tags><tag>Thomas asks about fear; vulnerability amid uprising.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0700">
+    <tags><tag>Marnette admits terror and readiness; leader voice firms.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0710">
+    <tags><tag>Thomas lists crackdown possibilities; danger stays real.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0720">
+    <tags><tag>Marnette argues practicality: they can't punish everyone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0730">
+    <tags><tag>Thomas reframes action as visibility, not violence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0740">
+    <tags><tag>Thomas states new posture: no permission-seeking.</tag></tags>
+  </para-meta>
+  <!-- Line 77 (7EF702A32AB4 = ***) skipped -->
+  <para-meta pid="CH11-P0750">
+    <tags><tag>Scene break: transitions into the Council-meeting event.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0760">
+    <tags><tag>Establishes location and rule: salves excluded inside, gather outside.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0770">
+    <tags><tag>Lydia's intel: hardliners short of votes; middle shifting.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0780">
+    <tags><tag>Builds suspense through waiting; crowd grows into community.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0790">
+    <tags><tag>Reconciliation image: former enemies holding hands.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0800">
+    <tags><tag>Children present; stakes include the next generation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0810">
+    <tags><tag>Shift from evidence to lived stories; movement becomes human.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0820">
+    <tags><tag>Rosa's story: mother's doubts; hints at historical pivot.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0830">
+    <tags><tag>Another story: kind Master vanished; implies punishment system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0840">
+    <tags><tag>Crowd hypothesis: guilt, knowing, disappearances explained.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0850">
+    <tags><tag>Collective catharsis: decades of silence finally spoken.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0860">
+    <tags><tag>Marnette at front; remembers Frost; re-centers long burden of truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0870">
+    <tags><tag>Vow: doing it for the dead and the deceived generations.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0880">
+    <tags><tag>Near midnight: doors open; turning point arrives.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0890">
+    <tags><tag>Masters emerge exhausted; atmosphere of consequence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0900">
+    <tags><tag>Lydia appears as bridge figure; hope mixed with suspicion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0910">
+    <tags><tag>Lydia's physical state shows cost; she delivers outcome setup.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0920">
+    <tags><tag>Response timing: tomorrow, public statement; extends tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0930">
+    <tags><tag>Marnette presses for nature of response; stakes sharpen.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0940">
+    <tags><tag>Hardliner plan recounted; fear ripples through crowd.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0950">
+    <tags><tag>Crowd reaction registers threat; collective anxiety rises.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0960">
+    <tags><tag>Confirms hardliners lost votes; documents now undeniable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0970">
+    <tags><tag>Marnette demands the decision; reader desire mirrors hers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0980">
+    <tags><tag>Announces negotiation offer: joint committee and reforms.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P0990">
+    <tags><tag>Admits it's partial, but it's acknowledgment of lies.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1000">
+    <tags><tag>Introduces hardest issue: life-extension resources and feasibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1010">
+    <tags><tag>Marnette processes; marks this as movement, not victory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1020">
+    <tags><tag>Names it 'a beginning'; tempered hope.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1030">
+    <tags><tag>Public handholding breaks taboo; social tectonics shift.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1040">
+    <tags><tag>Crowd reaction stays complex; realism preserved.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1050">
+    <tags><tag>Marnette addresses followers; leadership crystallizes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1060">
+    <tags><tag>Declares tomorrow negotiation; sets agenda and resolve.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1070">
+    <tags><tag>Thomas voices distrust; keeps trap possibility alive.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1080">
+    <tags><tag>Marnette answers with collective strategy: too many to isolate now.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1090">
+    <tags><tag>Crowd asks concrete next steps; demands a list.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1100">
+    <tags><tag>Frames rage vs building; sets moral tone for the revolution.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1110">
+    <tags><tag>Demand 1: truth and shared history; dismantle Church myth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1120">
+    <tags><tag>A breath beat: pacing for gravity and audience absorption.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1130">
+    <tags><tag>Demand 2: representation and voting power; structural change.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1140">
+    <tags><tag>Another breath beat; builds cadence and emphasis.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1150">
+    <tags><tag>Demand 3: life and commitment to equality; realistic timeline.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1160">
+    <tags><tag>Crowd listens; collective attention locks in.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1170">
+    <tags><tag>Warns of divide-and-rule tactics; insists on unity.</tag></tags>
+  </para-meta>
+  <!-- Line 121 (02822154940E = ***) skipped -->
+  <para-meta pid="CH11-P1180">
+    <tags><tag>Marnette sees Lydia weeping; empathy across caste line.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1190">
+    <tags><tag>Theme beat: lines blurring; new order gestating.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1200">
+    <tags><tag>Scene break: transitions into the night after the decision.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1210">
+    <tags><tag>Vigil continues; fires appear; old rules quietly suspended.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1220">
+    <tags><tag>Marnette can't rest; anxiety and responsibility simmer.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1230">
+    <tags><tag>Chen arrives in dawn-light; intimate counsel scene begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1240">
+    <tags><tag>Chen urges sleep; practical grounding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1250">
+    <tags><tag>Marnette confesses spiraling dread; humanizes the leader.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1260">
+    <tags><tag>Chen balances risk with wins; reframes scale of progress.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1270">
+    <tags><tag>Marnette notes speed; fear of losing control returns.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1280">
+    <tags><tag>Chen offers a reactor-style metaphor: ignition, containment, inevitability.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1290">
+    <tags><tag>Marnette's smile; emotional relief beat.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1300">
+    <tags><tag>Chen insists on truth; steadies the tone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1310">
+    <tags><tag>Warns she'll be made the face; leadership burden named.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1320">
+    <tags><tag>Marnette rejects ambition; keeps reluctant-leader authenticity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1330">
+    <tags><tag>Chen lists her leadership qualities; argues she's suited.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1340">
+    <tags><tag>Marnette fears mistakes and compromises; negotiation stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1350">
+    <tags><tag>Chen defines community as correction mechanism; distributes burden.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1360">
+    <tags><tag>Re-credits her role but says it's bigger now; shared ownership.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1370">
+    <tags><tag>Marnette realizes she was never alone; reframes origin story.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1380">
+    <tags><tag>Clarifies her unique role: proof-finder, not sole builder.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1390">
+    <tags><tag>Marnette thanks Chen; intimacy and gratitude.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1400">
+    <tags><tag>Chen postpones thanks until they 'win'; keeps fight mindset.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1410">
+    <tags><tag>Quiet observation: life continues while revolution brews.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1420">
+    <tags><tag>Marnette wonders about 'after'; future-imagining begins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1430">
+    <tags><tag>Chen answers 'different'; warns change is slow and painful.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1440">
+    <tags><tag>Marnette insists 'better'; hope pushes back.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1450">
+    <tags><tag>Chen offers 'possible' as the true prize; mature optimism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1460">
+    <tags><tag>Marnette reflects on survival vs building; historical weight.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1470">
+    <tags><tag>Declares a new chance: not endure, but live.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH11-P1480">
+    <tags><tag>Final beat: togetherness and forward motion into the unknown.</tag></tags>
+  </para-meta>
+</meta>

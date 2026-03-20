@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch03" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH02-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Your lifespan is a gift. Use it well.&quot; Frost has asked about her grandmother&apos;s 53 years. The word &quot;gift&quot; becomes bitter&#x2014;what kind of gift is it when it&apos;s engineered scarcity? This aphorism transitions from Marnette&apos;s acceptance to her dawning doubt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0010">
+    <tags><tag>Inciting scream pulls Marnette into immediate action.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0020">
+    <tags><tag>Establishes Frost&apos;s room in full medical chaos.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0030">
+    <tags><tag>Shows Marnette taking command and calming Frost.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0040">
+    <tags><tag>Adds clinical detail: vitals spike, crisis severity clear.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0050">
+    <tags><tag>Frost tries to warn her, hinting at suppressed truths.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0060">
+    <tags><tag>Raises stakes: worse than prior episodes; his extreme age noted.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0070">
+    <tags><tag>Treatment fails to bite; signals this isn&apos;t routine illness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0080">
+    <tags><tag>First big clue: &apos;engineers&apos;, &apos;optimal&apos;, &apos;fifty years&apos; fragments.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0090">
+    <tags><tag>Adds impossible symptoms (fever/decay markers), deepening mystery.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0100">
+    <tags><tag>Marnette questions him to keep him tethered and talking.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0110">
+    <tags><tag>Introduces &apos;Elon&apos; and Frost&apos;s guilt: he &apos;voted yes&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0120">
+    <tags><tag>Conflict: protocol vs curiosity; she hesitates to call physician.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0130">
+    <tags><tag>Reveals the &apos;bio-caste system&apos; as deliberate policy, not nature.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0140">
+    <tags><tag>Marnette chooses deep scan over reporting: agency and risk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0150">
+    <tags><tag>She presses for details while soothing him; bond tightens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0160">
+    <tags><tag>Mentions Earth engineers/genetics; near-loss moment, then slight recovery.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0170">
+    <tags><tag>Key reveal: massive apoptosis, a programmed termination pattern.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0180">
+    <tags><tag>Frames Elon as humane; implies current system twisted his intent.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0190">
+    <tags><tag>Marnette realizes meds won&apos;t solve this; her limits show.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0200">
+    <tags><tag>Pins down vote numbers; Frost&apos;s complicity becomes explicit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0210">
+    <tags><tag>Frost warns of forced forgetting; suggests active control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0220">
+    <tags><tag>Marnette admits the fragments are forming an unwanted pattern.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0230">
+    <tags><tag>Points to &apos;The Archive&apos; as source of the unedited plan.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0240">
+    <tags><tag>Immediate crisis stabilizes; breathing space for consequences.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0250">
+    <tags><tag>Aftershock: Marnette shaken, bruised, emotionally rattled.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0260">
+    <tags><tag>She demands clarity on &apos;engineers&apos; and &apos;vote&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0270">
+    <tags><tag>Adds &apos;Beginning&apos; and &apos;renewable workforce&apos; language: ominous specificity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0280">
+    <tags><tag>Echo-chamber effect: clues loop in her mind as he sleeps.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0290">
+    <tags><tag>She chooses secrecy over protocol, crossing a moral line.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0300">
+    <tags><tag>Mars outside becomes a looming, hostile presence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0310">
+    <tags><tag>She connects &apos;engineers&apos; to unquestioned systems; doubt grows.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0320">
+    <tags><tag>Her worldview cracks: &apos;divinely ordained&apos; now feels suspect.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0330">
+    <tags><tag>Morning reveals physical aftermath and Frost&apos;s fragile stability.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0340">
+    <tags><tag>Frost wakes lucid but diminished; mind-body contrast sharpened.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0350">
+    <tags><tag>Marks intimacy: he notes she stayed all night.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0360">
+    <tags><tag>Marnette keeps it clinical, trying to reassert professional distance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0370">
+    <tags><tag>Frost demands eye contact: emotional engagement, not procedure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0380">
+    <tags><tag>She faces him with her &apos;mask&apos; firmly on.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0390">
+    <tags><tag>Frost tests memory, gauging what she absorbed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0400">
+    <tags><tag>Marnette dismisses it as delirium; avoidance signals fear.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0410">
+    <tags><tag>Frost challenges the dismissal: maybe it made too much sense.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0420">
+    <tags><tag>Internal recap of clues; her fascination becomes undeniable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0430">
+    <tags><tag>She voices the key triad: engineers, vote, &apos;fifty years&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0440">
+    <tags><tag>Frost attempts to minimize, but his reaction betrays weight.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0450">
+    <tags><tag>She pushes &apos;Elon&apos; vs &apos;Elom&apos;, widening the heresy crack.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0460">
+    <tags><tag>Theme statement: names are chosen, changed, and forgotten.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0470">
+    <tags><tag>Marnette probes meaning, stepping deeper into danger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0480">
+    <tags><tag>Frost reframes history as marginalia, not curriculum.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0490">
+    <tags><tag>Narration marks threshold: their relationship turns hazardous.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0500">
+    <tags><tag>Marnette retreats to logbooks and physicians: control strategy.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0510">
+    <tags><tag>Frost interrogates the scan, showing he&apos;s tracking her actions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0520">
+    <tags><tag>Reveals Frost&apos;s awareness; Marnette&apos;s privacy is illusory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0530">
+    <tags><tag>Frost reveals motive: he selected her for curiosity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0540">
+    <tags><tag>Marnette gives the clinical term (apoptosis) while feeling accused.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0550">
+    <tags><tag>Frost pressures her to explain causation, challenging doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0560">
+    <tags><tag>Her &apos;manual answer&apos; sounds rehearsed, undermining its credibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0570">
+    <tags><tag>Frost proposes designed failure: biological planned obsolescence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0580">
+    <tags><tag>Marnette labels it heresy, raising stakes with the Church.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0590">
+    <tags><tag>Frost flips heresy onto obedience; requests Archive item, driving plot.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0600">
+    <tags><tag>Archive named as taboo space; boundary-crossing set up.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0610">
+    <tags><tag>Specific retrieval instructions; Elara ruled out as unsuitable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0620">
+    <tags><tag>Marnette&apos;s hesitation shows risk and loyalty pulling apart.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0630">
+    <tags><tag>She commits to the errand, advancing the story&apos;s &apos;quest&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0640">
+    <tags><tag>Archive door&apos;s plainness hints at older, truer importance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0650">
+    <tags><tag>Door recognizes her: Frost secretly granted access.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0660">
+    <tags><tag>Archive revealed as vast, undermining her assumptions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0670">
+    <tags><tag>Sensory + data detail establishes its hybrid, ancient-modern nature.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0680">
+    <tags><tag>Marnette feels like an intruder inside Frost&apos;s private mind.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0690">
+    <tags><tag>Scale reads as &apos;evidence&apos; hoard: truth preserved outside official channels.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0700">
+    <tags><tag>She locates the requested book; objective secured.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0710">
+    <tags><tag>Photos of salves add unsettling personal/historical texture.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0720">
+    <tags><tag>Duty vs curiosity: she forces herself to look away.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0730">
+    <tags><tag>Major reveal: Project Mayfly and engineered 50-year lifecycles.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0740">
+    <tags><tag>Marnette links the jargon to &apos;design&apos;, not accident.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0750">
+    <tags><tag>She returns shaken; Frost watches like he anticipated this.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0760">
+    <tags><tag>Frost&apos;s simple question tightens tension and expectation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0770">
+    <tags><tag>She delivers the book and confronts him with &apos;Project Mayfly&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0780">
+    <tags><tag>Frost confirms she saw the marked page; he set this up.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0790">
+    <tags><tag>Her voice trembles as she demands meaning; fear turns active.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0800">
+    <tags><tag>Thesis line: divine/natural may begin as human engineering.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0810">
+    <tags><tag>The book framed as original charters before revision/cleanup.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0820">
+    <tags><tag>Marnette asks the founders&apos; true intent, seeking moral ground.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0830">
+    <tags><tag>Frost claims the goal was salvation, not division.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0840">
+    <tags><tag>Afternoon: Frost stronger, restraint burned away; conversation arena set.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0850">
+    <tags><tag>He pivots to age, inviting a broader historical confession.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0860">
+    <tags><tag>Marnette recites the fact, showing learned obedience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0870">
+    <tags><tag>Frost asks what the number means, shifting to theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0880">
+    <tags><tag>Marnette offers a bland answer; her naivety exposed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0890">
+    <tags><tag>Frost corrects with lived detail, anchoring Elon Musk as real history.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0900">
+    <tags><tag>Marnette calls it a blessing, faith reflex intact.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0910">
+    <tags><tag>Frost reframes longevity as grief, deepening his humanity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0920">
+    <tags><tag>Marnette&apos;s silence signals empathy and destabilization.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0930">
+    <tags><tag>He blurs blessing/curse, reinforcing moral ambiguity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0940">
+    <tags><tag>Her taught line sounds hollow, showing belief erosion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0950">
+    <tags><tag>Frost ties longevity to the caste vote; confession sharpens.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0960">
+    <tags><tag>Marnette warns of danger, highlighting external enforcement.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0970">
+    <tags><tag>Frost spotlights power: danger is for those who benefit, and for her.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0980">
+    <tags><tag>He claims eyewitness authority over colony origins and debates.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P0990">
+    <tags><tag>He recounts vote and &apos;yes&apos;; details how salves were engineered/limited.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1000">
+    <tags><tag>Narration emphasizes raw confession and long guilt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1010">
+    <tags><tag>Marnette asks &apos;why&apos;; moral confrontation lands.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1020">
+    <tags><tag>Frost explains fear of Earth&apos;s chaos as motivation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1030">
+    <tags><tag>He lists rationalizations: stability, &apos;greater good&apos;, managed lifespans.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1040">
+    <tags><tag>Marnette asserts consent and rights: ethical counterpoint.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1050">
+    <tags><tag>Frost admits unbearable regret; emotional climax.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1060">
+    <tags><tag>Quiet aftermath with Marnette&apos;s bruises: bodily cost meets ideology.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1070">
+    <tags><tag>Frost restates core doubt: natural order may be engineered control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1080">
+    <tags><tag>Marnette clings to Church teachings, resisting collapse.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1090">
+    <tags><tag>Frost proposes Elon-human and Church-as-tool; theological bomb dropped.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1100">
+    <tags><tag>Marnette experiences vertigo of belief: cliff-edge moment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1110">
+    <tags><tag>She retreats to caregiving tasks, a psychological lifeboat.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1120">
+    <tags><tag>Despite retreat, the questions keep echoing; seed takes root.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1130">
+    <tags><tag>Alone, Marnette replays the day; internal conflict foregrounded.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1140">
+    <tags><tag>She reaches for prayer beads, returning to ritual safety.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1150">
+    <tags><tag>Prayer text crystallizes doctrine: &apos;design&apos;, &apos;role&apos;, &apos;designated time&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1160">
+    <tags><tag>She interrogates the prayer&apos;s language as engineering in disguise.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1170">
+    <tags><tag>Rapid-fire questions define the chapter&apos;s central fracture.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1180">
+    <tags><tag>She tries to dismiss it as Frost&apos;s guilt bleeding into her.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1190">
+    <tags><tag>She reframes the domes: life vs termination, not just life vs death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1200">
+    <tags><tag>Manufacture insight expands: if everything&apos;s controlled, maybe people are too.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1210">
+    <tags><tag>She denies aloud, reasserting faith and purpose.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1220">
+    <tags><tag>Denial fails; knowledge can&apos;t be unlearned.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1230">
+    <tags><tag>She admits being split between realities; identity crisis stated.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1240">
+    <tags><tag>She resolves to keep distance and suppress further &apos;infection&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1250">
+    <tags><tag>Plans to perform obedience tomorrow, attempting to seal the crack.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1260">
+    <tags><tag>Realizes it&apos;s too late: the seed is planted, the old self gone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH03-P1270">
+    <tags><tag>Closing image links Mars&apos;s dust to silent, internal heresy.</tag></tags>
+  </para-meta>
+</meta>

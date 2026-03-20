@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch05" book-id="mayfly-mutiny" draft="1"
+     xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH04-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Elom sees all. Elom judges none.&quot; Frost continues to probe Marnette&apos;s faith. She feels watched and judged by his questions, even as the aphorism promises judgment never comes. Ironic tension builds.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0010">
+    <tags><tag>Arrival at salve platform; contrasts &apos;home&apos; with new unease.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0020">
+    <tags><tag>Mundane announcement forces her to disembark.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0030">
+    <tags><tag>Sensory reset of salve district; time-away felt huge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0040">
+    <tags><tag>Corridor walk and memorial wall deepen caste/lifespan worldbuilding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0050">
+    <tags><tag>Quarters + twin Elom carvings show faith now split/fragile.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0060">
+    <tags><tag>Unpacking recalls Project Mayfly facts; highlights danger of evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0070">
+    <tags><tag>Lena&apos;s arrival reintroduces friendship and normal life.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0080">
+    <tags><tag>Warm reunion establishes emotional anchor (and what&apos;s at risk).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0090">
+    <tags><tag>Marnette can&apos;t fully re-enter normal; hints abrupt ending.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0100">
+    <tags><tag>Lena reports Frost&apos;s death and protocol; notes Marnette&apos;s change.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0110">
+    <tags><tag>Marnette deflects with &apos;tired&apos; to hide turmoil.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0120">
+    <tags><tag>Lena&apos;s awe at 793 years spotlights inequality; offers support.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0130">
+    <tags><tag>Marnette&apos;s inner conflict: truth vs protecting Lena (and herself).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0140">
+    <tags><tag>Marnette frames Frost&apos;s revelations as &apos;strange&apos; dying talk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0150">
+    <tags><tag>Lena presses for details, raising the tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0160">
+    <tags><tag>Marnette doubles down on the safe lie; mask stays on.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0170">
+    <tags><tag>Lena normalizes delirium; pushes &apos;rest and return&apos; narrative.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0180">
+    <tags><tag>&apos;Normal&apos; becomes alien; theme of irreversible awakening.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0190">
+    <tags><tag>Invitation to funeral service moves her into public faith-test.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0200">
+    <tags><tag>Marnette agrees despite dread; commits to play the role.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0210">
+    <tags><tag>Packed church and founding mosaics show collective reverence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0220">
+    <tags><tag>Name-slip revelation: Elon vs Elom clicks into place.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0230">
+    <tags><tag>Sanctuary now feels staged; Marnette&apos;s alienation sharpened.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0240">
+    <tags><tag>Familiar faces underline her secret separation from the community.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0250">
+    <tags><tag>Priest Malachi introduced as authority; his age echoes lifespan limits.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0260">
+    <tags><tag>Sermon opens, sanctifying Frost and the colony&apos;s mythology.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0270">
+    <tags><tag>Marnette reacts to &apos;Elom himself&apos;; doubts intensify.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0280">
+    <tags><tag>Ritual prayer begins; conformity pressure rises.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0290">
+    <tags><tag>Automatic prayer shows conditioning and habit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0300">
+    <tags><tag>Prayer reinterpreted as engineering/caste control; poison in the words.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0310">
+    <tags><tag>She can&apos;t &apos;close her eyes&apos; anymore; isolation and envy of believers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0320">
+    <tags><tag>Sermon frames official story of Master death and mourning.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0330">
+    <tags><tag>Malachi praises Frost&apos;s Archive, planting the later objective.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0340">
+    <tags><tag>Key omissions (vote/Mayfly) reveal propaganda and suppression.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0350">
+    <tags><tag>Doctrine reframes short lives as purposeful &apos;gift&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0360">
+    <tags><tag>Marnette recalls programmed cell death; fear of genetic kill-switch.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0370">
+    <tags><tag>Congregation chants; she mimics silently, emotionally detached.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0380">
+    <tags><tag>Malachi contrasts longevity vs purpose; repeats control doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0390">
+    <tags><tag>Doctrine now feels like chains; Elena/grandmother memories sting.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0400">
+    <tags><tag>She &apos;goes through motions&apos;; hollowed-out faith made visible.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0410">
+    <tags><tag>Lena notices missing hymn; gentle suspicion/concern.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0420">
+    <tags><tag>Marnette&apos;s &apos;tired&apos; becomes practiced shield.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0430">
+    <tags><tag>Lena&apos;s empathy shows misunderstanding: grief vs worldview collapse.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0440">
+    <tags><tag>Inner note: rest can&apos;t fix a shattered cosmology.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0450">
+    <tags><tag>Marnette thanks Lena to preserve the relationship.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0460">
+    <tags><tag>Parting shot: familiar corridors now feel like a cage.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0470">
+    <tags><tag>Montage of normalcy-performance; recovery leave as cover.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0480">
+    <tags><tag>Confession of incapacity to care again; faith damage stated.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0490">
+    <tags><tag>Busywork shows avoidance of solitude and questions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0500">
+    <tags><tag>Dining hall scene restores social texture; funeral chatter continues.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0510">
+    <tags><tag>Lena introduces Thomas as a new complication.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0520">
+    <tags><tag>Thomas recalled as question-asker; foreshadows inquiry plotline.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0530">
+    <tags><tag>Marnette probes his intent, cautious and controlled.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0540">
+    <tags><tag>Lena details his growing doubts and dangerous questions.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0550">
+    <tags><tag>Irony: Thomas mirrors Marnette&apos;s doubts, minus the evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0560">
+    <tags><tag>Marnette checks spread/exposure risk (practical paranoia).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0570">
+    <tags><tag>Great Optimization lore appears; hints history has been edited.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0580">
+    <tags><tag>Marnette asks what Lena wants, spotlighting moral pressure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0590">
+    <tags><tag>Lena asks for &apos;peace/acceptance&apos; intervention; reveals fear of dissent.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0600">
+    <tags><tag>Marnette recognizes her own isolation; can&apos;t be the old comforter.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0610">
+    <tags><tag>She agrees to talk but won&apos;t promise a cure; boundary set.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0620">
+    <tags><tag>Thomas&apos;s respect for her establishes leverage and stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0630">
+    <tags><tag>Memory of boy Thomas shows lifelong curiosity and connection.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0640">
+    <tags><tag>Thomas alone in break room; mood and his changed maturity set.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0650">
+    <tags><tag>Marnette opens the conversation; takes the risk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0660">
+    <tags><tag>Thomas is guarded; shows social exile has hardened him.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0670">
+    <tags><tag>Marnette invites explanation, keeping the door open.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0680">
+    <tags><tag>Thomas defines &apos;doubter&apos; stigma; social cost made explicit.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0690">
+    <tags><tag>Marnette acknowledges Lena&apos;s worry; a soft bridge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0700">
+    <tags><tag>Thomas&apos;s bitterness shows family pressure and reputational fear.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0710">
+    <tags><tag>Marnette&apos;s pulse spikes at Frost mention; danger signal.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0720">
+    <tags><tag>Thomas asks about founders/intent; drives plot toward truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0730">
+    <tags><tag>Marnette faces lie-vs-truth fork; stakes for both.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0740">
+    <tags><tag>She hedges with &apos;dying ramblings&apos;; buys time, avoids confession.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0750">
+    <tags><tag>Thomas presses on lifespan disparity; escalation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0760">
+    <tags><tag>His youth framed against looming death; urgency sharpened.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0770">
+    <tags><tag>Marnette warns truth-seeking is dangerous; tests resolve.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0780">
+    <tags><tag>Thomas insists on searching; defines him as committed dissenter.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0790">
+    <tags><tag>Marnette recognizes herself in him; alliance potential forms.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0800">
+    <tags><tag>She gives the honest advice: keep looking, be careful, distrust easy answers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0810">
+    <tags><tag>Narration marks her choice: honesty over comfort (turning point).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0820">
+    <tags><tag>Nighttime loop of Frost&apos;s last words; guilt and obsession.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0830">
+    <tags><tag>Promise weight grows; mission becomes unavoidable.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0840">
+    <tags><tag>Attempt at real prayer sets up the breaking moment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0850">
+    <tags><tag>Prayer starts, then stalls; fracture dramatized.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0860">
+    <tags><tag>She can&apos;t continue; faith language is corrupted now.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0870">
+    <tags><tag>Doctrine translation #1: &apos;designed&apos; becomes engineers, not divinity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0880">
+    <tags><tag>Doctrine translation #2: &apos;roles&apos; become voted biological castes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0890">
+    <tags><tag>Doctrine translation #3: &apos;designated time&apos; becomes encoded death sentence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0900">
+    <tags><tag>Prayer turns into address to Frost&apos;s memory; grief + obligation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0910">
+    <tags><tag>She names the practical obstacle: Archive is locked behind Master property.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0920">
+    <tags><tag>No answers from the dead; the problem demands action.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0930">
+    <tags><tag>Funeral spectacle contrasts public myth with private reality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0940">
+    <tags><tag>Display image of Frost in Archive triggers opportunity-thinking.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0950">
+    <tags><tag>Caption emphasizes &apos;personal archive&apos; as the key resource.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0960">
+    <tags><tag>Reminder: she had access/clearance once; opportunity rekindled.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0970">
+    <tags><tag>Core question reframed: access, not existence, is the hurdle.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0980">
+    <tags><tag>Residence 7B logistics after death define a time window.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P0990">
+    <tags><tag>Archive likely preserved during mourning; stakes of timing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1000">
+    <tags><tag>Barriers listed: no authority, no cover; tension rises.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1010">
+    <tags><tag>Single-word pivot: &apos;Unless&apos; seeds solution.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1020">
+    <tags><tag>Elara introduced as potential ally; past warning recontextualized.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1030">
+    <tags><tag>Elara-as-helper stated plainly; plan target locked.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1040">
+    <tags><tag>Risks of involving others weighed; paranoia justified.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1050">
+    <tags><tag>Need declared: she can&apos;t do it alone; Elara singled out.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1060">
+    <tags><tag>Decision hardens into plan: contact Elara, return, access Archive.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1070">
+    <tags><tag>&apos;And then what?&apos; opens moral and strategic uncertainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1080">
+    <tags><tag>&apos;Tell them&apos; question: who is them? contrasts Lena vs Thomas responses.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1090">
+    <tags><tag>Re-centers on first step: see the evidence; momentum.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1100">
+    <tags><tag>Six weeks later dawn clarity signals regained agency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1110">
+    <tags><tag>Mirror beat shows internal change beneath same face.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1120">
+    <tags><tag>Declaration of &apos;Today&apos; begins action phase.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1130">
+    <tags><tag>She accepts uncertainty but rejects continued pretending.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1140">
+    <tags><tag>Archive framed as world-changing; she&apos;s ready to question openly.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1150">
+    <tags><tag>Prayer beads choice shows complicated faith, not simple rejection.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1160">
+    <tags><tag>She physically moves toward transit; action replaces rumination.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1170">
+    <tags><tag>She accepts consequences; ignorance no longer an option.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1180">
+    <tags><tag>Boards transport; threshold crossed while district stays oblivious.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1190">
+    <tags><tag>Travel observation mixes fear and hope; emotional tone set.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1200">
+    <tags><tag>Frost&apos;s last words recur as mission mantra.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1210">
+    <tags><tag>She answers aloud, reaffirming the promise.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1220">
+    <tags><tag>Mars/Archive imagery widens scope and forebodes danger.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH05-P1230">
+    <tags><tag>Closing line cements transformation: she&apos;s ready to look.</tag></tags>
+  </para-meta>
+</meta>

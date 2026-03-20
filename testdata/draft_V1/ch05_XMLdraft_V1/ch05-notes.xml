@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notes bookml-version="1.0" chapter-id="ch05" book-id="mayfly-mutiny" draft="1"
+      xmlns="https://bookml.org/ns/1.0">
+  <para-notes pid="CH05-P0010">
+    <note id="CH05-P0010-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Another instance of the transport hummed.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH05-P0030">
+    <note id="CH05-P0030-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>The mention of the contrast in smells is OK but watch for repeat analogies</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH05-P0040">
+    <note id="CH05-P0040-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Mentions her grandmother&apos;s age which maybe altered elsewhere</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH05-P0070">
+    <note id="CH05-P0070-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>(Re)Introduces character Lena</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH05-P0100">
+    <note id="CH05-P0100-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>longtime flagged by spellcheck - I prefer lifelong anyway!</body>
+    </note>
+  </para-notes>
+</notes>

@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter bookml-version="1.0" id="ch04" book-id="mayfly-mutiny" draft="1"
+         xmlns="https://bookml.org/ns/1.0">
+  <chapterinfo>
+    <chapternumber>4</chapternumber>
+    <title>Chapter 4</title>
+  </chapterinfo>
+  <section seq="1000">
+    <para pid="CH03-B0001" seq="100" type="normal" draft-created="1" draft-modified="1" modified-by="ai">A good salve seeks a life of contented service.</para>
+    <para pid="CH04-P0010" seq="1000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The transport hummed to a stop outside Residence 7B, and Marnette felt the weight of the data slate in her bag like a stone. Official death certificate, signed by the colony physician. Timon Frost, age 793 years, cause: advanced cellular collapse. Simple, clean, exactly what the records would show. Nothing about the crisis three nights ago, nothing about his delirious fragments, nothing about the questions that had been keeping her awake since she entered his Archive.
+    </para>
+    <para pid="CH04-P0020" seq="2000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Three days. Seventy-two hours since the night his body had turned against itself, since his fingers had gripped her wrist with desperate strength, since he had whispered things that made no sense and yet made terrible sense simultaneously. In those three days, something fundamental had shifted between them. The careful professional distance she had maintained was gone, replaced by something more fragile, more honest, more dangerous.
+    </para>
+    <para pid="CH04-P0030" seq="3000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She found Elara in the corridor, the older woman&apos;s face drawn with exhaustion. &quot;He&apos;s worse,&quot; Elara said without preamble. &quot;Much worse. The physician was here an hour ago. He said... days. Maybe less.&quot;
+    </para>
+    <para pid="CH04-P0040" seq="4000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;ll go to him.&quot;
+    </para>
+    <para pid="CH04-P0050" seq="5000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Marnette.&quot; Elara caught her arm, her grip surprisingly strong. &quot;Master Valerius came to visit yesterday.&quot;
+    </para>
+    <para pid="CH04-P0060" seq="6000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The name meant nothing to Marnette, but the way Elara said it—carefully, measuring each word—told her it should. &quot;A colleague?&quot;
+    </para>
+    <para pid="CH04-P0070" seq="7000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;An adversary. They&apos;ve been on opposite sides of every colony council vote for two centuries.&quot; Elara&apos;s voice dropped. &quot;Master Valerius made a comment about funeral arrangements. How Master Frost&apos;s death would require a full year of mourning, how the colony would be disrupted, how inconvenient it was for a Master to die during the current agricultural cycle.&quot;
+    </para>
+    <para pid="CH04-P0080" seq="8000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Inconvenient?&quot;
+    </para>
+    <para pid="CH04-P0090" seq="9000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Some Masters view death as a scheduling problem.&quot; Elara released her arm, her expression weary. &quot;Be careful with him, Marnette. These final days... people say things they shouldn&apos;t. Especially dying people who&apos;ve lived too long.&quot;
+    </para>
+    <para pid="CH04-P0100" seq="10000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The door to Frost&apos;s chambers was open, and Marnette understood why before she stepped inside. The room had changed. The advanced medical equipment that had surrounded his bed was gone, replaced by simpler machines focused on comfort rather than cure. The monitors still displayed his vital signs, but now they were muted, their urgent beeps silenced. This was no longer about keeping him alive. This was about letting him die.
+    </para>
+    <para pid="CH04-P0110" seq="11000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And he looked so much smaller. The man who had seemed ancient but eternal when she first arrived now looked fragile, breakable, his skin thin as tracing paper, his hair white as fresh snow against the pillows. His eyes were closed, his breathing shallow but even, and for a moment she thought he was already gone.
+    </para>
+    <para pid="CH04-P0120" seq="12000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But then his eyes opened, focusing on her with a clarity that was somehow more terrifying than the confusion of his crisis. &quot;Marnette. You came back.&quot;
+    </para>
+    <para pid="CH04-P0130" seq="13000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I always come back, Master Frost.&quot; She moved to his side, automatically checking his pulse, adjusting his blanket. &quot;You need to rest.&quot;
+    </para>
+    <para pid="CH04-P0140" seq="14000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;ve been resting for three days.&quot; His voice was weaker than she&apos;d ever heard it, but his gaze was intense, demanding. &quot;There isn&apos;t much time left. I can feel it. Like... like a clock winding down. Only this clock has been winding for nearly eight centuries.&quot;
+    </para>
+    <para pid="CH04-P0150" seq="15000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette smoothed his blanket, her hands moving with practiced efficiency while her mind raced with things she didn&apos;t want to think about. &quot;The physician said you&apos;re more comfortable now.&quot;
+    </para>
+    <para pid="CH04-P0160" seq="16000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;He said I&apos;m dying. He used gentler words, but that&apos;s what he meant.&quot; Frost shifted slightly, wincing at the movement. &quot;Marnette, I need to tell you something. Will you listen? Really listen?&quot;
+    </para>
+    <para pid="CH04-P0170" seq="17000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She hesitated, her hands stilling on the blanket. &quot;Master Frost, you need to conserve your strength. Talking exhausts you.&quot;
+    </para>
+    <para pid="CH04-P0180" seq="18000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Strength doesn&apos;t matter anymore. Time does.&quot; His eyes searched hers, and in their pale blue depths, she saw something she hadn&apos;t seen before: fear. Not fear of death—she was certain he had made his peace with that long ago—but fear of something else, something that would outlive him.
+    </para>
+    <para pid="CH04-P0190" seq="19000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I don&apos;t want you troubled in your final days,&quot; she said, the words feeling inadequate even as she spoke them. &quot;You should be at peace.&quot;
+    </para>
+    <para pid="CH04-P0200" seq="20000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I won&apos;t be at peace until you know.&quot; He struggled to sit up slightly, and Marnette automatically moved to help him, plumping the pillows behind his back. The effort left him breathless, his skin even paler than before.
+    </para>
+    <para pid="CH04-P0210" seq="21000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Know what?&quot; she asked, though part of her already suspected she didn&apos;t want to hear the answer.
+    </para>
+    <para pid="CH04-P0220" seq="22000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Everything.&quot; He settled back against the pillows, his breathing shallow but steady. &quot;What I&apos;m about to tell you will sound impossible. It will contradict everything you&apos;ve been taught, everything you believe, everything you think you know about yourself and your place in this colony.&quot;
+    </para>
+    <para pid="CH04-P0230" seq="23000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette stepped back slightly, her professional calm deserting her. This was different from his previous questions, different from his probing about her faith, different even from his cryptic references to engineers and votes. This was deliberate. Planned. A man preparing to say something that would change everything.
+    </para>
+    <para pid="CH04-P0240" seq="24000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Master Frost, please don&apos;t.&quot; Her voice trembled slightly. &quot;Whatever it is, let it go. Let yourself die in peace.&quot;
+    </para>
+    <para pid="CH04-P0250" seq="25000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I can&apos;t die in peace while carrying this burden.&quot; His eyes held hers, and the weight of his nearly eight hundred years seemed to press down on the room, on her, on the very air they breathed. &quot;Marnette, your people—salves—weren&apos;t born this way. You were made.&quot;
+    </para>
+    <para pid="CH04-P0260" seq="26000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The words hung in the air, strange and wrong and impossible. &quot;Made? What does that mean? Of course we were born. My parents, my grandparents—&quot;
+    </para>
+    <para pid="CH04-P0270" seq="27000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Your grandparents were the first generation born on Mars, yes. But their genetics had already been altered.&quot; Frost&apos;s voice gained strength despite his obvious weakness. &quot;The short lifespans, the fifty to sixty years you consider natural... they&apos;re not natural. They were engineered. On purpose.&quot;
+    </para>
+    <para pid="CH04-P0280" seq="28000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette shook her head, confusion warring with disbelief. &quot;That&apos;s not possible. The Church teaches—&quot;
+    </para>
+    <para pid="CH04-P0290" seq="29000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The Church teaches what it was created to teach!&quot; Frost&apos;s voice rose slightly, then broke with coughing. When he could speak again, his voice was weaker but more intense. &quot;Do you really think it&apos;s a coincidence that every salve lifespan falls within such a narrow range? That no one, not a single person in your entire population, lives beyond sixty years? Does that sound like divine design to you? Or does it sound like... manufacturing?&quot;
+    </para>
+    <para pid="CH04-P0300" seq="30000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Manufacturing.&quot; The word felt foreign and ugly in her mouth. &quot;People aren&apos;t manufactured. We&apos;re not machines.&quot;
+    </para>
+    <para pid="CH04-P0310" seq="31000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Aren&apos;t you?&quot; He gestured weakly toward the window, toward the agricultural domes glowing in the artificial light. &quot;The plants there are engineered for maximum yield. The water is recycled through systems designed for efficiency. The very air you breathe is processed through filters that maintain specific chemical balances. Everything in this colony is controlled, designed, optimized for specific purposes. Why would the people be any different?&quot;
+    </para>
+    <para pid="CH04-P0320" seq="32000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette backed away, her mind rejecting what he was saying even as some part of her recognized the terrible logic in it. &quot;No. That&apos;s... that&apos;s not possible. Who would do such a thing? Why?&quot;
+    </para>
+    <para pid="CH04-P0330" seq="33000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Who?&quot; He laughed, a dry, painful sound. &quot;The same people who voted for it seven hundred years ago. The same people who were afraid of repeating Earth&apos;s mistakes, who thought controlled population through biological means was better than chaos and war. People like me.&quot;
+    </para>
+    <para pid="CH04-P0340" seq="34000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Why?&quot; The question escaped before she could stop it. &quot;Why would anyone vote for that?&quot;
+    </para>
+    <para pid="CH04-P0350" seq="35000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Because we were afraid. Because we remembered Earth—the wars, the competition, the way uncontrolled growth nearly destroyed humanity. We told ourselves it was necessary, that a shorter but focused life was better than a longer one filled with conflict.&quot; His voice dropped, filled with self-loathing. &quot;We told ourselves we were saving humanity while we were destroying part of it.&quot;
+    </para>
+    <para pid="CH04-P0360" seq="36000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette shook her head, unable to accept the implications. &quot;But the Church... Elom&apos;s teachings... they can&apos;t all be lies.&quot;
+    </para>
+    <para pid="CH04-P0370" seq="37000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Elom.&quot; Frost said the name like it was something bitter in his mouth. &quot;There&apos;s something you need to know about Elom. The name... it&apos;s not what you think.&quot;
+    </para>
+    <para pid="CH04-P0380" seq="38000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What do you mean?&quot; But she was already afraid of the answer, already dreading what he would say next.
+    </para>
+    <para pid="CH04-P0390" seq="39000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The founder&apos;s name was Elon. Elon Musk. The Church... it was established decades after his death, by people who understood that control needed more than just biological limits. It needed spiritual justification. They took his name, corrupted it slightly, created a religion around him, made him into a divine creator who designed people for their purpose rather than a man who... who had other plans entirely.&quot;
+    </para>
+    <para pid="CH04-P0400" seq="40000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette stared at him, her mind reeling. Elon. Elom. The similarity was so obvious, so clear, that she couldn&apos;t understand how she had never seen it before. How had no one seen it?
+    </para>
+    <para pid="CH04-P0410" seq="41000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You&apos;re lying,&quot; she whispered, but the words lacked conviction. &quot;You&apos;re confused. The pain medication—&quot;
+    </para>
+    <para pid="CH04-P0420" seq="42000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I stopped taking the pain medication two days ago.&quot; His eyes were clear, painfully clear. &quot;I want to die with a clear mind, Marnette. I want to die knowing that I finally told someone the truth.&quot;
+    </para>
+    <para pid="CH04-P0430" seq="43000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She wanted to run, to leave this room and never come back, to retreat to the familiar comfort of her faith and her community and everything she had always believed was true. But she was his caregiver. She had a duty.
+    </para>
+    <para pid="CH04-P0440" seq="44000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Master Frost, you&apos;re not well. Let me get you something to help you rest.&quot;
+    </para>
+    <para pid="CH04-P0450" seq="45000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;This is the only thing that will help me rest.&quot; He reached for her hand, his fingers cold and brittle. &quot;The truth. I need you to know the truth. Before it&apos;s too late.&quot;
+    </para>
+    <para pid="CH04-P0460" seq="46000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Too late for what?&quot; She pulled her hand away, stepping back until she reached the door. &quot;You&apos;re dying. Whatever you think you&apos;re telling me, it doesn&apos;t matter anymore. Let it go.&quot;
+    </para>
+    <para pid="CH04-P0470" seq="47000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;It matters.&quot; His voice was growing weaker, but the urgency in it remained. &quot;It matters because you&apos;re going to live in the world we created. You&apos;re going to die in it too, far sooner than you should. You deserve to know why.&quot;
+    </para>
+    <para pid="CH04-P0480" seq="48000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette shook her head, unable to listen anymore. &quot;Please don&apos;t talk like this. It&apos;s heretical. I don&apos;t want you to die with these thoughts, these... lies on your lips.&quot;
+    </para>
+    <para pid="CH04-P0490" seq="49000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They&apos;re not lies.&quot; He sagged back against the pillows, the effort of speaking clearly taking its toll. &quot;I know you can&apos;t accept this now. I know it contradicts everything you believe. But it&apos;s true. It&apos;s all documented. In the Archive.&quot;
+    </para>
+    <para pid="CH04-P0500" seq="50000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The Archive. The overwhelming room she had entered three days ago, with its shelves of books and data crystals, its centuries of accumulated secrets. The room where she had seen the phrase &quot;Project Mayfly&quot; and &quot;Optimized 50-year lifecycle parameters.&quot;
+    </para>
+    <para pid="CH04-P0510" seq="51000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Master Frost—&quot; she began, but he interrupted her.
+    </para>
+    <para pid="CH04-P0520" seq="52000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I know you&apos;re not ready. But promise me something anyway. Promise me you&apos;ll look. After I&apos;m gone, when the mourning period begins and you have time, promise me you&apos;ll go to the Archive and really look. Not just at what&apos;s on the surface. Look deeper.&quot;
+    </para>
+    <para pid="CH04-P0530" seq="53000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The request was so reasonable, so seemingly small compared to what he had been saying. A promise to a dying man. What harm could there be in that?
+    </para>
+    <para pid="CH04-P0540" seq="54000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I promise,&quot; she said, the words coming out more easily than she expected.
+    </para>
+    <para pid="CH04-P0550" seq="55000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The truth is there,&quot; he whispered, his eyes drifting closed. &quot;In the beginning. In the original colony charters. In the early genetic records. Before they cleaned everything up, before they made it all safe and acceptable and holy.&quot;
+    </para>
+    <para pid="CH04-P0560" seq="56000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Rest now,&quot; she said, pulling the blanket up to his chin. &quot;Don&apos;t talk anymore.&quot;
+    </para>
+    <para pid="CH04-P0570" seq="57000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;One more thing,&quot; he whispered, his voice barely audible. &quot;Forgive me. Forgive us all.&quot;
+    </para>
+    <para pid="CH04-P0580" seq="58000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette didn&apos;t answer. She stood there watching him sleep, watching his chest rise and fall with each shallow breath, and felt the weight of his words settle over her like the red dust that covered everything outside the dome. She had made a promise. That was all. Just a promise to look in some old records. It didn&apos;t mean she believed him. It didn&apos;t mean anything had to change.
+    </para>
+    <para pid="CH04-P0590" seq="59000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But as she stood there in the quiet room, with the machines monitoring his life and the sunset casting long shadows across the floor, Marnette understood that something already had changed. The question was not whether she would keep her promise—she would, of course she would, it was a promise to a dying man—but whether she could survive what she might find.
+    </para>
+    <para pid="CH04-P0600" seq="60000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The night passed slowly, with Marnette dozing in the chair beside his bed, waking at every change in his breathing, every shift in the monitors&apos; displays. Sometime during the darkest hours, she found herself holding his hand, his cold fingers wrapped in her warm ones. She wasn&apos;t sure when she had reached for him, only that his touch felt strangely necessary now, this connection between them that went beyond caregiver and patient, beyond Master and salve, beyond all the carefully constructed boundaries that had defined their relationship.
+    </para>
+    <para pid="CH04-P0610" seq="61000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Around fourth hour, he stirred, his eyes opening slowly. &quot;Marnette?&quot;
+    </para>
+    <para pid="CH04-P0620" seq="62000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;m here.&quot; She squeezed his hand gently. &quot;Do you need anything? Water? Another blanket?&quot;
+    </para>
+    <para pid="CH04-P0630" seq="63000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;No. Just... talk to me.&quot; His voice was very weak now, each word clearly costing him precious energy. &quot;Tell me about your day. Anything normal.&quot;
+    </para>
+    <para pid="CH04-P0640" seq="64000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette hesitated, then found herself talking about the transport ride, about the way the red dust looked in the artificial dawn, about how she had noticed a new pattern in the corridor lighting. Small, ordinary things that felt impossibly distant now, things from a world where the universe made sense, where people lived and died according to divine plan, where names were what they seemed and promises to dying men didn&apos;t threaten to unravel reality.
+    </para>
+    <para pid="CH04-P0650" seq="65000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Beautiful,&quot; he whispered when she finished. &quot;You make the ordinary sound beautiful.&quot;
+    </para>
+    <para pid="CH04-P0660" seq="66000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That&apos;s just life,&quot; she said softly. &quot;Your life was extraordinary.&quot;
+    </para>
+    <para pid="CH04-P0670" seq="67000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Extraordinarily long.&quot; His eyes drifted closed again. &quot;Extraordinarily selfish, in the end.&quot;
+    </para>
+    <para pid="CH04-P0680" seq="68000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You weren&apos;t selfish,&quot; she said, though the words felt wrong even as she spoke them. &quot;You lived. That&apos;s all.&quot;
+    </para>
+    <para pid="CH04-P0690" seq="69000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Did I?&quot; He opened his eyes again, and they were filled with such ancient sorrow that it took her breath away. &quot;Or did I just... occupy space? Watch others live and die while I accumulated years like some kind of dragon hoarding treasure?&quot;
+    </para>
+    <para pid="CH04-P0700" seq="70000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You cared about people,&quot; she said, thinking of his obvious concern for her, of the way he had chosen her specifically for this assignment. &quot;You cared about me.&quot;
+    </para>
+    <para pid="CH04-P0710" seq="71000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Too late.&quot; His breathing was becoming more labored, and she could see the effort it took for him to stay awake, to stay with her in this moment. &quot;But not too late for you. Promise me again, Marnette. Promise you&apos;ll look.&quot;
+    </para>
+    <para pid="CH04-P0720" seq="72000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I promise,&quot; she said, and this time the words carried weight they hadn&apos;t before. &quot;I&apos;ll look. I&apos;ll find whatever it is you want me to find.&quot;
+    </para>
+    <para pid="CH04-P0730" seq="73000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Not what I want.&quot; His eyes were closing again, his body seeming to sink into the mattress. &quot;What you need to know. What everyone needs to know.&quot;
+    </para>
+    <para pid="CH04-P0740" seq="74000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      He drifted into sleep then, and Marnette sat there holding his hand, watching the monitors, listening to each breath as if it might be his last. The first false dawn was filtering through the windows when she realized that his breathing had changed. Not stopped, but different. Thinner somehow, more distant.
+    </para>
+    <para pid="CH04-P0750" seq="75000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Marnette...&quot; His eyes opened, but they weren&apos;t focused on her. They were looking at something only he could see. &quot;The Archive... the truth is there...&quot;
+    </para>
+    <para pid="CH04-P0760" seq="76000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I know,&quot; she whispered, leaning closer. &quot;You told me.&quot;
+    </para>
+    <para pid="CH04-P0770" seq="77000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Find... the beginning...&quot; His voice was barely audible now, more breath than sound. &quot;They lied... Elon... not Elom... forgive...&quot;
+    </para>
+    <para pid="CH04-P0780" seq="78000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      His eyes found hers then, and for a terrifying moment, she saw perfect clarity in them, perfect understanding of what he was saying and what it meant. &quot;Tell them...&quot; he whispered, and then his eyes lost focus again, drifting toward something beyond her, beyond the room, beyond everything.
+    </para>
+    <para pid="CH04-P0790" seq="79000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Tell who?&quot; she asked, but he didn&apos;t answer.
+    </para>
+    <para pid="CH04-P0800" seq="80000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Remember...&quot; he whispered, his voice so faint she had to lean close to hear it. &quot;Fifty years... not meant... look... see...&quot;
+    </para>
+    <para pid="CH04-P0810" seq="81000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette watched his face, watched the tension gradually leave it, watched the lines of pain and regret soften into something like peace. His hand, still wrapped in hers, grew colder, the last vestiges of warmth leaving his fingers.
+    </para>
+    <para pid="CH04-P0820" seq="82000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And then, with a final soft exhalation, he was gone.
+    </para>
+    <para pid="CH04-P0830" seq="83000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      For a moment, she sat there frozen, unable to quite comprehend what had happened. His eyes were still open, staring at something she couldn&apos;t see, his face peaceful in a way it hadn&apos;t been in all the weeks she had known him. The monitors beside the bed, which had been displaying the steady rhythm of his life, now showed a flat line. No alarm sounded—he had ordered them disabled days ago, preferring to die without the clamor of machines announcing his failure.
+    </para>
+    <para pid="CH04-P0840" seq="84000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Tears filled her eyes, hot and unexpected. She had cared for dying people before, had sat with them through their final moments, had helped dozens of them make their passage from life to whatever came next. But this was different. This wasn&apos;t just a patient. This was Timon Frost, the man who had lived through fifteen generations of her people, the man who had voted to create the world she lived in, the man who had spent his final weeks trying to undo a small part of what he had done.
+    </para>
+    <para pid="CH04-P0850" seq="85000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette reached out with trembling fingers and closed his eyes, her touch gentle, reverent. &quot;Rest now,&quot; she whispered, the words inadequate for the magnitude of this moment, for the weight of nearly eight hundred years now ended. &quot;Rest in peace.&quot;
+    </para>
+    <para pid="CH04-P0860" seq="86000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She sat there holding his cold hand, watching the dawn light gradually fill the room, watching the shadows retreat across the expensive floor, watching the red landscape outside come to life under the artificial sky. And in the silence that followed his last breath, his final words echoed in her mind: Archive... find... beginning... they lied... Elon... not Elom... forgive... tell them...
+    </para>
+    <para pid="CH04-P0870" seq="87000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      What was she supposed to do with that? How was she supposed to live with those fragments, those accusations, those revelations that felt too big, too terrible to be real?
+    </para>
+    <para pid="CH04-P0880" seq="88000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette rose from the chair, her body stiff and sore from sitting all night, and moved to the window. The sun—real sunlight filtered through the dome&apos;s polarized glass—was rising over the Tharsis mountains, painting the red landscape in shades of gold and pink. It was beautiful. Terribly, heartbreakingly beautiful. A world that shouldn&apos;t exist, built on a foundation of lies, populated by people who didn&apos;t know they were living and dying according to someone else&apos;s design.
+    </para>
+    <para pid="CH04-P0890" seq="89000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      She prayed then, the words coming automatically, the prayer she had said countless times in her twenty-six years: &quot;Elom, creator and guide, who designed us for purpose, who gave each of us our role in the great colony, who sees all and knows all, help us to serve with devotion, to accept with grace, to find joy in our designated time.&quot;
+    </para>
+    <para pid="CH04-P0900" seq="90000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But the words caught in her throat, tangled in the fragments of Frost&apos;s final words. Elon, not Elom. They lied. Fifty years... not meant.
+    </para>
+    <para pid="CH04-P0910" seq="91000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette sank to her knees on the expensive floor, her forehead pressed against the cool glass of the window. Grief warred with confusion, sorrow with understanding, faith with doubt. She had lost someone she cared about, but she had also been given a burden she wasn&apos;t sure she could carry.
+    </para>
+    <para pid="CH04-P0920" seq="92000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The promise. She had made a promise to a dying man. Promises to the dying were sacred, more binding than any other oath. She would have to look. She would have to go to the Archive and find whatever truth was hidden there, whatever evidence Frost had accumulated over his long life.
+    </para>
+    <para pid="CH04-P0930" seq="93000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And then what? Tell them? Who was them? Other salves? Would they even believe her? Or would they see her as a heretic, as someone dangerous, as someone threatening the very foundation of their society?
+    </para>
+    <para pid="CH04-P0940" seq="94000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette rose from her knees and returned to the bed, looking down at Frost&apos;s peaceful face. He looked younger in death, the centuries of worry and regret smoothed away, leaving behind the man he might have been if he hadn&apos;t lived so long, if he hadn&apos;t carried such terrible secrets for so many years.
+    </para>
+    <para pid="CH04-P0950" seq="95000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I&apos;ll look,&quot; she whispered, though he couldn&apos;t hear her anymore. &quot;I promise.&quot;
+    </para>
+    <para pid="CH04-P0960" seq="96000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The door to the chamber opened quietly, and Elara entered, her face already composed for the difficult day ahead. &quot;He&apos;s gone?&quot; the older woman asked, though she must have known.
+    </para>
+    <para pid="CH04-P0970" seq="97000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;He&apos;s gone,&quot; Marnette confirmed, her voice steadier than she expected.
+    </para>
+    <para pid="CH04-P0980" seq="98000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Good.&quot; Elara moved to stand beside her, looking down at the still form in the bed. &quot;He was ready. He&apos;s been ready for a long time.&quot;
+    </para>
+    <para pid="CH04-P0990" seq="99000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The year of mourning would begin soon. The state funeral, the colony-wide ceremonies, the constant reminders that a Master had died. But for Marnette, mourning had already started—not just for the man who had died, but for the world she had lost, the certainty she had taken for granted, the faith she had never thought to question.
+    </para>
+    <para pid="CH04-P1000" seq="100000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette looked at Frost one last time, at the ancient face that had seen so much, that had carried such heavy burdens, that had finally found peace in death. And she understood, with a certainty that felt both terrible and necessary, that his death was not an ending at all.
+    </para>
+    <para pid="CH04-P1010" seq="101000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It was a beginning.
+    </para>
+    
+  </section>
+</chapter>

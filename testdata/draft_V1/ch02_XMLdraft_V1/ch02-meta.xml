@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch02" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH01-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Duty is the highest calling.&quot; Marnette accepts her assignment to care for Frost as sacred duty. She has not yet questioned whether duty to an unjust system is virtue or complicity. This aphorism tracks her trajectory: acceptance to doubt to rebellion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0010">
+    <tags><tag>Opens at false dawn with Marnette checking Frost&apos;s pulse, establishing decline and duty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0020">
+    <tags><tag>Simple bedside greeting and blanket adjustment set a quiet, intimate tone.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0030">
+    <tags><tag>Frost wakes lucid and direct, signaling sharpness despite failing body.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0040">
+    <tags><tag>Marnette&apos;s IV and vitals routine shows competence and the medical stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0050">
+    <tags><tag>Frost notes she isn&apos;t afraid to touch him, testing her and inviting closeness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0060">
+    <tags><tag>Marnette&apos;s calm reply signals confidence rooted in training and faith.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0070">
+    <tags><tag>Frost frames others&apos; fear of him as fear of death, introducing the chapter&apos;s theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0080">
+    <tags><tag>Marnette answers with Elom doctrine, anchoring her worldview and role.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0090">
+    <tags><tag>Morning-care montage adds texture: ritual, dignity, and the physicality of caregiving.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0100">
+    <tags><tag>Frost reveals he&apos;s read her record, using her grandmother to assert class power/omniscience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0110">
+    <tags><tag>Marnette&apos;s brief freeze then composure shows guardedness and social conditioning.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0120">
+    <tags><tag>Frost questions whether 53 felt &apos;long&apos;, poking at normalized limits.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0130">
+    <tags><tag>Marnette&apos;s grandmother vignette builds empathy and salve-life context (work, faith, colony growth).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0140">
+    <tags><tag>Frost&apos;s blunt follow-up keeps focus on mortality mechanics.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0150">
+    <tags><tag>Marnette names &apos;cellular breakdown&apos; and &apos;full years&apos;, introducing official terminology.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0160">
+    <tags><tag>Feeding scene spotlights Frost&apos;s fragility and Marnette&apos;s practiced strength.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0170">
+    <tags><tag>Frost invites imagining the grandmother older, planting yearning and comparison.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0180">
+    <tags><tag>Marnette rejects speculation, reinforcing acceptance of &apos;designated&apos; time.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0190">
+    <tags><tag>Frost contrasts his long-lived memories with her truncated lineage, sharpening inequality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0200">
+    <tags><tag>Marnette retreats into orthodoxy, resisting the destabilizing thought experiment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0210">
+    <tags><tag>Frost introduces the &apos;container/manufactured&apos; idea: lifespan as engineered specification.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0220">
+    <tags><tag>Marnette changes subject to the window, showing avoidance and tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0230">
+    <tags><tag>Martian landscape description expands setting and mirrors themes of ancient death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0240">
+    <tags><tag>Frost links colonists&apos; myth-making to the need for stories, reframing faith as survival tool.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0250">
+    <tags><tag>Marnette returns to routine tasks, using procedure as emotional armor.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0260">
+    <tags><tag>Marnette mentions her evening off and offers reading, setting up the church detour.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0270">
+    <tags><tag>Frost asks about her faith with unusual intensity, escalating ideological conflict.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0280">
+    <tags><tag>Narration highlights his intensity and her discomfort, raising stakes beyond small talk.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0290">
+    <tags><tag>Marnette explains Elom&apos;s purpose-doctrine, solidifying the belief system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0300">
+    <tags><tag>Frost probes what &apos;greater than yourselves&apos; means, searching for cracks.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0310">
+    <tags><tag>Marnette answers with &apos;Elom&apos;s plan&apos; and tapestry imagery, recoding inequality as design.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0320">
+    <tags><tag>Frost urges independent thought, positioning himself as catalyst.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0330">
+    <tags><tag>Marnette insists belief equals teaching, revealing indoctrination.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0340">
+    <tags><tag>Frost&apos;s quiet challenge leaves a hook for later and marks the first wobble.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0350">
+    <tags><tag>Transit to the salve district shifts locale and contrasts social strata.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0360">
+    <tags><tag>Approaching the church restores her sense of belonging and &apos;realness&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0370">
+    <tags><tag>Church description adds propaganda-worldbuilding and Elom-founder iconography.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0380">
+    <tags><tag>Lena&apos;s introduction provides community warmth and a confidante.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0390">
+    <tags><tag>Lena notices Marnette&apos;s fatigue, reinforcing the cost of her assignment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0400">
+    <tags><tag>Marnette admits Frost asks strange questions, foreshadowing coming conflict.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0410">
+    <tags><tag>Lena&apos;s banter turns to sincere concern, deepening their bond.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0420">
+    <tags><tag>Marnette states the blunt truth: Frost is dying, naming the ticking clock.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0430">
+    <tags><tag>Priest Malachi appears as authority; his age hints at pre-Optimization memory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0440">
+    <tags><tag>Opening address establishes ritual cadence and communal obedience.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0450">
+    <tags><tag>Familiar prayer recites the doctrine language that will later be reinterpreted.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0460">
+    <tags><tag>Marnette&apos;s participation shows comfort in collective certainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0470">
+    <tags><tag>Malachi&apos;s sermon reframes short lives as &apos;beautiful&apos;, directly countering Frost.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0480">
+    <tags><tag>Congregation agreement shows social reinforcement of doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0490">
+    <tags><tag>Sermon moralizes inequality: purposeful salves vs idle long-lived Masters.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0500">
+    <tags><tag>Marnette&apos;s tears show the doctrine&apos;s emotional utility and grip.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0510">
+    <tags><tag>Malachi directly labels doubt and claims &apos;optimization&apos;, echoing Frost&apos;s vocabulary ominously.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0520">
+    <tags><tag>Malachi&apos;s reassurance (different, specialized, essential) offers comfort as control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0530">
+    <tags><tag>Marnette clings to &apos;essential&apos; via prayer beads, revealing internal investment.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0540">
+    <tags><tag>After service, Lena pulls her aside, opening the Thomas subplot.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0550">
+    <tags><tag>Thomas is introduced and situated (young, industrial maintenance), widening the world.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0560">
+    <tags><tag>Lena hints at older workers from before Optimization, introducing hidden history.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0570">
+    <tags><tag>Marnette recalls the Great Optimization timeline, anchoring the political backstory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0580">
+    <tags><tag>Lena reports Thomas&apos;s &apos;why&apos; questions about lifespan variance and fairness, raising dissent.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0590">
+    <tags><tag>Marnette rejects &apos;fairness&apos;, but the word feels foreign, signaling a hairline crack.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0600">
+    <tags><tag>Lena says Thomas cites released pre-Optimization records; doubt is framed as contagious.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0610">
+    <tags><tag>Marnette calls doubt dangerous and prescribes prayer/priest, choosing orthodoxy despite echoes of Frost.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0620">
+    <tags><tag>Lena warns dying Masters may test salves, foreshadowing Frost&apos;s next move.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0630">
+    <tags><tag>Marnette notes Frost asked the same lifespan question, tightening the thematic loop.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0640">
+    <tags><tag>Lena presses for her answer, applying social scrutiny.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0650">
+    <tags><tag>Marnette recites the official line (designated time, perfect design), reaffirming compliance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0660">
+    <tags><tag>Lena approves and urges her to remember who she is, reinforcing community policing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0670">
+    <tags><tag>Return ride compresses awe into unease: Marnette now wonders about centuries and generational memory.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0680">
+    <tags><tag>Elara meets her with news of Frost&apos;s pain and request, injecting urgency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0690">
+    <tags><tag>Marnette checks stability, showing professionalism and care.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0700">
+    <tags><tag>Elara flags possible confusion from adjusted meds, setting plausible deniability.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0710">
+    <tags><tag>Evening chamber description resets mood: dim, sweat, clarity in Frost&apos;s eyes, tension rising.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0720">
+    <tags><tag>Frost notes her attendance at service, showing he&apos;s tracking her movements.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0730">
+    <tags><tag>Marnette confirms the sermon topic, still aligned with doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0740">
+    <tags><tag>Frost asks what was said, reopening the ideological wound.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0750">
+    <tags><tag>Marnette summarizes the sermon&apos;s &apos;optimized/precious&apos; framing, importing church rhetoric into the room.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0760">
+    <tags><tag>Frost seizes on &apos;optimized&apos; and asks what she&apos;s optimized for, making it personal.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0770">
+    <tags><tag>Marnette defines her purpose as caregiving service, grounding identity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0780">
+    <tags><tag>Frost forces her to imagine her own aging and physical decline, widening the moral question.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0790">
+    <tags><tag>Marnette offers a mentor-role future and mentions her grandmother, exposing vulnerability.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0800">
+    <tags><tag>Frost asserts breakdown is designed and asks help to sit up to show proof, pivoting plot to evidence.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0810">
+    <tags><tag>Marnette supports him; his breathlessness underlines frailty and urgency.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0820">
+    <tags><tag>Frost directs her to the black folder, creating suspense and a tangible secret.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0830">
+    <tags><tag>She retrieves the unusual folder, signaling hidden Master-held knowledge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0840">
+    <tags><tag>His command to open it is the point-of-no-return into revelation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0850">
+    <tags><tag>Photographs appear as concrete evidence that contradicts the official story.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0860">
+    <tags><tag>Frost frames them as pre-Optimization artifacts, contextualizing the threat.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0870">
+    <tags><tag>Marnette studies the joyful aging woman, emotionally undermining doctrine.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0880">
+    <tags><tag>Marnette asks who she is, demanding explanation and grounding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0890">
+    <tags><tag>Frost names Elena, gives an 87-year lifespan, and introduces &apos;planned obsolescence&apos;.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0900">
+    <tags><tag>Marnette&apos;s fixation lets the gulf between then and now land viscerally.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0910">
+    <tags><tag>Frost demands her attention (&apos;look at me&apos;), shifting from evidence to persuasion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0920">
+    <tags><tag>Marnette meets his gaze, committing to the confrontation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0930">
+    <tags><tag>Frost delivers the core allegation: salves could live longer; Optimization implemented biological control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0940">
+    <tags><tag>Marnette recoils and drops the folder, fear making the danger physical.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0950">
+    <tags><tag>Frost asks &apos;dangerous to whom&apos; and frames compliance/power; coughing adds urgency and realism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0960">
+    <tags><tag>Marnette blames medication/confusion, reaching for a psychological escape hatch.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0970">
+    <tags><tag>Frost insists he&apos;s telling truth; points to photos as &apos;real history&apos; versus propaganda.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0980">
+    <tags><tag>Marnette backs toward the door, trying to flee into duty (med schedules) as defense.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P0990">
+    <tags><tag>Frost orders her to think, tying narrow lifespans to church language and genetic protocols.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1000">
+    <tags><tag>His hectoring intensity peaks, emphasizing benefit and motive behind shortened lives.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1010">
+    <tags><tag>Marnette&apos;s whispered &apos;stop&apos; shows she&apos;s overwhelmed, not convinced but shaken.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1020">
+    <tags><tag>Frost interrogates optimization&apos;s purpose (survival vs comfort/control), sharpening the moral thesis.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1030">
+    <tags><tag>Marnette flees to the corridor; harsh light externalizes exposure and disorientation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1040">
+    <tags><tag>Duty pulls her back; her prayer feels hollow, signaling faith slipping.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1050">
+    <tags><tag>She composes herself and returns, choosing professionalism over panic.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1060">
+    <tags><tag>Marnette administers medication and demands rest, reasserting boundaries and control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1070">
+    <tags><tag>Frost&apos;s silent watching implies he sees her retreat and the walls she&apos;s building.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1080">
+    <tags><tag>Frost poses the haunting counterfactual: it wasn&apos;t meant to be this way, leaving a wound.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1090">
+    <tags><tag>Marnette asks &apos;what way&apos;, opening a final, terrifying doorway.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1100">
+    <tags><tag>Frost answers &apos;Any of it&apos;, widening doubt from lifespan to the whole constructed reality.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1110">
+    <tags><tag>Marnette&apos;s silence lets the question echo, ending the scene on unresolved dread.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1120">
+    <tags><tag>Alone, she returns to prayer beads, seeking grounding in ritual.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1130">
+    <tags><tag>The familiar words now feel altered, introducing internal shift.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1140">
+    <tags><tag>Doctrine phrases gain new meanings (engineering, function, planned failure), deepening suspicion.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1150">
+    <tags><tag>At the window, she reframes &apos;death&apos; as termination/decommissioning, intensifying horror.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1160">
+    <tags><tag>She realizes Frost planted doubt deliberately, making him an active catalyst and threat.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1170">
+    <tags><tag>Insomnia visions merge evidence with personal loss: Elena&apos;s long life vs her grandmother&apos;s short one.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1180">
+    <tags><tag>Frost&apos;s pale eyes haunt her, personifying the attack on her certainty.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH02-P1190">
+    <tags><tag>Final beat: she understands she is beginning to question, the irreversible first step toward truth.</tag></tags>
+  </para-meta>
+</meta>

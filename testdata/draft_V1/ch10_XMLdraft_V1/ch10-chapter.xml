@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter bookml-version="1.0" id="ch10" book-id="mayfly-mutiny" draft="1"
+         xmlns="https://bookml.org/ns/1.0">
+  <chapterinfo>
+    <chapternumber>10</chapternumber>
+    <title>Chapter 10</title>
+  </chapterinfo>
+  <section seq="1000">
+    <para pid="CH09-B0001" seq="100" type="normal" draft-created="1" draft-modified="1" modified-by="ai">Trust in the Plan.</para>
+    <para pid="CH10-P0010" seq="1000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Six months after Frost's death, the network had grown to over a hundred people. They were scattered across the salve district—caregivers and agricultural workers, maintenance crews and medical assistants, young doubters and old questioners who had waited decades for permission to speak what they had always suspected. Each one carried the truth, and each one shared it with others they trusted, and the circle widened like ripples spreading across still water.
+    </para>
+    <para pid="CH10-P0020" seq="2000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But with growth came tension. What had started as a small group of grieving doubters had become something larger, something that needed direction and purpose. The question that had haunted them from the beginning—what do we do with this knowledge?—now demanded an answer.
+    </para>
+    <para pid="CH10-P0030" seq="3000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The meeting was held in the back of the agricultural dome, in a storage area where nutrient supplies were kept between growing cycles. Seventeen people gathered in the dim light, representing different factions within the network, different ideas about what should happen next. Marnette recognized most of them—Petra and Marcus from the original circle, Thomas with his barely contained energy, Vera with her practical mind, Jonas with his weathered skepticism. But there were newer faces too, people who had joined in the months since the first sharing, each bringing their own perspective on what the truth demanded of them.
+    </para>
+    <para pid="CH10-P0040" seq="4000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Thomas spoke first, his young voice tight with frustration. &quot;We've been sharing the truth for months now. More than a hundred people know what was done to us. But knowing isn't changing anything. People are still dying on schedule. The Church is still teaching lies. The Masters are still living their centuries while we count our decades. At what point do we stop talking and start acting?&quot;
+    </para>
+    <para pid="CH10-P0050" seq="5000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Acting how?&quot; Vera asked, her practical mind always seeking specifics. &quot;What exactly are you proposing?&quot;
+    </para>
+    <para pid="CH10-P0060" seq="6000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I don't know. Something. Anything.&quot; Thomas's hands clenched at his sides. &quot;We could confront them. Demand they acknowledge what they've done. Demand they give us the life-extension treatments they keep for themselves. Demand equality.&quot;
+    </para>
+    <para pid="CH10-P0070" seq="7000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And if they refuse?&quot; That was Jonas, his weathered face showing the skepticism of someone who had watched too many hopes die over too many years. &quot;If they decide we're a threat and isolate all of us the way they isolated Clara? What then?&quot;
+    </para>
+    <para pid="CH10-P0080" seq="8000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Then at least we'll have done something. At least we won't have just sat here knowing the truth and letting it rot inside us.&quot;
+    </para>
+    <para pid="CH10-P0090" seq="9000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      A woman named Helena, who worked in food preparation, spoke up. &quot;My father was isolated when I was young. I never saw him again. I don't even know if he's still alive somewhere, locked away in one of their facilities, or if they just...&quot; She couldn't finish the sentence. &quot;I can't risk that happening to my children. I have a daughter, Thomas. She's only twelve.&quot;
+    </para>
+    <para pid="CH10-P0100" seq="10000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;So we do nothing?&quot; Thomas demanded. &quot;We let our children grow up believing the same lies we believed, dying the same early deaths, never knowing why?&quot;
+    </para>
+    <para pid="CH10-P0110" seq="11000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That's not what she's saying,&quot; Marcus interjected, his deep voice cutting through the rising tension. &quot;She's saying we need to be smart about this. Careful.&quot;
+    </para>
+    <para pid="CH10-P0120" seq="12000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Careful is just another word for scared.&quot;
+    </para>
+    <para pid="CH10-P0130" seq="13000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Careful is another word for still alive,&quot; Jonas shot back. &quot;You're young, Thomas. You've got decades left, if the schedule holds. Some of us don't have that luxury. Some of us are already counting our final years. We can't afford to throw away what time we have on a confrontation that will only get us killed or worse.&quot;
+    </para>
+    <para pid="CH10-P0140" seq="14000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The room erupted into competing voices—some supporting Thomas, others urging caution, still others proposing alternatives that ranged from public demonstrations to sabotage of critical systems. Marnette listened, letting the debate unfold, hearing in their words the same struggle she felt in her own heart.
+    </para>
+    <para pid="CH10-P0150" seq="15000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      They were right to be frustrated. Knowledge without action was a burden, not a gift. But action without preparation was suicide. The Masters controlled everything—the food supply, the water recyclers, the air processors, the security systems. A direct confrontation would be crushed before it began, and everyone who participated would disappear the way Clara had disappeared.
+    </para>
+    <para pid="CH10-P0160" seq="16000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      A younger woman—Sela, who worked in the medical facilities—raised her hand tentatively. &quot;What about sabotage? Not hurting anyone, but making it harder for them to maintain control. Corrupting records, spreading misinformation in their systems, making the infrastructure less reliable so they need us more?&quot;
+    </para>
+    <para pid="CH10-P0170" seq="17000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;They'd trace it back to us eventually,&quot; Chen said. He had been quiet until now, his engineer's mind working through the logistics. &quot;The systems have redundancies, monitoring protocols. Any sabotage significant enough to matter would be detected and investigated. And once they started looking...&quot;
+    </para>
+    <para pid="CH10-P0180" seq="18000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Then we're back to talking,&quot; Thomas said bitterly. &quot;Always talking. Never doing.&quot;
+    </para>
+    <para pid="CH10-P0190" seq="19000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;There's another way,&quot; Marnette said finally, and the room fell silent. They had grown accustomed to listening to her, to looking to her for guidance. It was a responsibility she had never wanted but could no longer avoid.
+    </para>
+    <para pid="CH10-P0200" seq="20000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We're not strong enough for confrontation. Not yet. Maybe not ever, if strength means force against force.&quot; She looked around the room, meeting each pair of eyes in turn. &quot;But strength isn't just about numbers or weapons. It's about connections. About relationships. About making the truth so widespread that it can't be suppressed.&quot;
+    </para>
+    <para pid="CH10-P0210" seq="21000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We've been doing that,&quot; Thomas objected. &quot;A hundred people know.&quot;
+    </para>
+    <para pid="CH10-P0220" seq="22000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;A hundred out of thousands. A fraction of a fraction.&quot; Marnette shook her head. &quot;We need more. Many more. We need the truth to spread until it becomes impossible to contain, until everyone knows someone who knows, until the Masters realize that silencing us would mean silencing half the workforce.&quot;
+    </para>
+    <para pid="CH10-P0230" seq="23000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That could take years,&quot; Petra said quietly. &quot;Decades.&quot;
+    </para>
+    <para pid="CH10-P0240" seq="24000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Yes. It could.&quot; Marnette felt the weight of that truth, the patience it would require, the lives that would be lost to scheduled termination before the change came. &quot;But the alternative is a confrontation we can't win, followed by isolation and silence. We've seen what happens to individuals who challenge the system. Our only protection is numbers, and our only path to numbers is time.&quot;
+    </para>
+    <para pid="CH10-P0250" seq="25000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;So we just keep talking,&quot; Thomas said bitterly. &quot;Keep sharing documents and whispering in corners while people die.&quot;
+    </para>
+    <para pid="CH10-P0260" seq="26000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We bear witness,&quot; Marnette replied. &quot;That's what we do. We see the truth, and we help others see it. We hold each other through the breaking of faith, and we build connections that can survive what's coming. We're not just spreading information—we're building a community. A community that knows the truth and chooses to carry it together.&quot;
+    </para>
+    <para pid="CH10-P0270" seq="27000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That sounds like a lot of waiting and hoping,&quot; Jonas said.
+    </para>
+    <para pid="CH10-P0280" seq="28000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;It sounds like the only strategy that doesn't end with all of us dead or disappeared.&quot; Marnette's voice was firm. &quot;I've read the documents. I've seen what the Masters are capable of when they feel threatened. The Optimization wasn't just about efficiency—it was about control. They tightened the parameters specifically to prevent the accumulation of knowledge, to make sure no salve lived long enough to connect the dots. If we give them an excuse to crack down, they will. And they'll use methods we haven't even imagined.&quot;
+    </para>
+    <para pid="CH10-P0290" seq="29000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The room fell silent again, the weight of her words settling over them. They knew she was right. They all knew. But knowing didn't make the waiting any easier.
+    </para>
+    <para pid="CH10-P0300" seq="30000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;There's something else,&quot; Marnette continued. &quot;Something I've been thinking about since I found the full history in the Archive.&quot; She paused, choosing her words carefully. &quot;The Masters aren't all the same. The documents showed that some of them know the truth and choose to perpetuate it. But others are as ignorant as we were, inheriting a system they never questioned. And some—a few—have discovered the truth and been tormented by it, like Frost was.&quot;
+    </para>
+    <para pid="CH10-P0310" seq="31000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;So what?&quot; Thomas demanded. &quot;Some of them feel bad while they live their centuries and we die at fifty?&quot;
+    </para>
+    <para pid="CH10-P0320" seq="32000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;So maybe they can be reached. Maybe some of them are waiting, the way Marcus was waiting, for permission to speak what they've always suspected.&quot; Marnette looked at Marcus, who nodded slowly. &quot;If we can find allies among the Masters—even a few—it changes everything. It's not salves against Masters anymore. It's people who know the truth against a system that benefits from lies.&quot;
+    </para>
+    <para pid="CH10-P0330" seq="33000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You want to recruit Masters?&quot; The incredulity in Thomas's voice was sharp. &quot;The people who created us, who engineered our deaths, who—&quot;
+    </para>
+    <para pid="CH10-P0340" seq="34000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The people who inherited a system and might be willing to change it,&quot; Marnette interrupted. &quot;Frost was a Master. He spent eight hundred years carrying the guilt of what he'd helped create, and at the end, he chose to share the truth with me. If there was one, there might be others.&quot;
+    </para>
+    <para pid="CH10-P0350" seq="35000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And if there aren't? If we reach out to the wrong Master and they report us?&quot;
+    </para>
+    <para pid="CH10-P0360" seq="36000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Then we're careful. We don't approach anyone until we're certain. We watch, we listen, we learn which Masters show signs of doubt, which ones ask questions, which ones treat salves like people rather than units.&quot; Marnette spread her hands. &quot;I'm not saying it's safe. Nothing about this is safe. But it might be our best chance at real change—not just salves knowing the truth, but Masters knowing it too. Masters who have the power to actually do something about it.&quot;
+    </para>
+    <para pid="CH10-P0370" seq="37000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The debate continued, voices rising and falling as different perspectives clashed and merged. Helena spoke again about the need to protect children, and Sela countered that protection through silence was just another form of complicity. Chen outlined the practical challenges of identifying sympathetic Masters without exposing the network. Jonas warned that impatience had destroyed movements before, while Thomas insisted that patience was its own form of defeat.
+    </para>
+    <para pid="CH10-P0380" seq="38000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But the tide had shifted. By the end of the meeting, they had agreed on a strategy: continued expansion of the network among salves, careful observation of Masters who might be sympathetic, and patience. Always patience. The slow work of building something that could survive the reaction when it finally came.
+    </para>
+    <para pid="CH10-P0390" seq="39000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The weeks that followed were a test of that patience. Marnette continued her work as a caregiver, sitting with the dying, offering comfort that was no longer rooted in faith but in simple human connection. She watched families grieve for losses they didn't understand, saw children weep for parents who had been stolen from them by engineering rather than nature, and felt the weight of knowing what they didn't know.
+    </para>
+    <para pid="CH10-P0400" seq="40000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Should she tell them? Each time she sat with a grieving family, the question tore at her. They deserved to know why their loved one had died, why fifty-three years or forty-eight years was all the time they had been given. But telling them in their grief, when they were already broken, when they had no support network to help them process the truth—that would be cruelty, not kindness.
+    </para>
+    <para pid="CH10-P0410" seq="41000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      So she held the truth inside and offered what comfort she could, knowing it was inadequate, knowing she was participating in the same lie she was working to destroy. The contradiction ate at her, but she saw no alternative. Change took time. Revolution was built one relationship at a time. And sometimes the most radical act was simply being present with someone's pain.
+    </para>
+    <para pid="CH10-P0420" seq="42000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      One afternoon, she was called to attend a woman named Miriam, fifty-four years old, whose cellular breakdown had begun three days earlier. Miriam lay in her bed, her body shutting down according to the schedule written into her cells, her family gathered around her in the small quarters they shared.
+    </para>
+    <para pid="CH10-P0430" seq="43000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Caregiver Marnette,&quot; Miriam whispered as Marnette entered. &quot;They sent you. I'm glad. I've heard you're... different.&quot;
+    </para>
+    <para pid="CH10-P0440" seq="44000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette knelt beside the bed, taking Miriam's fragile hand in both of hers. The skin was papery thin, marked with the darkening spots that signaled the final stages. &quot;Different how?&quot;
+    </para>
+    <para pid="CH10-P0450" seq="45000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Kind. Patient. You listen.&quot; Miriam's eyes, clouded with approaching death, searched Marnette's face. &quot;My daughter says you helped her friend's mother pass peacefully. That you didn't just recite prayers—you actually cared.&quot;
+    </para>
+    <para pid="CH10-P0460" seq="46000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I try to be present with people. To see them as individuals, not just...&quot; Marnette caught herself before she said &quot;units.&quot; &quot;Not just patients.&quot;
+    </para>
+    <para pid="CH10-P0470" seq="47000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Miriam nodded weakly. &quot;I've lived a good life. Fifty-four years. Raised two children, worked in the water reclamation facility, served the colony as Elom designed.&quot; She paused, something flickering across her face—a shadow of doubt that Marnette recognized immediately. &quot;But I've wondered sometimes. Why fifty-four? Why not sixty, or seventy, or a hundred? The Masters live so long. Why are we different?&quot;
+    </para>
+    <para pid="CH10-P0480" seq="48000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette's heart clenched. Here it was—the question that lived at the heart of everything. Asked by a dying woman who would never live to see the answer matter.
+    </para>
+    <para pid="CH10-P0490" seq="49000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What do you think?&quot; Marnette asked carefully.
+    </para>
+    <para pid="CH10-P0500" seq="50000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I don't know. The priests say it's Elom's design, that we're blessed with focused lives, that our brevity gives us purpose.&quot; Miriam's voice grew softer, weaker. &quot;But my grandmother used to say things were different when she was young. That people lived longer then. That something changed.&quot;
+    </para>
+    <para pid="CH10-P0510" seq="51000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Your grandmother sounds like a wise woman.&quot;
+    </para>
+    <para pid="CH10-P0520" seq="52000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;She was. Lived to sixty-seven, which they said was unusual even then. She told me to pay attention. To notice things.&quot; Miriam's eyes closed briefly, then opened again with visible effort. &quot;I've paid attention my whole life, caregiver. And I've noticed that the answers never quite make sense. The variations in lifespan. The way the Church's teachings shifted when I was a girl. The way the Masters look at us sometimes, like we're not quite real to them.&quot;
+    </para>
+    <para pid="CH10-P0530" seq="53000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette felt tears pricking her eyes. This woman, dying on schedule, had seen through the lies without ever having access to the documents that proved them. She had noticed, just as Marcus had noticed, just as Thomas had noticed, just as everyone in the network had noticed before they found the proof.
+    </para>
+    <para pid="CH10-P0540" seq="54000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You're not wrong,&quot; Marnette whispered, leaning closer so that only Miriam could hear. &quot;The answers don't make sense because they're not the real answers.&quot;
+    </para>
+    <para pid="CH10-P0550" seq="55000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Miriam's hand tightened on hers with surprising strength. &quot;I knew it. I've always known something was wrong. I just couldn't...&quot; She trailed off, her energy fading. &quot;Will you tell my daughter? After I'm gone? Will you tell her to keep noticing?&quot;
+    </para>
+    <para pid="CH10-P0560" seq="56000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I'll tell her,&quot; Marnette promised, her voice thick with emotion. &quot;I'll tell her everything she needs to know to find the truth.&quot;
+    </para>
+    <para pid="CH10-P0570" seq="57000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Miriam smiled, something like peace settling over her features despite the wracking deterioration of her body. &quot;Good. That's good. Maybe her generation will be the ones who finally understand.&quot; Her eyes closed again. &quot;Pray with me, caregiver. Not the official prayers—I never quite believed those. Just... talk to whatever is out there. Whatever is real.&quot;
+    </para>
+    <para pid="CH10-P0580" seq="58000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette bowed her head and spoke words that were not prayers to Elom but something older, simpler. Words of comfort and hope, of connection across the void, of the human need to believe that suffering had meaning and death was not the end. She didn't know if anything heard her. But she knew Miriam heard, and that was enough.
+    </para>
+    <para pid="CH10-P0590" seq="59000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The hours passed slowly. Miriam drifted in and out of consciousness, sometimes speaking to people who weren't there—her grandmother, her husband who had died three years before, a sister she had lost in childhood. Her daughter Ada sat on the other side of the bed, holding her mother's other hand, her young face drawn with exhaustion and grief.
+    </para>
+    <para pid="CH10-P0600" seq="60000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;She's always been like this,&quot; Ada murmured during one of Miriam's sleeping periods. &quot;Asking questions, noticing things others missed. She used to get in trouble for it when she was younger. The priests didn't like her questions.&quot;
+    </para>
+    <para pid="CH10-P0610" seq="61000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;She sounds like a remarkable woman.&quot;
+    </para>
+    <para pid="CH10-P0620" seq="62000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;She is. She—&quot; Ada's voice caught. &quot;She taught me to think for myself. Even when it was dangerous. Even when it would have been easier to just accept things.&quot; She looked at Marnette with eyes that held the same questioning spirit as her mother's. &quot;Is that why you're different? Because you ask questions too?&quot;
+    </para>
+    <para pid="CH10-P0630" seq="63000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Yes. I ask questions. And sometimes I find answers that change everything.&quot;
+    </para>
+    <para pid="CH10-P0640" seq="64000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Ada nodded slowly, something passing between them that didn't require words. An understanding. A promise.
+    </para>
+    <para pid="CH10-P0650" seq="65000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      When Miriam's breathing finally stopped, just as the dome lights were dimming for the evening cycle, Ada wept against Marnette's shoulder. And Marnette held her, knowing that soon she would share the truth with this grieving daughter, knowing that Ada would become part of the network, knowing that Miriam's final request would be honored.
+    </para>
+    <para pid="CH10-P0660" seq="66000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      One relationship at a time. One truth at a time. One witness at a time.
+    </para>
+    <para pid="CH10-P0670" seq="67000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The network continued to grow. By the eighth month, it had reached two hundred. By the tenth, three hundred. Each new member brought their own connections, their own relationships, their own circles of trust that could be expanded carefully, gradually.
+    </para>
+    <para pid="CH10-P0680" seq="68000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Not everyone who learned the truth joined the effort to spread it. Some retreated into private grief, overwhelmed by the enormity of what had been done to them. Some refused to believe, clinging to faith even when confronted with evidence, choosing the comfort of lies over the pain of truth. And some believed but counseled inaction, arguing that knowledge alone was enough, that spreading the truth only endangered everyone involved.
+    </para>
+    <para pid="CH10-P0690" seq="69000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But enough people chose to bear witness, to share what they had learned, to build the connections that might someday become strong enough to challenge the system. The network became a web of relationships spanning the entire salve district, invisible to those who weren't part of it, powerful precisely because it had no center that could be destroyed.
+    </para>
+    <para pid="CH10-P0700" seq="70000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Marnette found herself becoming something she had never expected: a teacher. People came to her not just for the documents but for help understanding them, for guidance on how to share the truth without destroying those they loved, for support as they processed their own grief and rage.
+    </para>
+    <para pid="CH10-P0710" seq="71000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;How do you keep going?&quot; a young man named Kira asked her one evening, his face still wet with tears from learning about the genetic modifications. &quot;How do you wake up every day knowing what they did to us and not just... break?&quot;
+    </para>
+    <para pid="CH10-P0720" seq="72000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I break regularly,&quot; Marnette admitted. They were sitting in a quiet corner of the communal eating area, their voices low enough that no one passing by could hear. &quot;I cry. I rage. I lie awake at night thinking about everyone I've ever loved who died without knowing why.&quot; She paused, remembering her grandmother, remembering Elder Maris, remembering all the peaceful deaths she had witnessed and helped along without ever knowing they were murders. &quot;But then I get up. Because breaking doesn't change anything. Because the only way through this is forward. Because every person who learns the truth is one more crack in the foundation of a system that has lasted seven hundred years.&quot;
+    </para>
+    <para pid="CH10-P0730" seq="73000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;It feels hopeless sometimes. Like we're trying to empty an ocean with a cup.&quot;
+    </para>
+    <para pid="CH10-P0740" seq="74000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I know. But oceans are just collections of drops. And every drop matters.&quot; Marnette put a hand on his shoulder. &quot;You matter, Kira. The truth you carry matters. The people you'll share it with matter. We're not going to see the end of this—not in our lifetimes, maybe not in our children's lifetimes. But we're part of it. We're the generation that started saying no.&quot;
+    </para>
+    <para pid="CH10-P0750" seq="75000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Kira was quiet for a moment, staring at his hands. &quot;I keep thinking about my father. He died when I was sixteen. Forty-nine years old. The priests said it was a blessing—that he'd lived a full life, that Elom had called him home.&quot; His jaw tightened. &quot;It wasn't a blessing. It was murder. He could have lived for centuries, watched me grow up, met his grandchildren. And they took that from him. From all of us.&quot;
+    </para>
+    <para pid="CH10-P0760" seq="76000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;That's why we keep going,&quot; Marnette said softly. &quot;For everyone we've lost. For everyone we might save.&quot;
+    </para>
+    <para pid="CH10-P0770" seq="77000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Kira nodded slowly, something hardening in his expression. Not hope exactly—the truth they carried left little room for hope—but determination. The willingness to keep going even when the destination was beyond sight.
+    </para>
+    <para pid="CH10-P0780" seq="78000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      That was what Marnette saw in face after face as the network grew. Not optimism, not confidence, but determination. The choice to bear witness even when witnessing brought only pain. The choice to share truth even when truth brought only grief. The choice to build connections even when those connections might lead to danger.
+    </para>
+    <para pid="CH10-P0790" seq="79000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It was a strange kind of revolution, she thought. Not armies or weapons, not demands or ultimatums, but simply people talking to each other, sharing what they knew, supporting each other through the breaking of everything they had believed. Empathy as a revolutionary tool. Connection as a weapon against a system designed to keep them isolated and compliant.
+    </para>
+    <para pid="CH10-P0800" seq="80000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Ten months after Frost's death, the network made its first contact with a sympathetic Master.
+    </para>
+    <para pid="CH10-P0810" seq="81000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It happened almost by accident. Chen, the engineer who had noticed the statistical impossibility of salve lifespan distributions, worked in the fusion reactor facility where he occasionally interacted with Master supervisors. One of them—a young woman named Lydia, barely a century old by Master standards—had always treated the salve workers with unusual respect. She asked their names, remembered their families, seemed genuinely interested in their lives.
+    </para>
+    <para pid="CH10-P0820" seq="82000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Chen had watched her for months, looking for signs of doubt, looking for the questions that might indicate she was ready to hear the truth. Finally, he took a risk.
+    </para>
+    <para pid="CH10-P0830" seq="83000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Do you ever wonder,&quot; he asked her one day during a maintenance check, &quot;why salve lifespans are so much shorter than yours?&quot;
+    </para>
+    <para pid="CH10-P0840" seq="84000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Lydia had frozen, her face going carefully blank. &quot;The official explanation is biological adaptation. Different genetic paths for different environmental niches.&quot;
+    </para>
+    <para pid="CH10-P0850" seq="85000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;But you don't believe that.&quot;
+    </para>
+    <para pid="CH10-P0860" seq="86000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;What makes you say that?&quot;
+    </para>
+    <para pid="CH10-P0870" seq="87000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Because you're a scientist. And the official explanation doesn't fit the data.&quot; Chen kept his voice casual, as if they were discussing reactor efficiency rather than the foundational lie of their entire society. &quot;I've run the numbers. The lifespan distributions don't follow natural variation patterns. They're too consistent, too predictable. Almost as if they were designed.&quot;
+    </para>
+    <para pid="CH10-P0880" seq="88000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Lydia looked away, and Chen saw something he recognized—the same expression he had seen on Marnette's face, on Petra's face, on the face of everyone who had discovered the truth and didn't know what to do with it. The expression of someone carrying a burden they couldn't set down.
+    </para>
+    <para pid="CH10-P0890" seq="89000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I've seen things,&quot; she said finally, her voice barely audible. &quot;Documents, in the historical archives. References to something called the Sustainability Protocol. I tried to research it, but the relevant files are classified. Restricted even for Masters.&quot;
+    </para>
+    <para pid="CH10-P0900" seq="90000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Chen felt his heart racing but kept his expression neutral. &quot;What if I told you I've seen those documents? What if I told you the truth about why salves die young?&quot;
+    </para>
+    <para pid="CH10-P0910" seq="91000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Lydia turned to face him, and in her eyes he saw something he hadn't expected: hope. &quot;I would say it's about time someone told me. I've been waiting my whole life to understand why things are the way they are.&quot;
+    </para>
+    <para pid="CH10-P0920" seq="92000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      That night, Chen brought Lydia to meet Marnette.
+    </para>
+    <para pid="CH10-P0930" seq="93000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The meeting was tense. Lydia was the first Master to enter the network, and many of its members were uncomfortable with her presence. Some refused to speak in front of her. Others watched her with undisguised hostility, seeing in her face the centuries of privilege that had been stolen from them.
+    </para>
+    <para pid="CH10-P0940" seq="94000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      But Lydia listened. She read the documents Chen had shared with her, and her face went through the same transformations Marnette had seen in salve after salve—confusion, comprehension, horror, grief. When she finished, she sat in silence for a long moment, tears running down her cheeks.
+    </para>
+    <para pid="CH10-P0950" seq="95000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I knew something was wrong,&quot; she finally said. &quot;I've known since I was a child, watching my salve caretaker age and die while my parents stayed young. I asked my mother once why Marina had to leave us. She said it was Elom's design, that salves were blessed with focused lives. But the way she said it...&quot; Lydia shook her head. &quot;She didn't believe it either. She just didn't know what else to say.&quot;
+    </para>
+    <para pid="CH10-P0960" seq="96000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Your mother knows the truth?&quot; Marnette asked sharply.
+    </para>
+    <para pid="CH10-P0970" seq="97000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;No. I don't think so. She inherited the lie the same way most Masters do, accepted it without questioning because questioning was too hard.&quot; Lydia looked at the documents spread across the table. &quot;But some Masters do know. The ones with access to the restricted archives, the ones who serve on certain councils. They know, and they choose to maintain the system anyway.&quot;
+    </para>
+    <para pid="CH10-P0980" seq="98000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;The ones who voted for the Optimization,&quot; Marnette said.
+    </para>
+    <para pid="CH10-P0990" seq="99000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Yes. I've heard whispers about it—a project to 'stabilize lifespan parameters.' I never understood what it meant until now.&quot; Lydia's voice hardened. &quot;They shortened your lives deliberately. Not because they had to, but because you were living too long, asking too many questions. They murdered generations of salves just to maintain their control.&quot;
+    </para>
+    <para pid="CH10-P1000" seq="100000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;And you're part of the class that benefited from that murder,&quot; Thomas said coldly. He had come to the meeting despite his skepticism, watching Lydia with barely concealed hostility. &quot;You've lived—what, a century? While my grandmother died at fifty-three.&quot;
+    </para>
+    <para pid="CH10-P1010" seq="101000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I know.&quot; Lydia met his eyes without flinching. &quot;I know what I am. What my existence means. I've benefited from a crime I didn't commit, and that makes me complicit in it even if I didn't know.&quot; She took a deep breath. &quot;But I know now. And I'm here because I want to help change it. I don't know how, or what I can do, but I refuse to just accept this anymore.&quot;
+    </para>
+    <para pid="CH10-P1020" seq="102000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The room was silent as the network members processed her words. It was Petra who spoke first, her voice thoughtful.
+    </para>
+    <para pid="CH10-P1030" seq="103000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;We've talked about finding allies among the Masters. People who might be willing to help.&quot; She looked at Lydia with something approaching respect. &quot;You're the first one to actually step forward. That took courage.&quot;
+    </para>
+    <para pid="CH10-P1040" seq="104000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Courage or foolishness,&quot; Lydia replied. &quot;I'm not sure which. But I couldn't keep pretending everything was normal. Not after what I've read tonight.&quot;
+    </para>
+    <para pid="CH10-P1050" seq="105000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The tension in the room began to ease. Not trust—that would take time—but the beginning of acceptance. Lydia was different from them in fundamental ways, shaped by privilege and longevity they could never share. But she had chosen to stand with them anyway, to risk her position and perhaps her safety for a truth she had only just learned.
+    </para>
+    <para pid="CH10-P1060" seq="106000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It wasn't much. One Master, young and relatively powerless, with no access to the councils that made decisions. But it was a beginning. It was proof that the lines between Masters and salves might not be as absolute as the system required them to believe.
+    </para>
+    <para pid="CH10-P1070" seq="107000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      And in a revolution built on relationships, even one connection across the divide could change everything.
+    </para>
+    <para pid="CH10-P1080" seq="108000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      Lydia proved her commitment in the weeks that followed. She used her access to Master databases to gather information the network had never been able to reach—details about the Optimization, names of the Masters who had voted for it, current discussions about population management and resource allocation. She brought back reports of growing unease among younger Masters, who had inherited a system they didn't understand and were beginning to ask questions their elders couldn't answer.
+    </para>
+    <para pid="CH10-P1090" seq="109000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;There are others like me,&quot; she told Marnette during one of their clandestine meetings. &quot;Masters who've noticed the inconsistencies, who've wondered about the lifespan differences, who feel uncomfortable with the way salves are treated. They don't know the full truth, but they sense something is wrong.&quot;
+    </para>
+    <para pid="CH10-P1100" seq="110000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Can you reach them? Bring them in the way Chen brought you?&quot;
+    </para>
+    <para pid="CH10-P1110" seq="111000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;Some of them, maybe. But it's risky. If the wrong person finds out what I'm doing...&quot; Lydia shuddered. &quot;The penalties for Masters who break solidarity with the system are severe. I could lose everything—my position, my access, maybe even my life extension treatments.&quot;
+    </para>
+    <para pid="CH10-P1120" seq="112000" type="dialogue"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;You'd become like us,&quot; Marnette said quietly. &quot;Living on borrowed time.&quot;
+    </para>
+    <para pid="CH10-P1130" seq="113000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      &quot;I've thought about that. It terrifies me, honestly. I've always known I would live centuries, that death was something that happened to others, not to me.&quot; Lydia's voice cracked slightly. &quot;But that certainty was built on a lie. On the stolen years of people like you. I'm not sure I can keep accepting those stolen years, now that I know where they came from.&quot;
+    </para>
+    <para pid="CH10-P1140" seq="114000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      It was a conversation Marnette had never expected to have with a Master—a conversation about privilege and complicity, about the cost of awakening to injustice, about what it meant to benefit from a system you hadn't created but were expected to perpetuate.
+    </para>
+    <para pid="CH10-P1150" seq="115000" type="normal"
+          draft-created="1" draft-modified="1"
+          modified-by="ai" modified-date="2026-03-17T00:00:00">
+      The network was growing. The truth was spreading. And the lines that had seemed so absolute were beginning to blur.
+    </para>
+    
+  </section>
+</chapter>

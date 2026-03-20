@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notes bookml-version="1.0" chapter-id="ch01" book-id="mayfly-mutiny" draft="1"
+               xmlns="https://bookml.org/ns/1.0">
+  <para-notes pid="CH01-P0010">
+    <note id="CH01-P0010-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Uses the dreaded emdash. There maybe better terms for the words eternal and habitat</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0030">
+    <note id="CH01-P0030-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Another emdash. The phrases &apos;Elom guide my steps&apos; and &apos;Elom guide my hands to serve.&apos; are described as thoughts, so perhaps they should be in single quotes. Research alternative ways of expressing thoughts, as these don&apos;t leap out as changing from reported speech to the third person.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0040">
+    <note id="CH01-P0040-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Another emdash. The paragraph described the unusual nature of the death of a master but the final sentence is a bit clunky.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0050">
+    <note id="CH01-P0050-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Starts with a conjunction. Two more emdashes.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0070">
+    <note id="CH01-P0070-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>The phrase &apos;her door&apos; is confusing. It is the door of her destination for sure, but it would be better to describe it as such. Her doot could mean her house or her door of the transport. Rework this.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0080">
+    <note id="CH01-P0080-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>More emdashes and the first mention of Musk (Musk&apos;s arrival,) - change this to Elom or the founder as we don&apos;t want to give the game away too soon.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0090">
+    <note id="CH01-P0090-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Yet more emdashes</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0100">
+    <note id="CH01-P0100-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>First meeting of Elara (Mortal in Greek myth - impregnated by Zeus and died during childbirth due to the size of her massive baby)</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0130">
+    <note id="CH01-P0130-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>This mentions a &apos;marble&apos; floor. Marble is unlikely to be found naturally occurring on Mars as it requires limestone normally associated with life. A better choice might be polished basalt (see additional research)</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0150">
+    <note id="CH01-P0150-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>First mention of Elder Maris</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0160">
+    <note id="CH01-P0160-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Elder Maris is revealed to be a Salve not a &apos;Master&apos;. This seems wrong. Frost with his seperation from the salves would only know about this if Elder Maris had been personally assigned to another Master he knew personally. See if this comes to light. It may be preferable to add a little backstory as to why he had heard of her.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0200">
+    <note id="CH01-P0200-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>First exposition of age disparity</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0210">
+    <note id="CH01-P0210-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>This paragraph puts to age of the colony at 700+ years and names Elon Musk. I want the mythology to be more ingrained, so consider not mentioning that Frost new the founder. Musk should still not be named.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0250">
+    <note id="CH01-P0250-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Description of the view of other Martian habitats could possibly include Martian concrete (Marscrete - see additional research)</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0280">
+    <note id="CH01-P0280-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Lots of comparisons in this paragraph that I didn&apos;t warm to - hair as white as fresh snow etc - maybe revisit if there are no less pressing problems ahead to deal with.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0310">
+    <note id="CH01-P0310-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Note that &apos;colorless&apos; has an American spelling. Need to choose a spelling language and stick with it.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0350">
+    <note id="CH01-P0350-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Repeat description of his snow white hair - that will have to go.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0360">
+    <note id="CH01-P0360-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Frost pictured someone older - poses a question as to whether he can tell the age of someone centuries younger - it might be better to reflect that all the salves look young to him</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0430">
+    <note id="CH01-P0430-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Mentions the age of Elder Maris when she died. Is it consistent(yes)?</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0440">
+    <note id="CH01-P0440-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>The question of lifespan limits is conservative - why not 100 or 500?</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0530">
+    <note id="CH01-P0530-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Caution here about Earth being the reason Mars was necessary.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0700">
+    <note id="CH01-P0700-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Toward the green is an odd phrase that needs looking at.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0890">
+    <note id="CH01-P0890-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Reuse of the rattling adjective to describe Frosts laugh. Change this</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0900">
+    <note id="CH01-P0900-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Yest another emdash!</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P0980">
+    <note id="CH01-P0980-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Words on a screen - would salves be able to read - well I guess so to follow basic instructions. It&apos;s what they were allowed to read that would be censored.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1000">
+    <note id="CH01-P1000-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Mentions Elon Musk as the founder - I still think too early for my liking.- also it says she new Elon Musk was the founder. I want her to discover that her God was really a man.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1010">
+    <note id="CH01-P1010-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Eugenics revealed - maybe the reveal of man&apos;s shaping of the split should start in the previous paragraph.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1020">
+    <note id="CH01-P1020-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Genetic sequencing description probably needs a rewrite - lacks tension.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1160">
+    <note id="CH01-P1160-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>A bit of repetition here - biological castes etc that needs tightening</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1180">
+    <note id="CH01-P1180-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Weak paragraph - consider rewriting.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1190">
+    <note id="CH01-P1190-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Weak paragraph - possible repetition of trying to sleep - twinkling stars etc.</body>
+    </note>
+  </para-notes>
+  <para-notes pid="CH01-P1200">
+    <note id="CH01-P1200-N001"
+          type="craft"
+          author-type="human"
+          author="Stephen Gould"
+          draft="1"
+          created="2026-03-17T00:00:00">
+      <body>Again, weak - nice summation of her thoughts going to bed but with repetition of the red dust motif. Consider rewrite.</body>
+    </note>
+  </para-notes>
+</notes>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta bookml-version="1.0" chapter-id="ch12" book-id="mayfly-mutiny" draft="1"
+              xmlns="https://bookml.org/ns/1.0">
+    <para-meta pid="CH11-B0001">
+    <tags><tag>Chapter separator aphorism: &quot;Submit and be at peace.&quot; The rebellion crests. Church attendance collapses. Salves explicitly reject submission. Peace comes through uprising, not obedience. This aphorism is openly contradicted by Marnette&apos;s choices.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0010">
+    <tags><tag>Establishes the unprecedented setting: salves in the council chamber.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0020">
+    <tags><tag>Describes the chamber’s history and power; Marnette’s awe and stakes.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0030">
+    <tags><tag>Signals the system is being formally challenged, not merely protested.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0040">
+    <tags><tag>Salve delegation enters; visualizes courage under historic pressure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0050">
+    <tags><tag>Shows reform allies among Masters: Lydia, Orin, Feng.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0060">
+    <tags><tag>Introduces hardliners and Aldridge’s deep investment in the old order.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0070">
+    <tags><tag>Vasquez convenes, framing neutrality and procedure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0080">
+    <tags><tag>Sets the official purpose and seriousness of the session.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0090">
+    <tags><tag>Grants Marnette the floor; legitimizes salve representation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0100">
+    <tags><tag>Shows preparation and coalition-building before the confrontation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0110">
+    <tags><tag>Marnette opens with Frost’s truth as the catalyst.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0120">
+    <tags><tag>Reaction beat: Aldridge tightens, younger Masters lean in.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0130">
+    <tags><tag>Explains Frost and the core secret: engineered lifespans and origins.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0140">
+    <tags><tag>Aldridge tries to narrow debate to “current disturbance.”</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0150">
+    <tags><tag>Marnette insists history is the root cause and must be addressed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0160">
+    <tags><tag>Vasquez enforces fairness; protects Marnette’s right to speak.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0170">
+    <tags><tag>Aldridge forced to sit; tension simmers.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0180">
+    <tags><tag>Marnette outlines the documented origin story: voted worker-caste creation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0190">
+    <tags><tag>Sharp thesis: salves were created to serve and die.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0200">
+    <tags><tag>Silence underscores the impact; room absorbs the horror.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0210">
+    <tags><tag>Nuance: Marnette acknowledges founders’ fear and scarcity pressures.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0220">
+    <tags><tag>Tension eases; reformers gain hope and traction.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0230">
+    <tags><tag>Argues the system persisted for convenience, not necessity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0240">
+    <tags><tag>Exposes Optimization as deliberate oppression to maintain power.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0250">
+    <tags><tag>Aldridge protests; defensive escalation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0260">
+    <tags><tag>Evidence drop: documents, names, and Aldridge’s culpability.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0270">
+    <tags><tag>Uproar raises stakes; denial becomes harder.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0280">
+    <tags><tag>Reframes debate: not “did it happen?” but “what now?”</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0290">
+    <tags><tag>Lays out the hardliner option: crackdown and suppression.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0300">
+    <tags><tag>Declares suppression impossible; truth has spread too widely.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0310">
+    <tags><tag>Aldridge challenges with costs and feasibility.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0320">
+    <tags><tag>Concrete demands: truth, education, representation, life-extension plan.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0330">
+    <tags><tag>Hardliners warn of economic/social collapse.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0340">
+    <tags><tag>Marnette reframes as building a better, human society.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0350">
+    <tags><tag>Practical objection: colony systems assume a short-lived workforce.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0360">
+    <tags><tag>Proposes collaborative rebuild; elevates salve expertise (Chen).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0370">
+    <tags><tag>Raises internal dissent: salves attached to Church/old ways.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0380">
+    <tags><tag>Petra argues for choice and access to truth, not enforced belief.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0390">
+    <tags><tag>Fear question: what if truth sparks violence?</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0400">
+    <tags><tag>Marnette advocates honest processing; cites network’s lived practice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0410">
+    <tags><tag>Personal confession: caregiver work reveals “natural” deaths as engineered murder.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0420">
+    <tags><tag>Moral line in the sand: no more lies, no more scheduled deaths.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0430">
+    <tags><tag>Silence as climax; weight of history lands.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0440">
+    <tags><tag>Feng proposes a Truth &amp; Reconciliation Commission with equal membership.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0450">
+    <tags><tag>Orin seconds; momentum consolidates.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0460">
+    <tags><tag>Lydia moves to dissolve the Church and replace lies with education.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0470">
+    <tags><tag>Aldridge frames reforms as surrender.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0480">
+    <tags><tag>Feng counters with justice; flips the narrative.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0490">
+    <tags><tag>Vote sequence shows hardliners outnumbered and losing control.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0500">
+    <tags><tag>Long debate conveys difficulty and the slow dismantling of power.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0510">
+    <tags><tag>Many Masters finally recognize salves as people; generational relief.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0520">
+    <tags><tag>Iris anecdote personalizes the injustice through a childhood loss.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0530">
+    <tags><tag>Session ends: foundations of a new order are laid (not finished).</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0540">
+    <tags><tag>Marnette’s exhaustion after victory; emotional cost.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0550">
+    <tags><tag>Thomas affirms success; release of tension.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0560">
+    <tags><tag>Marnette credits collective action; reinforces movement theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0570">
+    <tags><tag>Thomas highlights her voice as representative.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0580">
+    <tags><tag>Marnette credits Frost; frames change as finishing his act.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0590">
+    <tags><tag>Montage of early reforms; Commission forms; Church dissolved; Malachi shifts.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0600">
+    <tags><tag>Acknowledges life-extension equality as the hardest practical problem.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0610">
+    <tags><tag>Commitment made: joint research team, Chen appointed, timeline, elders prioritized.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0620">
+    <tags><tag>Jonas gets early treatment; payoff for his arc and doubt.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0630">
+    <tags><tag>Jonas confronts the shock of a future beyond his “scheduled” death.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0640">
+    <tags><tag>Marnette offers grounded advice: live day by day, but with more days.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0650">
+    <tags><tag>Jonas laughs and shows hope; gratitude lands emotionally.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0660">
+    <tags><tag>Marnette redirects credit to Jonas’s courage and choice.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0670">
+    <tags><tag>Jonas says he followed her lead; loyalty beat.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0680">
+    <tags><tag>Marnette reframes leadership as mutual and networked.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0690">
+    <tags><tag>Return to the Archive; story loops back to origins of truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0700">
+    <tags><tag>Elara recalls fear; contrasts past danger with new openness.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0710">
+    <tags><tag>Marnette acknowledges Elara’s help; relationship reaffirmed.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0720">
+    <tags><tag>Elara states the theme: truth can’t be unseen.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0730">
+    <tags><tag>Marnette seeks Frost’s journals; deepens legacy and guilt thread.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0740">
+    <tags><tag>Locates a dated passage; sets up Frost’s voice directly.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0750">
+    <tags><tag>Frost wonders about reckoning and forgiveness; foreshadows memorial theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0760">
+    <tags><tag>Frost hopes someone speaks for silent complicit Masters; moral complexity.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0770">
+    <tags><tag>Frost’s charge crystallizes: forgive if you can, build better if not.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0780">
+    <tags><tag>Marnette weeps; internalizes mission as personal vow.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0790">
+    <tags><tag>Commits her extended life to fulfilling that charge.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0800">
+    <tags><tag>Memorial on Frost’s anniversary marks time passage and consolidation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0810">
+    <tags><tag>Ceremony details show fragile unity: salves and Masters together.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0820">
+    <tags><tag>Marnette speaks again in a familiar spot; echoes earlier rally.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0830">
+    <tags><tag>Balances truth: Frost as both privileged murderer and key actor.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0840">
+    <tags><tag>Pause for gravity; lets condemnation sit without dilution.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0850">
+    <tags><tag>Frost’s confession framed as the turning point that changed everything.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0860">
+    <tags><tag>Crowd imagery: shared grief and dawning understanding.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0870">
+    <tags><tag>Marnette wrestles with forgiveness as a concept, not a slogan.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0880">
+    <tags><tag>Pragmatic ethics: build future even with former oppressors.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0890">
+    <tags><tag>Shows Lydia and Aldridge present; tension persists but contained.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0900">
+    <tags><tag>Memorial broadens: victims, silent Masters, everyone harmed by the system.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0910">
+    <tags><tag>Quiet beat after speech; communal processing.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0920">
+    <tags><tag>Applause starts solemnly; signals recognition rather than triumph.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0930">
+    <tags><tag>Tears and embraces symbolize early reconciliation.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0940">
+    <tags><tag>Dispersal brings individual stories; stakes become personal again.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0950">
+    <tags><tag>Masters approach with help/confession; beginnings of amends.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0960">
+    <tags><tag>Notes how hard and awkward these talks are; realism.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0970">
+    <tags><tag>Affirms the talks matter because they exist at all.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0980">
+    <tags><tag>Thomas asks “what now?” shifting from past to future.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P0990">
+    <tags><tag>Marnette’s dome/sky reflection widens the lens to their world.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1000">
+    <tags><tag>Humanity reflection: beauty and horror in equal measure.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1010">
+    <tags><tag>Moral imperative: they must be better because no one else will.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1020">
+    <tags><tag>Concrete future plan: teach truth, scale treatments, erase categories.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1030">
+    <tags><tag>Thomas flags the long timeline; realism check.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1040">
+    <tags><tag>Marnette accepts decades; key: they finally have time.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1050">
+    <tags><tag>Thomas’s growth from impatience to patient builder.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1060">
+    <tags><tag>Reasserts the gift: change is possible and contagious.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1070">
+    <tags><tag>Rollcall of allies; honors the network that carried truth.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1080">
+    <tags><tag>Re-centers Frost’s legacy as the spark and burden.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1090">
+    <tags><tag>Marnette walks away into ongoing work; leadership continues.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1100">
+    <tags><tag>Frames change as process, not destination.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1110">
+    <tags><tag>Core milestone: salves now have voice and time in governance.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1120">
+    <tags><tag>Returns to “Forgive us” as unresolved emotional thread.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1130">
+    <tags><tag>Admits forgiveness may not be possible; future matters more.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1140">
+    <tags><tag>Repeats mantra: “Build something better.”</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1150">
+    <tags><tag>Personal vow across an extended life; endurance theme.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1160">
+    <tags><tag>Closing emphasis: equality begins the work, not ends it.</tag></tags>
+  </para-meta>
+  <para-meta pid="CH12-P1170">
+    <tags><tag>Final echo: time is the new shared resource and promise.</tag></tags>
+  </para-meta>
+</meta>
