@@ -1,5 +1,5 @@
 # ============================================
-# Draft Management - Copy Script for Dibbler
+# Import progress + route fix
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Draft Management: list, compare, delete" -ForegroundColor Cyan
+    Write-Host "Epigraph paragraph support in book editor" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -24,40 +24,14 @@ try {
         throw "ERROR: Destination not found at $dst"
     }
 
-    # Create new directories if needed
-    Write-Host "Creating directories..." -ForegroundColor Yellow
-    $dirs = @(
-        "Views\Draft"
-    )
-    foreach ($d in $dirs) {
-        $fullPath = Join-Path $dst $d
-        if (-not (Test-Path $fullPath)) {
-            New-Item -ItemType Directory -Path $fullPath -Force | Out-Null
-            Write-Host "  Created: $d" -ForegroundColor Green
-        }
-    }
-
-    # New files to copy
-    Write-Host ""
-    Write-Host "Copying new files..." -ForegroundColor Yellow
-    $newFiles = @(
-        "Views\Draft\Index.cshtml"
-    )
-    foreach ($f in $newFiles) {
-        Copy-Item (Join-Path $src $f) (Join-Path $dst $f) -Force
-        Write-Host "  NEW: $f" -ForegroundColor Green
-    }
-
     # Modified files to update
-    Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "Models\ViewModels\BookEditor\DraftDiffViewModel.cs",
-        "Controllers\DraftController.cs",
-        "Views\BookProject\Index.cshtml",
-        "Content\css\book-editor.css"
+        "Services\BookmlImporter.cs"
     )
     foreach ($f in $modifiedFiles) {
+        $destDir = Split-Path (Join-Path $dst $f) -Parent
+        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
         Copy-Item (Join-Path $src $f) (Join-Path $dst $f) -Force
         Write-Host "  UPD: $f" -ForegroundColor Cyan
     }
@@ -67,15 +41,17 @@ try {
     Write-Host "IMPORTANT - Manual steps needed:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. No SQL changes - no database scripts to run." -ForegroundColor White
+    Write-Host "1. No SQL changes." -ForegroundColor White
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. On the Projects page, projects with any draft now show a 'Manage Drafts' button." -ForegroundColor White
-    Write-Host "   The Manage Drafts page shows:" -ForegroundColor Gray
-    Write-Host "   - All drafts with status, author, para count and import date" -ForegroundColor Gray
-    Write-Host "   - Delete button per draft (disabled when only one draft remains)" -ForegroundColor Gray
-    Write-Host "   - Compare bar at the top when two or more drafts exist" -ForegroundColor Gray
+    Write-Host "3. One change in this build:" -ForegroundColor White
+    Write-Host "   - Epigraph paragraphs (<chapterinfo><epigraph>) now extracted" -ForegroundColor Gray
+    Write-Host "     by the importer and shown in the book editor like regular" -ForegroundColor Gray
+    Write-Host "     paragraphs. Previously they were silently skipped." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "4. After copying, re-import the Draft 2 ZIP to pick up the" -ForegroundColor White
+    Write-Host "   epigraph paragraphs. They will appear first in each chapter." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

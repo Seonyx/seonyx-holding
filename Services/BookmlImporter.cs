@@ -141,7 +141,8 @@ namespace Seonyx.Web.Services
         /// Re-validates defensively before any DB write — rejects the entire import if
         /// anything fails. Never overwrites existing ParagraphVersions rows.
         /// </summary>
-        public ImportResult Import(SeonyxContext db, int projectId, string bookXmlPath)
+        public ImportResult Import(SeonyxContext db, int projectId, string bookXmlPath,
+            Action<int, int, string, int, int> onChapterImported = null)
         {
             var result = new ImportResult();
 
@@ -259,7 +260,8 @@ namespace Seonyx.Web.Services
                     // ----------------------------------------------------------
                     // Process each chapter component
                     // ----------------------------------------------------------
-                    var components = ParseComponents(bookXmlPath, bookDir);
+                    var components      = ParseComponents(bookXmlPath, bookDir);
+                    int totalComponents = components.Count;
 
                     foreach (var comp in components)
                     {
@@ -310,7 +312,7 @@ namespace Seonyx.Web.Services
                         var notesByPid = BuildNotesLookup(notesDoc);
                         var parsedParas = ExtractParagraphs(chapterEl);
 
-                        // Index existing working-copy paragraphs by UniqueID (= pid)
+                        // Index existing working-copy paragraphs by pid
                         var existingParas = db.Paragraphs
                             .Where(p => p.ChapterID == chapter.ChapterID)
                             .ToList()
@@ -319,21 +321,40 @@ namespace Seonyx.Web.Services
                         var incomingPids = new HashSet<string>(
                             parsedParas.Select(p => p.Pid), StringComparer.OrdinalIgnoreCase);
 
+                        // Pre-load ParagraphVersions for this chapter+draft in one query
+                        // (avoids one SELECT per paragraph inside the loop)
+                        var existingVersionPids = new HashSet<string>(
+                            db.ParagraphVersions
+                                .Where(v => v.ChapterID == chapter.ChapterID
+                                         && v.DraftNumber == chapterDraft)
+                                .Select(v => v.Pid),
+                            StringComparer.OrdinalIgnoreCase);
+
+                        // Pre-load MetaNotes and EditNotes for existing paragraphs
+                        // (avoids N+1 SELECT queries and mid-loop SaveChanges calls)
+                        var allParaIds = existingParas.Values.Select(p => p.ParagraphID).ToList();
+                        var existingMetaByParaId = allParaIds.Any()
+                            ? db.MetaNotes.Where(m => allParaIds.Contains(m.ParagraphID))
+                                          .ToDictionary(m => m.ParagraphID)
+                            : new Dictionary<int, MetaNote>();
+                        var existingNotesByParaId = allParaIds.Any()
+                            ? db.EditNotes.Where(n => allParaIds.Contains(n.ParagraphID))
+                                          .ToDictionary(n => n.ParagraphID)
+                            : new Dictionary<int, EditNote>();
+
                         int ordinal = 0;
+
+                        // ---- Pass 1: paragraph and version records ----
+                        // No SaveChanges inside the loop. New Paragraph objects are tracked
+                        // by EF and receive their ParagraphID after the flush below.
+                        var newParas = new List<Tuple<ParsedParagraph, Paragraph>>();
 
                         foreach (var pp in parsedParas)
                         {
                             ordinal++;
 
-                            // ------------------------------------------------------
                             // ParagraphVersions — append-only, never overwrite
-                            // ------------------------------------------------------
-                            bool versionExists = db.ParagraphVersions.Any(
-                                v => v.ChapterID == chapter.ChapterID
-                                  && v.Pid == pp.Pid
-                                  && v.DraftNumber == chapterDraft);
-
-                            if (!versionExists)
+                            if (!existingVersionPids.Contains(pp.Pid))
                             {
                                 db.ParagraphVersions.Add(new ParagraphVersion
                                 {
@@ -358,11 +379,7 @@ namespace Seonyx.Web.Services
                                     pp.Pid, chapterDraft));
                             }
 
-                            // ------------------------------------------------------
-                            // Working copy Paragraphs — mutable
-                            // ------------------------------------------------------
                             Paragraph workingPara;
-
                             if (existingParas.TryGetValue(pp.Pid, out workingPara))
                             {
                                 workingPara.ParagraphText    = pp.Text;
@@ -374,47 +391,63 @@ namespace Seonyx.Web.Services
                             {
                                 workingPara = new Paragraph
                                 {
-                                    ChapterID       = chapter.ChapterID,
-                                    UniqueID        = pp.Pid,
-                                    OrdinalPosition = ordinal,
-                                    ParagraphText   = pp.Text,
-                                    CreatedDate     = DateTime.Now,
+                                    ChapterID        = chapter.ChapterID,
+                                    UniqueID         = pp.Pid,
+                                    OrdinalPosition  = ordinal,
+                                    ParagraphText    = pp.Text,
+                                    CreatedDate      = DateTime.Now,
                                     LastModifiedDate = DateTime.Now
                                 };
                                 db.Paragraphs.Add(workingPara);
-                                db.SaveChanges(); // Get ParagraphID before creating FK records
-
-                                db.MetaNotes.Add(new MetaNote
-                                {
-                                    ParagraphID = workingPara.ParagraphID,
-                                    UniqueID    = pp.Pid,
-                                    MetaText    = ""
-                                });
-                                db.EditNotes.Add(new EditNote
-                                {
-                                    ParagraphID      = workingPara.ParagraphID,
-                                    UniqueID         = pp.Pid,
-                                    NoteText         = "",
-                                    LastModifiedDate = DateTime.Now
-                                });
+                                newParas.Add(Tuple.Create(pp, workingPara));
                                 result.ParagraphsAdded++;
                             }
+                        }
 
-                            // Apply meta summary text if present
+                        // Flush paragraph inserts once so EF assigns ParagraphIDs
+                        db.SaveChanges();
+
+                        // ---- Pass 2: meta and notes ----
+                        // New paragraphs: create MetaNote + EditNote with content set upfront
+                        foreach (var entry in newParas)
+                        {
+                            var pp          = entry.Item1;
+                            var workingPara = entry.Item2;
+                            string metaText; metaByPid.TryGetValue(pp.Pid, out metaText);
+                            string noteText; notesByPid.TryGetValue(pp.Pid, out noteText);
+
+                            db.MetaNotes.Add(new MetaNote
+                            {
+                                ParagraphID = workingPara.ParagraphID,
+                                UniqueID    = pp.Pid,
+                                MetaText    = metaText ?? ""
+                            });
+                            db.EditNotes.Add(new EditNote
+                            {
+                                ParagraphID      = workingPara.ParagraphID,
+                                UniqueID         = pp.Pid,
+                                NoteText         = noteText ?? "",
+                                LastModifiedDate = DateTime.Now
+                            });
+                        }
+
+                        // Existing paragraphs: update MetaNote + EditNote in-memory
+                        foreach (var pp in parsedParas)
+                        {
+                            Paragraph workingPara;
+                            if (!existingParas.TryGetValue(pp.Pid, out workingPara)) continue;
+
                             if (metaByPid.ContainsKey(pp.Pid))
                             {
-                                db.SaveChanges();
-                                var meta = db.MetaNotes.FirstOrDefault(m => m.ParagraphID == workingPara.ParagraphID);
-                                if (meta != null)
+                                MetaNote meta;
+                                if (existingMetaByParaId.TryGetValue(workingPara.ParagraphID, out meta))
                                     meta.MetaText = metaByPid[pp.Pid];
                             }
-
-                            // Apply notes text if present and the edit note is currently blank
                             if (notesByPid.ContainsKey(pp.Pid))
                             {
-                                db.SaveChanges();
-                                var note = db.EditNotes.FirstOrDefault(e => e.ParagraphID == workingPara.ParagraphID);
-                                if (note != null && string.IsNullOrEmpty(note.NoteText))
+                                EditNote note;
+                                if (existingNotesByParaId.TryGetValue(workingPara.ParagraphID, out note)
+                                    && string.IsNullOrEmpty(note.NoteText))
                                 {
                                     note.NoteText         = notesByPid[pp.Pid];
                                     note.LastModifiedDate = DateTime.Now;
@@ -423,7 +456,7 @@ namespace Seonyx.Web.Services
                         }
 
                         // Remove working-copy paragraphs whose pid no longer appears in the draft.
-                        // Their history is preserved in ParagraphVersions.
+                        // Their version history is preserved in ParagraphVersions.
                         var toRemove = existingParas.Values
                             .Where(p => !incomingPids.Contains(p.UniqueID))
                             .ToList();
@@ -435,6 +468,8 @@ namespace Seonyx.Web.Services
 
                         db.SaveChanges();
                         result.ChaptersProcessed++;
+                        onChapterImported?.Invoke(result.ChaptersProcessed, totalComponents, chapterTitle,
+                            result.ParagraphsAdded, result.ParagraphsUpdated);
                     }
 
                     project.LastModifiedDate = DateTime.Now;
@@ -581,6 +616,22 @@ namespace Seonyx.Web.Services
         private List<ParsedParagraph> ExtractParagraphs(XElement chapterEl)
         {
             var result = new List<ParsedParagraph>();
+
+            // Epigraph paragraphs sit inside <chapterinfo><epigraph> and come before section content
+            var chapterInfoEl = chapterEl.Element(Ns + "chapterinfo");
+            if (chapterInfoEl != null)
+            {
+                var epigraphEl = chapterInfoEl.Element(Ns + "epigraph");
+                if (epigraphEl != null)
+                {
+                    foreach (var paraEl in epigraphEl.Elements(Ns + "para"))
+                    {
+                        var pp = ParsePara(paraEl);
+                        if (pp != null) result.Add(pp);
+                    }
+                }
+            }
+
             foreach (var section in chapterEl.Elements(Ns + "section")
                 .OrderBy(s => ParseInt(s.Attribute("seq")?.Value, 0)))
             {
