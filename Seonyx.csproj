@@ -126,6 +126,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\Production.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -165,6 +168,7 @@
     <Compile Include="Models\ViewModels\BookEditor\ParagraphEditViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\ExportViewModel.cs" />
     <Compile Include="Services\BookFileParser.cs" />
+    <Compile Include="Services\BookmlExporter.cs" />
     <Compile Include="Services\BookmlImporter.cs" />
     <Compile Include="Controllers\BookProjectController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
@@ -172,6 +176,7 @@
     <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\ImportLogController.cs" />
     <Compile Include="Controllers\DraftController.cs" />
+    <Compile Include="Controllers\ImportProgressController.cs" />
     <Compile Include="Models\ViewModels\BookEditor\DraftDiffViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
