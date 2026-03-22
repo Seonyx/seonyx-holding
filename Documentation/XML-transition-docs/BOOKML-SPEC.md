@@ -61,15 +61,27 @@ The `pid` is the most important concept in BookML. It is the immutable foreign k
 
 ### 4.1 Format
 
+Current format (v1.1+):
+```
+{CHAPTERID}-{TYPECODE}-{TOKEN8}
+
+Examples:
+  CH01-P-7K2Q9ZPL    Chapter 01, paragraph (opaque token)
+  CH01-H-3MN5XQRZ    Chapter 01, heading
+  CH01-F-8PKWJ4TN    Chapter 01, figure
+```
+
+TOKEN8: 8 characters drawn from `ABCDEFGHJKLMNPQRSTUVWXYZ23456789`
+(O, I, 0, 1 excluded to avoid visual confusion when reading or transcribing PIDs).
+
+Legacy format (v1.0 — accepted on import for backwards compatibility, do not generate):
 ```
 {CHAPTERID}-{TYPECODE}{SEQUENCE}
 
 Examples:
   CH01-P0010    Chapter 01, paragraph 10
   CH01-H0005    Chapter 01, heading 5
-  CH01-F0001    Chapter 01, figure 1
   CH01-EP001    Chapter 01, epigraph paragraph 1
-  CH01-B0001    Chapter 01, break marker 1
 ```
 
 ### 4.2 Type codes
@@ -87,11 +99,11 @@ Examples:
 ### 4.3 Rules
 
 - **Assigned once at generation time. Never changed under any circumstances.**
-- Sequence reflects generation order, not display order
+- TOKEN8 is deliberately opaque — it is not a sequence number and must not be treated as one
 - All uppercase
-- Zero-padded to 4 digits (3 digits acceptable for EP and FN codes)
 - Used as foreign key in `para-meta[@pid]` and `para-notes[@pid]`
 - Chapter ID prefix ensures global uniqueness across the whole work
+- Display order is governed solely by the `seq` attribute — never by PID
 
 ---
 
@@ -296,7 +308,7 @@ When an AI system generates BookML files, it **must** follow these rules exactly
 
 1. Generate all five required attributes on every `<para>`: `pid`, `seq`, `type`, `draft-created`, `draft-modified`, `modified-by`
 2. Assign `seq` values in multiples of 1000, starting at 1000
-3. Assign `pid` values using the format `{CHAPTERID}-P{SEQUENCE}` with 4-digit zero-padded sequence starting at 0010, incrementing by 10
+3. Assign `pid` values using the format `{CHAPTERID}-P-{TOKEN8}` where TOKEN8 is 8 random characters from `ABCDEFGHJKLMNPQRSTUVWXYZ23456789` (no O/I/0/1)
 4. Set `draft-created` and `draft-modified` to the current draft number
 5. Set `modified-by` to `"ai"`
 6. Wrap all chapter content in at least one `<section seq="1000">` element, even for fiction with no structural sections

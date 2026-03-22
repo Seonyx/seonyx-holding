@@ -162,11 +162,20 @@ namespace Seonyx.Web.Services
             return result;
         }
 
+        // Safe alphabet: uppercase letters and digits, excluding O/I/0/1
+        // to avoid visual confusion when reading or transcribing PIDs.
+        private static readonly char[] _pidAlphabet =
+            "ABCDEFGHJKLMNPQRSTUVWXYZ23456789".ToCharArray();
+        private static readonly Random _rng = new Random();
+
         public string GenerateUniqueID(int chapterNumber)
         {
-            string prefix = string.Format("C{0:D2}-", chapterNumber);
-            string random = Guid.NewGuid().ToString("N").Substring(0, 10).ToUpper();
-            return prefix + random;
+            // Format: CH{nn}-P-{8 chars from safe alphabet}
+            // e.g. CH01-P-7K2Q9ZPL
+            var token = new char[8];
+            for (int i = 0; i < 8; i++)
+                token[i] = _pidAlphabet[_rng.Next(_pidAlphabet.Length)];
+            return string.Format("CH{0:D2}-P-{1}", chapterNumber, new string(token));
         }
 
         public string ClassifyFile(string fileName)

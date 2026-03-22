@@ -38,6 +38,14 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         public int    SeqB     { get; set; }
         public string Status             { get; set; }    // added | removed | modified | unchanged
         public int?   CurrentParagraphID { get; set; }    // set when the para exists in the working copy
+
+        private static readonly char[] _wSplit = { ' ', '\t', '\n', '\r' };
+
+        public int WordCountA => TextA == null ? 0 :
+            TextA.Split(_wSplit, StringSplitOptions.RemoveEmptyEntries).Length;
+
+        public int WordCountB => TextB == null ? 0 :
+            TextB.Split(_wSplit, StringSplitOptions.RemoveEmptyEntries).Length;
     }
 
     public class DraftDiffChapter

@@ -95,6 +95,13 @@ namespace Seonyx.Web
                 defaults: new { controller = "Draft", action = "Diff", id = UrlParameter.Optional }
             );
 
+            // Session-free progress polling endpoint (must be before generic Admin route)
+            routes.MapRoute(
+                name: "BookEditorImportProgress",
+                url: "admin/bookeditor/importprogress/{action}",
+                defaults: new { controller = "ImportProgress", action = "Status" }
+            );
+
             routes.MapRoute(
                 name: "Admin",
                 url: "admin/{action}/{id}",

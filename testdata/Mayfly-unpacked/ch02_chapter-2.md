@@ -192,51 +192,51 @@
 
 [[CH02-P0950]] "Dangerous to whom?" Frost asked. "To the Masters who need a compliant workforce. To a system that depends on salves dying before they can accumulate knowledge, before they can gather power." He broke into a cough, wet and painful, and for a moment he could do nothing but fight for air. When it eased, he looked at her again. "Or dangerous to you, because once you see it, you cannot unsee it." <!-- REV2 -->
 
-[[CH02-P0960]] You have hit your ChatGPT usage limit (plus plan). Try again in ~147 min. <!-- REV2 -->
+[[CH02-P0960]] "You’re dying," she said, and the words shook in her throat. "The pain medication is confusing you. It’s making you say things that aren’t true." <!-- REV2 -->
 
-[[CH02-P0970]] You have hit your ChatGPT usage limit (plus plan). Try again in ~146 min. <!-- REV2 -->
+[[CH02-P0970]] "Am I?" he said. "Or am I finally saying what’s true?" His hand twitched towards the photographs scattered on the floor. "That’s your history, Marnette. Not the cleaned-up version they teach in school. Not the religious explanation that keeps everyone obedient. The real history." <!-- REV2 -->
 
-[[CH02-P0980]] You have hit your ChatGPT usage limit (plus plan). Try again in ~146 min. <!-- REV2 -->
+[[CH02-P0980]] Marnette backed away until the door was at her back. "I need to check your medication schedule. I need to…" <!-- REV2 -->
 
-[[CH02-P0990]] You have hit your ChatGPT usage limit (plus plan). Try again in ~146 min. <!-- REV2 -->
+[[CH02-P0990]] "You need to think," he said, and his voice rose with a sudden, rough urgency. "Think about why salve lifespans fall into such a narrow range. Think about why the Church of Elom was established alongside the genetic protocols. Think about why your prayers speak of a ‘designated time’ instead of a natural one." <!-- REV2 -->
 
-[[CH02-P1000]] You have hit your ChatGPT usage limit (plus plan). Try again in ~145 min. <!-- REV2 -->
+[[CH02-P1000]] He was breathing hard now, face flushed, and Marnette could not tell whether it was fever or fury. "Think about who benefits when you die at fifty-two instead of eighty-two. Think about who gains when your experience, your wisdom, your memories are cut short before they can gather into something dangerous." <!-- REV2 -->
 
-[[CH02-P1010]] You have hit your ChatGPT usage limit (plus plan). Try again in ~145 min. <!-- REV2 -->
+[[CH02-P1010]] "Stop," she whispered, and heard the plea in it. He kept going. <!-- REV2 -->
 
-[[CH02-P1020]] You have hit your ChatGPT usage limit (plus plan). Try again in ~144 min. <!-- REV2 -->
+[[CH02-P1020]] "Your Church teaches that you’re specialised, that you’re optimised," he said. "But optimised for what. For the colony’s survival, or for Masters’ comfort. For your own fulfilment, or for their control." <!-- REV2 -->
 
-[[CH02-P1030]] You have hit your ChatGPT usage limit (plus plan). Try again in ~144 min. <!-- REV2 -->
+[[CH02-P1030]] Marnette slipped out and pulled the door shut, then leaned against it, heart thudding hard enough to make her light-headed. The corridor was silent. The Master-sector lighting, meant to be soft, felt suddenly harsh, as if it could strip her down to whatever she was trying not to be. She wanted to run. To take the next transport back to the salve district and sink into the familiar comfort of her people, her faith, her old, unquestioning acceptance of her place. <!-- REV2 -->
 
-[[CH02-P1040]] You have hit your ChatGPT usage limit (plus plan). Try again in ~144 min. <!-- REV2 -->
+[[CH02-P1040]] But she was his caregiver. Duty was the only thing that still made sense. Elom guide me, she prayed, and felt the words turn thin inside her. Elom give me strength. <!-- REV2 -->
 
-[[CH02-P1050]] You have hit your ChatGPT usage limit (plus plan). Try again in ~143 min. <!-- REV2 -->
+[[CH02-P1050]] She took a slow breath, set her face, and went back in. Frost was watching her. His breathing rasped, but his eyes had not moved off her. <!-- REV2 -->
 
-[[CH02-P1060]] You have hit your ChatGPT usage limit (plus plan). Try again in ~143 min. <!-- REV2 -->
+[[CH02-P1060]] "Master Frost," she said, making her voice professional and keeping it that way. "It’s time for your evening medication. You need to rest." <!-- REV2 -->
 
-[[CH02-P1070]] You have hit your ChatGPT usage limit (plus plan). Try again in ~142 min. <!-- REV2 -->
+[[CH02-P1070]] He did not resist as she administered the drugs. He did not speak while she adjusted his pillows and pulled the blanket up. He simply watched her, and Marnette felt his gaze on every small, practiced motion. His expression was sad, almost gentle, as if he understood exactly what she was doing. Building walls. Retreating into the familiar safety of her role. <!-- REV2 -->
 
-[[CH02-P1080]] You have hit your ChatGPT usage limit (plus plan). Try again in ~142 min. <!-- REV2 -->
+[[CH02-P1080]] "Marnette," he said as she turned to leave. "What if I told you it wasn’t meant to be this way?" <!-- REV2 -->
 
-[[CH02-P1090]] You have hit your ChatGPT usage limit (plus plan). Try again in ~142 min. <!-- REV2 -->
+[[CH02-P1090]] She paused at the door with her back to him. "What way, Master Frost?" <!-- REV2 -->
 
-[[CH02-P1100]] You have hit your ChatGPT usage limit (plus plan). Try again in ~141 min. <!-- REV2 -->
+[[CH02-P1100]] "Any of it." <!-- REV2 -->
 
-[[CH02-P1110]] You have hit your ChatGPT usage limit (plus plan). Try again in ~141 min. <!-- REV2 -->
+[[CH02-P1110]] She did not answer. She could not. The question went on sounding in the quiet behind her, then in her own head, turning familiar thoughts strange and leaving a cold, uncertain space where her certainty had been. <!-- REV2 -->
 
-[[CH02-P1120]] You have hit your ChatGPT usage limit (plus plan). Try again in ~140 min. <!-- REV2 -->
+[[CH02-P1120]] In her own room, Marnette knelt by the bed and took out her prayer beads. Their smoothness should have grounded her. She let them slide through her fingers anyway, clinging to the automatic rhythm as if it could pull her thoughts back into place. "Elom, creator and guide, who designed us for purpose, who gave each of us our role in the great colony…" <!-- REV2 -->
 
-[[CH02-P1130]] You have hit your ChatGPT usage limit (plus plan). Try again in ~140 min. <!-- REV2 -->
+[[CH02-P1130]] But the words felt different now. Not hollow, exactly, but unsettled. The meaning had not changed, yet the sound of it no longer soothed. Designed for purpose. Each of us our role. Designated time. <!-- REV2 -->
 
-[[CH02-P1140]] You have hit your ChatGPT usage limit (plus plan). Try again in ~140 min. <!-- REV2 -->
+[[CH02-P1140]] The phrases she had repeated a thousand times now carried Frost’s questions inside them. What if design meant engineering. What if purpose meant function. What if designated time meant planned obsolescence. <!-- REV2 -->
 
-[[CH02-P1150]] You have hit your ChatGPT usage limit (plus plan). Try again in ~139 min. <!-- REV2 -->
+[[CH02-P1150]] She rose from her knees and went to the window, looking out at the agricultural domes. Green life against red death. That was what she had always thought. Now she could not hold the word death in her mouth without tasting something else. Was it death at all, or simply termination. A thing switched off when its work was done, like equipment decommissioned and replaced. <!-- REV2 -->
 
-[[CH02-P1160]] You have hit your ChatGPT usage limit (plus plan). Try again in ~139 min. <!-- REV2 -->
+[[CH02-P1160]] The thought came unbidden, unwelcome, dangerous. Then Marnette saw it with sudden clarity. Frost had done exactly what he meant to do. He had planted doubt and left it to take root. It would grow in the dark of her mind, fed by his questions and the images he had scattered at her feet, nourished by the terrible possibility that her life, her faith, her whole sense of reality rested on something carefully constructed and false. <!-- REV2 -->
 
-[[CH02-P1170]] You have hit your ChatGPT usage limit (plus plan). Try again in ~138 min. <!-- REV2 -->
+[[CH02-P1170]] Marnette lay down and pulled the blanket up over her shoulders, as if it could keep the thoughts from finding her. She closed her eyes. Sleep would not come. Instead she saw the woman from the photographs, Elena, eighty-seven, dying in a garden with loved ones close enough to touch. Then she saw her grandmother, dead at fifty-three from cellular breakdown. The words no longer sounded like nature at work. They sounded like a failure planned in advance. <!-- REV2 -->
 
-[[CH02-P1180]] You have hit your ChatGPT usage limit (plus plan). Try again in ~138 min. <!-- REV2 -->
+[[CH02-P1180]] Frost’s pale blue eyes watched her from the dark behind her lids, steady and knowing. He understood exactly what he was doing to her faith, to her certainty, to the acceptance she had been taught to call sacred. <!-- REV2 -->
 
-[[CH02-P1190]] You have hit your ChatGPT usage limit (plus plan). Try again in ~138 min. <!-- REV2 -->
+[[CH02-P1190]] In the darkness of her assigned room, with red dust waiting beyond the habitat walls, Marnette understood she was no longer merely unsettled. She was beginning to question. Frost had been right about that much. Once you started, the questions only led one way, towards a truth that might be more terrible than any lie she had ever been taught. <!-- REV2 -->
 

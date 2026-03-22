@@ -605,10 +605,14 @@
     color: #94a3b8;
     background: #f8fafc;
     border-right: 1px solid #e2e8f0;
-    word-break: break-all;
     align-self: stretch;
-    display: flex;
-    align-items: flex-start;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+.diff-pid-id {
+    display: block;
+    white-space: nowrap;
 }
 
 .diff-edit-link {
@@ -618,6 +622,7 @@
     color: #6366f1;
     text-decoration: none;
     font-family: sans-serif;
+    white-space: nowrap;
 }
 
 .diff-edit-link:hover {
@@ -631,11 +636,13 @@
     line-height: 1.5;
 }
 
+.diff-cell-draft-a { background: #fef9c3; }
+.diff-cell-draft-b { background: #f0fdf4; }
 .diff-cell-added  { background: #f0fdf4; }
 .diff-cell-removed{ background: #fef2f2; text-decoration: line-through; color: #9ca3af; }
 .diff-cell-empty  { background: #f8fafc; color: #94a3b8; font-style: italic; font-size: 0.8rem; }
 .diff-cell-old    { background: #fef9c3; border-right: 1px solid #e2e8f0; color: #78350f; }
-.diff-cell-new    { background: #f0fdf4; }
+.diff-cell-new    { background: #fef9c3; color: #78350f; }
 
 /* ---------------------------------------------------------------
    Diff chapter pagination navigation
@@ -772,4 +779,104 @@
     color: #cbd5e1;
     font-size: 0.8rem;
     font-style: italic;
+}
+
+/* ============================================================
+   Import progress bar
+   ============================================================ */
+.import-progress-container {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.import-progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.88rem;
+    color: #374151;
+}
+
+.import-progress-track {
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.import-progress-fill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 5px;
+    transition: width 0.4s ease;
+}
+
+@keyframes bml-stripe {
+    from { background-position: 40px 0; }
+    to   { background-position: 0 0; }
+}
+
+.import-progress-fill.running {
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.18) 25%, transparent 25%, transparent 50%,
+        rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.18) 75%,
+        transparent 75%, transparent
+    );
+    background-size: 40px 40px;
+    animation: bml-stripe 0.6s linear infinite;
+    min-width: 8%;
+}
+
+@keyframes bml-spin { to { transform: rotate(360deg); } }
+
+.import-spinner {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border: 2px solid #cbd5e1;
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: bml-spin 0.75s linear infinite;
+    margin-right: 5px;
+    vertical-align: -2px;
+}
+
+.import-elapsed {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-left: 0.5rem;
+}
+
+.import-log-lines {
+    margin-top: 0.6rem;
+    padding: 0.4rem 0.65rem;
+    background: #1e293b;
+    color: #94a3b8;
+    font-family: monospace;
+    font-size: 0.78rem;
+    border-radius: 4px;
+    max-height: 110px;
+    overflow-y: auto;
+    line-height: 1.65;
+}
+
+.import-log-lines .log-line:last-child { color: #e2e8f0; }
+
+/* ============================================================
+   Diff view — word counts in pid column
+   ============================================================ */
+.diff-wordcounts {
+    display: block;
+    font-size: 0.76rem;
+    color: #64748b;
+    margin-top: 3px;
+    font-weight: normal;
+}
+
+.diff-wordcounts span {
+    display: block;
 }

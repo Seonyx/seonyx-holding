@@ -16,6 +16,46 @@ namespace Seonyx.Web.Controllers
         private SeonyxContext db = new SeonyxContext();
         private BookFileParser parser = new BookFileParser();
 
+        // ====================================================================
+        // Import progress tracking (shared with ImportProgressController)
+        // ====================================================================
+
+        public class ImportProgressState
+        {
+            // volatile backing fields ensure cross-thread visibility when the
+            // background import thread writes and the poll thread reads.
+            private volatile int  _total;
+            private volatile int  _done;
+            private volatile int  _paragraphsWritten;
+            private volatile bool _isComplete;
+            private volatile bool _success;
+
+            public int  Total             { get { return _total;             } set { _total             = value; } }
+            public int  Done              { get { return _done;              } set { _done              = value; } }
+            public int  ParagraphsWritten { get { return _paragraphsWritten; } set { _paragraphsWritten = value; } }
+            public bool IsComplete        { get { return _isComplete;        } set { _isComplete        = value; } }
+            public bool Success           { get { return _success;           } set { _success           = value; } }
+
+            public string CurrentChapter { get; set; } = "";
+            public string Message        { get; set; } = "";
+            public string LogUrl         { get; set; } = "";
+
+            private readonly System.Collections.Concurrent.ConcurrentQueue<string> _log
+                = new System.Collections.Concurrent.ConcurrentQueue<string>();
+
+            public void AddLine(string line)
+            {
+                _log.Enqueue(line);
+                string discard;
+                while (_log.Count > 8) _log.TryDequeue(out discard);
+            }
+
+            public string[] RecentLines { get { return _log.ToArray(); } }
+        }
+
+        public static readonly System.Collections.Concurrent.ConcurrentDictionary<string, ImportProgressState>
+            ActiveImports = new System.Collections.Concurrent.ConcurrentDictionary<string, ImportProgressState>();
+
         public ActionResult Index(int projectId)
         {
             if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
@@ -175,7 +215,123 @@ namespace Seonyx.Web.Controllers
         }
 
         // ====================================================================
-        // BookML import
+        // BookML import — AJAX entry point (returns progress token)
+        // ====================================================================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult StartImport(int projectId)
+        {
+            if (!IsAuthenticated())
+                return Json(new { error = "Unauthorized" });
+
+            var project = db.BookProjects.Find(projectId);
+            if (project == null)
+                return Json(new { error = "Project not found" });
+
+            var bookXmlPath = FindBookXml(project.FolderPath);
+            if (bookXmlPath == null)
+                return Json(new { error = "No BookML package found. Upload a .zip first." });
+
+            var xsdBasePath    = Server.MapPath("~/App_Data/BookML");
+            var importer       = new BookmlImporter(xsdBasePath);
+            var bookmlDir      = Path.GetDirectoryName(bookXmlPath);
+            var markerPath     = Path.Combine(bookmlDir, ".zipname");
+            var sourceFileName = System.IO.File.Exists(markerPath)
+                ? System.IO.File.ReadAllText(markerPath).Trim()
+                : null;
+
+            // Phase 1: validate synchronously before touching the DB
+            var validationErrors = importer.Validate(bookXmlPath);
+            if (validationErrors.Any())
+            {
+                WriteImportLog(projectId, false, null, validationErrors, sourceFileName);
+                var logUrl2 = Url.Action("Index", "ImportLog", new { projectId });
+                return Json(new { error = string.Format(
+                    "Validation failed: {0} error(s). <a href='{1}'>View log</a>",
+                    validationErrors.Count, logUrl2) });
+            }
+
+            var chapterCount = GetChapterCountFromBook(bookXmlPath);
+
+            var token = Guid.NewGuid().ToString("N").Substring(0, 16);
+            var state = new ImportProgressState { Total = chapterCount };
+            ActiveImports[token] = state;
+
+            // Capture everything needed in the background thread before the request ends
+            var capturedBookXmlPath    = bookXmlPath;
+            var capturedXsdBasePath    = xsdBasePath;
+            var capturedProjectId      = projectId;
+            var capturedSourceFileName = sourceFileName;
+            var capturedLogUrl         = Url.Action("Index", "ImportLog", new { projectId });
+
+            System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(ct =>
+            {
+                try
+                {
+                    var bgImporter = new BookmlImporter(capturedXsdBasePath);
+                    ImportResult bgResult;
+                    using (var importDb = new SeonyxContext())
+                    {
+                        bgResult = bgImporter.Import(importDb, capturedProjectId, capturedBookXmlPath,
+                            (done, total, chapterTitle, parasAdded, parasUpdated) =>
+                            {
+                                state.Done               = done;
+                                state.CurrentChapter     = chapterTitle;
+                                state.ParagraphsWritten  = parasAdded + parasUpdated;
+                                state.AddLine(string.Format(
+                                    "Ch. {0}/{1}: {2} ({3} added, {4} updated)",
+                                    done, total, chapterTitle, parasAdded, parasUpdated));
+                            });
+                    }
+                    using (var logDb = new SeonyxContext())
+                    {
+                        WriteImportLogToDb(logDb, capturedProjectId, bgResult.Success,
+                            bgResult, null, capturedSourceFileName);
+                    }
+                    state.Success = bgResult.Success;
+                    state.Message = bgResult.Success
+                        ? bgResult.Summary()
+                        : string.Format("Import failed: {0}", string.Join("; ", bgResult.Errors));
+                    state.LogUrl  = capturedLogUrl;
+                    state.Done    = bgResult.ChaptersProcessed;
+                }
+                catch (Exception ex)
+                {
+                    state.Success = false;
+                    state.Message = "Import failed: " + ex.Message;
+                }
+                finally
+                {
+                    state.IsComplete = true;
+                }
+            });
+
+            return Json(new { token, total = chapterCount });
+        }
+
+        private int GetChapterCountFromBook(string bookXmlPath)
+        {
+            try
+            {
+                var ns  = System.Xml.Linq.XNamespace.Get("https://bookml.org/ns/1.0");
+                var doc = System.Xml.Linq.XDocument.Load(bookXmlPath);
+                int count = 0;
+                var contentsEl = doc.Root.Element(ns + "contents");
+                if (contentsEl == null) return 0;
+                foreach (var matterName in new[] { "frontmatter", "bodymatter", "backmatter" })
+                {
+                    var matterEl = contentsEl.Element(ns + matterName);
+                    if (matterEl != null)
+                        count += matterEl.Elements(ns + "component").Count();
+                }
+                return count;
+            }
+            catch { return 0; }
+        }
+
+        // ====================================================================
+        // BookML import — synchronous helper (called from background task)
         // ====================================================================
 
         private ActionResult ImportBookml(int projectId, BookProject project, string bookXmlPath)
@@ -228,7 +384,15 @@ namespace Seonyx.Web.Controllers
             return RedirectToAction("Index", new { projectId });
         }
 
-        private void WriteImportLog(int projectId, bool success, Services.ImportResult result, System.Collections.Generic.List<string> extraLines, string sourceFileName = null)
+        private void WriteImportLog(int projectId, bool success, Services.ImportResult result,
+            System.Collections.Generic.List<string> extraLines, string sourceFileName = null)
+        {
+            WriteImportLogToDb(db, projectId, success, result, extraLines, sourceFileName);
+        }
+
+        private static void WriteImportLogToDb(SeonyxContext logDb, int projectId, bool success,
+            Services.ImportResult result, System.Collections.Generic.List<string> extraLines,
+            string sourceFileName = null)
         {
             var log = new ImportLog
             {
@@ -257,8 +421,8 @@ namespace Seonyx.Web.Controllers
 
             log.FullLog = lines.Any() ? string.Join("\n", lines) : null;
 
-            db.ImportLogs.Add(log);
-            db.SaveChanges();
+            logDb.ImportLogs.Add(log);
+            logDb.SaveChanges();
         }
 
         private string ImportLogLink(int projectId)

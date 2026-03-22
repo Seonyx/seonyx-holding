@@ -125,11 +125,19 @@ else
                 <div class="diff-rows">
                     @foreach (var row in current.Rows)
                     {
-                        if (row.Status == "unchanged") { continue; }
-
                         <div class="diff-row diff-@row.Status">
                             <div class="diff-pid">
-                                @row.Pid
+                                <span class="diff-pid-id">@row.Pid</span>
+                                <span class="diff-wordcounts">
+                                    @if (row.TextA != null)
+                                    {
+                                        <span>D@(Model.DraftA): @(row.WordCountA) words</span>
+                                    }
+                                    @if (row.TextB != null)
+                                    {
+                                        <span>D@(Model.DraftB): @(row.WordCountB) words</span>
+                                    }
+                                </span>
                                 @if (row.CurrentParagraphID.HasValue)
                                 {
                                     <a href="@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = row.CurrentParagraphID.Value })"
@@ -151,6 +159,11 @@ else
                                 <div class="diff-cell diff-cell-old">@row.TextA</div>
                                 <div class="diff-cell diff-cell-new">@row.TextB</div>
                             }
+                            else
+                            {
+                                <div class="diff-cell diff-cell-draft-a">@row.TextA</div>
+                                <div class="diff-cell diff-cell-draft-b">@row.TextB</div>
+                            }
                         </div>
                     }
                 </div>
@@ -168,7 +181,23 @@ else
             {
                 <span class="btn btn-secondary diff-nav-btn disabled">&larr; Prev</span>
             }
-            <span class="diff-nav-label">Chapter @current.ChapterNumber of @Model.Chapters.Count</span>
+            <select class="form-control-inline diff-chapter-jump"
+                    onchange="window.location=this.value">
+                @foreach (var ch in Model.Chapters)
+                {
+                    var url2 = Url.Action("Diff", "Draft", new { projectId = Model.BookProjectID, draftA = Model.DraftA, draftB = Model.DraftB, chapter = ch.ChapterNumber });
+                    var label2 = "Ch " + ch.ChapterNumber + (string.IsNullOrEmpty(ch.ChapterTitle) ? "" : ": " + ch.ChapterTitle);
+                    if (ch.HasChanges)
+                    {
+                        label2 += " (" + (ch.AddedCount > 0 ? "+" + ch.AddedCount : "") + (ch.RemovedCount > 0 ? " -" + ch.RemovedCount : "") + (ch.ModifiedCount > 0 ? " ~" + ch.ModifiedCount : "") + ")";
+                    }
+                    else
+                    {
+                        label2 += " - no changes";
+                    }
+                    <option value="@url2" @(ch.ChapterNumber == Model.CurrentChapterNumber ? "selected" : "")>@label2</option>
+                }
+            </select>
             @if (Model.NextChapterNumber.HasValue)
             {
                 <a href="@Url.Action("Diff", "Draft", new { projectId = Model.BookProjectID, draftA = Model.DraftA, draftB = Model.DraftB, chapter = Model.NextChapterNumber.Value })"

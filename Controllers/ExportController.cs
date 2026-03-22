@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using Seonyx.Web.Models;
 using Seonyx.Web.Models.ViewModels.BookEditor;
+using Seonyx.Web.Services;
 
 namespace Seonyx.Web.Controllers
 {
@@ -140,6 +141,25 @@ namespace Seonyx.Web.Controllers
             var zipFileName = string.Format("{0}_manuscript_{1}.zip", Slugify(project.ProjectName), timestamp);
 
             return File(memoryStream, "application/zip", zipFileName);
+        }
+
+        public ActionResult ExportBookml(int projectId)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var project = db.BookProjects.Find(projectId);
+            if (project == null) return HttpNotFound();
+
+            var memoryStream = new MemoryStream();
+            var exporter = new BookmlExporter();
+            var result   = exporter.Export(db, projectId, memoryStream);
+
+            if (!result.Success)
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError,
+                    "Export failed: " + string.Join("; ", result.Warnings));
+
+            memoryStream.Position = 0;
+            return File(memoryStream, "application/zip", result.ZipFileName);
         }
 
         // ==================== Generators ====================

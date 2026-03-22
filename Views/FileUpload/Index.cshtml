@@ -58,13 +58,166 @@
             A BookML XML package is ready to import (<code>book.xml</code> found).
         </p>
 
-        @using (Html.BeginForm("ImportFiles", "FileUpload", new { projectId = Model.BookProjectID }, FormMethod.Post, new { @class = "admin-form", onsubmit = "return confirm('Import BookML package? All chapters and paragraphs will be merged into the database.');" }))
-        {
+        <div class="form-actions">
             @Html.AntiForgeryToken()
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Import BookML Package</button>
+            <button id="btn-start-import" class="btn btn-primary"
+                    onclick="startBookmlImport(@Model.BookProjectID); return false;">Import BookML Package</button>
+        </div>
+        <div id="import-progress" class="import-progress-container" style="display:none">
+            <div class="import-progress-label">
+                <span id="import-status-text">
+                    <span class="import-spinner" id="import-spinner" style="display:none"></span>Preparing...
+                </span>
+                <span>
+                    <span id="import-count-text"></span>
+                    <span id="import-elapsed-text" class="import-elapsed"></span>
+                </span>
             </div>
+            <div class="import-progress-track">
+                <div id="import-progress-bar" class="import-progress-fill" style="width:0%"></div>
+            </div>
+            <div id="import-log" class="import-log-lines" style="display:none"></div>
+        </div>
+
+        <script>
+        function handleBeforeUnload(e) {
+            e.preventDefault();
+            return e.returnValue = 'An import is still running. Leaving may leave the database in a partial state.';
         }
+
+        function startBookmlImport(projectId) {
+            var csrfToken  = document.querySelector('[name="__RequestVerificationToken"]').value;
+            var btn        = document.getElementById('btn-start-import');
+            var box        = document.getElementById('import-progress');
+            var bar        = document.getElementById('import-progress-bar');
+            var spinner    = document.getElementById('import-spinner');
+            var statusTxt  = document.getElementById('import-status-text');
+            var countTxt   = document.getElementById('import-count-text');
+            var elapsedTxt = document.getElementById('import-elapsed-text');
+            var logDiv     = document.getElementById('import-log');
+
+            btn.disabled          = true;
+            btn.textContent       = 'Starting...';
+            box.style.display     = 'block';
+            spinner.style.display = 'inline-block';
+            statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue = 'Validating package...';
+            countTxt.textContent  = '';
+
+            window.addEventListener('beforeunload', handleBeforeUnload);
+
+            var importStartTime = Date.now();
+            var elapsedTimer = setInterval(function() {
+                var s = Math.round((Date.now() - importStartTime) / 1000);
+                elapsedTxt.textContent = s >= 60
+                    ? Math.floor(s / 60) + 'm ' + (s % 60) + 's'
+                    : s + 's';
+            }, 1000);
+
+            fetch('@Url.Action("StartImport", "FileUpload")?projectId=' + projectId, {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body:    '__RequestVerificationToken=' + encodeURIComponent(csrfToken)
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.error) {
+                    clearInterval(elapsedTimer);
+                    window.removeEventListener('beforeunload', handleBeforeUnload);
+                    statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue = '';
+                    statusTxt.innerHTML = '<span style="color:#dc2626">' + data.error + '</span>';
+                    spinner.style.display = 'none';
+                    btn.disabled    = false;
+                    btn.textContent = 'Import BookML Package';
+                    return;
+                }
+
+                var total     = data.total;
+                var pollToken = data.token;
+                bar.classList.add('running');
+                statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue = 'Importing...';
+                countTxt.textContent = '0 / ' + total + ' chapters';
+
+                var pollFailCount = 0;
+                var poller = setInterval(function() {
+                    fetch('@Url.Action("Status", "ImportProgress")?token=' + pollToken)
+                    .then(function(r) {
+                        if (!r.ok) { throw new Error('HTTP ' + r.status); }
+                        return r.json();
+                    })
+                    .then(function(p) {
+                        pollFailCount = 0;
+                        if (p.error) {
+                            statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue =
+                                'Poll error: ' + p.error;
+                            return;
+                        }
+
+                        var effectiveTotal = p.total || total;
+                        var pct = effectiveTotal > 0 ? Math.round((p.done / effectiveTotal) * 100) : 0;
+                        bar.style.width = (pct > 0 ? pct : 0) + '%';
+
+                        var countStr = p.done + ' / ' + effectiveTotal + ' chapters';
+                        if (p.paragraphsWritten > 0)
+                            countStr += ' (' + p.paragraphsWritten + ' paragraphs)';
+                        countTxt.textContent = countStr;
+
+                        if (p.currentChapter && !p.isComplete)
+                            statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue =
+                                'Importing: ' + p.currentChapter;
+
+                        if (p.recentLines && p.recentLines.length > 0) {
+                            logDiv.style.display = 'block';
+                            logDiv.innerHTML = p.recentLines.map(function(l) {
+                                return '<div class="log-line">' + l + '</div>';
+                            }).join('');
+                            logDiv.scrollTop = logDiv.scrollHeight;
+                        }
+
+                        if (p.isComplete) {
+                            clearInterval(poller);
+                            clearInterval(elapsedTimer);
+                            window.removeEventListener('beforeunload', handleBeforeUnload);
+                            bar.classList.remove('running');
+                            bar.style.width = '100%';
+                            spinner.style.display = 'none';
+                            if (p.success) {
+                                statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue = p.message;
+                                countTxt.textContent = '';
+                                setTimeout(function() { window.location.reload(); }, 2500);
+                            } else {
+                                statusTxt.innerHTML = '<span style="color:#dc2626">Import failed.</span> ' +
+                                    (p.logUrl ? '<a href="' + p.logUrl + '">View log</a>' : p.message);
+                                spinner.style.display = 'none';
+                                btn.disabled    = false;
+                                btn.textContent = 'Import BookML Package';
+                            }
+                        }
+                    })
+                    .catch(function(e) {
+                        pollFailCount++;
+                        if (pollFailCount >= 3) {
+                            clearInterval(poller);
+                            clearInterval(elapsedTimer);
+                            window.removeEventListener('beforeunload', handleBeforeUnload);
+                            bar.classList.remove('running');
+                            spinner.style.display = 'none';
+                            statusTxt.innerHTML = '<span style="color:#dc2626">Progress polling failed: ' + e.message + '</span>';
+                            btn.disabled    = false;
+                            btn.textContent = 'Import BookML Package';
+                        }
+                    });
+                }, 500);
+            })
+            .catch(function(e) {
+                clearInterval(elapsedTimer);
+                window.removeEventListener('beforeunload', handleBeforeUnload);
+                statusTxt.childNodes[statusTxt.childNodes.length - 1].nodeValue = 'Error: ' + e.message;
+                spinner.style.display = 'none';
+                btn.disabled    = false;
+                btn.textContent = 'Import BookML Package';
+            });
+        }
+        </script>
     </div>
 
     <hr />
