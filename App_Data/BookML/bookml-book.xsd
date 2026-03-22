@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bml="https://bookml.org/ns/1.0"
+           targetNamespace="https://bookml.org/ns/1.0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- ============================================================
+       BookML Book Manifest Schema v1.0
+       bookml-book.xsd
+
+       Validates:  book.xml
+       Imports:    bookml-common.xsd
+
+       The book manifest is the root document of a BookML work.
+       It contains all book-level metadata and the ordered table
+       of contents that drives import sequence and chapter assembly.
+
+       One book.xml exists per work, at the root of the work folder.
+  ============================================================ -->
+
+  <xs:include schemaLocation="bookml-common.xsd"/>
+
+
+  <!-- ============================================================
+       ROOT ELEMENT: book
+  ============================================================ -->
+
+  <xs:element name="book">
+    <xs:annotation>
+      <xs:documentation>
+        Root element of the BookML manifest file.
+        One per work. Lives at the root of the work folder.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="bookinfo"  type="bml:BookInfoType"/>
+        <xs:element name="contents"  type="bml:ContentsType"/>
+      </xs:sequence>
+      <xs:attribute name="bookml-version"  type="bml:BookmlVersionType" use="required"/>
+      <xs:attribute name="id"              type="xs:ID"               use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            Optional machine identifier for the work. Used as
+            book-id back-reference in chapter files.
+            Recommended: lowercase-hyphenated short title.
+            Example: autumn-meridian
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: BookInfoType
+       All book-level descriptive and administrative metadata.
+  ============================================================ -->
+
+  <xs:complexType name="BookInfoType">
+    <xs:sequence>
+
+      <!-- Core identification -->
+      <xs:element name="title"     type="xs:string"/>
+      <xs:element name="subtitle"  type="xs:string"  minOccurs="0"/>
+
+      <!-- Authorship: one or more authors supported -->
+      <xs:element name="author"    type="bml:AuthorType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+
+      <!-- Publication data -->
+      <xs:element name="publisher" type="xs:string"  minOccurs="0"/>
+      <xs:element name="isbn"      type="bml:IsbnType" minOccurs="0"/>
+      <xs:element name="edition"   type="xs:positiveInteger" minOccurs="0"/>
+      <xs:element name="pubdate"   type="xs:date"    minOccurs="0"/>
+
+      <!-- Rights -->
+      <xs:element name="copyright" type="bml:CopyrightType" minOccurs="0"/>
+
+      <!-- Classification -->
+      <xs:element name="genre"     type="bml:GenreType"/>
+      <xs:element name="abstract"  type="xs:string"  minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Synopsis, blurb, or abstract. Used in editor UI
+            catalogue views.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="keywords"  type="bml:KeywordsType" minOccurs="0"/>
+      <xs:element name="language"  type="xs:language">
+        <xs:annotation>
+          <xs:documentation>
+            Primary language of the work. ISO 639-1 code.
+            Example: en, fr, de
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Visual assets -->
+      <xs:element name="covers"       type="bml:CoversType"     minOccurs="0"/>
+      <xs:element name="author-photo" type="bml:AuthorPhotoType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Single author photo at book level. For multi-author
+            works, author photos may alternatively be nested
+            within each author element.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Versioning and draft lineage -->
+      <xs:element name="versioning" type="bml:VersioningType"/>
+
+      <!-- Administrative timestamps -->
+      <xs:element name="created"  type="xs:date"/>
+      <xs:element name="modified" type="xs:date"/>
+
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: AuthorType
+  ============================================================ -->
+
+  <xs:complexType name="AuthorType">
+    <xs:sequence>
+      <xs:element name="firstname"   type="xs:string" minOccurs="0"/>
+      <xs:element name="middlename"  type="xs:string" minOccurs="0"/>
+      <xs:element name="surname"     type="xs:string"/>
+      <xs:element name="pen-name"    type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Pseudonym or pen name if different from legal name.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="bio"         type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Short author biography for back matter or editor UI.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="author-photo" type="bml:AuthorPhotoType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Per-author photo. Used in multi-author works.
+            If present here, overrides book-level author-photo.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="role" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Author's role in the work.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="author"/>
+          <xs:enumeration value="co-author"/>
+          <xs:enumeration value="editor"/>
+          <xs:enumeration value="translator"/>
+          <xs:enumeration value="illustrator"/>
+          <xs:enumeration value="foreword"/>
+          <xs:enumeration value="introduction"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: CopyrightType
+  ============================================================ -->
+
+  <xs:complexType name="CopyrightType">
+    <xs:sequence>
+      <xs:element name="year"   type="xs:gYear"/>
+      <xs:element name="holder" type="xs:string"/>
+      <xs:element name="statement" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Full copyright statement for copyright page.
+            If absent, application generates from year and holder.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: KeywordsType
+  ============================================================ -->
+
+  <xs:complexType name="KeywordsType">
+    <xs:sequence>
+      <xs:element name="keyword" type="xs:string"
+                  minOccurs="1" maxOccurs="20"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: CoversType
+  ============================================================ -->
+
+  <xs:complexType name="CoversType">
+    <xs:sequence>
+      <xs:element name="cover" type="bml:CoverType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: CoverType
+       Extends ImageType with cover-specific type attribute.
+  ============================================================ -->
+
+  <xs:complexType name="CoverType">
+    <xs:complexContent>
+      <xs:extension base="bml:ImageType">
+        <xs:attribute name="type" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="full">
+                <xs:annotation>
+                  <xs:documentation>
+                    Full resolution cover. Used for print and
+                    full-screen display. Recommended minimum:
+                    1600x2400px at 300dpi.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+              <xs:enumeration value="thumbnail">
+                <xs:annotation>
+                  <xs:documentation>
+                    Catalogue thumbnail. Used in editor UI grid
+                    and library views. Recommended: 160x240px.
+                    Aspect ratio MUST match full cover.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+              <xs:enumeration value="spine"/>
+              <xs:enumeration value="back"/>
+              <xs:enumeration value="ebook">
+                <xs:annotation>
+                  <xs:documentation>
+                    Optimised for ebook distribution platforms.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: AuthorPhotoType
+       Extends ImageType. Square crop strongly recommended
+       (equal width and height) for platform compatibility.
+  ============================================================ -->
+
+  <xs:complexType name="AuthorPhotoType">
+    <xs:complexContent>
+      <xs:extension base="bml:ImageType">
+        <!-- No additional attributes beyond ImageType base.
+             credit attribute from ImageType carries photographer
+             copyright, which is distinct from book copyright. -->
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: VersioningType
+       Full draft lineage. The complete history of the work
+       is preserved here; drafts are never removed.
+  ============================================================ -->
+
+  <xs:complexType name="VersioningType">
+    <xs:sequence>
+      <xs:element name="draft" type="bml:DraftType"
+                  minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Draft records in any order; application sorts by
+            draft number. Exactly one draft may have status
+            "in-progress" at any time.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: DraftType
+  ============================================================ -->
+
+  <xs:complexType name="DraftType">
+    <xs:sequence>
+      <xs:element name="note" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Free-text editorial note describing what changed
+            in this draft and why. Distinct from paragraph-level
+            diff-hints; this is the high-level summary.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="number"     type="bml:DraftNumberType" use="required"/>
+    <xs:attribute name="status"     type="bml:DraftStatusType" use="required"/>
+    <xs:attribute name="created"    type="xs:dateTime"         use="required"/>
+    <xs:attribute name="based-on"   type="xs:nonNegativeInteger" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Draft number this draft was derived from.
+          Use 0 for the initial generation (no parent).
+          Enables lineage graph reconstruction and
+          supports branching for experimental drafts.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="author-type" type="bml:AuthorTypeType" use="required"/>
+    <xs:attribute name="author"      type="xs:string"          use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Human name or AI model identifier.
+          Examples: "Jane Pemberton", "Claude Opus 4"
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="label"       type="xs:string"          use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Short human-readable label for UI display.
+          Examples: "Initial generation", "Post-AI critique revision"
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="export-date" type="xs:dateTime"        use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Date this draft was exported as XML snapshot.
+          Distinct from created date (when editing began).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ContentsType
+       Ordered table of contents. Drives import sequence.
+       The seq attribute on component allows chapter reordering
+       without full renumbering.
+  ============================================================ -->
+
+  <xs:complexType name="ContentsType">
+    <xs:sequence>
+      <xs:element name="frontmatter" type="bml:MatterType" minOccurs="0"/>
+      <xs:element name="bodymatter"  type="bml:MatterType" minOccurs="1"/>
+      <xs:element name="backmatter"  type="bml:MatterType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: MatterType
+       Container for front, body, or back matter components.
+  ============================================================ -->
+
+  <xs:complexType name="MatterType">
+    <xs:sequence>
+      <xs:element name="component" type="bml:ComponentType"
+                  minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ComponentType
+       One entry in the table of contents. Points to the three
+       associated files (chapter, meta, notes) for this component.
+  ============================================================ -->
+
+  <xs:complexType name="ComponentType">
+    <xs:attribute name="id"           type="xs:ID"   use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Unique identifier for this component within the book.
+          Matches the id attribute on the corresponding chapter
+          root element. Example: ch01, fm-preface, bm-appendix-a
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="type"         type="bml:ComponentTypeType" use="required"/>
+    <xs:attribute name="seq"          type="bml:SeqType"           use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Display ordinal. AI generators assign in multiples
+          of 1000. Allows component reordering without
+          renumbering the full contents list.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="chapter-file" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Relative path from book.xml to chapter XML file.
+          Example: ch01/ch01-chapter.xml
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="meta-file"    type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Relative path from book.xml to meta XML file.
+          Example: ch01/ch01-meta.xml
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="notes-file"   type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Relative path from book.xml to notes XML file.
+          Example: ch01/ch01-notes.xml
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="title"        type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Denormalised chapter title for quick TOC rendering
+          without opening individual chapter files.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="draft"        type="bml:DraftNumberType" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Draft number of the current chapter files.
+          Must match draft attribute in chapter file root.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+</xs:schema>

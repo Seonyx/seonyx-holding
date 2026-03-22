@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bml="https://bookml.org/ns/1.0"
+           targetNamespace="https://bookml.org/ns/1.0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- ============================================================
+       BookML Chapter Schema v1.0
+       bookml-chapter.xsd
+
+       Validates:  *-chapter.xml files
+       Imports:    bookml-common.xsd
+
+       The chapter file carries all prose content for one
+       component of the work. Sections are optional (fiction
+       typically omits them; non-fiction uses them heavily).
+
+       Every content element carries a pid (immutable identity
+       key) and a seq (mutable display ordinal).
+
+       Figures, tables, and headings are defined but commented
+       out in the sample XML; they are fully supported by this
+       schema for non-fiction extension.
+  ============================================================ -->
+
+  <xs:include schemaLocation="bookml-common.xsd"/>
+
+
+  <!-- ============================================================
+       ROOT ELEMENT: chapter
+  ============================================================ -->
+
+  <xs:element name="chapter">
+    <xs:annotation>
+      <xs:documentation>
+        Root element of a BookML chapter file. Represents one
+        component entry from the book.xml contents list.
+        Applicable to all component types (chapters, prefaces,
+        appendices etc.) — the component type is carried in
+        book.xml, not repeated here.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="chapterinfo" type="bml:ChapterInfoType"/>
+        <xs:element name="section"     type="bml:SectionType"
+                    minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              For fiction with no explicit sections, wrap all
+              content in a single section with no title element.
+              This keeps the schema consistent and simplifies
+              the importer — it always iterates sections.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+
+      <!-- Chapter identity and cross-reference -->
+      <xs:attribute name="bookml-version" type="bml:BookmlVersionType" use="required"/>
+      <xs:attribute name="id"             type="xs:ID"                 use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Must match the id attribute of the corresponding
+            component element in book.xml.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="book-id"        type="xs:string"             use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Back-reference to parent book. Matches the id
+            attribute on the book root element. Ensures the
+            chapter file is self-describing when read in
+            isolation from book.xml.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="draft"          type="bml:DraftNumberType"   use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Draft number this file represents. Must match
+            a draft number in book.xml versioning.
+            Immutable once the file is exported as snapshot.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="snapshot-date"  type="xs:dateTime"           use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            Date and time this file was exported as a snapshot.
+            Required when draft status is "snapshot".
+            Absent for in-progress working files.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ChapterInfoType
+       Chapter-level metadata and front matter.
+  ============================================================ -->
+
+  <xs:complexType name="ChapterInfoType">
+    <xs:sequence>
+      <xs:element name="chapternumber" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Display chapter number. May be numeric (1, 2, 3),
+            roman (I, II, III), or word form (One, Two, Three).
+            Absent for unnumbered components (preface, appendix).
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="title"    type="xs:string"/>
+      <xs:element name="subtitle" type="xs:string" minOccurs="0"/>
+      <xs:element name="epigraph" type="bml:EpigraphType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Opening quotation before the chapter body.
+            Common in literary fiction and non-fiction.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: EpigraphType
+  ============================================================ -->
+
+  <xs:complexType name="EpigraphType">
+    <xs:sequence>
+      <xs:element name="para" type="bml:ParaType"
+                  minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            One or more lines of the epigraph quotation.
+            Each carries a pid using EP type code.
+            Example pid: CH01-EP001
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="attribution" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Source attribution for the epigraph.
+            Example: "— Old Breton proverb"
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: SectionType
+       Sections are the primary structural container within a
+       chapter. Fiction may use a single implicit section.
+       Non-fiction typically uses multiple named sections.
+
+       Sections may be nested (subsections) using the level
+       attribute to indicate depth.
+  ============================================================ -->
+
+  <xs:complexType name="SectionType">
+    <xs:sequence>
+      <xs:element name="title"   type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Section title. Omit for implicit fiction sections
+            or scene groups without named headings.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="section" type="bml:SectionType"
+                  minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Nested subsection. Use for non-fiction hierarchical
+            structure. Fiction rarely needs nesting.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="para"    type="bml:ParaType"/>
+        <xs:element name="heading" type="bml:HeadingType"/>
+        <xs:element name="break"   type="bml:BreakType"/>
+        <xs:element name="figure"  type="bml:FigureType"/>
+        <xs:element name="table"   type="bml:TableType"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="id"    type="xs:ID"         use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional section identifier. Useful for cross-references
+          in non-fiction (e.g. "see Section 3.2").
+          Example: ch01-s01
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="seq"   type="bml:SeqType"   use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Display ordinal for section ordering within chapter.
+          Governs section reordering independently of content.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="level" use="optional" default="1">
+      <xs:annotation>
+        <xs:documentation>
+          Nesting depth. 1 = top-level section, 2 = subsection,
+          3 = sub-subsection. Maximum recommended depth: 3.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:positiveInteger">
+          <xs:maxInclusive value="3"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ParaType
+       The fundamental content unit. Every paragraph carries:
+         pid  — immutable identity key (foreign key to meta/notes)
+         seq  — mutable display ordinal
+       Plus provenance attributes for versioning.
+  ============================================================ -->
+
+  <xs:complexType name="ParaType" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+        Core prose paragraph. Mixed content (text and optional
+        inline markup). Every paragraph in the work is
+        represented by exactly one ParaType element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <!-- Inline markup elements for prose formatting -->
+      <xs:element name="em"       type="xs:string" minOccurs="0"
+                  maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Emphasis (italic in print).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="strong"   type="xs:string" minOccurs="0"
+                  maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Strong emphasis (bold in print).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="footnote-ref" minOccurs="0"
+                  maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Inline footnote anchor. References a note of type
+            "footnote" in the notes file by pid and note id.
+            Non-fiction use.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="ref-pid"    type="bml:PidType"  use="required"/>
+          <xs:attribute name="ref-note"   type="xs:string"    use="required"/>
+          <xs:attribute name="display-as" use="optional" default="number">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="number"/>
+                <xs:enumeration value="symbol"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+
+    <!-- Identity and ordering -->
+    <xs:attribute name="pid"   type="bml:PidType" use="required"/>
+    <xs:attribute name="seq"   type="bml:SeqType" use="required"/>
+
+    <!-- Content classification -->
+    <xs:attribute name="type"  type="bml:ParaTypeType" use="required"/>
+    <xs:attribute name="speaker" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Character delivering dialogue. Only valid when
+          type="dialogue". References a character id.
+          Example: elspeth-vane
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Versioning provenance -->
+    <xs:attributeGroup ref="bml:ProvenanceAttributes"/>
+
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: HeadingType
+       In-flow heading. Distinct from section titles.
+       Used for non-fiction subheadings within a section that
+       do not create a new structural section.
+       Example: a sidebar title, a named subsection without
+       formal section nesting.
+  ============================================================ -->
+
+  <xs:complexType name="HeadingType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="pid"   type="bml:PidType" use="required"/>
+        <xs:attribute name="seq"   type="bml:SeqType" use="required"/>
+        <xs:attribute name="level" use="required">
+          <xs:simpleType>
+            <xs:restriction base="xs:positiveInteger">
+              <xs:maxInclusive value="4"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attributeGroup ref="bml:ProvenanceAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: BreakType
+       Scene or section break marker. No content — purely
+       structural. Carries a pid so the break itself can be
+       referenced in notes (e.g. "remove this scene break").
+  ============================================================ -->
+
+  <xs:complexType name="BreakType">
+    <xs:attribute name="pid"  type="bml:PidType"      use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Optional pid for referencing the break in notes.
+          Use B type code: CH01-B0001
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="seq"  type="bml:SeqType"      use="required"/>
+    <xs:attribute name="type" type="bml:BreakTypeType" use="required"/>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: FigureType
+       Image figure with caption. Non-fiction primary use,
+       but available for illustrated fiction.
+  ============================================================ -->
+
+  <xs:complexType name="FigureType">
+    <xs:sequence>
+      <xs:element name="title"   type="xs:string"    minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Figure title. Appears above the image in most
+            non-fiction layouts.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="image"   type="bml:ImageType"/>
+      <xs:element name="caption" type="xs:string"    minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Caption text. Appears below the image.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="pid"     type="bml:PidType"  use="required"/>
+    <xs:attribute name="seq"     type="bml:SeqType"  use="required"/>
+    <xs:attribute name="number"  type="xs:string"    use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Display figure number. Example: "Figure 3.2"
+          Application may auto-generate if absent.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attributeGroup ref="bml:ProvenanceAttributes"/>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: TableType
+       Simple tabular data. For complex tables, an external
+       CSV or XLSX file reference is preferred; this handles
+       the common case of small reference tables in non-fiction.
+  ============================================================ -->
+
+  <xs:complexType name="TableType">
+    <xs:sequence>
+      <xs:element name="title"  type="xs:string"   minOccurs="0"/>
+      <xs:element name="thead"  type="bml:TableRowGroupType" minOccurs="0"/>
+      <xs:element name="tbody"  type="bml:TableRowGroupType"/>
+      <xs:element name="tfoot"  type="bml:TableRowGroupType" minOccurs="0"/>
+      <xs:element name="caption" type="xs:string"  minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="pid"    type="bml:PidType" use="required"/>
+    <xs:attribute name="seq"    type="bml:SeqType" use="required"/>
+    <xs:attribute name="number" type="xs:string"   use="optional"/>
+    <xs:attributeGroup ref="bml:ProvenanceAttributes"/>
+  </xs:complexType>
+
+  <xs:complexType name="TableRowGroupType">
+    <xs:sequence>
+      <xs:element name="tr" type="bml:TableRowType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TableRowType">
+    <xs:sequence>
+      <xs:element name="td" type="bml:TableCellType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TableCellType" mixed="true">
+    <xs:attribute name="colspan" type="xs:positiveInteger" use="optional"/>
+    <xs:attribute name="rowspan" type="xs:positiveInteger" use="optional"/>
+    <xs:attribute name="header"  type="xs:boolean"         use="optional" default="false"/>
+  </xs:complexType>
+
+</xs:schema>

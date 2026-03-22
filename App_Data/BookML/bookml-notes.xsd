@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:bml="https://bookml.org/ns/1.0"
+           targetNamespace="https://bookml.org/ns/1.0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- ============================================================
+       BookML Notes Schema v1.0
+       bookml-notes.xsd
+
+       Validates:  *-notes.xml files
+       Imports:    bookml-common.xsd
+
+       The notes file carries annotations, editorial observations,
+       research references, continuity flags, AI diff-hints, and
+       footnotes/endnotes for one chapter component.
+
+       It is joined to the chapter file by pid (the immutable
+       paragraph identity key).
+
+       Multiple notes per paragraph are explicitly supported.
+       Notes are never deleted — use resolved="true" to indicate
+       a query or continuity flag has been addressed.
+
+       Note types:
+         craft        Editorial or craft observation
+         research     Factual research or source reference
+         continuity   Cross-reference flag for consistency checking
+         query        Open question requiring resolution
+         diff-hint    AI explanation of changes between drafts
+         footnote     Footnote or endnote (non-fiction)
+         general      Catch-all
+  ============================================================ -->
+
+  <xs:include schemaLocation="bookml-common.xsd"/>
+
+
+  <!-- ============================================================
+       ROOT ELEMENT: notes
+  ============================================================ -->
+
+  <xs:element name="notes">
+    <xs:annotation>
+      <xs:documentation>
+        Root element of a BookML notes file.
+        Contains zero or more para-notes records, each keyed
+        by pid to the corresponding element in the chapter file.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="para-notes" type="bml:ParaNotesType"
+                    minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="bookml-version" type="bml:BookmlVersionType" use="required"/>
+      <xs:attribute name="chapter-id"     type="xs:string"             use="required">
+        <xs:annotation>
+          <xs:documentation>
+            Must match the id attribute of the corresponding
+            chapter root element.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="book-id"        type="xs:string"             use="required"/>
+      <xs:attribute name="draft"          type="bml:DraftNumberType"   use="required"/>
+    </xs:complexType>
+
+    <!-- Uniqueness constraint: one para-notes block per pid -->
+    <xs:unique name="UniqueParaNotesPid">
+      <xs:selector xpath="bml:para-notes"/>
+      <xs:field xpath="@pid"/>
+    </xs:unique>
+  </xs:element>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ParaNotesType
+       Container for all notes attached to one paragraph/element.
+       Multiple note elements allowed — they accumulate over
+       the life of the work and are never removed.
+  ============================================================ -->
+
+  <xs:complexType name="ParaNotesType">
+    <xs:sequence>
+      <xs:element name="note" type="bml:NoteType"
+                  minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="pid" type="bml:PidType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Foreign key to the pid of the corresponding element
+          in the chapter file. This is the join key.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: NoteType
+       A single annotation. The most semantically varied element
+       in the schema — carries everything from one-line craft
+       observations to full academic footnotes with citations.
+  ============================================================ -->
+
+  <xs:complexType name="NoteType">
+    <xs:sequence>
+
+      <!-- Main note body text -->
+      <xs:element name="body" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The note content. Free text.
+            For diff-hints: the AI's explanation of what changed
+              and why, written for the human editor's benefit.
+            For footnotes: the full footnote text as it will
+              appear in the published work.
+            For queries: the question to be resolved.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Citation block for footnotes and research notes -->
+      <xs:element name="citation" type="bml:CitationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Formal citation. Used with type="footnote" and
+            type="research". Provides structured bibliographic
+            data separate from the free-text body.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Resolution record for queries and continuity flags -->
+      <xs:element name="resolution" type="bml:ResolutionType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Records how and when a query or continuity issue
+            was resolved. Never delete the note — add a
+            resolution record instead. This preserves the
+            full editorial decision history.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Cross-reference: links this note to another paragraph -->
+      <xs:element name="cross-ref" type="bml:CrossRefType" minOccurs="0"
+                  maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            Link to another paragraph in the same or a different
+            chapter. Used for continuity notes that span
+            multiple locations in the text.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+    </xs:sequence>
+
+    <!-- Note identity -->
+    <xs:attribute name="id"     type="xs:ID"               use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Unique note identifier within the file.
+          Convention: {pid}-N{sequence}
+          Example: CH01-P001-N001
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <!-- Classification -->
+    <xs:attribute name="type"   type="bml:NoteTypeType"    use="required"/>
+
+    <!-- Authorship -->
+    <xs:attribute name="author-type" type="bml:AuthorTypeType" use="required"/>
+    <xs:attribute name="author"      type="xs:string"          use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Human name or AI model identifier who created this note.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="draft"       type="bml:DraftNumberType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Draft number during which this note was created.
+          Notes accumulate across drafts; this attribute
+          identifies when each note was added.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="created"     type="xs:dateTime"         use="optional"/>
+
+    <!-- Workflow state -->
+    <xs:attribute name="resolved"    type="xs:boolean"    use="optional" default="false">
+      <xs:annotation>
+        <xs:documentation>
+          Set to true when a query or continuity flag has been
+          addressed. Never delete notes — resolve them.
+          Irrelevant for diff-hints and craft notes.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="priority"    use="optional" default="normal">
+      <xs:annotation>
+        <xs:documentation>
+          Priority flag for query and continuity notes.
+          Allows the editor UI to surface urgent issues.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="low"/>
+          <xs:enumeration value="normal"/>
+          <xs:enumeration value="high"/>
+          <xs:enumeration value="blocking">
+            <xs:annotation>
+              <xs:documentation>
+                This issue must be resolved before the chapter
+                can advance to "reviewed" status.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
+    <!-- Footnote display preference -->
+    <xs:attribute name="display" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          For type="footnote" only. Governs rendering location.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="footnote">
+            <xs:annotation>
+              <xs:documentation>Renders at page bottom.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="endnote">
+            <xs:annotation>
+              <xs:documentation>
+                Collects at chapter or book end.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="sidenote">
+            <xs:annotation>
+              <xs:documentation>Renders in margin. Print use.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: CitationType
+       Structured bibliographic reference.
+       Used with footnote and research notes.
+  ============================================================ -->
+
+  <xs:complexType name="CitationType">
+    <xs:sequence>
+      <xs:element name="author"    type="xs:string"  minOccurs="0"
+                  maxOccurs="unbounded"/>
+      <xs:element name="title"     type="xs:string"/>
+      <xs:element name="subtitle"  type="xs:string"  minOccurs="0"/>
+      <xs:element name="year"      type="xs:gYear"   minOccurs="0"/>
+      <xs:element name="publisher" type="xs:string"  minOccurs="0"/>
+      <xs:element name="place"     type="xs:string"  minOccurs="0"/>
+      <xs:element name="page"      type="xs:string"  minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            Page or page range. Free-form string to accommodate
+            "p.234", "pp.12–18", "passim" etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="volume"    type="xs:string"  minOccurs="0"/>
+      <xs:element name="issue"     type="xs:string"  minOccurs="0"/>
+      <xs:element name="journal"   type="xs:string"  minOccurs="0"/>
+      <xs:element name="isbn"      type="bml:IsbnType" minOccurs="0"/>
+      <xs:element name="doi"       type="xs:string"  minOccurs="0"/>
+      <xs:element name="url"       type="xs:anyURI"  minOccurs="0"/>
+      <xs:element name="accessed"  type="xs:date"    minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="type" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="book"/>
+          <xs:enumeration value="chapter"/>
+          <xs:enumeration value="journal-article"/>
+          <xs:enumeration value="newspaper"/>
+          <xs:enumeration value="website"/>
+          <xs:enumeration value="archive"/>
+          <xs:enumeration value="thesis"/>
+          <xs:enumeration value="report"/>
+          <xs:enumeration value="interview"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: ResolutionType
+       Records the resolution of a query or continuity flag.
+  ============================================================ -->
+
+  <xs:complexType name="ResolutionType">
+    <xs:sequence>
+      <xs:element name="body" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Description of how the issue was resolved.
+            Example: "Confirmed weather matches ch03-P018.
+            Changed 'grey skies' to 'broken cloud' for
+            consistency."
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="resolved-by"   type="xs:string"          use="optional"/>
+    <xs:attribute name="resolved-date" type="xs:dateTime"        use="optional"/>
+    <xs:attribute name="draft"         type="bml:DraftNumberType" use="optional"/>
+  </xs:complexType>
+
+
+  <!-- ============================================================
+       COMPLEX TYPE: CrossRefType
+       Links a note to another location in the work.
+  ============================================================ -->
+
+  <xs:complexType name="CrossRefType">
+    <xs:attribute name="target-pid"        type="bml:PidType" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          pid of the target paragraph or element.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="target-chapter-id" type="xs:string"   use="required">
+      <xs:annotation>
+        <xs:documentation>
+          Chapter id of the target. May differ from the current
+          chapter for cross-chapter continuity links.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="relationship"      type="xs:string"   use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          Nature of the relationship.
+          Examples: "contradicts", "confirms", "foreshadows",
+          "echoes", "must-match"
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+
+  <!-- IsbnType is defined in bookml-common.xsd -->
+
+</xs:schema>
