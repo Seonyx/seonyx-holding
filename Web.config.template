@@ -42,6 +42,7 @@
     <urlCompression doStaticCompression="true" doDynamicCompression="true" />
     <staticContent>
       <clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="7.00:00:00" />
+      <mimeMap fileExtension=".webmanifest" mimeType="application/manifest+json" />
     </staticContent>
     <httpProtocol>
       <customHeaders>
