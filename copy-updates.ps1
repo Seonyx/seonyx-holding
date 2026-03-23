@@ -1,5 +1,5 @@
 # ============================================
-# Go To paragraph navigation
+# Favicon support
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Go To paragraph navigation in book editor" -ForegroundColor Cyan
+    Write-Host "Favicon support" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -24,11 +24,29 @@ try {
         throw "ERROR: Destination not found at $dst"
     }
 
+    Write-Host "Copying new files..." -ForegroundColor Yellow
+    $newFiles = @(
+        "favicon.ico",
+        "favicon-16x16.png",
+        "favicon-32x32.png",
+        "apple-touch-icon.png",
+        "android-chrome-192x192.png",
+        "android-chrome-512x512.png",
+        "site.webmanifest"
+    )
+    foreach ($f in $newFiles) {
+        $destDir = Split-Path (Join-Path $dst $f) -Parent
+        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
+        Copy-Item (Join-Path $src $f) (Join-Path $dst $f) -Force
+        Write-Host "  NEW: $f" -ForegroundColor Green
+    }
+
+    Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "Controllers\EditorController.cs",
-        "Views\Editor\Index.cshtml",
-        "Content\css\book-editor.css"
+        "Views\Shared\_Layout.cshtml",
+        "Views\Shared\_AdminLayout.cshtml",
+        "Views\Shared\_BookEditorLayout.cshtml"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -47,9 +65,8 @@ try {
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
     Write-Host "3. Change in this build:" -ForegroundColor White
-    Write-Host "   - Go to field added to the nav bar (next to chapter dropdown)." -ForegroundColor Gray
-    Write-Host "     Type a position number (e.g. 42) or a paragraph ID" -ForegroundColor Gray
-    Write-Host "     (e.g. CH01-P0010) and press Enter or Go." -ForegroundColor Gray
+    Write-Host "   - Favicon added to all pages (public site, admin, book editor)." -ForegroundColor Gray
+    Write-Host "     The browser tab icon error in DevTools should be gone." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 
