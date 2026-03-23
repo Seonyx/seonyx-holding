@@ -184,6 +184,13 @@
     <Content Include="Content\css\admin.css" />
     <Content Include="Content\images\logo.svg" />
     <Content Include="Scripts\site.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="android-chrome-192x192.png" />
+    <Content Include="android-chrome-512x512.png" />
+    <Content Include="site.webmanifest" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.config.template" />
