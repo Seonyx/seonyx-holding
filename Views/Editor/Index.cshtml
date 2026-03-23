@@ -46,6 +46,16 @@
             </div>
         </div>
 
+        <!-- Search Bar -->
+        <div class="editor-search-bar" id="searchBar">
+            <input type="text" id="searchInput" class="editor-search-input" placeholder="Search paragraph text..." autocomplete="off" />
+            <button type="button" class="btn btn-sm btn-secondary" id="btnSearch">Search</button>
+            <button type="button" class="btn btn-sm btn-secondary" id="btnSearchPrev" disabled title="Previous match">&#8249; Prev</button>
+            <button type="button" class="btn btn-sm btn-secondary" id="btnSearchNext" disabled title="Next match">Next &#8250;</button>
+            <span class="search-status" id="searchStatus"></span>
+            <button type="button" class="btn btn-sm btn-secondary search-clear" id="btnSearchClear" style="display:none" title="Clear search">&#x2715;</button>
+        </div>
+
         <!-- Navigation + Controls Bar -->
         <div class="editor-nav-bar">
             <div class="editor-nav-buttons">
@@ -136,11 +146,148 @@
     <script>
         var editorConfig = {
             autoSaveUrl: '@Url.Action("AutoSave", "Editor")',
+            searchUrl:   '@Url.Action("Search", "Editor")',
+            indexUrl:    '@Url.Action("Index", "Editor")',
+            projectId:   @Model.BookProjectID,
             paragraphId: @Model.ParagraphID,
             prevUrl: '@(Model.PrevParagraphID.HasValue ? Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.PrevParagraphID }) : "")',
             nextUrl: '@(Model.NextParagraphID.HasValue ? Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.NextParagraphID }) : "")',
             firstUrl: '@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.FirstParagraphID })',
             lastUrl: '@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.LastParagraphID })'
         };
+
+        // ── Search ────────────────────────────────────────────────────────────
+        (function () {
+            var matchIds    = [];
+            var matchIndex  = -1;
+            var searchQuery = '';
+
+            var input      = document.getElementById('searchInput');
+            var status     = document.getElementById('searchStatus');
+            var btnSearch  = document.getElementById('btnSearch');
+            var btnPrev    = document.getElementById('btnSearchPrev');
+            var btnNext    = document.getElementById('btnSearchNext');
+            var btnClear   = document.getElementById('btnSearchClear');
+
+            // Read q and mi from current URL
+            function urlParams() {
+                return new URLSearchParams(window.location.search);
+            }
+
+            function buildMatchUrl(pid, q, mi) {
+                return editorConfig.indexUrl +
+                    '?projectId=' + editorConfig.projectId +
+                    '&paragraphId=' + pid +
+                    '&q=' + encodeURIComponent(q) +
+                    '&mi=' + mi;
+            }
+
+            function updateUI() {
+                if (matchIds.length === 0) {
+                    status.textContent = searchQuery ? 'No matches.' : '';
+                    btnPrev.disabled = true;
+                    btnNext.disabled = true;
+                    return;
+                }
+                status.textContent = 'Match ' + (matchIndex + 1) + ' of ' + matchIds.length;
+                btnPrev.disabled = (matchIndex <= 0);
+                btnNext.disabled = (matchIndex >= matchIds.length - 1);
+            }
+
+            function highlightMatch(q) {
+                var ta = document.getElementById('paragraphText');
+                if (!ta || !q) return;
+                var idx = ta.value.toLowerCase().indexOf(q.toLowerCase());
+                if (idx >= 0) {
+                    ta.focus();
+                    ta.setSelectionRange(idx, idx + q.length);
+                }
+            }
+
+            function runSearch(q, onDone) {
+                if (!q) { matchIds = []; matchIndex = -1; updateUI(); return; }
+                fetch(editorConfig.searchUrl + '?projectId=' + editorConfig.projectId + '&q=' + encodeURIComponent(q))
+                    .then(function (r) { return r.json(); })
+                    .then(function (ids) {
+                        matchIds   = ids || [];
+                        matchIndex = matchIds.indexOf(editorConfig.paragraphId);
+                        if (onDone) onDone();
+                        updateUI();
+                    })
+                    .catch(function () { status.textContent = 'Search error.'; });
+            }
+
+            // On page load: restore search state from URL
+            var params = urlParams();
+            var qParam  = params.get('q') || '';
+            var miParam = parseInt(params.get('mi') || '-1', 10);
+
+            if (qParam) {
+                searchQuery     = qParam;
+                input.value     = qParam;
+                btnClear.style.display = '';
+                runSearch(qParam, function () {
+                    // Trust the URL mi value if valid, else find current para in results
+                    if (miParam >= 0 && miParam < matchIds.length) {
+                        matchIndex = miParam;
+                    }
+                    updateUI();
+                    highlightMatch(qParam);
+                });
+            }
+
+            // Search button / Enter key
+            function doSearch() {
+                searchQuery = input.value.trim();
+                if (!searchQuery) { doClear(); return; }
+                btnClear.style.display = '';
+                runSearch(searchQuery, function () {
+                    if (matchIds.length === 0) { updateUI(); return; }
+                    matchIndex = 0;
+                    window.location.href = buildMatchUrl(matchIds[0], searchQuery, 0);
+                });
+            }
+
+            btnSearch.addEventListener('click', doSearch);
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') { e.preventDefault(); doSearch(); }
+            });
+
+            btnNext.addEventListener('click', function () {
+                var ni = matchIndex + 1;
+                if (ni < matchIds.length)
+                    window.location.href = buildMatchUrl(matchIds[ni], searchQuery, ni);
+            });
+
+            btnPrev.addEventListener('click', function () {
+                var pi = matchIndex - 1;
+                if (pi >= 0)
+                    window.location.href = buildMatchUrl(matchIds[pi], searchQuery, pi);
+            });
+
+            function doClear() {
+                input.value = '';
+                searchQuery = '';
+                matchIds    = [];
+                matchIndex  = -1;
+                btnClear.style.display = 'none';
+                status.textContent = '';
+                btnPrev.disabled = true;
+                btnNext.disabled = true;
+                // Strip q and mi from URL without reloading
+                var clean = window.location.pathname + '?projectId=' + editorConfig.projectId + '&paragraphId=' + editorConfig.paragraphId;
+                window.history.replaceState(null, '', clean);
+            }
+
+            btnClear.addEventListener('click', doClear);
+
+            // Thread q through regular nav links when search is active
+            ['btnPrev', 'btnNext'].forEach(function (id) {
+                var el = document.getElementById(id);
+                if (el && el.href && searchQuery) {
+                    el.href = el.href + '&q=' + encodeURIComponent(searchQuery);
+                }
+            });
+        }());
     </script>
 }

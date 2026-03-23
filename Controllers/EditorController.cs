@@ -314,6 +314,31 @@ namespace Seonyx.Web.Controllers
             return RedirectToAction("Index", new { projectId, paragraphId });
         }
 
+        [HttpGet]
+        public JsonResult Search(int projectId, string q)
+        {
+            if (!IsAuthenticated())
+                return Json(null, JsonRequestBehavior.AllowGet);
+
+            if (string.IsNullOrWhiteSpace(q))
+                return Json(new int[0], JsonRequestBehavior.AllowGet);
+
+            var matches = db.Paragraphs
+                .Where(p => p.Chapter.BookProjectID == projectId && p.ParagraphText.Contains(q))
+                .Select(p => new {
+                    p.ParagraphID,
+                    ChapterNumber = p.Chapter.ChapterNumber,
+                    p.OrdinalPosition
+                })
+                .ToList()
+                .OrderBy(p => p.ChapterNumber)
+                .ThenBy(p => p.OrdinalPosition)
+                .Select(p => p.ParagraphID)
+                .ToArray();
+
+            return Json(matches, JsonRequestBehavior.AllowGet);
+        }
+
         private ParagraphEditViewModel BuildEditViewModel(BookProject project, Paragraph paragraph)
         {
             var chapter = paragraph.Chapter;

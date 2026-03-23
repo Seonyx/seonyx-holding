@@ -1,5 +1,5 @@
 # ============================================
-# Import progress + route fix
+# Paragraph search feature
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Epigraph paragraph support in book editor" -ForegroundColor Cyan
+    Write-Host "Paragraph search feature in book editor" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -27,7 +27,9 @@ try {
     # Modified files to update
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "Services\BookmlImporter.cs"
+        "Controllers\EditorController.cs",
+        "Views\Editor\Index.cshtml",
+        "Content\css\book-editor.css"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -45,13 +47,12 @@ try {
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. One change in this build:" -ForegroundColor White
-    Write-Host "   - Epigraph paragraphs (<chapterinfo><epigraph>) now extracted" -ForegroundColor Gray
-    Write-Host "     by the importer and shown in the book editor like regular" -ForegroundColor Gray
-    Write-Host "     paragraphs. Previously they were silently skipped." -ForegroundColor Gray
-    Write-Host ""
-    Write-Host "4. After copying, re-import the Draft 2 ZIP to pick up the" -ForegroundColor White
-    Write-Host "   epigraph paragraphs. They will appear first in each chapter." -ForegroundColor Gray
+    Write-Host "3. One new feature in this build:" -ForegroundColor White
+    Write-Host "   - Search bar added to the book editor." -ForegroundColor Gray
+    Write-Host "     Type a term, click Search (or press Enter)." -ForegroundColor Gray
+    Write-Host "     Use Prev / Next to navigate all matches." -ForegroundColor Gray
+    Write-Host "     Match count shown; matched text selected in textarea." -ForegroundColor Gray
+    Write-Host "     Search state persists across page loads via URL." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 
