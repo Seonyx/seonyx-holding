@@ -1,5 +1,5 @@
 # ============================================
-# Search refinements: whole-word toggle, colour-coded bars
+# Go To paragraph navigation
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Search refinements in book editor" -ForegroundColor Cyan
+    Write-Host "Go To paragraph navigation in book editor" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -46,12 +46,10 @@ try {
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. Changes in this build:" -ForegroundColor White
-    Write-Host "   - Search bar is now amber/yellow; nav bar is blue." -ForegroundColor Gray
-    Write-Host "     Easy to tell them apart at a glance." -ForegroundColor Gray
-    Write-Host "   - Whole word checkbox added (checked by default)." -ForegroundColor Gray
-    Write-Host "     Uncheck to revert to substring search." -ForegroundColor Gray
-    Write-Host "   - Whole-word state persists in URL (ww=1)." -ForegroundColor Gray
+    Write-Host "3. Change in this build:" -ForegroundColor White
+    Write-Host "   - Go to field added to the nav bar (next to chapter dropdown)." -ForegroundColor Gray
+    Write-Host "     Type a position number (e.g. 42) or a paragraph ID" -ForegroundColor Gray
+    Write-Host "     (e.g. CH01-P0010) and press Enter or Go." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

@@ -135,6 +135,15 @@
     max-width: 280px;
 }
 
+.editor-goto-input {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background: #fff;
+    width: 110px;
+}
+
 .editor-actions {
     display: flex;
     gap: 0.25rem;

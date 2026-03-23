@@ -315,6 +315,47 @@ namespace Seonyx.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult GoTo(int projectId, string target)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            if (string.IsNullOrWhiteSpace(target))
+                return RedirectToAction("Index", new { projectId });
+
+            target = target.Trim();
+
+            // Numeric: treat as 1-based global position
+            int pos;
+            if (int.TryParse(target, out pos))
+            {
+                var allParagraphs = db.Paragraphs
+                    .Where(p => p.Chapter.BookProjectID == projectId)
+                    .Select(p => new { p.ParagraphID, ChapterNumber = p.Chapter.ChapterNumber, p.OrdinalPosition })
+                    .ToList()
+                    .OrderBy(p => p.ChapterNumber)
+                    .ThenBy(p => p.OrdinalPosition)
+                    .ToList();
+
+                if (pos >= 1 && pos <= allParagraphs.Count)
+                    return RedirectToAction("Index", new { projectId, paragraphId = allParagraphs[pos - 1].ParagraphID });
+
+                TempData["Error"] = "Position " + pos + " is out of range (1 to " + allParagraphs.Count + ").";
+                return RedirectToAction("Index", new { projectId });
+            }
+
+            // Otherwise: treat as UniqueID / PID
+            var paragraph = db.Paragraphs
+                .Include(p => p.Chapter)
+                .FirstOrDefault(p => p.Chapter.BookProjectID == projectId && p.UniqueID == target);
+
+            if (paragraph != null)
+                return RedirectToAction("Index", new { projectId, paragraphId = paragraph.ParagraphID });
+
+            TempData["Error"] = "Paragraph '" + target + "' not found.";
+            return RedirectToAction("Index", new { projectId });
+        }
+
+        [HttpGet]
         public JsonResult Search(int projectId, string q, bool wholeWord = true)
         {
             if (!IsAuthenticated())

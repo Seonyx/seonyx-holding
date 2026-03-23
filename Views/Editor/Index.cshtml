@@ -93,6 +93,10 @@
                         </option>
                     }
                 </select>
+                <span class="editor-sep">|</span>
+                <span class="editor-pos-label">Go to:</span>
+                <input type="text" id="gotoInput" class="editor-goto-input" placeholder="# or ID" title="Enter a position number or paragraph ID (e.g. CH01-P0010)" />
+                <button type="button" class="btn btn-sm btn-secondary" id="btnGoto">Go</button>
             </div>
 
             <div class="editor-actions">
@@ -294,6 +298,24 @@
                     el.href = el.href + '&q=' + encodeURIComponent(searchQuery) +
                         (isWholeWord() ? '&ww=1' : '');
                 }
+            });
+        }());
+
+        // ── Go To ─────────────────────────────────────────────────────────────
+        (function () {
+            var input   = document.getElementById('gotoInput');
+            var btn     = document.getElementById('btnGoto');
+            var gotoUrl = '@Url.Action("GoTo", "Editor")';
+
+            function doGoto() {
+                var val = input.value.trim();
+                if (!val) return;
+                window.location.href = gotoUrl + '?projectId=' + editorConfig.projectId + '&target=' + encodeURIComponent(val);
+            }
+
+            btn.addEventListener('click', doGoto);
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') { e.preventDefault(); doGoto(); }
             });
         }());
     </script>
