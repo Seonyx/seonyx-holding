@@ -54,6 +54,9 @@
             <button type="button" class="btn btn-sm btn-secondary" id="btnSearchNext" disabled title="Next match">Next &#8250;</button>
             <span class="search-status" id="searchStatus"></span>
             <button type="button" class="btn btn-sm btn-secondary search-clear" id="btnSearchClear" style="display:none" title="Clear search">&#x2715;</button>
+            <label class="search-whole-word-label">
+                <input type="checkbox" id="chkWholeWord" checked /> Whole word
+            </label>
         </div>
 
         <!-- Navigation + Controls Bar -->
@@ -162,24 +165,23 @@
             var matchIndex  = -1;
             var searchQuery = '';
 
-            var input      = document.getElementById('searchInput');
-            var status     = document.getElementById('searchStatus');
-            var btnSearch  = document.getElementById('btnSearch');
-            var btnPrev    = document.getElementById('btnSearchPrev');
-            var btnNext    = document.getElementById('btnSearchNext');
-            var btnClear   = document.getElementById('btnSearchClear');
+            var input       = document.getElementById('searchInput');
+            var status      = document.getElementById('searchStatus');
+            var btnSearch   = document.getElementById('btnSearch');
+            var btnPrev     = document.getElementById('btnSearchPrev');
+            var btnNext     = document.getElementById('btnSearchNext');
+            var btnClear    = document.getElementById('btnSearchClear');
+            var chkWhole    = document.getElementById('chkWholeWord');
 
-            // Read q and mi from current URL
-            function urlParams() {
-                return new URLSearchParams(window.location.search);
-            }
+            function isWholeWord() { return chkWhole && chkWhole.checked; }
 
             function buildMatchUrl(pid, q, mi) {
                 return editorConfig.indexUrl +
                     '?projectId=' + editorConfig.projectId +
                     '&paragraphId=' + pid +
                     '&q=' + encodeURIComponent(q) +
-                    '&mi=' + mi;
+                    '&mi=' + mi +
+                    (isWholeWord() ? '&ww=1' : '');
             }
 
             function updateUI() {
@@ -204,9 +206,13 @@
                 }
             }
 
-            function runSearch(q, onDone) {
+            function runSearch(q, ww, onDone) {
                 if (!q) { matchIds = []; matchIndex = -1; updateUI(); return; }
-                fetch(editorConfig.searchUrl + '?projectId=' + editorConfig.projectId + '&q=' + encodeURIComponent(q))
+                var url = editorConfig.searchUrl +
+                    '?projectId=' + editorConfig.projectId +
+                    '&q=' + encodeURIComponent(q) +
+                    '&wholeWord=' + (ww ? 'true' : 'false');
+                fetch(url)
                     .then(function (r) { return r.json(); })
                     .then(function (ids) {
                         matchIds   = ids || [];
@@ -218,16 +224,17 @@
             }
 
             // On page load: restore search state from URL
-            var params = urlParams();
+            var params  = new URLSearchParams(window.location.search);
             var qParam  = params.get('q') || '';
             var miParam = parseInt(params.get('mi') || '-1', 10);
+            var wwParam = params.get('ww') === '1';
 
             if (qParam) {
-                searchQuery     = qParam;
-                input.value     = qParam;
+                searchQuery = qParam;
+                input.value = qParam;
+                if (chkWhole) chkWhole.checked = wwParam;
                 btnClear.style.display = '';
-                runSearch(qParam, function () {
-                    // Trust the URL mi value if valid, else find current para in results
+                runSearch(qParam, wwParam, function () {
                     if (miParam >= 0 && miParam < matchIds.length) {
                         matchIndex = miParam;
                     }
@@ -241,7 +248,7 @@
                 searchQuery = input.value.trim();
                 if (!searchQuery) { doClear(); return; }
                 btnClear.style.display = '';
-                runSearch(searchQuery, function () {
+                runSearch(searchQuery, isWholeWord(), function () {
                     if (matchIds.length === 0) { updateUI(); return; }
                     matchIndex = 0;
                     window.location.href = buildMatchUrl(matchIds[0], searchQuery, 0);
@@ -274,18 +281,18 @@
                 status.textContent = '';
                 btnPrev.disabled = true;
                 btnNext.disabled = true;
-                // Strip q and mi from URL without reloading
                 var clean = window.location.pathname + '?projectId=' + editorConfig.projectId + '&paragraphId=' + editorConfig.paragraphId;
                 window.history.replaceState(null, '', clean);
             }
 
             btnClear.addEventListener('click', doClear);
 
-            // Thread q through regular nav links when search is active
+            // Thread q (and ww) through regular nav links when search is active
             ['btnPrev', 'btnNext'].forEach(function (id) {
                 var el = document.getElementById(id);
                 if (el && el.href && searchQuery) {
-                    el.href = el.href + '&q=' + encodeURIComponent(searchQuery);
+                    el.href = el.href + '&q=' + encodeURIComponent(searchQuery) +
+                        (isWholeWord() ? '&ww=1' : '');
                 }
             });
         }());

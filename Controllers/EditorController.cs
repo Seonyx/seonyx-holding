@@ -315,7 +315,7 @@ namespace Seonyx.Web.Controllers
         }
 
         [HttpGet]
-        public JsonResult Search(int projectId, string q)
+        public JsonResult Search(int projectId, string q, bool wholeWord = true)
         {
             if (!IsAuthenticated())
                 return Json(null, JsonRequestBehavior.AllowGet);
@@ -323,20 +323,33 @@ namespace Seonyx.Web.Controllers
             if (string.IsNullOrWhiteSpace(q))
                 return Json(new int[0], JsonRequestBehavior.AllowGet);
 
-            var matches = db.Paragraphs
+            var candidates = db.Paragraphs
                 .Where(p => p.Chapter.BookProjectID == projectId && p.ParagraphText.Contains(q))
                 .Select(p => new {
                     p.ParagraphID,
+                    p.ParagraphText,
                     ChapterNumber = p.Chapter.ChapterNumber,
                     p.OrdinalPosition
                 })
                 .ToList()
                 .OrderBy(p => p.ChapterNumber)
                 .ThenBy(p => p.OrdinalPosition)
-                .Select(p => p.ParagraphID)
-                .ToArray();
+                .ToList();
 
-            return Json(matches, JsonRequestBehavior.AllowGet);
+            IEnumerable<int> ids;
+            if (wholeWord)
+            {
+                var pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(q) + @"\b";
+                var regex = new System.Text.RegularExpressions.Regex(
+                    pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                ids = candidates.Where(p => regex.IsMatch(p.ParagraphText)).Select(p => p.ParagraphID);
+            }
+            else
+            {
+                ids = candidates.Select(p => p.ParagraphID);
+            }
+
+            return Json(ids.ToArray(), JsonRequestBehavior.AllowGet);
         }
 
         private ParagraphEditViewModel BuildEditViewModel(BookProject project, Paragraph paragraph)

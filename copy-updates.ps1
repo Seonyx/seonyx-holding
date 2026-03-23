@@ -1,5 +1,5 @@
 # ============================================
-# Paragraph search feature
+# Search refinements: whole-word toggle, colour-coded bars
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Paragraph search feature in book editor" -ForegroundColor Cyan
+    Write-Host "Search refinements in book editor" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -24,7 +24,6 @@ try {
         throw "ERROR: Destination not found at $dst"
     }
 
-    # Modified files to update
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
         "Controllers\EditorController.cs",
@@ -47,12 +46,12 @@ try {
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. One new feature in this build:" -ForegroundColor White
-    Write-Host "   - Search bar added to the book editor." -ForegroundColor Gray
-    Write-Host "     Type a term, click Search (or press Enter)." -ForegroundColor Gray
-    Write-Host "     Use Prev / Next to navigate all matches." -ForegroundColor Gray
-    Write-Host "     Match count shown; matched text selected in textarea." -ForegroundColor Gray
-    Write-Host "     Search state persists across page loads via URL." -ForegroundColor Gray
+    Write-Host "3. Changes in this build:" -ForegroundColor White
+    Write-Host "   - Search bar is now amber/yellow; nav bar is blue." -ForegroundColor Gray
+    Write-Host "     Easy to tell them apart at a glance." -ForegroundColor Gray
+    Write-Host "   - Whole word checkbox added (checked by default)." -ForegroundColor Gray
+    Write-Host "     Uncheck to revert to substring search." -ForegroundColor Gray
+    Write-Host "   - Whole-word state persists in URL (ww=1)." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 
