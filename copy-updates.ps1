@@ -41,6 +41,7 @@ try {
         "Models\Chapter.cs",
         "Models\ViewModels\BookEditor\ParagraphEditViewModel.cs",
         "Services\BookmlImporter.cs",
+        "Controllers\FileUploadController.cs",
         "Controllers\EditorController.cs",
         "Controllers\DraftController.cs",
         "Controllers\ExportController.cs",
@@ -64,7 +65,8 @@ try {
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. Re-import the draft 3 ZIP - the epilogue will now appear at the end." -ForegroundColor White
+    Write-Host "3. Re-upload the draft 3 ZIP (from testdata\mayfly-mutiny_draft3_bookml.zip on the share)," -ForegroundColor White
+    Write-Host "   then import it. The ZIP upload now clears old files before extracting." -ForegroundColor White
     Write-Host ""
     Write-Host "4. Changes in this build:" -ForegroundColor White
     Write-Host "   - Chapters now have a SortOrder column (set from position in book.xml)." -ForegroundColor Gray
