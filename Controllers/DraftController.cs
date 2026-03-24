@@ -45,7 +45,7 @@ namespace Seonyx.Web.Controllers
 
             var chapters = db.Chapters
                 .Where(c => c.BookProjectID == projectId)
-                .OrderBy(c => c.ChapterNumber)
+                .OrderBy(c => c.SortOrder)
                 .ToList();
 
             var vm = new DraftDiffViewModel

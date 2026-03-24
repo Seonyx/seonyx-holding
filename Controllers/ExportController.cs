@@ -30,7 +30,7 @@ namespace Seonyx.Web.Controllers
 
             var chapters = db.Chapters
                 .Where(c => c.BookProjectID == projectId)
-                .OrderBy(c => c.ChapterNumber)
+                .OrderBy(c => c.SortOrder)
                 .ToList();
 
             foreach (var ch in chapters)
@@ -56,7 +56,7 @@ namespace Seonyx.Web.Controllers
 
             var chapters = db.Chapters
                 .Where(c => c.BookProjectID == projectId)
-                .OrderBy(c => c.ChapterNumber)
+                .OrderBy(c => c.SortOrder)
                 .ToList();
 
             var memoryStream = new MemoryStream();
@@ -121,7 +121,7 @@ namespace Seonyx.Web.Controllers
 
             var chapters = db.Chapters
                 .Where(c => c.BookProjectID == projectId)
-                .OrderBy(c => c.ChapterNumber)
+                .OrderBy(c => c.SortOrder)
                 .ToList();
 
             var memoryStream = new MemoryStream();

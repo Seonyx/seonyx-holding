@@ -6,7 +6,7 @@
 
 @section HeaderCenter {
     <span class="editor-project-name">@Model.ProjectName</span>
-    <span class="editor-chapter-info">Ch @Model.ChapterNumber: @Model.ChapterTitle</span>
+    <span class="editor-chapter-info">@(Model.ChapterNumber > 0 ? "Ch " + Model.ChapterNumber + ": " : "")@Model.ChapterTitle</span>
 }
 
 <div class="editor-container">
@@ -89,7 +89,7 @@
                     {
                         <option value="@Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = ch.FirstParagraphID })"
                                 @(ch.ChapterID == Model.ChapterID ? "selected" : "")>
-                            Ch @ch.ChapterNumber - @ch.ChapterTitle (@ch.ParagraphCount paras)
+                            @(ch.ChapterNumber > 0 ? "Ch " + ch.ChapterNumber + " - " : "")@ch.ChapterTitle (@ch.ParagraphCount paras)
                         </option>
                     }
                 </select>

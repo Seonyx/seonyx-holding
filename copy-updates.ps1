@@ -1,5 +1,5 @@
 # ============================================
-# Favicon support
+# Epilogue sort order fix
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Favicon support" -ForegroundColor Cyan
+    Write-Host "Epilogue sort order fix" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -26,13 +26,7 @@ try {
 
     Write-Host "Copying new files..." -ForegroundColor Yellow
     $newFiles = @(
-        "favicon.ico",
-        "favicon-16x16.png",
-        "favicon-32x32.png",
-        "apple-touch-icon.png",
-        "android-chrome-192x192.png",
-        "android-chrome-512x512.png",
-        "site.webmanifest"
+        "Database\migrations\add-chapter-sortorder.sql"
     )
     foreach ($f in $newFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -44,9 +38,13 @@ try {
     Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "Views\Shared\_Layout.cshtml",
-        "Views\Shared\_AdminLayout.cshtml",
-        "Views\Shared\_BookEditorLayout.cshtml"
+        "Models\Chapter.cs",
+        "Models\ViewModels\BookEditor\ParagraphEditViewModel.cs",
+        "Services\BookmlImporter.cs",
+        "Controllers\EditorController.cs",
+        "Controllers\DraftController.cs",
+        "Controllers\ExportController.cs",
+        "Views\Editor\Index.cshtml"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -60,13 +58,19 @@ try {
     Write-Host "IMPORTANT - Manual steps needed:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. No SQL changes." -ForegroundColor White
+    Write-Host "1. Run the migration SQL against the Seonyx database:" -ForegroundColor White
+    Write-Host "   sqlcmd -S localhost -d Seonyx -i Database\migrations\add-chapter-sortorder.sql" -ForegroundColor Gray
+    Write-Host "   (Or open the file in SSMS and execute it.)" -ForegroundColor Gray
     Write-Host ""
     Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. Change in this build:" -ForegroundColor White
-    Write-Host "   - Favicon added to all pages (public site, admin, book editor)." -ForegroundColor Gray
-    Write-Host "     The browser tab icon error in DevTools should be gone." -ForegroundColor Gray
+    Write-Host "3. Re-import the draft 3 ZIP - the epilogue will now appear at the end." -ForegroundColor White
+    Write-Host ""
+    Write-Host "4. Changes in this build:" -ForegroundColor White
+    Write-Host "   - Chapters now have a SortOrder column (set from position in book.xml)." -ForegroundColor Gray
+    Write-Host "     Unnumbered chapters like the epilogue sort after all numbered chapters." -ForegroundColor Gray
+    Write-Host "   - Editor chapter header no longer shows 'Ch 0' for unnumbered chapters." -ForegroundColor Gray
+    Write-Host "   - Chapter dropdown in the nav bar also cleaned up." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

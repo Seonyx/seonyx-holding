@@ -263,8 +263,9 @@ namespace Seonyx.Web.Services
                     var components      = ParseComponents(bookXmlPath, bookDir);
                     int totalComponents = components.Count;
 
-                    foreach (var comp in components)
+                    for (int compIndex = 0; compIndex < components.Count; compIndex++)
                     {
+                        var comp = components[compIndex];
                         var chapterDoc = XDocument.Load(comp.ChapterPath);
                         var metaDoc    = XDocument.Load(comp.MetaPath);
                         var notesDoc   = XDocument.Load(comp.NotesPath);
@@ -300,9 +301,10 @@ namespace Seonyx.Web.Services
                             db.Chapters.Add(chapter);
                         }
 
-                        chapter.ChapterTitle   = chapterTitle;
+                        chapter.ChapterTitle    = chapterTitle;
                         chapter.BookmlChapterId = chapterBookmlId;
-                        chapter.SourceFileName = Path.GetFileName(comp.ChapterPath);
+                        chapter.SourceFileName  = Path.GetFileName(comp.ChapterPath);
+                        chapter.SortOrder       = compIndex;
                         if (chapterNumber > 0)
                             chapter.ChapterNumber = chapterNumber;
 

@@ -14,6 +14,11 @@ namespace Seonyx.Web.Models
 
         public int ChapterNumber { get; set; }
 
+        /// <summary>Sort position within the book. Set from the component's index in book.xml.
+        /// Numbered chapters have SortOrder == ChapterNumber; unnumbered components (epilogue, etc.)
+        /// get a position after all numbered chapters.</summary>
+        public int SortOrder { get; set; }
+
         [StringLength(500)]
         public string ChapterTitle { get; set; }
 

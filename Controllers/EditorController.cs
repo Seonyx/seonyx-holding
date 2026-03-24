@@ -34,7 +34,7 @@ namespace Seonyx.Web.Controllers
                 paragraph = db.Paragraphs
                     .Include(p => p.Chapter)
                     .Where(p => p.Chapter.BookProjectID == projectId)
-                    .OrderBy(p => p.Chapter.ChapterNumber)
+                    .OrderBy(p => p.Chapter.SortOrder)
                     .ThenBy(p => p.OrdinalPosition)
                     .FirstOrDefault();
             }
@@ -263,7 +263,7 @@ namespace Seonyx.Web.Controllers
                         // Chapter is now empty, go to first paragraph in project
                         var firstInProject = db.Paragraphs
                             .Where(p => p.Chapter.BookProjectID == projectId)
-                            .OrderBy(p => p.Chapter.ChapterNumber)
+                            .OrderBy(p => p.Chapter.SortOrder)
                             .ThenBy(p => p.OrdinalPosition)
                             .FirstOrDefault();
 
@@ -330,9 +330,9 @@ namespace Seonyx.Web.Controllers
             {
                 var allParagraphs = db.Paragraphs
                     .Where(p => p.Chapter.BookProjectID == projectId)
-                    .Select(p => new { p.ParagraphID, ChapterNumber = p.Chapter.ChapterNumber, p.OrdinalPosition })
+                    .Select(p => new { p.ParagraphID, SortOrder = p.Chapter.SortOrder, p.OrdinalPosition })
                     .ToList()
-                    .OrderBy(p => p.ChapterNumber)
+                    .OrderBy(p => p.SortOrder)
                     .ThenBy(p => p.OrdinalPosition)
                     .ToList();
 
@@ -369,11 +369,11 @@ namespace Seonyx.Web.Controllers
                 .Select(p => new {
                     p.ParagraphID,
                     p.ParagraphText,
-                    ChapterNumber = p.Chapter.ChapterNumber,
+                    SortOrder = p.Chapter.SortOrder,
                     p.OrdinalPosition
                 })
                 .ToList()
-                .OrderBy(p => p.ChapterNumber)
+                .OrderBy(p => p.SortOrder)
                 .ThenBy(p => p.OrdinalPosition)
                 .ToList();
 
@@ -400,19 +400,19 @@ namespace Seonyx.Web.Controllers
             // Get all chapters ordered by number, with a ChapterID tiebreaker for stability.
             var chapters = db.Chapters
                 .Where(c => c.BookProjectID == project.BookProjectID)
-                .OrderBy(c => c.ChapterNumber)
+                .OrderBy(c => c.SortOrder)
                 .ThenBy(c => c.ChapterID)
                 .ToList();
 
             // Fetch all paragraphs for this project in one flat query (JOIN through Chapter),
             // pull into memory, then sort on plain ints — avoids any EF navigation-property
             // ordering bugs that affect ORDER BY translation in SQL.
-            // ChapterNumber is unique per project (UNIQUE constraint), so the sort is stable.
+            // SortOrder is set from the component index in book.xml, so the sort is stable.
             var allParagraphs = db.Paragraphs
                 .Where(p => p.Chapter.BookProjectID == project.BookProjectID)
-                .Select(p => new { p.ParagraphID, p.ChapterID, p.OrdinalPosition, ChapterNumber = p.Chapter.ChapterNumber })
+                .Select(p => new { p.ParagraphID, p.ChapterID, p.OrdinalPosition, SortOrder = p.Chapter.SortOrder })
                 .ToList()                          // ← bring into memory before sorting
-                .OrderBy(p => p.ChapterNumber)
+                .OrderBy(p => p.SortOrder)
                 .ThenBy(p => p.OrdinalPosition)
                 .ToList();
 
@@ -429,7 +429,7 @@ namespace Seonyx.Web.Controllers
             var chapterList = new List<ChapterSummary>();
             foreach (var ch in chapters)
             {
-                // allParagraphs is ordered by (ChapterNumber, OrdinalPosition), so the first
+                // allParagraphs is ordered by (SortOrder, OrdinalPosition), so the first
                 // match for each chapter is guaranteed to be that chapter's first paragraph.
                 var chParas = allParagraphs.Where(p => p.ChapterID == ch.ChapterID).ToList();
                 chapterList.Add(new ChapterSummary
