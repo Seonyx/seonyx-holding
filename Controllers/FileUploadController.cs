@@ -687,6 +687,17 @@ namespace Seonyx.Web.Controllers
         private string UnpackBookmlZip(HttpPostedFileBase zipFile, string projectFolderPath)
         {
             var bookmlDir = Path.Combine(projectFolderPath, "bookml");
+
+            // Wipe the existing bookml directory before extracting so stale files
+            // from a previous ZIP (different folder structure) cannot be picked up.
+            if (Directory.Exists(bookmlDir))
+            {
+                foreach (var file in Directory.GetFiles(bookmlDir, "*", SearchOption.AllDirectories))
+                    System.IO.File.Delete(file);
+                foreach (var dir in Directory.GetDirectories(bookmlDir).OrderByDescending(d => d.Length))
+                    Directory.Delete(dir, recursive: true);
+            }
+
             Directory.CreateDirectory(bookmlDir);
             var bookmlDirNorm = Path.GetFullPath(bookmlDir);
 
