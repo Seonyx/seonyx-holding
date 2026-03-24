@@ -251,6 +251,7 @@ namespace Seonyx.Web.Services
                     }
 
                     result.DraftNumber = importDraftNumber;
+                    result.Warnings.Add(string.Format("DIAG: bookXmlPath={0} importDraftNumber={1}", bookXmlPath, importDraftNumber));
 
                     // Update project-level BookML fields
                     if (!string.IsNullOrEmpty(bookId))
@@ -272,6 +273,7 @@ namespace Seonyx.Web.Services
                         var chapterEl      = chapterDoc.Root;
                         var chapterBookmlId = chapterEl.Attribute("id").Value;      // e.g. "ch01"
                         var chapterDraft   = ParseInt(chapterEl.Attribute("draft")?.Value, importDraftNumber);
+                        result.Warnings.Add(string.Format("DIAG ch={0}: draft attr=\"{1}\" chapterDraft={2}", comp.Id, chapterEl.Attribute("draft")?.Value, chapterDraft));
                         var chapterInfoEl  = chapterEl.Element(Ns + "chapterinfo");
                         var chapterTitle   = chapterInfoEl.Element(Ns + "title")?.Value ?? "";
 
