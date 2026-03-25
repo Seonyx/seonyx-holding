@@ -38,6 +38,7 @@ try {
     Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
+        "App_Data\BookML\bookml-chapter.xsd",
         "Models\Chapter.cs",
         "Models\ViewModels\BookEditor\ParagraphEditViewModel.cs",
         "Services\BookmlImporter.cs",
