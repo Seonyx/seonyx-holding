@@ -235,8 +235,8 @@ namespace Seonyx.Web.Controllers
 
             var xsdBasePath    = Server.MapPath("~/App_Data/BookML");
             var importer       = new BookmlImporter(xsdBasePath);
-            var bookmlDir      = Path.GetDirectoryName(bookXmlPath);
-            var markerPath     = Path.Combine(bookmlDir, ".zipname");
+            var bookmlRootDir  = Path.Combine(project.FolderPath, "bookml");
+            var markerPath     = Path.Combine(bookmlRootDir, ".zipname");
             var sourceFileName = System.IO.File.Exists(markerPath)
                 ? System.IO.File.ReadAllText(markerPath).Trim()
                 : null;
