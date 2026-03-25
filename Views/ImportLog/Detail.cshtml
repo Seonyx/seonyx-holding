@@ -16,7 +16,7 @@
 <div class="detail-card">
     <table class="detail-table">
         <tr><th>Date</th><td>@Model.ImportedAt.ToString("yyyy-MM-dd HH:mm:ss")</td></tr>
-        <tr><th>Source file</th><td>@(string.IsNullOrEmpty(Model.SourceFileName) ? "—" : Model.SourceFileName)</td></tr>
+        <tr><th>Source file</th><td>@(string.IsNullOrEmpty(Model.SourceFileName) ? "-" : Model.SourceFileName)</td></tr>
         <tr><th>Result</th><td>@(Model.Success ? "Success" : "Failed")</td></tr>
         <tr><th>Draft</th><td>@(Model.DraftNumber > 0 ? Model.DraftNumber.ToString() : "-")</td></tr>
         <tr><th>Chapters processed</th><td>@Model.ChaptersProcessed</td></tr>

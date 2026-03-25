@@ -42,7 +42,7 @@ else
             {
                 <tr>
                     <td>@log.ImportedAt.ToString("yyyy-MM-dd HH:mm")</td>
-                    <td title="@log.SourceFileName">@(string.IsNullOrEmpty(log.SourceFileName) ? "—" : log.SourceFileName)</td>
+                    <td title="@log.SourceFileName">@(string.IsNullOrEmpty(log.SourceFileName) ? "-" : log.SourceFileName)</td>
                     <td>
                         @if (log.Success)
                         {
