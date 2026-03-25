@@ -75,38 +75,46 @@
 
     // Keyboard shortcuts
     document.addEventListener('keydown', function (e) {
-        // Ctrl+S: Save
+        var activeTag = document.activeElement ? document.activeElement.tagName : '';
+        var inTextField = (activeTag === 'TEXTAREA' || activeTag === 'INPUT' || activeTag === 'SELECT');
+
+        // Ctrl+S: Save — works everywhere including inside textareas
         if (e.ctrlKey && e.key === 's') {
             e.preventDefault();
             autoSave();
         }
 
-        // Ctrl+Left: Previous paragraph (not Ctrl+Shift+Left which selects a word)
-        if (e.ctrlKey && !e.shiftKey && e.key === 'ArrowLeft') {
+        // Navigation and action shortcuts are suppressed when focus is inside
+        // a text field so that Ctrl+Left/Right/Home/End perform normal cursor
+        // movement and Ctrl+Shift+Arrow performs word selection as expected.
+        if (inTextField) return;
+
+        // Ctrl+Left: Previous paragraph
+        if (e.ctrlKey && e.key === 'ArrowLeft') {
             e.preventDefault();
             if (editorConfig.prevUrl) {
                 saveAndNavigate(editorConfig.prevUrl);
             }
         }
 
-        // Ctrl+Right: Next paragraph (not Ctrl+Shift+Right which selects a word)
-        if (e.ctrlKey && !e.shiftKey && e.key === 'ArrowRight') {
+        // Ctrl+Right: Next paragraph
+        if (e.ctrlKey && e.key === 'ArrowRight') {
             e.preventDefault();
             if (editorConfig.nextUrl) {
                 saveAndNavigate(editorConfig.nextUrl);
             }
         }
 
-        // Ctrl+Home: First paragraph (not Ctrl+Shift+Home which selects to start)
-        if (e.ctrlKey && !e.shiftKey && e.key === 'Home') {
+        // Ctrl+Home: First paragraph
+        if (e.ctrlKey && e.key === 'Home') {
             e.preventDefault();
             if (editorConfig.firstUrl) {
                 saveAndNavigate(editorConfig.firstUrl);
             }
         }
 
-        // Ctrl+End: Last paragraph (not Ctrl+Shift+End which selects to end)
-        if (e.ctrlKey && !e.shiftKey && e.key === 'End') {
+        // Ctrl+End: Last paragraph
+        if (e.ctrlKey && e.key === 'End') {
             e.preventDefault();
             if (editorConfig.lastUrl) {
                 saveAndNavigate(editorConfig.lastUrl);
