@@ -48,7 +48,8 @@ try {
         "Controllers\ExportController.cs",
         "Views\Editor\Index.cshtml",
         "Views\ImportLog\Index.cshtml",
-        "Views\ImportLog\Detail.cshtml"
+        "Views\ImportLog\Detail.cshtml",
+        "Scripts\book-editor.js"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent

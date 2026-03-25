@@ -81,32 +81,32 @@
             autoSave();
         }
 
-        // Ctrl+Left: Previous paragraph
-        if (e.ctrlKey && e.key === 'ArrowLeft') {
+        // Ctrl+Left: Previous paragraph (not Ctrl+Shift+Left which selects a word)
+        if (e.ctrlKey && !e.shiftKey && e.key === 'ArrowLeft') {
             e.preventDefault();
             if (editorConfig.prevUrl) {
                 saveAndNavigate(editorConfig.prevUrl);
             }
         }
 
-        // Ctrl+Right: Next paragraph
-        if (e.ctrlKey && e.key === 'ArrowRight') {
+        // Ctrl+Right: Next paragraph (not Ctrl+Shift+Right which selects a word)
+        if (e.ctrlKey && !e.shiftKey && e.key === 'ArrowRight') {
             e.preventDefault();
             if (editorConfig.nextUrl) {
                 saveAndNavigate(editorConfig.nextUrl);
             }
         }
 
-        // Ctrl+Home: First paragraph
-        if (e.ctrlKey && e.key === 'Home') {
+        // Ctrl+Home: First paragraph (not Ctrl+Shift+Home which selects to start)
+        if (e.ctrlKey && !e.shiftKey && e.key === 'Home') {
             e.preventDefault();
             if (editorConfig.firstUrl) {
                 saveAndNavigate(editorConfig.firstUrl);
             }
         }
 
-        // Ctrl+End: Last paragraph
-        if (e.ctrlKey && e.key === 'End') {
+        // Ctrl+End: Last paragraph (not Ctrl+Shift+End which selects to end)
+        if (e.ctrlKey && !e.shiftKey && e.key === 'End') {
             e.preventDefault();
             if (editorConfig.lastUrl) {
                 saveAndNavigate(editorConfig.lastUrl);
@@ -172,5 +172,33 @@
             e.returnValue = '';
         }
     });
+
+    // Route First/Prev/Next/Last nav buttons through saveAndNavigate so unsaved
+    // changes are written before leaving, rather than triggering beforeunload.
+    ['btnPrev', 'btnNext'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', function (e) {
+                if (hasUnsavedChanges && el.href && !el.classList.contains('disabled')) {
+                    e.preventDefault();
+                    saveAndNavigate(el.href);
+                }
+            });
+        }
+    });
+    ['First paragraph (Ctrl+Home)', 'Last paragraph (Ctrl+End)'].forEach(function (title) {
+        var el = document.querySelector('a[title="' + title + '"]');
+        if (el) {
+            el.addEventListener('click', function (e) {
+                if (hasUnsavedChanges && el.href && !el.classList.contains('disabled')) {
+                    e.preventDefault();
+                    saveAndNavigate(el.href);
+                }
+            });
+        }
+    });
+
+    // Expose saveAndNavigate for the GoTo inline script
+    window._editorSaveAndNavigate = saveAndNavigate;
 
 })();

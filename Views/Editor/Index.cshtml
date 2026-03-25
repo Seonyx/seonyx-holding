@@ -310,7 +310,12 @@
             function doGoto() {
                 var val = input.value.trim();
                 if (!val) return;
-                window.location.href = gotoUrl + '?projectId=' + editorConfig.projectId + '&target=' + encodeURIComponent(val);
+                var url = gotoUrl + '?projectId=' + editorConfig.projectId + '&target=' + encodeURIComponent(val);
+                if (window._editorSaveAndNavigate) {
+                    window._editorSaveAndNavigate(url);
+                } else {
+                    window.location.href = url;
+                }
             }
 
             btn.addEventListener('click', doGoto);
