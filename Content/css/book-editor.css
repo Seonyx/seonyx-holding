@@ -147,7 +147,7 @@
 .editor-save-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 0.5rem;
     padding: 0.4rem 1rem;
     background: #eff6ff;
