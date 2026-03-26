@@ -209,4 +209,21 @@
     // Expose saveAndNavigate for the GoTo inline script
     window._editorSaveAndNavigate = saveAndNavigate;
 
+    // Persist textarea heights within the browser session so sizes survive
+    // paragraph-to-paragraph navigation. Uses sessionStorage (cleared on tab close)
+    // since preferred sizes are viewport/session dependent.
+    var taIds = ['paragraphText', 'metaText', 'editNoteText'];
+    taIds.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var key = 'editorTA_h_' + id;
+        var saved = sessionStorage.getItem(key);
+        if (saved) el.style.height = saved;
+        if (typeof ResizeObserver !== 'undefined') {
+            new ResizeObserver(function () {
+                if (el.style.height) sessionStorage.setItem(key, el.style.height);
+            }).observe(el);
+        }
+    });
+
 })();

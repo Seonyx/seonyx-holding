@@ -1,5 +1,5 @@
 # ============================================
-# Epilogue sort order fix
+# Textarea height persistence (session)
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Epilogue sort order fix" -ForegroundColor Cyan
+    Write-Host "Textarea resize persistence" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -63,20 +63,13 @@ try {
     Write-Host "IMPORTANT - Manual steps needed:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. Run the migration SQL against the Seonyx database:" -ForegroundColor White
-    Write-Host "   sqlcmd -S localhost -d Seonyx -i Database\migrations\add-chapter-sortorder.sql" -ForegroundColor Gray
-    Write-Host "   (Or open the file in SSMS and execute it.)" -ForegroundColor Gray
+    Write-Host "1. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
+    Write-Host "   (No SQL migration needed for this change.)" -ForegroundColor Gray
     Write-Host ""
-    Write-Host "2. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
-    Write-Host ""
-    Write-Host "3. Re-upload the draft 3 ZIP (from testdata\mayfly-mutiny_draft3_bookml.zip on the share)," -ForegroundColor White
-    Write-Host "   then import it. The ZIP upload now clears old files before extracting." -ForegroundColor White
-    Write-Host ""
-    Write-Host "4. Changes in this build:" -ForegroundColor White
-    Write-Host "   - Chapters now have a SortOrder column (set from position in book.xml)." -ForegroundColor Gray
-    Write-Host "     Unnumbered chapters like the epilogue sort after all numbered chapters." -ForegroundColor Gray
-    Write-Host "   - Editor chapter header no longer shows 'Ch 0' for unnumbered chapters." -ForegroundColor Gray
-    Write-Host "   - Chapter dropdown in the nav bar also cleaned up." -ForegroundColor Gray
+    Write-Host "2. Changes in this build:" -ForegroundColor White
+    Write-Host "   - Editor textarea heights are now remembered within a browser session." -ForegroundColor Gray
+    Write-Host "     Resize paragraph/meta/notes areas and the sizes persist when navigating" -ForegroundColor Gray
+    Write-Host "     between paragraphs. Sizes reset when the tab is closed." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 
