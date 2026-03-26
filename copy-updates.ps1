@@ -1,5 +1,5 @@
 # ============================================
-# Textarea height persistence (session)
+# Persist search state across saves and nav
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Textarea resize persistence" -ForegroundColor Cyan
+    Write-Host "Persist search state across saves and nav" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -67,9 +67,12 @@ try {
     Write-Host "   (No SQL migration needed for this change.)" -ForegroundColor Gray
     Write-Host ""
     Write-Host "2. Changes in this build:" -ForegroundColor White
-    Write-Host "   - Editor textarea heights are now remembered within a browser session." -ForegroundColor Gray
-    Write-Host "     Resize paragraph/meta/notes areas and the sizes persist when navigating" -ForegroundColor Gray
-    Write-Host "     between paragraphs. Sizes reset when the tab is closed." -ForegroundColor Gray
+    Write-Host "   - Editor textarea heights remembered within browser session (previous change)." -ForegroundColor Gray
+    Write-Host "   - Active search now persists when you click Save or use keyboard navigation." -ForegroundColor Gray
+    Write-Host "     Save button now uses AJAX autosave (same as Ctrl+S) so the page does not" -ForegroundColor Gray
+    Write-Host "     reload and search state is preserved. Ctrl+Left/Right/Home/End also thread" -ForegroundColor Gray
+    Write-Host "     the search query through to the next paragraph." -ForegroundColor Gray
+    Write-Host "   - The search bar already has a clear (x) button that appears when search is active." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

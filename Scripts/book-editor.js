@@ -138,7 +138,30 @@
         }
     });
 
+    // Intercept the Save button so it uses AJAX autosave instead of a full form
+    // submit. This keeps the page URL intact, preserving any active search state.
+    var btnSave = document.getElementById('btnSave');
+    if (btnSave) {
+        btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            autoSave();
+        });
+    }
+
+    // Append current search params (q, ww) to a navigation URL if not already
+    // present, so active searches survive keyboard and button navigation.
+    function appendSearchParams(url) {
+        var cur = new URLSearchParams(window.location.search);
+        var q = cur.get('q');
+        if (!q) return url;
+        if (url.indexOf('&q=') >= 0 || url.indexOf('?q=') >= 0) return url;
+        url += (url.indexOf('?') >= 0 ? '&' : '?') + 'q=' + encodeURIComponent(q);
+        if (cur.get('ww') === '1') url += '&ww=1';
+        return url;
+    }
+
     function saveAndNavigate(url) {
+        url = appendSearchParams(url);
         if (hasUnsavedChanges) {
             // Save first, then navigate
             updateStatus('Saving...', 'saving');
