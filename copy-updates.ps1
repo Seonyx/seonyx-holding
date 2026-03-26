@@ -1,5 +1,5 @@
 # ============================================
-# Persist search state across saves and nav
+# Anchor Save button below nav bar
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Persist search state across saves and nav" -ForegroundColor Cyan
+    Write-Host "Anchor Save button below nav bar" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -49,6 +49,7 @@ try {
         "Views\Editor\Index.cshtml",
         "Views\ImportLog\Index.cshtml",
         "Views\ImportLog\Detail.cshtml",
+        "Content\css\book-editor.css",
         "Scripts\book-editor.js"
     )
     foreach ($f in $modifiedFiles) {
@@ -67,12 +68,9 @@ try {
     Write-Host "   (No SQL migration needed for this change.)" -ForegroundColor Gray
     Write-Host ""
     Write-Host "2. Changes in this build:" -ForegroundColor White
-    Write-Host "   - Editor textarea heights remembered within browser session (previous change)." -ForegroundColor Gray
-    Write-Host "   - Active search now persists when you click Save or use keyboard navigation." -ForegroundColor Gray
-    Write-Host "     Save button now uses AJAX autosave (same as Ctrl+S) so the page does not" -ForegroundColor Gray
-    Write-Host "     reload and search state is preserved. Ctrl+Left/Right/Home/End also thread" -ForegroundColor Gray
-    Write-Host "     the search query through to the next paragraph." -ForegroundColor Gray
-    Write-Host "   - The search bar already has a clear (x) button that appears when search is active." -ForegroundColor Gray
+    Write-Host "   - Save button moved to its own right-aligned row below the nav bar." -ForegroundColor Gray
+    Write-Host "     It no longer shares the flexbox row with GoTo/chapter controls, so the" -ForegroundColor Gray
+    Write-Host "     'Saved at...' message appearing cannot cause the button to jump position." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

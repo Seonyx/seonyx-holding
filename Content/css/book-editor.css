@@ -144,9 +144,14 @@
     width: 110px;
 }
 
-.editor-actions {
+.editor-save-bar {
     display: flex;
-    gap: 0.25rem;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0.4rem 1rem;
+    background: #eff6ff;
+    border-bottom: 1px solid #bfdbfe;
 }
 
 /* Search Bar */
@@ -517,7 +522,7 @@
         flex-wrap: wrap;
     }
 
-    .editor-actions {
+    .editor-save-bar {
         justify-content: center;
     }
 
