@@ -134,6 +134,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DivisionController.cs" />
+    <Compile Include="Controllers\LegalController.cs" />
+    <Compile Include="Controllers\StripeWebhookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LiteraryAgencyController.cs" />
     <Compile Include="Controllers\PageController.cs" />
@@ -144,12 +146,14 @@
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\ContactSubmission.cs" />
+    <Compile Include="Models\PaidContactSubmission.cs" />
     <Compile Include="Models\ContentBlock.cs" />
     <Compile Include="Models\Division.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\SeonyxContext.cs" />
     <Compile Include="Models\SiteSetting.cs" />
     <Compile Include="Models\ViewModels\ContactViewModel.cs" />
+    <Compile Include="Models\ViewModels\PaidContactViewModel.cs" />
     <Compile Include="Models\ViewModels\HomeViewModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Models\ViewModels\Admin\AdminLoginViewModel.cs" />
@@ -214,6 +218,10 @@
     <Content Include="Views\LiteraryAgency\Book.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Success.cshtml" />
+    <Content Include="Views\Contact\Cancel.cshtml" />
+    <Content Include="Views\Legal\PrivacyPolicy.cshtml" />
+    <Content Include="Views\Legal\TermsAndConditions.cshtml" />
+    <Content Include="Views\Legal\Cookies.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Admin\Pages\Index.cshtml" />
