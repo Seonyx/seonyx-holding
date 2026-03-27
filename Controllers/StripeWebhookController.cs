@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
 using System.Configuration;
 using Seonyx.Web.Models;
@@ -40,7 +41,7 @@ namespace Seonyx.Web.Controllers
                 return new HttpStatusCodeResult(400);
             }
 
-            if (stripeEvent.Type == Events.CheckoutSessionCompleted)
+            if (stripeEvent.Type == "checkout.session.completed")
             {
                 var session = stripeEvent.Data.Object as Session;
                 if (session == null)
