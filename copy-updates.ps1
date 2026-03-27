@@ -1,5 +1,5 @@
 # ============================================
-# Anchor Save button below nav bar
+# Stripe micropayment contact form
 # Run in PowerShell from any directory
 # ============================================
 
@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Anchor Save button below nav bar" -ForegroundColor Cyan
+    Write-Host "Stripe micropayment contact form" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -26,7 +26,15 @@ try {
 
     Write-Host "Copying new files..." -ForegroundColor Yellow
     $newFiles = @(
-        "Database\migrations\add-chapter-sortorder.sql"
+        "Database\migrations\add-paid-contact-submissions.sql",
+        "Models\PaidContactSubmission.cs",
+        "Models\ViewModels\PaidContactViewModel.cs",
+        "Controllers\StripeWebhookController.cs",
+        "Controllers\LegalController.cs",
+        "Views\Contact\Cancel.cshtml",
+        "Views\Legal\PrivacyPolicy.cshtml",
+        "Views\Legal\TermsAndConditions.cshtml",
+        "Views\Legal\Cookies.cshtml"
     )
     foreach ($f in $newFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -38,19 +46,14 @@ try {
     Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "App_Data\BookML\bookml-chapter.xsd",
-        "Models\Chapter.cs",
-        "Models\ViewModels\BookEditor\ParagraphEditViewModel.cs",
-        "Services\BookmlImporter.cs",
-        "Controllers\FileUploadController.cs",
-        "Controllers\EditorController.cs",
-        "Controllers\DraftController.cs",
-        "Controllers\ExportController.cs",
-        "Views\Editor\Index.cshtml",
-        "Views\ImportLog\Index.cshtml",
-        "Views\ImportLog\Detail.cshtml",
-        "Content\css\book-editor.css",
-        "Scripts\book-editor.js"
+        "Models\SeonyxContext.cs",
+        "Controllers\ContactController.cs",
+        "App_Start\RouteConfig.cs",
+        "Views\Contact\Index.cshtml",
+        "Views\Contact\Success.cshtml",
+        "Views\Shared\_Layout.cshtml",
+        "Content\css\site.css",
+        "Web.config.template"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -64,13 +67,33 @@ try {
     Write-Host "IMPORTANT - Manual steps needed:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. In VS 2022, Build (Ctrl+Shift+B) then F5 to run." -ForegroundColor White
-    Write-Host "   (No SQL migration needed for this change.)" -ForegroundColor Gray
+    Write-Host "1. Install Stripe.net via NuGet Package Manager in VS 2022:" -ForegroundColor White
+    Write-Host "   Tools > NuGet Package Manager > Package Manager Console" -ForegroundColor Gray
+    Write-Host "   Install-Package Stripe.net" -ForegroundColor Gray
     Write-Host ""
-    Write-Host "2. Changes in this build:" -ForegroundColor White
-    Write-Host "   - Save button moved to its own right-aligned row below the nav bar." -ForegroundColor Gray
-    Write-Host "     It no longer shares the flexbox row with GoTo/chapter controls, so the" -ForegroundColor Gray
-    Write-Host "     'Saved at...' message appearing cannot cause the button to jump position." -ForegroundColor Gray
+    Write-Host "2. Add Stripe keys to Web.config (not Web.config.template):" -ForegroundColor White
+    Write-Host "   <add key=""StripeSecretKey"" value=""sk_test_..."" />" -ForegroundColor Gray
+    Write-Host "   <add key=""StripeWebhookSecret"" value=""whsec_..."" />" -ForegroundColor Gray
+    Write-Host "   <add key=""ContactFeeAmountCents"" value=""200"" />" -ForegroundColor Gray
+    Write-Host "   Use TEST keys first. Get them from dashboard.stripe.com" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "3. Run the migration SQL against the Seonyx database:" -ForegroundColor White
+    Write-Host "   sqlcmd -S localhost -d Seonyx -i Database\migrations\add-paid-contact-submissions.sql" -ForegroundColor Gray
+    Write-Host "   (Or open the file in SSMS and execute it.)" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "4. Build (Ctrl+Shift+B) and run (F5)." -ForegroundColor White
+    Write-Host ""
+    Write-Host "5. Test the contact form end-to-end with Stripe test card:" -ForegroundColor White
+    Write-Host "   Card: 4242 4242 4242 4242  Expiry: any future date  CVC: any 3 digits" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "6. To test webhooks locally, install the Stripe CLI and run:" -ForegroundColor White
+    Write-Host "   stripe listen --forward-to https://localhost:44327/api/stripe/webhook" -ForegroundColor Gray
+    Write-Host "   Copy the whsec_... secret printed by the CLI into Web.config." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "7. For PRODUCTION deploy, configure the webhook in Stripe Dashboard:" -ForegroundColor White
+    Write-Host "   Endpoint URL: https://seonyx.com/api/stripe/webhook" -ForegroundColor Gray
+    Write-Host "   Event to listen for: checkout.session.completed" -ForegroundColor Gray
+    Write-Host "   Then add the live whsec_... secret to the live site Web.config." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

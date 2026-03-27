@@ -1,4 +1,4 @@
-@model Seonyx.Web.Models.ViewModels.ContactViewModel
+@model Seonyx.Web.Models.ViewModels.PaidContactViewModel
 
 <section class="page-content">
     <div class="container">
@@ -7,16 +7,29 @@
         </nav>
 
         <h1>Contact Us</h1>
-        <p class="lead">We'd love to hear from you. Please fill in the form below and we'll get back to you as soon as possible.</p>
+
+        <div class="contact-fee-notice">
+            <strong>Please read before submitting.</strong>
+            <p>
+                To keep this inbox free of unsolicited commercial messages, a small contact fee of
+                <strong>&euro;2.00</strong> applies to all enquiries submitted through this form.
+                This fee is non-refundable and covers the time cost of reviewing your message.
+                Payment is handled securely by Stripe; your card details are never held by this site.
+            </p>
+            <p>
+                If you have a genuine enquiry, we look forward to hearing from you.
+            </p>
+        </div>
 
         <div class="contact-form-wrapper">
             @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "contact-form" }))
             {
                 @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "Please correct the errors below.", new { @class = "alert alert-error" })
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Name)
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Your name" })
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Your full name" })
                     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "field-validation-error" })
                 </div>
 
@@ -27,22 +40,50 @@
                 </div>
 
                 <div class="form-group">
+                    @Html.LabelFor(m => m.Company)
+                    @Html.TextBoxFor(m => m.Company, new { @class = "form-control", placeholder = "Optional" })
+                </div>
+
+                <div class="form-group">
                     @Html.LabelFor(m => m.Subject)
-                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Subject (optional)" })
+                    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "What is your enquiry about?" })
+                    @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "field-validation-error" })
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Message)
-                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 6, placeholder = "Your message" })
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 7, placeholder = "Your message (minimum 20 characters)" })
                     @Html.ValidationMessageFor(m => m.Message, "", new { @class = "field-validation-error" })
                 </div>
 
-                <!-- Honeypot anti-spam field -->
-                <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                <div class="form-group form-check">
+                    @Html.CheckBoxFor(m => m.AgreeTerms, new { @class = "form-check-input", id = "AgreeTerms" })
+                    <label class="form-check-label" for="AgreeTerms">
+                        I have read and agree to the
+                        <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+                        and
+                        <a href="/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>.
+                    </label>
+                    @Html.ValidationMessageFor(m => m.AgreeTerms, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group form-check">
+                    @Html.CheckBoxFor(m => m.WaiveCoolingOff, new { @class = "form-check-input", id = "WaiveCoolingOff" })
+                    <label class="form-check-label" for="WaiveCoolingOff">
+                        I understand that the &euro;2.00 contact fee is non-refundable. I request that the
+                        service (delivery of my message) begins immediately upon payment, and I expressly
+                        waive my right to the 14-day cooling-off period under EU Directive 2011/83/EU,
+                        Article 16(m).
+                    </label>
+                    @Html.ValidationMessageFor(m => m.WaiveCoolingOff, "", new { @class = "field-validation-error" })
+                </div>
+
+                @* Honeypot -- CSS-hidden, not display:none, to catch bots *@
+                <div class="contact-honeypot" aria-hidden="true">
                     @Html.TextBoxFor(m => m.Website, new { tabindex = "-1", autocomplete = "off" })
                 </div>
 
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary">Pay &euro;2.00 and Send Message</button>
             }
         </div>
     </div>

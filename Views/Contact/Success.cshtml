@@ -1,8 +1,41 @@
+@model Seonyx.Web.Models.ViewModels.ContactSuccessViewModel
 
 <section class="page-content">
-    <div class="container text-center">
-        <h1>Thank You!</h1>
-        <p class="lead">Your message has been sent successfully. We'll get back to you as soon as possible.</p>
-        <a href="/" class="btn btn-primary">Back to Home</a>
+    <div class="container">
+        <nav class="breadcrumbs">
+            <a href="/">Home</a> &rsaquo; <a href="/contact">Contact</a> &rsaquo; <span>Payment Confirmed</span>
+        </nav>
+
+        <div class="contact-success">
+            <h1>Payment Confirmed</h1>
+            <p class="lead">
+                Thank you. Your payment was successful and your message has been delivered to our inbox.
+            </p>
+
+            <div class="contact-success-details">
+                @if (!string.IsNullOrEmpty(Model.Email))
+                {
+                    <p><strong>Message sent from:</strong> @Model.Email</p>
+                }
+                <p>
+                    <strong>Reference number:</strong>
+                    @if (!string.IsNullOrEmpty(Model.PaymentIntentId))
+                    {
+                        <span>@Model.PaymentIntentId</span>
+                    }
+                    else
+                    {
+                        <span>@Model.CheckoutSessionId</span>
+                    }
+                </p>
+                <p class="contact-success-note">
+                    Please keep this reference number for your records.
+                    Your card details have not been stored by this site.
+                    You will receive a receipt from Stripe at the email address provided.
+                </p>
+            </div>
+
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
     </div>
 </section>

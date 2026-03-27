@@ -122,6 +122,45 @@ namespace Seonyx.Web
                 defaults: new { controller = "LiteraryAgency", action = "Book" }
             );
 
+            // Contact sub-routes (must be before the bare Contact route)
+            routes.MapRoute(
+                name: "ContactSuccess",
+                url: "contact/success",
+                defaults: new { controller = "Contact", action = "Success" }
+            );
+
+            routes.MapRoute(
+                name: "ContactCancel",
+                url: "contact/cancel",
+                defaults: new { controller = "Contact", action = "Cancel" }
+            );
+
+            // Stripe webhook (no auth, no antiforgery -- signature-verified internally)
+            routes.MapRoute(
+                name: "StripeWebhook",
+                url: "api/stripe/webhook",
+                defaults: new { controller = "StripeWebhook", action = "Receive" }
+            );
+
+            // Legal pages
+            routes.MapRoute(
+                name: "PrivacyPolicy",
+                url: "privacy-policy",
+                defaults: new { controller = "Legal", action = "PrivacyPolicy" }
+            );
+
+            routes.MapRoute(
+                name: "TermsAndConditions",
+                url: "terms-and-conditions",
+                defaults: new { controller = "Legal", action = "TermsAndConditions" }
+            );
+
+            routes.MapRoute(
+                name: "Cookies",
+                url: "cookies",
+                defaults: new { controller = "Legal", action = "Cookies" }
+            );
+
             // Contact route
             routes.MapRoute(
                 name: "Contact",
@@ -148,7 +187,7 @@ namespace Seonyx.Web
                 name: "Division",
                 url: "{divisionSlug}",
                 defaults: new { controller = "Division", action = "Index" },
-                constraints: new { divisionSlug = @"^(?!admin|contact|content|scripts|about).*" }
+                constraints: new { divisionSlug = @"^(?!admin|contact|content|scripts|about|api|privacy-policy|terms-and-conditions|cookies).*" }
             );
 
             // Division page route (e.g., /techwrite/services)

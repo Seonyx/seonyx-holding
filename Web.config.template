@@ -23,6 +23,9 @@
     <add key="SmtpPassword" value="YOUR_SMTP_PASS" />
     <add key="SmtpEnableSsl" value="true" />
     <add key="BookEditorFilesPath" value="~/App_Data/BookEditorFiles" />
+    <add key="StripeSecretKey" value="sk_test_YOUR_STRIPE_SECRET_KEY" />
+    <add key="StripeWebhookSecret" value="whsec_YOUR_STRIPE_WEBHOOK_SECRET" />
+    <add key="ContactFeeAmountCents" value="200" />
   </appSettings>
 
   <system.web>

@@ -664,6 +664,130 @@ textarea.form-control {
     margin-top: var(--spacing-md);
 }
 
+.contact-fee-notice {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-left: 4px solid #3B82F6;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    max-width: 640px;
+}
+
+.contact-fee-notice p {
+    margin: var(--spacing-xs) 0 0;
+    font-size: 0.9375rem;
+    color: var(--color-gray-700);
+}
+
+.contact-fee-notice strong {
+    color: var(--color-gray-900);
+}
+
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-check-input {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+}
+
+.contact-honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+.contact-success,
+.contact-cancel {
+    max-width: 640px;
+    margin: var(--spacing-lg) 0;
+}
+
+.contact-success-details {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.contact-success-details p {
+    margin: var(--spacing-xs) 0;
+    font-size: 0.9375rem;
+}
+
+.contact-success-note {
+    font-size: 0.875rem !important;
+    color: var(--color-gray-500) !important;
+}
+
+/* ============ Legal Pages ============ */
+
+.legal-page h2 {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.125rem;
+    color: var(--color-gray-900);
+}
+
+.legal-page p,
+.legal-page li {
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+}
+
+.legal-page ul {
+    padding-left: 1.5rem;
+    margin: var(--spacing-xs) 0 var(--spacing-sm);
+}
+
+.legal-page ul li {
+    margin-bottom: 0.4rem;
+}
+
+.legal-date {
+    color: var(--color-gray-500);
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-md) 0;
+    font-size: 0.875rem;
+}
+
+.cookie-table th,
+.cookie-table td {
+    border: 1px solid var(--color-gray-200);
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.cookie-table th {
+    background: var(--color-gray-100);
+    font-weight: 600;
+    color: var(--color-gray-900);
+}
+
+.cookie-table td {
+    color: var(--color-gray-700);
+}
+
 /* ============ Badges ============ */
 
 .badge {
@@ -725,7 +849,7 @@ textarea.form-control {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-lg);
 }
