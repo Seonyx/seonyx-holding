@@ -144,9 +144,14 @@ namespace Seonyx.Web.Services
             {
                 foreach (var d in drafts.OrderBy(d => d.DraftNumber))
                 {
+                    // The current draft is being exported as a finished snapshot;
+                    // mark it "snapshot" regardless of its DB status.
+                    var exportStatus = (d.DraftNumber == project.CurrentDraftNumber)
+                        ? "snapshot"
+                        : d.Status;
                     versioningEl.Add(new XElement(Ns + "draft",
                         new XAttribute("number",      d.DraftNumber),
-                        new XAttribute("status",      d.Status),
+                        new XAttribute("status",      exportStatus),
                         new XAttribute("created",     d.CreatedDate.ToString("yyyy-MM-ddTHH:mm:ssZ")),
                         new XAttribute("based-on",    d.BasedOn),
                         new XAttribute("author-type", d.AuthorType),
