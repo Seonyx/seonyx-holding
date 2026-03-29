@@ -110,7 +110,7 @@ namespace Seonyx.Web.Controllers
                 }
 
                 db.SaveChanges();
-                return Json(new { success = true, timestamp = DateTime.Now.ToString("h:mm:ss tt") });
+                return Json(new { success = true, timestamp = LocalNow().ToString("h:mm:ss tt") });
             }
             catch (Exception ex)
             {
@@ -478,6 +478,19 @@ namespace Seonyx.Web.Controllers
         {
             var note = db.EditNotes.FirstOrDefault(e => e.ParagraphID == paragraphId);
             return note != null ? note.NoteText : "";
+        }
+
+        private static DateTime LocalNow()
+        {
+            try
+            {
+                var tz = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+                return TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tz);
+            }
+            catch
+            {
+                return DateTime.Now;
+            }
         }
 
         private bool IsAuthenticated()
