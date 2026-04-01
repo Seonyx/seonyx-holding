@@ -1,0 +1,125 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.EpubConfigViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Generate EPUB - " + Model.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+    <style>
+        .cover-options { margin-bottom: 1rem; }
+        .cover-option-row { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.75rem; }
+        .cover-option-row input[type=radio] { margin-top: 3px; flex-shrink: 0; }
+        .cover-option-row label { font-weight: normal; margin: 0; }
+        .cover-option-row .option-hint { font-size: 0.85em; color: #666; margin: 2px 0 0; }
+        #upload-area { margin-top: 0.5rem; margin-left: 1.5rem; }
+    </style>
+}
+
+<div class="page-header">
+    <h1>Generate EPUB: @Model.ProjectName</h1>
+    <a href="@Url.Action("Index", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Back to Export</a>
+</div>
+
+@using (Html.BeginForm("ExportEpub", "Export", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.BookProjectID)
+    @Html.HiddenFor(m => m.ProjectName)
+    @Html.HiddenFor(m => m.HasExistingCover)
+
+    @Html.ValidationSummary(false, "", new { @class = "validation-summary-errors" })
+
+    <div class="form-section">
+        <h2>Cover</h2>
+        <div class="cover-options">
+
+            @if (Model.HasExistingCover)
+            {
+                <div class="cover-option-row">
+                    <input type="radio" name="CoverOption" id="opt-existing"
+                           value="@((int)Seonyx.Web.Models.ViewModels.BookEditor.EpubCoverOption.UseExisting)"
+                           @(Model.CoverOption == Seonyx.Web.Models.ViewModels.BookEditor.EpubCoverOption.UseExisting ? "checked=\"checked\"" : "") />
+                    <div>
+                        <label for="opt-existing">Use project cover image</label>
+                        <p class="option-hint">The cover image already uploaded to this project.</p>
+                    </div>
+                </div>
+            }
+
+            <div class="cover-option-row">
+                <input type="radio" name="CoverOption" id="opt-generated"
+                       value="@((int)Seonyx.Web.Models.ViewModels.BookEditor.EpubCoverOption.UseGenerated)"
+                       @(Model.CoverOption == Seonyx.Web.Models.ViewModels.BookEditor.EpubCoverOption.UseGenerated ? "checked=\"checked\"" : "") />
+                <div>
+                    <label for="opt-generated">Generate default cover</label>
+                    <p class="option-hint">A simple cover image generated from the title, author, and copyright year.</p>
+                </div>
+            </div>
+
+            <div class="cover-option-row">
+                <input type="radio" name="CoverOption" id="opt-upload"
+                       value="@((int)Seonyx.Web.Models.ViewModels.BookEditor.EpubCoverOption.Upload)"
+                       @(Model.CoverOption == Seonyx.Web.Models.ViewModels.BookEditor.EpubCoverOption.Upload ? "checked=\"checked\"" : "") />
+                <div>
+                    <label for="opt-upload">Upload a different image</label>
+                    <p class="option-hint">JPEG or PNG, max 5 MB.</p>
+                    <div id="upload-area" style="display:none">
+                        <input type="file" name="coverImage" accept=".jpg,.jpeg,.png" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Copyright</h2>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.RightsHolder)
+            @Html.TextBoxFor(m => m.RightsHolder, new { @class = "form-control", placeholder = "e.g. Steve Avis" })
+            @Html.ValidationMessageFor(m => m.RightsHolder)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.CopyrightYear)
+            @Html.TextBoxFor(m => m.CopyrightYear, new { @class = "form-control", type = "number", min = "1900", max = "2100" })
+            @Html.ValidationMessageFor(m => m.CopyrightYear)
+        </div>
+
+        <div class="form-group form-check">
+            @Html.CheckBoxFor(m => m.ArcDisclaimer)
+            @Html.LabelFor(m => m.ArcDisclaimer, new { @class = "form-check-label" })
+            <p class="form-hint">Adds an ARC (Advance Reader Copy) disclaimer to the copyright page.</p>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Generate EPUB</button>
+        <a href="@Url.Action("Index", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Cancel</a>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        (function () {
+            var radios = document.querySelectorAll('input[name="CoverOption"]');
+            var uploadArea = document.getElementById('upload-area');
+
+            function updateUploadArea() {
+                var selected = document.querySelector('input[name="CoverOption"]:checked');
+                if (selected && selected.id === 'opt-upload') {
+                    uploadArea.style.display = '';
+                } else {
+                    uploadArea.style.display = 'none';
+                }
+            }
+
+            for (var i = 0; i < radios.length; i++) {
+                radios[i].addEventListener('change', updateUploadArea);
+            }
+            updateUploadArea();
+        }());
+    </script>
+}

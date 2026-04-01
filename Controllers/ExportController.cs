@@ -1,9 +1,12 @@
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 using System.Web.Mvc;
 using Seonyx.Web.Models;
 using Seonyx.Web.Models.ViewModels.BookEditor;
@@ -141,6 +144,158 @@ namespace Seonyx.Web.Controllers
             var zipFileName = string.Format("{0}_manuscript_{1}.zip", Slugify(project.ProjectName), timestamp);
 
             return File(memoryStream, "application/zip", zipFileName);
+        }
+
+        public ActionResult EpubConfig(int projectId)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var project = db.BookProjects.Find(projectId);
+            if (project == null) return HttpNotFound();
+
+            bool hasExisting = !string.IsNullOrEmpty(project.CoverImagePath)
+                && System.IO.File.Exists(project.CoverImagePath);
+
+            var model = new EpubConfigViewModel
+            {
+                BookProjectID    = project.BookProjectID,
+                ProjectName      = project.ProjectName,
+                RightsHolder     = project.ProjectName,
+                CopyrightYear    = DateTime.UtcNow.Year,
+                ArcDisclaimer    = true,
+                HasExistingCover = hasExisting,
+                CoverOption      = hasExisting ? EpubCoverOption.UseExisting : EpubCoverOption.UseGenerated
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult ExportEpub(EpubConfigViewModel model, HttpPostedFileBase coverImage)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var project = db.BookProjects.Find(model.BookProjectID);
+            if (project == null) return HttpNotFound();
+            model.ProjectName      = project.ProjectName;
+            model.HasExistingCover = !string.IsNullOrEmpty(project.CoverImagePath)
+                && System.IO.File.Exists(project.CoverImagePath);
+
+            if (!ModelState.IsValid)
+                return View("EpubConfig", model);
+
+            byte[] coverBytes = null;
+            string coverMime  = null;
+
+            if (model.CoverOption == EpubCoverOption.UseExisting)
+            {
+                if (model.HasExistingCover)
+                {
+                    coverBytes = System.IO.File.ReadAllBytes(project.CoverImagePath);
+                    var ext    = Path.GetExtension(project.CoverImagePath).ToLowerInvariant();
+                    coverMime  = (ext == ".png") ? "image/png" : "image/jpeg";
+                }
+                // If somehow no existing cover, fall through to generated
+            }
+            else if (model.CoverOption == EpubCoverOption.Upload)
+            {
+                if (coverImage == null || coverImage.ContentLength == 0)
+                {
+                    ModelState.AddModelError("", "Please select an image file to upload.");
+                    return View("EpubConfig", model);
+                }
+                var mime = coverImage.ContentType.ToLowerInvariant();
+                if (mime != "image/jpeg" && mime != "image/jpg" && mime != "image/png")
+                {
+                    ModelState.AddModelError("", "Cover image must be JPEG or PNG.");
+                    return View("EpubConfig", model);
+                }
+                if (coverImage.ContentLength > 5 * 1024 * 1024)
+                {
+                    ModelState.AddModelError("", "Cover image must be 5 MB or smaller.");
+                    return View("EpubConfig", model);
+                }
+                using (var ms = new MemoryStream())
+                {
+                    coverImage.InputStream.CopyTo(ms);
+                    coverBytes = ms.ToArray();
+                }
+                coverMime = (mime == "image/png") ? "image/png" : "image/jpeg";
+            }
+            else // UseGenerated
+            {
+                coverBytes = GenerateCoverImage(project.ProjectName, model.RightsHolder, model.CopyrightYear);
+                coverMime  = "image/jpeg";
+            }
+
+            var memoryStream = new MemoryStream();
+            var exporter     = new EpubExporter();
+            var result       = exporter.Export(db, model, coverBytes, coverMime, memoryStream);
+
+            if (!result.Success)
+                return new HttpStatusCodeResult(
+                    System.Net.HttpStatusCode.InternalServerError,
+                    "EPUB export failed: " + string.Join("; ", result.Warnings));
+
+            memoryStream.Position = 0;
+            return File(memoryStream, "application/epub+zip", result.EpubFileName);
+        }
+
+        private byte[] GenerateCoverImage(string title, string author, int year)
+        {
+            const int W = 800;
+            const int H = 1200;
+
+            using (var bmp = new Bitmap(W, H))
+            using (var g   = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode     = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+
+                // Background — dark navy
+                g.Clear(Color.FromArgb(24, 32, 56));
+
+                // Decorative border lines
+                var borderPen = new Pen(Color.FromArgb(180, 160, 100), 2);
+                g.DrawRectangle(borderPen, 30, 30, W - 61, H - 61);
+                g.DrawRectangle(borderPen, 40, 40, W - 81, H - 81);
+
+                // Title
+                var titleFont  = new Font("Georgia", 48, FontStyle.Bold, GraphicsUnit.Pixel);
+                var titleBrush = new SolidBrush(Color.FromArgb(240, 220, 160));
+                var titleArea  = new RectangleF(80, 200, W - 160, 500);
+                var titleFormat = new StringFormat
+                {
+                    Alignment     = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Near,
+                    Trimming      = StringTrimming.Word
+                };
+                g.DrawString(title, titleFont, titleBrush, titleArea, titleFormat);
+
+                // Divider line
+                g.DrawLine(new Pen(Color.FromArgb(180, 160, 100), 1), 120, H - 280, W - 120, H - 280);
+
+                // Author
+                var authorFont   = new Font("Georgia", 28, FontStyle.Regular, GraphicsUnit.Pixel);
+                var authorBrush  = new SolidBrush(Color.FromArgb(200, 190, 170));
+                var authorFormat = new StringFormat { Alignment = StringAlignment.Center };
+                g.DrawString(author, authorFont, authorBrush,
+                    new RectangleF(80, H - 260, W - 160, 60), authorFormat);
+
+                // Copyright
+                var copyFont   = new Font("Arial", 18, FontStyle.Regular, GraphicsUnit.Pixel);
+                var copyBrush  = new SolidBrush(Color.FromArgb(140, 130, 110));
+                var copyFormat = new StringFormat { Alignment = StringAlignment.Center };
+                g.DrawString(string.Format("Copyright {0} {1}", year, author),
+                    copyFont, copyBrush,
+                    new RectangleF(80, H - 180, W - 160, 40), copyFormat);
+
+                using (var ms = new MemoryStream())
+                {
+                    bmp.Save(ms, ImageFormat.Jpeg);
+                    return ms.ToArray();
+                }
+            }
         }
 
         public ActionResult ExportBookml(int projectId)

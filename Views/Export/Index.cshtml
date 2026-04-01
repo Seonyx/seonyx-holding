@@ -37,6 +37,14 @@
         </div>
         <a href="@Url.Action("ExportBookml", new { projectId = Model.BookProjectID })" class="btn btn-primary">Download BookML ZIP</a>
     </div>
+
+    <div class="export-option">
+        <div class="export-option-info">
+            <h3>Generate EPUB</h3>
+            <p>Produces an EPUB 3 file ready for Kindle, Kobo, Apple Books, or Calibre.</p>
+        </div>
+        <a href="@Url.Action("EpubConfig", new { projectId = Model.BookProjectID })" class="btn btn-primary">Configure &amp; Generate</a>
+    </div>
 </div>
 
 @if (Model.Chapters.Count > 0)
