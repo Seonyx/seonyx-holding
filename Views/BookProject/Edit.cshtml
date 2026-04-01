@@ -25,6 +25,12 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(m => m.Author)
+        @Html.TextBoxFor(m => m.Author, new { @class = "form-control", placeholder = "e.g. Steve Avis" })
+        @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
         <label>
             @Html.CheckBoxFor(m => m.IsActive) Active
         </label>

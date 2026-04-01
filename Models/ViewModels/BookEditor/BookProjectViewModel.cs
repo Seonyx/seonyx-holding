@@ -14,6 +14,10 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         [RegularExpression(@"^[a-zA-Z0-9\s\-]+$", ErrorMessage = "Project name can only contain letters, numbers, spaces, and hyphens.")]
         public string ProjectName { get; set; }
 
+        [StringLength(255)]
+        [Display(Name = "Author")]
+        public string Author { get; set; }
+
         public string CoverImagePath { get; set; }
         public string FolderPath { get; set; }
         public DateTime CreatedDate { get; set; }

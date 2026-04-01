@@ -104,12 +104,13 @@ namespace Seonyx.Web.Controllers
             var model = new BookProjectViewModel
             {
                 BookProjectID = project.BookProjectID,
-                ProjectName = project.ProjectName,
+                ProjectName   = project.ProjectName,
+                Author        = project.Author,
                 CoverImagePath = project.CoverImagePath,
-                FolderPath = project.FolderPath,
-                CreatedDate = project.CreatedDate,
+                FolderPath    = project.FolderPath,
+                CreatedDate   = project.CreatedDate,
                 LastModifiedDate = project.LastModifiedDate,
-                IsActive = project.IsActive
+                IsActive      = project.IsActive
             };
 
             return View(model);
@@ -134,8 +135,9 @@ namespace Seonyx.Web.Controllers
                 return View(model);
             }
 
-            project.ProjectName = model.ProjectName;
-            project.IsActive = model.IsActive;
+            project.ProjectName      = model.ProjectName;
+            project.Author           = model.Author;
+            project.IsActive         = model.IsActive;
             project.LastModifiedDate = DateTime.Now;
 
             db.SaveChanges();

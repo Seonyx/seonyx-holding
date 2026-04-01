@@ -30,6 +30,10 @@ namespace Seonyx.Web.Models
 
         public int? BookmarkParagraphID { get; set; }
 
+        /// <summary>Author name, used in EPUB exports and other outputs.</summary>
+        [StringLength(255)]
+        public string Author { get; set; }
+
         /// <summary>Machine identifier from book.xml (e.g. 'autumn-meridian'). Null for projects not yet imported via BookML.</summary>
         [StringLength(100)]
         public string BookmlId { get; set; }

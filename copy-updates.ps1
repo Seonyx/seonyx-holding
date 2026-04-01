@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Epigraph support: EPUB standalone page + editor insert dropdown" -ForegroundColor Cyan
+    Write-Host "Author field on BookProject; epigraph PID detection fix" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -25,10 +25,25 @@ try {
     }
 
     Write-Host "Updating modified files..." -ForegroundColor Yellow
+    $newFiles = @(
+        "Database\migrations\add-bookproject-author.sql"
+    )
+    foreach ($f in $newFiles) {
+        $destDir = Split-Path (Join-Path $dst $f) -Parent
+        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
+        Copy-Item (Join-Path $src $f) (Join-Path $dst $f) -Force
+        Write-Host "  NEW: $f" -ForegroundColor Green
+    }
+
+    Write-Host ""
+    Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
+        "Models\BookProject.cs",
+        "Models\ViewModels\BookEditor\BookProjectViewModel.cs",
+        "Controllers\BookProjectController.cs",
+        "Controllers\ExportController.cs",
         "Services\EpubExporter.cs",
-        "Controllers\EditorController.cs",
-        "Views\Editor\Index.cshtml"
+        "Views\BookProject\Edit.cshtml"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -42,10 +57,16 @@ try {
     Write-Host "Post-copy steps:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. Build (Ctrl+Shift+B) in VS 2022 - no new NuGet packages needed." -ForegroundColor White
-    Write-Host "2. In the editor, Ins Before/Ins After now have a dropdown: Paragraph or Epigraph." -ForegroundColor White
-    Write-Host "3. Epigraph paragraphs export as a standalone page before the chapter in the EPUB." -ForegroundColor White
-    Write-Host "4. Re-export the EPUB and verify epigraph appears on its own page." -ForegroundColor White
+    Write-Host "1. Run the migration SQL against the Seonyx database:" -ForegroundColor White
+    Write-Host "   sqlcmd -S localhost -d Seonyx -i Database\migrations\add-bookproject-author.sql" -ForegroundColor Gray
+    Write-Host "   (Or open in SSMS and execute.)" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "2. Build (Ctrl+Shift+B) in VS 2022." -ForegroundColor White
+    Write-Host ""
+    Write-Host "3. Edit each book project and set the Author field." -ForegroundColor White
+    Write-Host "   The EPUB config page will now default to the author name, not the project name." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "4. Re-export Mayfly Mutiny EPUB - CH02-EP001 epigraph will now appear on its own page." -ForegroundColor White
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

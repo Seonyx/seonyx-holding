@@ -160,15 +160,19 @@ namespace Seonyx.Web.Services
                 rows.Add(new ParaRow
                 {
                     Seq      = seq,
+                    Pid      = para.UniqueID ?? "",
                     ParaType = paraType,
                     Text     = para.ParagraphText ?? ""
                 });
             }
 
-            // Sort by Seq ascending, then split epigraphs from body paragraphs
+            // Sort by Seq ascending, then split epigraphs from body paragraphs.
+            // Detect epigraphs by ParaType OR by PID prefix (-EP pattern e.g. CH02-EP001)
+            // because AI-generated epigraphs may have been tagged type="normal" in the XML
+            // while their PID encodes the correct element type.
             var sorted = rows.OrderBy(r => r.Seq).ToList();
-            data.Epigraphs  = sorted.Where(r => r.ParaType == "epigraph").ToList();
-            data.Paragraphs = sorted.Where(r => r.ParaType != "epigraph").ToList();
+            data.Epigraphs  = sorted.Where(r => IsEpigraph(r)).ToList();
+            data.Paragraphs = sorted.Where(r => !IsEpigraph(r)).ToList();
             return data;
         }
 
@@ -572,6 +576,20 @@ body.ToString() +
         // HELPERS
         // =====================================================================
 
+        // A paragraph is an epigraph if its ParaType is "epigraph" OR if its PID
+        // follows the BookML EP type-code pattern (e.g. CH02-EP001).
+        private static readonly System.Text.RegularExpressions.Regex EpigraphPidPattern =
+            new System.Text.RegularExpressions.Regex(
+                @"^[A-Z][A-Z0-9]*-EP\d+$",
+                System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+        private static bool IsEpigraph(ParaRow row)
+        {
+            if (row.ParaType == "epigraph") return true;
+            if (!string.IsNullOrEmpty(row.Pid) && EpigraphPidPattern.IsMatch(row.Pid)) return true;
+            return false;
+        }
+
         private static string HtmlEncode(string s)
         {
             if (string.IsNullOrEmpty(s)) return string.Empty;
@@ -607,6 +625,7 @@ body.ToString() +
         private class ParaRow
         {
             public int    Seq      { get; set; }
+            public string Pid      { get; set; }
             public string ParaType { get; set; }
             public string Text     { get; set; }
         }

@@ -160,7 +160,7 @@ namespace Seonyx.Web.Controllers
             {
                 BookProjectID    = project.BookProjectID,
                 ProjectName      = project.ProjectName,
-                RightsHolder     = project.ProjectName,
+                RightsHolder     = !string.IsNullOrWhiteSpace(project.Author) ? project.Author : project.ProjectName,
                 CopyrightYear    = DateTime.UtcNow.Year,
                 ArcDisclaimer    = true,
                 HasExistingCover = hasExisting,
