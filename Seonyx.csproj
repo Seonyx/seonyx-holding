@@ -266,6 +266,7 @@
     <Content Include="Views\BookProject\Edit.cshtml" />
     <Content Include="Views\FileUpload\Index.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\Export\EpubConfig.cshtml" />
     <Content Include="Views\Export\Index.cshtml" />
     <Content Include="Views\ImportLog\Index.cshtml" />
     <Content Include="Views\ImportLog\Detail.cshtml" />
