@@ -12,7 +12,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Generate EPUB export feature" -ForegroundColor Cyan
+    Write-Host "Epigraph support: EPUB standalone page + editor insert dropdown" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -26,10 +26,9 @@ try {
 
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "Controllers\ExportController.cs",
         "Services\EpubExporter.cs",
-        "Models\ViewModels\BookEditor\EpubConfigViewModel.cs",
-        "Views\Export\EpubConfig.cshtml"
+        "Controllers\EditorController.cs",
+        "Views\Editor\Index.cshtml"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -44,11 +43,9 @@ try {
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "1. Build (Ctrl+Shift+B) in VS 2022 - no new NuGet packages needed." -ForegroundColor White
-    Write-Host "2. Run (F5) and navigate to any project's Export page." -ForegroundColor White
-    Write-Host "3. Click 'Configure & Generate' to open the EPUB config form." -ForegroundColor White
-    Write-Host "4. Fill in rights holder, year, optionally tick ARC and pick a cover image." -ForegroundColor White
-    Write-Host "5. Click Generate EPUB - the .epub file should download." -ForegroundColor White
-    Write-Host "6. Open the downloaded .epub in Calibre to verify chapter order and content." -ForegroundColor White
+    Write-Host "2. In the editor, Ins Before/Ins After now have a dropdown: Paragraph or Epigraph." -ForegroundColor White
+    Write-Host "3. Epigraph paragraphs export as a standalone page before the chapter in the EPUB." -ForegroundColor White
+    Write-Host "4. Re-export the EPUB and verify epigraph appears on its own page." -ForegroundColor White
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

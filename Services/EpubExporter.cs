@@ -94,9 +94,11 @@ namespace Seonyx.Web.Services
                 AddTextEntry(zip, "OEBPS/copyright.xhtml",
                     BuildCopyrightXhtml(project.ProjectName, config));
 
-                // Chapter XHTML files
+                // Chapter and epigraph XHTML files
                 foreach (var ch in chapterData)
                 {
+                    if (ch.Epigraphs.Count > 0)
+                        AddTextEntry(zip, "OEBPS/" + ch.EpigraphFileName, BuildEpigraphXhtml(ch));
                     AddTextEntry(zip, "OEBPS/" + ch.FileName, BuildChapterXhtml(ch));
                 }
             }
@@ -116,11 +118,13 @@ namespace Seonyx.Web.Services
         {
             var data = new ChapterData
             {
-                ChapterID    = ch.ChapterID,
-                ChapterNumber = ch.ChapterNumber,
-                Title        = ch.ChapterTitle ?? string.Format("Chapter {0}", ch.ChapterNumber),
-                FileName     = string.Format("ch{0:D3}.xhtml", fileIndex),
-                NavId        = string.Format("ch{0:D3}", fileIndex)
+                ChapterID      = ch.ChapterID,
+                ChapterNumber  = ch.ChapterNumber,
+                Title          = ch.ChapterTitle ?? string.Format("Chapter {0}", ch.ChapterNumber),
+                FileName       = string.Format("ch{0:D3}.xhtml", fileIndex),
+                NavId          = string.Format("ch{0:D3}", fileIndex),
+                EpigraphFileName = string.Format("ch{0:D3}-epigraph.xhtml", fileIndex),
+                EpigraphNavId  = string.Format("ch{0:D3}-epigraph", fileIndex)
             };
 
             // Working-copy paragraphs in display order
@@ -161,8 +165,10 @@ namespace Seonyx.Web.Services
                 });
             }
 
-            // Sort by Seq ascending
-            data.Paragraphs = rows.OrderBy(r => r.Seq).ToList();
+            // Sort by Seq ascending, then split epigraphs from body paragraphs
+            var sorted = rows.OrderBy(r => r.Seq).ToList();
+            data.Epigraphs  = sorted.Where(r => r.ParaType == "epigraph").ToList();
+            data.Paragraphs = sorted.Where(r => r.ParaType != "epigraph").ToList();
             return data;
         }
 
@@ -211,6 +217,13 @@ namespace Seonyx.Web.Services
 
             foreach (var ch in chapters)
             {
+                if (ch.Epigraphs.Count > 0)
+                {
+                    manifest.AppendLine(string.Format(
+                        "    <item id=\"{0}\" href=\"{1}\" media-type=\"application/xhtml+xml\"/>",
+                        ch.EpigraphNavId, ch.EpigraphFileName));
+                    spine.AppendLine(string.Format("    <itemref idref=\"{0}\" linear=\"yes\"/>", ch.EpigraphNavId));
+                }
                 manifest.AppendLine(string.Format(
                     "    <item id=\"{0}\" href=\"{1}\" media-type=\"application/xhtml+xml\"/>",
                     ch.NavId, ch.FileName));
@@ -372,6 +385,17 @@ navPoints.ToString() +
 "  height: auto;\r\n" +
 "}\r\n" +
 "\r\n" +
+"blockquote.epigraph {\r\n" +
+"  margin: 4em 3em 2em 3em;\r\n" +
+"  font-style: italic;\r\n" +
+"  text-align: center;\r\n" +
+"}\r\n" +
+"\r\n" +
+"blockquote.epigraph p {\r\n" +
+"  text-indent: 0;\r\n" +
+"  margin-bottom: 0.5em;\r\n" +
+"}\r\n" +
+"\r\n" +
 "div.copyright-page {\r\n" +
 "  margin-top: 4em;\r\n" +
 "  font-size: 0.85em;\r\n" +
@@ -427,6 +451,34 @@ string.Format("    <p>Copyright &#169; {0} {1}. All rights reserved.</p>",
     config.CopyrightYear, HtmlEncode(config.RightsHolder)) +
 arcLine + "\r\n" +
 "  </div>\r\n" +
+"</body>\r\n" +
+"</html>";
+        }
+
+        private static string BuildEpigraphXhtml(ChapterData ch)
+        {
+            var body = new StringBuilder();
+            body.AppendLine(string.Format(
+                "  <section epub:type=\"epigraph\" id=\"{0}\">", ch.EpigraphNavId));
+            foreach (var para in ch.Epigraphs)
+            {
+                body.AppendLine(string.Format("    <blockquote class=\"epigraph\">"));
+                body.AppendLine(string.Format("      <p>{0}</p>", HtmlEncode(para.Text)));
+                body.AppendLine("    </blockquote>");
+            }
+            body.AppendLine("  </section>");
+
+            return
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" +
+"<!DOCTYPE html>\r\n" +
+"<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:epub=\"http://www.idpf.org/2007/ops\" xml:lang=\"en\">\r\n" +
+"<head>\r\n" +
+"  <meta charset=\"UTF-8\"/>\r\n" +
+string.Format("  <title>Epigraph - {0}</title>\r\n", HtmlEncode(ch.Title)) +
+"  <link rel=\"stylesheet\" type=\"text/css\" href=\"css/book.css\"/>\r\n" +
+"</head>\r\n" +
+"<body>\r\n" +
+body.ToString() +
 "</body>\r\n" +
 "</html>";
         }
@@ -541,12 +593,15 @@ body.ToString() +
 
         private class ChapterData
         {
-            public int           ChapterID     { get; set; }
-            public int           ChapterNumber { get; set; }
-            public string        Title         { get; set; }
-            public string        FileName      { get; set; }
-            public string        NavId         { get; set; }
-            public List<ParaRow> Paragraphs    { get; set; } = new List<ParaRow>();
+            public int           ChapterID        { get; set; }
+            public int           ChapterNumber    { get; set; }
+            public string        Title            { get; set; }
+            public string        FileName         { get; set; }
+            public string        NavId            { get; set; }
+            public string        EpigraphFileName { get; set; }
+            public string        EpigraphNavId    { get; set; }
+            public List<ParaRow> Paragraphs       { get; set; } = new List<ParaRow>();
+            public List<ParaRow> Epigraphs        { get; set; } = new List<ParaRow>();
         }
 
         private class ParaRow

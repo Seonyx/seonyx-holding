@@ -120,9 +120,13 @@ namespace Seonyx.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertParagraph(int projectId, int currentParagraphId, bool before = false)
+        public ActionResult InsertParagraph(int projectId, int currentParagraphId, bool before = false, string paraType = "normal")
         {
             if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            // Sanitise paraType — only allow known values
+            var allowedTypes = new[] { "normal", "epigraph" };
+            if (!allowedTypes.Contains(paraType)) paraType = "normal";
 
             var current = db.Paragraphs.Include(p => p.Chapter).FirstOrDefault(p => p.ParagraphID == currentParagraphId);
             if (current == null) return HttpNotFound();
@@ -165,11 +169,11 @@ namespace Seonyx.Web.Controllers
                     // Insert new paragraph
                     var newParagraph = new Paragraph
                     {
-                        ChapterID = current.ChapterID,
-                        UniqueID = uniqueId,
+                        ChapterID       = current.ChapterID,
+                        UniqueID        = uniqueId,
                         OrdinalPosition = newOrdinal,
-                        ParagraphText = "",
-                        CreatedDate = DateTime.Now,
+                        ParagraphText   = "",
+                        CreatedDate     = DateTime.Now,
                         LastModifiedDate = DateTime.Now
                     };
                     db.Paragraphs.Add(newParagraph);
@@ -179,18 +183,38 @@ namespace Seonyx.Web.Controllers
                     db.MetaNotes.Add(new MetaNote
                     {
                         ParagraphID = newParagraph.ParagraphID,
-                        UniqueID = uniqueId,
-                        MetaText = ""
+                        UniqueID    = uniqueId,
+                        MetaText    = ""
                     });
                     db.EditNotes.Add(new EditNote
                     {
-                        ParagraphID = newParagraph.ParagraphID,
-                        UniqueID = uniqueId,
-                        NoteText = "",
+                        ParagraphID      = newParagraph.ParagraphID,
+                        UniqueID         = uniqueId,
+                        NoteText         = "",
                         LastModifiedDate = DateTime.Now
                     });
-                    db.SaveChanges();
 
+                    // For non-normal types, create a ParagraphVersion so the type is persisted
+                    if (paraType != "normal")
+                    {
+                        var project = db.BookProjects.FirstOrDefault(p => p.BookProjectID == projectId);
+                        int draftNumber = project != null ? project.CurrentDraftNumber : 1;
+                        db.ParagraphVersions.Add(new ParagraphVersion
+                        {
+                            Pid          = uniqueId,
+                            ChapterID    = current.ChapterID,
+                            DraftNumber  = draftNumber,
+                            Seq          = newOrdinal * 1000,
+                            ParaType     = paraType,
+                            Content      = "",
+                            DraftCreated = draftNumber,
+                            DraftModified = draftNumber,
+                            ModifiedBy   = "human",
+                            ModifiedDate = DateTime.Now
+                        });
+                    }
+
+                    db.SaveChanges();
                     transaction.Commit();
 
                     return RedirectToAction("Index", new { projectId, paragraphId = newParagraph.ParagraphID });

@@ -133,13 +133,27 @@
 
     <!-- Action Bar (outside main form to avoid nested forms) -->
     <div class="editor-footer">
-        @{Html.BeginForm("InsertParagraph", "Editor", new { projectId = Model.BookProjectID, currentParagraphId = Model.ParagraphID, before = true }, FormMethod.Post, new { style = "display:inline" });}
+        @{Html.BeginForm("InsertParagraph", "Editor", new { projectId = Model.BookProjectID, currentParagraphId = Model.ParagraphID, before = true }, FormMethod.Post, new { style = "display:inline", id = "formInsBefore" });}
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-secondary" title="Insert paragraph before current">Ins Before</button>
+            <input type="hidden" name="paraType" id="insBeforeType" value="normal" />
+            <div class="insert-btn-group" style="display:inline-flex;align-items:center;gap:0">
+                <button type="submit" class="btn btn-sm btn-secondary" style="border-radius:3px 0 0 3px;border-right:none" title="Insert before current">Ins Before</button>
+                <select id="selInsBefore" class="insert-type-select" title="Type to insert" style="height:28px;font-size:0.8em;border-radius:0 3px 3px 0;border:1px solid #aaa;padding:0 4px">
+                    <option value="normal">Paragraph</option>
+                    <option value="epigraph">Epigraph</option>
+                </select>
+            </div>
         @{Html.EndForm();}
-        @{Html.BeginForm("InsertParagraph", "Editor", new { projectId = Model.BookProjectID, currentParagraphId = Model.ParagraphID }, FormMethod.Post, new { style = "display:inline" });}
+        @{Html.BeginForm("InsertParagraph", "Editor", new { projectId = Model.BookProjectID, currentParagraphId = Model.ParagraphID }, FormMethod.Post, new { style = "display:inline", id = "formInsAfter" });}
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-secondary" title="Insert paragraph after current (Ctrl+I)">Ins After</button>
+            <input type="hidden" name="paraType" id="insAfterType" value="normal" />
+            <div class="insert-btn-group" style="display:inline-flex;align-items:center;gap:0">
+                <button type="submit" class="btn btn-sm btn-secondary" style="border-radius:3px 0 0 3px;border-right:none" title="Insert after current (Ctrl+I)">Ins After</button>
+                <select id="selInsAfter" class="insert-type-select" title="Type to insert" style="height:28px;font-size:0.8em;border-radius:0 3px 3px 0;border:1px solid #aaa;padding:0 4px">
+                    <option value="normal">Paragraph</option>
+                    <option value="epigraph">Epigraph</option>
+                </select>
+            </div>
         @{Html.EndForm();}
         @{Html.BeginForm("DeleteParagraph", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.ParagraphID }, FormMethod.Post, new { style = "display:inline", id = "deleteForm", onsubmit = "return confirm('Delete this paragraph? This cannot be undone.');" });}
             @Html.AntiForgeryToken()
@@ -324,6 +338,20 @@
             input.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter') { e.preventDefault(); doGoto(); }
             });
+        }());
+
+        // ── Insert type selects ───────────────────────────────────────────────
+        (function () {
+            var selBefore = document.getElementById('selInsBefore');
+            var selAfter  = document.getElementById('selInsAfter');
+            var hidBefore = document.getElementById('insBeforeType');
+            var hidAfter  = document.getElementById('insAfterType');
+            if (selBefore && hidBefore) {
+                selBefore.addEventListener('change', function () { hidBefore.value = selBefore.value; });
+            }
+            if (selAfter && hidAfter) {
+                selAfter.addEventListener('change', function () { hidAfter.value = selAfter.value; });
+            }
         }());
     </script>
 }
