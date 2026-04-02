@@ -53,6 +53,7 @@
             <button type="button" class="btn btn-sm btn-secondary" id="btnSearchPrev" disabled title="Previous match">&#8249; Match</button>
             <button type="button" class="btn btn-sm btn-secondary" id="btnSearchNext" disabled title="Next match">Match &#8250;</button>
             <span class="search-status" id="searchStatus"></span>
+            <a id="btnShowList" href="#" target="_blank" style="display:none" class="btn btn-sm btn-secondary" title="Open full list of matches in a new tab">Show List</a>
             <button type="button" class="btn btn-sm btn-secondary search-clear" id="btnSearchClear" style="display:none" title="Clear search">&#x2715;</button>
             <label class="search-whole-word-label">
                 <input type="checkbox" id="chkWholeWord" checked /> Whole word
@@ -168,9 +169,10 @@
 @section Scripts {
     <script>
         var editorConfig = {
-            autoSaveUrl: '@Url.Action("AutoSave", "Editor")',
-            searchUrl:   '@Url.Action("Search", "Editor")',
-            indexUrl:    '@Url.Action("Index", "Editor")',
+            autoSaveUrl:    '@Url.Action("AutoSave", "Editor")',
+            searchUrl:      '@Url.Action("Search", "Editor")',
+            searchListUrl:  '@Url.Action("SearchList", "Editor")',
+            indexUrl:       '@Url.Action("Index", "Editor")',
             projectId:   @Model.BookProjectID,
             paragraphId: @Model.ParagraphID,
             prevUrl: '@(Model.PrevParagraphID.HasValue ? Url.Action("Index", "Editor", new { projectId = Model.BookProjectID, paragraphId = Model.PrevParagraphID }) : "")',
@@ -191,6 +193,7 @@
             var btnPrev     = document.getElementById('btnSearchPrev');
             var btnNext     = document.getElementById('btnSearchNext');
             var btnClear    = document.getElementById('btnSearchClear');
+            var btnShowList = document.getElementById('btnShowList');
             var chkWhole    = document.getElementById('chkWholeWord');
 
             function isWholeWord() { return chkWhole && chkWhole.checked; }
@@ -209,11 +212,19 @@
                     status.textContent = searchQuery ? 'No matches.' : '';
                     btnPrev.disabled = true;
                     btnNext.disabled = true;
+                    if (btnShowList) btnShowList.style.display = 'none';
                     return;
                 }
                 status.textContent = 'Match ' + (matchIndex + 1) + ' of ' + matchIds.length;
                 btnPrev.disabled = (matchIndex <= 0);
                 btnNext.disabled = (matchIndex >= matchIds.length - 1);
+                if (btnShowList) {
+                    btnShowList.style.display = '';
+                    btnShowList.href = editorConfig.searchListUrl +
+                        '?projectId=' + editorConfig.projectId +
+                        '&q=' + encodeURIComponent(searchQuery) +
+                        (isWholeWord() ? '&wholeWord=true' : '');
+                }
             }
 
             function highlightMatch(q) {
@@ -298,6 +309,7 @@
                 matchIds    = [];
                 matchIndex  = -1;
                 btnClear.style.display = 'none';
+                if (btnShowList) btnShowList.style.display = 'none';
                 status.textContent = '';
                 btnPrev.disabled = true;
                 btnNext.disabled = true;

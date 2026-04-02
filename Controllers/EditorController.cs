@@ -388,6 +388,45 @@ namespace Seonyx.Web.Controllers
             if (string.IsNullOrWhiteSpace(q))
                 return Json(new int[0], JsonRequestBehavior.AllowGet);
 
+            var ids = SearchParagraphIds(projectId, q, wholeWord);
+            return Json(ids, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult SearchList(int projectId, string q, bool wholeWord = false)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+            if (string.IsNullOrWhiteSpace(q))
+                return Content("No search term.", "text/plain", System.Text.Encoding.UTF8);
+
+            var ids = SearchParagraphIds(projectId, q, wholeWord);
+
+            var paragraphs = db.Paragraphs
+                .Where(p => ids.Contains(p.ParagraphID))
+                .Select(p => new { p.ParagraphID, p.OrdinalPosition, p.ParagraphText })
+                .ToList()
+                .OrderBy(p => ids.IndexOf(p.ParagraphID))
+                .ToList();
+
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine(string.Format("Search: \"{0}\"{1}  --  {2} match{3}",
+                q,
+                wholeWord ? " (whole word)" : "",
+                paragraphs.Count,
+                paragraphs.Count == 1 ? "" : "es"));
+            sb.AppendLine(new string('-', 60));
+            sb.AppendLine();
+            foreach (var p in paragraphs)
+            {
+                sb.AppendLine(string.Format("[{0}]  {1}", p.OrdinalPosition, p.ParagraphText));
+                sb.AppendLine();
+            }
+
+            return Content(sb.ToString(), "text/plain", System.Text.Encoding.UTF8);
+        }
+
+        private int[] SearchParagraphIds(int projectId, string q, bool wholeWord)
+        {
             var candidates = db.Paragraphs
                 .Where(p => p.Chapter.BookProjectID == projectId && p.ParagraphText.Contains(q))
                 .Select(p => new {
@@ -401,20 +440,17 @@ namespace Seonyx.Web.Controllers
                 .ThenBy(p => p.OrdinalPosition)
                 .ToList();
 
-            IEnumerable<int> ids;
             if (wholeWord)
             {
                 var pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(q) + @"\b";
                 var regex = new System.Text.RegularExpressions.Regex(
                     pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                ids = candidates.Where(p => regex.IsMatch(p.ParagraphText)).Select(p => p.ParagraphID);
-            }
-            else
-            {
-                ids = candidates.Select(p => p.ParagraphID);
+                return candidates.Where(p => regex.IsMatch(p.ParagraphText))
+                                 .Select(p => p.ParagraphID)
+                                 .ToArray();
             }
 
-            return Json(ids.ToArray(), JsonRequestBehavior.AllowGet);
+            return candidates.Select(p => p.ParagraphID).ToArray();
         }
 
         private ParagraphEditViewModel BuildEditViewModel(BookProject project, Paragraph paragraph)
