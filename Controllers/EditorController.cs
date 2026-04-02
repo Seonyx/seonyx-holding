@@ -403,7 +403,7 @@ namespace Seonyx.Web.Controllers
 
             var paragraphs = db.Paragraphs
                 .Where(p => ids.Contains(p.ParagraphID))
-                .Select(p => new { p.ParagraphID, p.OrdinalPosition, p.ParagraphText })
+                .Select(p => new { p.ParagraphID, p.UniqueID, p.ParagraphText })
                 .ToList()
                 .OrderBy(p => Array.IndexOf(ids, p.ParagraphID))
                 .ToList();
@@ -418,7 +418,8 @@ namespace Seonyx.Web.Controllers
             sb.AppendLine();
             foreach (var p in paragraphs)
             {
-                sb.AppendLine(string.Format("[{0}]  {1}", p.OrdinalPosition, p.ParagraphText));
+                sb.AppendLine(p.UniqueID);
+                sb.AppendLine(p.ParagraphText);
                 sb.AppendLine();
             }
 
