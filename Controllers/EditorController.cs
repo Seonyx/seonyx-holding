@@ -405,7 +405,7 @@ namespace Seonyx.Web.Controllers
                 .Where(p => ids.Contains(p.ParagraphID))
                 .Select(p => new { p.ParagraphID, p.OrdinalPosition, p.ParagraphText })
                 .ToList()
-                .OrderBy(p => ids.IndexOf(p.ParagraphID))
+                .OrderBy(p => Array.IndexOf(ids, p.ParagraphID))
                 .ToList();
 
             var sb = new System.Text.StringBuilder();
