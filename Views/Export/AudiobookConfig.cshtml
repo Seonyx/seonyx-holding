@@ -39,6 +39,28 @@
     @Html.ValidationSummary(false, "", new { @class = "validation-summary-errors" })
 
     <div class="form-section">
+        <h2>Draft</h2>
+
+        <div class="form-group">
+            <label for="SelectedDraftNumber">Draft to export</label>
+            <select name="SelectedDraftNumber" id="SelectedDraftNumber" class="form-control" style="max-width:400px">
+                @foreach (var d in Model.AvailableDrafts)
+                {
+                    if (Model.SelectedDraftNumber == d.DraftNumber)
+                    {
+                        <option value="@d.DraftNumber" selected="selected">@d.Label</option>
+                    }
+                    else
+                    {
+                        <option value="@d.DraftNumber">@d.Label</option>
+                    }
+                }
+            </select>
+            @Html.ValidationMessageFor(m => m.SelectedDraftNumber)
+        </div>
+    </div>
+
+    <div class="form-section">
         <h2>Voice</h2>
 
         <div class="form-group">

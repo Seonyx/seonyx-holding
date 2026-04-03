@@ -242,14 +242,23 @@ namespace Seonyx.Web.Controllers
                 : null;
 
             // Phase 1: validate synchronously before touching the DB
-            var validationErrors = importer.Validate(bookXmlPath);
+            List<string> validationWarnings2;
+            var validationErrors = importer.Validate(bookXmlPath, out validationWarnings2);
             if (validationErrors.Any())
             {
-                WriteImportLog(projectId, false, null, validationErrors, sourceFileName);
+                var allLines2 = new System.Collections.Generic.List<string>(validationErrors);
+                if (validationWarnings2.Any())
+                    allLines2.AddRange(validationWarnings2.Select(w => "WARNING: " + w));
+                WriteImportLog(projectId, false, null, allLines2, sourceFileName);
                 var logUrl2 = Url.Action("Index", "ImportLog", new { projectId });
                 return Json(new { error = string.Format(
                     "Validation failed: {0} error(s). <a href='{1}'>View log</a>",
                     validationErrors.Count, logUrl2) });
+            }
+            if (validationWarnings2.Any())
+            {
+                var warnLines = validationWarnings2.Select(w => "WARNING: " + w).ToList();
+                WriteImportLog(projectId, true, null, warnLines, sourceFileName);
             }
 
             var chapterCount = GetChapterCountFromBook(bookXmlPath);
@@ -347,10 +356,14 @@ namespace Seonyx.Web.Controllers
                 : null;
 
             // Phase 1: validate everything before touching the DB
-            var validationErrors = importer.Validate(bookXmlPath);
+            List<string> validationWarnings;
+            var validationErrors = importer.Validate(bookXmlPath, out validationWarnings);
             if (validationErrors.Any())
             {
-                WriteImportLog(projectId, success: false, result: null, extraLines: validationErrors, sourceFileName: sourceFileName);
+                var allLines = new System.Collections.Generic.List<string>(validationErrors);
+                if (validationWarnings.Any())
+                    allLines.AddRange(validationWarnings.Select(w => "WARNING: " + w));
+                WriteImportLog(projectId, success: false, result: null, extraLines: allLines, sourceFileName: sourceFileName);
                 TempData["Error"] = string.Format(
                     "BookML validation failed — no data was imported. {0} error(s). {1}",
                     validationErrors.Count, ImportLogLink(projectId));

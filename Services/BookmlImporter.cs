@@ -56,9 +56,10 @@ namespace Seonyx.Web.Services
         /// Returns a list of error strings; an empty list means the package is valid.
         /// DOES NOT touch the database.
         /// </summary>
-        public List<string> Validate(string bookXmlPath)
+        public List<string> Validate(string bookXmlPath, out List<string> validationWarnings)
         {
             var errors = new List<string>();
+            validationWarnings = new List<string>();
 
             if (!File.Exists(bookXmlPath))
             {
@@ -129,7 +130,8 @@ namespace Seonyx.Web.Services
                 {
                     var chapterPids = ExtractPidsFromChapter(comp.ChapterPath);
                     errors.AddRange(CheckPidIntegrity(comp.MetaPath,  "meta",  chapterPids, comp.Id));
-                    errors.AddRange(CheckPidIntegrity(comp.NotesPath, "notes", chapterPids, comp.Id));
+                    // Notes orphans are audit-trail entries for deleted paragraphs — warn, don't reject.
+                    validationWarnings.AddRange(CheckPidIntegrity(comp.NotesPath, "notes", chapterPids, comp.Id));
                 }
             }
 
@@ -147,13 +149,15 @@ namespace Seonyx.Web.Services
             var result = new ImportResult();
 
             // Defensive re-validation: no DB writes if the package is not clean
-            var validationErrors = Validate(bookXmlPath);
+            List<string> revalidationWarnings;
+            var validationErrors = Validate(bookXmlPath, out revalidationWarnings);
             if (validationErrors.Any())
             {
                 result.Success = false;
                 result.Errors.AddRange(validationErrors);
                 return result;
             }
+            result.Warnings.AddRange(revalidationWarnings);
 
             var project = db.BookProjects.Find(projectId);
             if (project == null)
@@ -608,8 +612,9 @@ namespace Seonyx.Web.Services
                 if (pid != null && !chapterPids.Contains(pid))
                 {
                     errors.Add(string.Format(
-                        "Orphan pid in {0} file for component '{1}': '{2}' has no matching paragraph. Import rejected.",
-                        fileType, componentId, pid));
+                        "Orphan pid in {0} file for component '{1}': '{2}' has no matching paragraph.{3}",
+                        fileType, componentId, pid,
+                        fileType == "notes" ? " (audit-trail entry — import continues)" : " Import rejected."));
                 }
             }
             return errors;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -307,11 +308,13 @@ namespace Seonyx.Web.Controllers
 
             var model = new AudiobookConfigViewModel
             {
-                BookProjectID   = project.BookProjectID,
-                ProjectName     = project.ProjectName,
-                Author          = project.Author ?? "",
-                SelectedVoiceId = VoiceLibrary.All.Count > 0 ? VoiceLibrary.All[0].VoiceId : "",
-                Voices          = VoiceLibrary.All
+                BookProjectID      = project.BookProjectID,
+                ProjectName        = project.ProjectName,
+                Author             = project.Author ?? "",
+                SelectedVoiceId    = VoiceLibrary.All.Count > 0 ? VoiceLibrary.All[0].VoiceId : "",
+                Voices             = VoiceLibrary.All,
+                SelectedDraftNumber = project.CurrentDraftNumber,
+                AvailableDrafts    = BuildDraftOptions(project)
             };
 
             return View(model);
@@ -325,8 +328,9 @@ namespace Seonyx.Web.Controllers
             var project = db.BookProjects.Find(model.BookProjectID);
             if (project == null) return HttpNotFound();
 
-            model.ProjectName = project.ProjectName;
-            model.Voices      = VoiceLibrary.All;
+            model.ProjectName      = project.ProjectName;
+            model.Voices           = VoiceLibrary.All;
+            model.AvailableDrafts  = BuildDraftOptions(project);
 
             if (!ModelState.IsValid)
                 return View("AudiobookConfig", model);
@@ -340,14 +344,56 @@ namespace Seonyx.Web.Controllers
                 return View("AudiobookConfig", model);
             }
 
+            if (!model.AvailableDrafts.Any(d => d.DraftNumber == model.SelectedDraftNumber))
+            {
+                ModelState.AddModelError("SelectedDraftNumber", "Please select a valid draft.");
+                return View("AudiobookConfig", model);
+            }
+
             var builder  = new AudiobookPackageBuilder();
-            var zipBytes = builder.BuildPackage(db, model.BookProjectID, voice);
+            var zipBytes = builder.BuildPackage(db, model.BookProjectID, voice, model.SelectedDraftNumber);
 
             var dateStamp = DateTime.Today.ToString("yyyyMMdd");
-            var filename  = string.Format("{0}_audiobook_package_{1}.zip",
-                Slugify(project.ProjectName), dateStamp);
+            var filename  = string.Format("{0}_audiobook_draft{1}_{2}.zip",
+                Slugify(project.ProjectName), model.SelectedDraftNumber, dateStamp);
 
             return File(zipBytes, "application/zip", filename);
+        }
+
+        private List<DraftOption> BuildDraftOptions(BookProject project)
+        {
+            var drafts = db.Drafts
+                .Where(d => d.BookProjectID == project.BookProjectID)
+                .OrderBy(d => d.DraftNumber)
+                .ToList();
+
+            var options = new List<DraftOption>();
+            foreach (var d in drafts)
+            {
+                string label = string.Format("Draft {0}", d.DraftNumber);
+                if (!string.IsNullOrEmpty(d.Label))
+                    label += " - " + d.Label;
+                if (d.DraftNumber == project.CurrentDraftNumber)
+                    label += " (current)";
+                else if (d.Status == "snapshot")
+                    label += " - snapshot";
+                else if (d.Status == "abandoned")
+                    label += " - abandoned";
+
+                options.Add(new DraftOption { DraftNumber = d.DraftNumber, Label = label });
+            }
+
+            // Fallback: if no Drafts rows exist, offer just the current draft number
+            if (!options.Any())
+            {
+                options.Add(new DraftOption
+                {
+                    DraftNumber = project.CurrentDraftNumber,
+                    Label = string.Format("Draft {0} (current)", project.CurrentDraftNumber)
+                });
+            }
+
+            return options;
         }
 
         public ActionResult ExportBookml(int projectId)

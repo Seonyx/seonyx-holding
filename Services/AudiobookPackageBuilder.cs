@@ -20,7 +20,7 @@ namespace Seonyx.Web.Services
         /// Builds the audiobook package ZIP for the given project and voice.
         /// Returns the ZIP bytes ready to stream to the browser.
         /// </summary>
-        public byte[] BuildPackage(SeonyxContext db, int bookProjectId, VoiceInfo voice)
+        public byte[] BuildPackage(SeonyxContext db, int bookProjectId, VoiceInfo voice, int draftNumber)
         {
             if (voice == null)
                 throw new ArgumentNullException("voice");
@@ -83,7 +83,7 @@ namespace Seonyx.Web.Services
                     foreach (var ch in chapters)
                     {
                         var fileRef = chapterFiles[chIdx++];
-                        string content = BuildChapterText(db, ch);
+                        string content = BuildChapterText(db, ch, draftNumber);
                         AddTextEntry(archive, "chapters/" + fileRef.FileName, content);
                     }
                 }
@@ -96,7 +96,7 @@ namespace Seonyx.Web.Services
         // Chapter text file builder
         // =====================================================================
 
-        private string BuildChapterText(SeonyxContext db, Chapter ch)
+        private string BuildChapterText(SeonyxContext db, Chapter ch, int draftNumber)
         {
             var sb = new StringBuilder();
 
@@ -105,18 +105,11 @@ namespace Seonyx.Web.Services
             sb.AppendLine("## CHAPTER_TITLE: " + title);
             sb.AppendLine();
 
-            // Load paragraphs and their latest version data
-            var paragraphs = db.Paragraphs
-                .Where(p => p.ChapterID == ch.ChapterID)
-                .OrderBy(p => p.OrdinalPosition)
-                .ToList();
-
-            if (!paragraphs.Any())
-                return sb.ToString();
-
-            // Latest ParagraphVersion per pid (for ParaType and Seq) -- same pattern as EpubExporter
-            var latestVersionByPid = db.ParagraphVersions
-                .Where(v => v.ChapterID == ch.ChapterID)
+            // Load the version snapshot at the requested draft number.
+            // For each pid, take the highest DraftNumber <= draftNumber (the last
+            // known state of that paragraph as of the chosen draft).
+            var versionsByPid = db.ParagraphVersions
+                .Where(v => v.ChapterID == ch.ChapterID && v.DraftNumber <= draftNumber)
                 .ToList()
                 .GroupBy(v => v.Pid, StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(
@@ -124,27 +117,20 @@ namespace Seonyx.Web.Services
                     g => g.OrderByDescending(v => v.DraftNumber).First(),
                     StringComparer.OrdinalIgnoreCase);
 
-            // Build para rows sorted by Seq (with OrdinalPosition fallback)
+            if (!versionsByPid.Any())
+                return sb.ToString();
+
+            // Build para rows from version snapshots, sorted by Seq
             var rows = new List<ParaRow>();
-            int ordinal = 0;
-            foreach (var para in paragraphs)
+            int fallback = 0;
+            foreach (var ver in versionsByPid.Values)
             {
-                ordinal++;
-                ParagraphVersion ver = null;
-                if (!string.IsNullOrEmpty(para.UniqueID))
-                    latestVersionByPid.TryGetValue(para.UniqueID, out ver);
-
-                int seq = (ver != null && ver.Seq > 0) ? ver.Seq : ordinal * 1000;
-
-                string paraType = (ver != null && !string.IsNullOrEmpty(ver.ParaType))
-                    ? ver.ParaType
-                    : "normal";
-
+                fallback++;
                 rows.Add(new ParaRow
                 {
-                    Seq      = seq,
-                    ParaType = paraType,
-                    Text     = para.ParagraphText ?? ""
+                    Seq      = ver.Seq > 0 ? ver.Seq : fallback * 1000,
+                    ParaType = !string.IsNullOrEmpty(ver.ParaType) ? ver.ParaType : "normal",
+                    Text     = ver.Content ?? ""
                 });
             }
 

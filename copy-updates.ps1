@@ -45,6 +45,8 @@ try {
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
         "Controllers\ExportController.cs",
+        "Controllers\FileUploadController.cs",
+        "Services\BookmlImporter.cs",
         "Views\Export\Index.cshtml",
         "Seonyx.csproj",
         "App_Data\BookML\bookml-common.xsd"
@@ -62,7 +64,7 @@ try {
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "1. Build (Ctrl+Shift+B) in VS 2022 - no DB changes, no new packages." -ForegroundColor White
-    Write-Host "   NOTE: bookml-common.xsd updated - BookML imports with 3-part PIDs will now validate." -ForegroundColor White
+    Write-Host "   NOTE: BookML importer now treats orphan PIDs in notes files as warnings, not errors." -ForegroundColor White
     Write-Host "2. Open any book project and go to Export." -ForegroundColor White
     Write-Host "3. You should see a new 'Audiobook Package' option card." -ForegroundColor White
     Write-Host "4. Select a voice and click 'Download Package' - a ZIP should download." -ForegroundColor White
