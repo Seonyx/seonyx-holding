@@ -22,6 +22,18 @@
 
 
   <!-- ============================================================
+       SIMPLE TYPE: ISBN with basic format validation
+       Supports ISBN-10 and ISBN-13 with optional hyphens.
+  ============================================================ -->
+
+  <xs:simpleType name="IsbnType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(97[89]-?[0-9]{1,5}-?[0-9]+-?[0-9]+-?[0-9]|[0-9]{9}[0-9X])"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ============================================================
        SIMPLE TYPE: Version string
   ============================================================ -->
 
