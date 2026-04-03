@@ -22,18 +22,6 @@
 
 
   <!-- ============================================================
-       SIMPLE TYPE: ISBN with basic format validation
-       Supports ISBN-10 and ISBN-13 with optional hyphens.
-  ============================================================ -->
-
-  <xs:simpleType name="IsbnType">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(97[89]-?[0-9]{1,5}-?[0-9]+-?[0-9]+-?[0-9]|[0-9]{9}[0-9X])"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-
-  <!-- ============================================================
        SIMPLE TYPE: Version string
   ============================================================ -->
 
@@ -54,38 +42,53 @@
   <!-- ============================================================
        SIMPLE TYPE: PID — Paragraph/Element Identity Key
 
-       Two accepted formats:
+       Current format (v1.1+):
+         CHAPTERID-TYPECODE-TOKEN8
+         Example: CH01-P-7K2Q9ZPL
 
-       1. Generated format (legacy/non-fiction):
-            CHAPTERID-TYPECODE-SEQUENCE
-            Example: CH01-P0010  CH01-H0005  CH01-EP001
+       Legacy format (v1.0, retire — do not generate):
+         CHAPTERID-TYPECODESEQUENCE
+         Example: CH01-P0010
 
-       2. Source UID format (AI-markup pipeline):
-            SOURCE-IDENTIFIER
-            Example: C01-4E4JEXDWPR  C05-KJ5VZALZHN
+       Type codes:
+         P   = paragraph
+         H   = heading
+         F   = figure
+         T   = table
+         EP  = epigraph paragraph
+         FN  = footnote anchor
 
-       Both formats share the rule:
-         - Assigned once at creation time; NEVER changed
-         - All uppercase alphanumeric characters
-         - Used as a foreign key in meta and notes files
-         - Sequence/display order is governed by seq attribute,
-           not the PID itself
+       TOKEN8: 8 characters drawn from ABCDEFGHJKLMNPQRSTUVWXYZ23456789
+         (O, I, 0, 1 excluded to avoid visual confusion)
+
+       Rules:
+         - Assigned once at generation time; NEVER changed
+         - Deliberately opaque — not a sequence number
+         - All uppercase
+         - Used as foreign key in meta and notes files
+         - Display order is governed by the seq attribute only
   ============================================================ -->
 
   <xs:simpleType name="PidType">
     <xs:annotation>
       <xs:documentation>
         Immutable paragraph/element identity key.
-        Accepted formats:
-          Generated: CH01-P0010 (prefix: chapter ID, suffix: type+seq)
-          Source UID: C01-4E4JEXDWPR (prefix: short code, suffix: opaque key)
-        All uppercase. Prefix starts with a letter. Suffix is 4-12 uppercase
-        alphanumeric characters.
+        Current format:  CH01-P-7K2Q9ZPL  (CHAPTERID-TYPECODE-TOKEN8)
+        Legacy format:   CH01-P0010        (accepted for backwards compatibility)
       </xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:pattern value="[A-Z][A-Z0-9]*-[A-Z0-9]{4,12}"/>
-    </xs:restriction>
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[A-Z0-9]+-[A-Z]+-[A-Z0-9]{8}"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[A-Z0-9]+-[A-Z]+[0-9]{3,4}"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
   </xs:simpleType>
 
 
