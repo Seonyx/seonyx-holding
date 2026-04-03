@@ -298,6 +298,58 @@ namespace Seonyx.Web.Controllers
             }
         }
 
+        public ActionResult AudiobookConfig(int projectId)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var project = db.BookProjects.Find(projectId);
+            if (project == null) return HttpNotFound();
+
+            var model = new AudiobookConfigViewModel
+            {
+                BookProjectID   = project.BookProjectID,
+                ProjectName     = project.ProjectName,
+                Author          = project.Author ?? "",
+                SelectedVoiceId = VoiceLibrary.All.Count > 0 ? VoiceLibrary.All[0].VoiceId : "",
+                Voices          = VoiceLibrary.All
+            };
+
+            return View(model);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult DownloadAudiobookPackage(AudiobookConfigViewModel model)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var project = db.BookProjects.Find(model.BookProjectID);
+            if (project == null) return HttpNotFound();
+
+            model.ProjectName = project.ProjectName;
+            model.Voices      = VoiceLibrary.All;
+
+            if (!ModelState.IsValid)
+                return View("AudiobookConfig", model);
+
+            var voice = VoiceLibrary.All.FirstOrDefault(
+                v => string.Equals(v.VoiceId, model.SelectedVoiceId, StringComparison.OrdinalIgnoreCase));
+
+            if (voice == null)
+            {
+                ModelState.AddModelError("SelectedVoiceId", "Please select a valid voice.");
+                return View("AudiobookConfig", model);
+            }
+
+            var builder  = new AudiobookPackageBuilder();
+            var zipBytes = builder.BuildPackage(db, model.BookProjectID, voice);
+
+            var dateStamp = DateTime.Today.ToString("yyyyMMdd");
+            var filename  = string.Format("{0}_audiobook_package_{1}.zip",
+                Slugify(project.ProjectName), dateStamp);
+
+            return File(zipBytes, "application/zip", filename);
+        }
+
         public ActionResult ExportBookml(int projectId)
         {
             if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");

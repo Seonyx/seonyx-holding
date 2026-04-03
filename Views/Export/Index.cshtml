@@ -45,6 +45,14 @@
         </div>
         <a href="@Url.Action("EpubConfig", new { projectId = Model.BookProjectID })" class="btn btn-primary">Configure &amp; Generate</a>
     </div>
+
+    <div class="export-option">
+        <div class="export-option-info">
+            <h3>Audiobook Package</h3>
+            <p>Downloads a ZIP you run locally with Python to generate narrated audio via Piper TTS. No server processing &mdash; audio is generated on your own machine.</p>
+        </div>
+        <a href="@Url.Action("AudiobookConfig", new { projectId = Model.BookProjectID })" class="btn btn-primary">Configure &amp; Download</a>
+    </div>
 </div>
 
 @if (Model.Chapters.Count > 0)

@@ -195,10 +195,14 @@
     <Compile Include="Models\ViewModels\BookEditor\FileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\ParagraphEditViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\ExportViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\AudiobookConfigViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\EpubConfigViewModel.cs" />
+    <Compile Include="Services\AudiobookPackageBuilder.cs" />
     <Compile Include="Services\BookFileParser.cs" />
     <Compile Include="Services\BookmlExporter.cs" />
     <Compile Include="Services\EpubExporter.cs" />
+    <Compile Include="Services\PythonScript.cs" />
+    <Compile Include="Services\VoiceLibrary.cs" />
     <Compile Include="Services\BookmlImporter.cs" />
     <Compile Include="Controllers\BookProjectController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
@@ -266,6 +270,7 @@
     <Content Include="Views\BookProject\Edit.cshtml" />
     <Content Include="Views\FileUpload\Index.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\Export\AudiobookConfig.cshtml" />
     <Content Include="Views\Export\EpubConfig.cshtml" />
     <Content Include="Views\Export\Index.cshtml" />
     <Content Include="Views\ImportLog\Index.cshtml" />

@@ -1,0 +1,76 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.AudiobookConfigViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Audiobook Package - " + Model.ProjectName;
+
+    // Group voices by accent for the optgroup dropdown
+    var voiceGroups = Model.Voices
+        .GroupBy(v => v.AccentLabel)
+        .OrderBy(g => g.Key)
+        .ToList();
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+    <style>
+        .voice-info { font-size: 0.85em; color: #555; margin-top: 0.25rem; }
+        .package-note { background: #f0f7ff; border: 1px solid #b8d4f0; border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.9em; color: #2c5282; }
+    </style>
+}
+
+<div class="page-header">
+    <h1>Audiobook Package: @Model.ProjectName</h1>
+    <a href="@Url.Action("Index", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Back to Export</a>
+</div>
+
+<div class="package-note">
+    Downloads a ZIP package you run locally to generate audio.
+    No processing happens on the server &mdash; Piper TTS runs on your own machine.
+    Requires Python 3.8+ (no extra packages). Full instructions are inside the package.
+</div>
+
+@using (Html.BeginForm("DownloadAudiobookPackage", "Export", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.BookProjectID)
+    @Html.HiddenFor(m => m.ProjectName)
+    @Html.HiddenFor(m => m.Author)
+
+    @Html.ValidationSummary(false, "", new { @class = "validation-summary-errors" })
+
+    <div class="form-section">
+        <h2>Voice</h2>
+
+        <div class="form-group">
+            <label for="SelectedVoiceId">Narrator voice</label>
+            <select name="SelectedVoiceId" id="SelectedVoiceId" class="form-control" style="max-width:400px">
+                <option value="">-- Select a voice --</option>
+                @foreach (var group in voiceGroups)
+                {
+                    <optgroup label="@group.Key">
+                        @foreach (var v in group.OrderBy(x => x.DisplayName))
+                        {
+                            if (Model.SelectedVoiceId == v.VoiceId)
+                            {
+                                <option value="@v.VoiceId" selected="selected">@v.DisplayName (@v.Gender, @v.Quality quality)</option>
+                            }
+                            else
+                            {
+                                <option value="@v.VoiceId">@v.DisplayName (@v.Gender, @v.Quality quality)</option>
+                            }
+                        }
+                    </optgroup>
+                }
+            </select>
+            @Html.ValidationMessageFor(m => m.SelectedVoiceId)
+            <p class="voice-info" id="voice-info-text">
+                Voice model will be downloaded automatically on first run (~30-60 MB).
+            </p>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Download Package</button>
+        <a href="@Url.Action("Index", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Cancel</a>
+    </div>
+}
