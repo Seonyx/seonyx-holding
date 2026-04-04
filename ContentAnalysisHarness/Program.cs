@@ -27,6 +27,7 @@ namespace ContentAnalysisHarness
 
             try
             {
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
                 var analyser = new ChapterAnalyser();
                 var report   = analyser.Analyse(chapterPath);
                 Console.WriteLine(JsonConvert.SerializeObject(report, Formatting.Indented));
