@@ -44,7 +44,9 @@ try {
         "ContentAnalysisEngine\Metrics\TtrMetric.cs",
         "ContentAnalysisEngine\Metrics\HapaxMetric.cs",
         "ContentAnalysisHarness\ContentAnalysisHarness.csproj",
-        "ContentAnalysisHarness\Program.cs"
+        "ContentAnalysisHarness\Program.cs",
+        "ContentAnalysisHarness\Properties\AssemblyInfo.cs",
+        "ContentAnalysisEngine\Properties\AssemblyInfo.cs"
     )
     foreach ($f in $newFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
