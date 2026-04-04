@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2C3D4E5-F6A7-8901-BCDE-F12345678901}</ProjectGuid>
+    <ProjectGuid>{71E78158-F06D-4213-9855-5A0880F3038E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ContentAnalysisHarness</RootNamespace>
@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContentAnalysisEngine\ContentAnalysisEngine.csproj">
-      <Project>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</Project>
+      <Project>{B3CC864D-8CF3-4A44-A98A-E7706D3387F6}</Project>
       <Name>ContentAnalysisEngine</Name>
     </ProjectReference>
   </ItemGroup>
