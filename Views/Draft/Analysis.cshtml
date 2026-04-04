@@ -1,0 +1,844 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.DraftAnalysisViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Draft Analysis - " + Model.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+    <link href="~/Content/css/work-order.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Draft Analysis: @Model.ProjectName</h1>
+    <a href="@Url.Action("Index", "BookProject")" class="btn btn-secondary">Back to Projects</a>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@* Chapter / draft picker *@
+<div class="diff-controls">
+    @using (Html.BeginForm("Analysis", "Draft", FormMethod.Get, new { @class = "diff-picker-form" }))
+    {
+        <input type="hidden" name="projectId" value="@Model.BookProjectID" />
+        <label>Chapter</label>
+        <select name="chapterId" class="form-control-inline">
+            @foreach (var c in Model.Chapters)
+            {
+                if (c.BookmlChapterId != null)
+                {
+                    <option value="@c.ChapterID" @(c.ChapterID == Model.ChapterID ? "selected" : "")>
+                        Ch @c.ChapterNumber: @c.ChapterTitle
+                    </option>
+                }
+            }
+        </select>
+        <label>Draft</label>
+        <input type="number" name="draftNumber" value="@Model.DraftNumber" min="1" class="form-control-inline wo-draft-input" />
+        <button type="submit" class="btn btn-secondary">Load</button>
+    }
+</div>
+
+@if (Model.ChapterID == 0)
+{
+    <div class="empty-state">
+        <p>No BookML chapters found for this project. Import a BookML package first.</p>
+    </div>
+}
+else if (!Model.HasManifest)
+{
+    <div class="empty-state">
+        <p>No work order manifest generated yet for <strong>@Model.ChapterTitle</strong>, draft @Model.DraftNumber.</p>
+        @using (Html.BeginForm("GenerateWorkOrders", "Draft", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="projectId"   value="@Model.BookProjectID" />
+            <input type="hidden" name="chapterId"   value="@Model.ChapterID" />
+            <input type="hidden" name="draftNumber" value="@Model.DraftNumber" />
+            <button type="submit" class="btn btn-primary">Generate Work Orders</button>
+        }
+    </div>
+}
+else
+{
+    @* ================================================================
+       Summary bar
+       ================================================================ *@
+    <div class="wo-summary-bar" id="woSummaryBar">
+        <span class="wo-summary-item">
+            <strong id="woTotalCount">@Model.TotalEntries</strong> total
+        </span>
+        <span class="wo-summary-sep">|</span>
+        <span class="wo-summary-item">
+            <strong id="woPendingCount">@Model.PendingCount</strong> pending
+            <span id="woBatchIndicator" class="wo-batch-indicator"></span>
+        </span>
+        <span class="wo-summary-sep">|</span>
+        <span class="wo-summary-item">
+            <strong id="woSkippedCount">@Model.SkippedCount</strong> skipped
+        </span>
+        <span class="wo-summary-sep">|</span>
+        <span class="wo-summary-item wo-type-breakdown">
+            <span id="woOutlierCount">@Model.OutlierCount</span> outlier words,
+            <span id="woNgramCount">@Model.NgramCount</span> n-grams,
+            <span id="woEchoCount">@Model.EchoCount</span> echoes,
+            <span id="woManualCount">@Model.ManualCount</span> manual
+        </span>
+    </div>
+
+    @* ================================================================
+       Type filter bar
+       ================================================================ *@
+    <div class="wo-filter-bar" id="woFilterBar">
+        <button class="wo-filter-tab" data-filter="outlier-word" id="tabOutlier">
+            Outlier Words (<span class="tab-count">@Model.OutlierCount</span>)
+        </button>
+        <button class="wo-filter-tab" data-filter="repetitive-ngram" id="tabNgram">
+            N-grams (<span class="tab-count">@Model.NgramCount</span>)
+        </button>
+        <button class="wo-filter-tab" data-filter="proximity-echo" id="tabEcho">
+            Echoes (<span class="tab-count">@Model.EchoCount</span>)
+        </button>
+        <button class="wo-filter-tab" data-filter="manual" id="tabManual">
+            Manual (<span class="tab-count">@Model.ManualCount</span>)
+        </button>
+        <button class="wo-filter-tab" data-filter="all" id="tabAll">
+            All (@Model.TotalEntries)
+        </button>
+    </div>
+
+    @* ================================================================
+       Toolbar
+       ================================================================ *@
+    <div class="wo-toolbar">
+        <button class="btn btn-secondary btn-sm" id="btnAddManual">Add Manual Entry</button>
+        <span class="wo-toolbar-sep"></span>
+        <button class="btn btn-secondary btn-sm" id="btnSkipEchoes">Skip All Echoes</button>
+        <button class="btn btn-secondary btn-sm" id="btnSkipBelow">Skip All Below Severity...</button>
+        <button class="btn btn-secondary btn-sm" id="btnResetPending">Reset All to Pending</button>
+        <span class="wo-toolbar-sep wo-toolbar-right"></span>
+        @using (Html.BeginForm("ExportWorkOrders", "Draft", FormMethod.Post, new { id = "exportForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="projectId"   value="@Model.BookProjectID" />
+            <input type="hidden" name="chapterId"   value="@Model.ChapterID" />
+            <input type="hidden" name="draftNumber" value="@Model.DraftNumber" />
+            <input type="hidden" name="manifestXml" id="exportManifestXml" value="" />
+            <button type="button" class="btn btn-primary btn-sm" id="btnExport">Export Work Orders</button>
+        }
+    </div>
+
+    @* ================================================================
+       Entry list table
+       ================================================================ *@
+    <div class="wo-table-container">
+        <table class="draft-table wo-entry-table" id="woEntryTable">
+            <thead>
+                <tr>
+                    <th class="wo-col-id sortable" data-col="id">ID</th>
+                    <th class="wo-col-status">Status</th>
+                    <th class="wo-col-type sortable" data-col="type">Type</th>
+                    <th class="wo-col-severity sortable" data-col="severity">Severity</th>
+                    <th class="wo-col-subject sortable" data-col="subject">Subject</th>
+                    <th class="wo-col-pids">PIDs</th>
+                    <th class="wo-col-constraints">Constraints</th>
+                </tr>
+            </thead>
+            <tbody id="woTableBody">
+                @foreach (var entry in Model.Entries)
+                {
+                    @* Severity CSS class *@
+                    var sevClass = entry.Severity > 80 ? "severity-high"
+                                 : entry.Severity >= 50 ? "severity-medium"
+                                 : "severity-low";
+                    var skippedClass = entry.Status == "skipped" ? " wo-row-skipped" : "";
+
+                    @* Build data-entry JSON for JS — serialise the entry *@
+                    var entryJson = Newtonsoft.Json.JsonConvert.SerializeObject(entry);
+
+                    <tr class="wo-entry-row@(skippedClass)"
+                        data-id="@entry.Id"
+                        data-type="@entry.Type"
+                        data-status="@entry.Status"
+                        data-severity="@entry.Severity.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
+                        data-entry="@Html.AttributeEncode(entryJson)">
+                        <td class="wo-col-id">@entry.Id</td>
+                        <td class="wo-col-status">
+                            <button class="wo-status-btn @(entry.Status == "pending" ? "status-pending" : "status-skipped")"
+                                    title="Click to toggle">
+                                @(entry.Status == "pending" ? "Pending" : "Skipped")
+                            </button>
+                        </td>
+                        <td class="wo-col-type">@entry.TypeLabel</td>
+                        <td class="wo-col-severity @sevClass">@entry.Severity.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)</td>
+                        <td class="wo-col-subject">@entry.Subject</td>
+                        <td class="wo-col-pids">@entry.Targets.Count</td>
+                        <td class="wo-col-constraints">@entry.ConstraintSummary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @* ================================================================
+       Detail panel (hidden until a row is clicked)
+       ================================================================ *@
+    <div class="wo-detail-panel" id="woDetailPanel" style="display:none">
+        <div class="wo-detail-header">
+            <h3 id="detailSubject"></h3>
+            <div class="wo-detail-meta">
+                <span id="detailId" class="wo-detail-id"></span>
+                <span id="detailType" class="badge-unchanged wo-detail-type"></span>
+                <span id="detailSeverity" class="wo-detail-severity"></span>
+            </div>
+            <button class="wo-detail-close btn btn-secondary btn-sm" id="btnDetailClose">Close</button>
+        </div>
+        <div class="wo-detail-body">
+            <p class="wo-detail-description" id="detailDescription"></p>
+
+            <div class="wo-detail-section">
+                <h4>Targets</h4>
+                <div id="detailTargets" class="wo-target-list"></div>
+                <p class="wo-detail-hint" id="detailTargetsHint" style="display:none">
+                    Warning: removing all targets will auto-skip this entry.
+                </p>
+            </div>
+
+            <div class="wo-detail-section">
+                <h4>Bans</h4>
+                <div id="detailBans" class="wo-ban-list"></div>
+                <div class="wo-add-ban">
+                    <select id="banTypeInput" class="form-control-inline">
+                        <option value="word">word</option>
+                        <option value="phrase">phrase</option>
+                    </select>
+                    <input type="text" id="banTermInput" class="form-control-inline wo-ban-input" placeholder="Term to ban" />
+                    <button class="btn btn-secondary btn-sm" id="btnAddBan">Add Ban</button>
+                </div>
+            </div>
+
+            <div class="wo-detail-section" id="detailLimitSection">
+                <h4>Limit</h4>
+                <div id="detailLimit" class="wo-limit-row"></div>
+            </div>
+
+            <div class="wo-detail-section">
+                <h4>Instruction</h4>
+                <textarea id="detailInstruction" class="wo-instruction-textarea" rows="4"></textarea>
+            </div>
+        </div>
+    </div>
+
+    @* ================================================================
+       Manual entry panel (hidden until Add Manual is clicked)
+       ================================================================ *@
+    <div class="wo-manual-panel" id="woManualPanel" style="display:none">
+        <div class="wo-detail-header">
+            <h3>Add Manual Entry</h3>
+            <button class="btn btn-secondary btn-sm" id="btnManualClose">Cancel</button>
+        </div>
+        <div class="wo-detail-body">
+            <div class="wo-detail-section">
+                <h4>Subject <span class="wo-required">*</span></h4>
+                <input type="text" id="manualSubject" class="form-control-inline wo-manual-wide" />
+            </div>
+            <div class="wo-detail-section">
+                <h4>Description</h4>
+                <input type="text" id="manualDescription" class="form-control-inline wo-manual-wide" />
+            </div>
+            <div class="wo-detail-section">
+                <h4>Severity (0-100)</h4>
+                <input type="number" id="manualSeverity" value="50" min="0" max="100" class="form-control-inline" />
+            </div>
+            <div class="wo-detail-section">
+                <h4>Target PIDs <span class="wo-required">*</span></h4>
+                <input type="text" id="manualPids" class="form-control-inline wo-manual-wide"
+                       placeholder="Comma-separated PIDs, e.g. CH01-P-ABC123, CH01-P-DEF456" />
+            </div>
+            <div class="wo-detail-section">
+                <h4>Instruction <span class="wo-required">*</span></h4>
+                <textarea id="manualInstruction" class="wo-instruction-textarea" rows="3"></textarea>
+            </div>
+            <div class="wo-manual-actions">
+                <button class="btn btn-primary" id="btnManualConfirm">Add Entry</button>
+                <button class="btn btn-secondary" id="btnManualCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    @* Hidden config for JS *@
+    <input type="hidden" id="woProjectId"   value="@Model.BookProjectID" />
+    <input type="hidden" id="woChapterId"   value="@Model.ChapterID" />
+    <input type="hidden" id="woDraftNumber" value="@Model.DraftNumber" />
+    <input type="hidden" id="woBookmlId"    value="@Model.BookmlChapterId" />
+    <input type="hidden" id="woEditorBase"  value="@Url.Action("Index", "Editor")" />
+}
+
+@section Scripts {
+<script>
+(function () {
+    'use strict';
+
+    if (!document.getElementById('woEntryTable')) return;  // no manifest yet
+
+    // ----------------------------------------------------------------
+    // State
+    // ----------------------------------------------------------------
+    var manifest = [];          // master array of entry objects
+    var activeFilter = 'outlier-word';
+    var sortCol = 'severity';
+    var sortAsc = false;
+    var activeEntryId = null;
+
+    var projectId   = document.getElementById('woProjectId').value;
+    var chapterId   = document.getElementById('woChapterId').value;
+    var draftNumber = document.getElementById('woDraftNumber').value;
+    var editorBase  = document.getElementById('woEditorBase').value;
+    var bookmlId    = document.getElementById('woBookmlId').value;
+
+    // ----------------------------------------------------------------
+    // Bootstrap: parse all <tr data-entry="..."> into manifest[]
+    // ----------------------------------------------------------------
+    (function () {
+        var rows = document.querySelectorAll('#woTableBody tr.wo-entry-row');
+        for (var i = 0; i < rows.length; i++) {
+            try {
+                var e = JSON.parse(rows[i].getAttribute('data-entry'));
+                manifest.push(e);
+            } catch (ex) { /* skip corrupt row */ }
+        }
+        applyFilter(activeFilter);
+        updateSummary();
+        updateFilterTabs();
+        setActiveFilterTab(activeFilter);
+    }());
+
+    // ----------------------------------------------------------------
+    // Filter
+    // ----------------------------------------------------------------
+    function applyFilter(filter) {
+        activeFilter = filter;
+        var rows = document.querySelectorAll('#woTableBody tr.wo-entry-row');
+        for (var i = 0; i < rows.length; i++) {
+            var type = rows[i].getAttribute('data-type');
+            rows[i].style.display = (filter === 'all' || type === filter) ? '' : 'none';
+        }
+    }
+
+    document.getElementById('woFilterBar').addEventListener('click', function (e) {
+        var btn = e.target.closest('.wo-filter-tab');
+        if (!btn) return;
+        setActiveFilterTab(btn.getAttribute('data-filter'));
+        applyFilter(btn.getAttribute('data-filter'));
+    });
+
+    function setActiveFilterTab(filter) {
+        var tabs = document.querySelectorAll('.wo-filter-tab');
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].classList.toggle('wo-filter-tab-active',
+                tabs[i].getAttribute('data-filter') === filter);
+        }
+    }
+
+    // ----------------------------------------------------------------
+    // Summary + batch indicator
+    // ----------------------------------------------------------------
+    function updateSummary() {
+        var total   = manifest.length;
+        var pending = manifest.filter(function (e) { return e.Status === 'pending'; }).length;
+        var skipped = total - pending;
+        var outlier = manifest.filter(function (e) { return e.Type === 'outlier-word'; }).length;
+        var ngram   = manifest.filter(function (e) { return e.Type === 'repetitive-ngram'; }).length;
+        var echo    = manifest.filter(function (e) { return e.Type === 'proximity-echo'; }).length;
+        var manual  = manifest.filter(function (e) { return e.Type === 'manual'; }).length;
+
+        document.getElementById('woTotalCount').textContent   = total;
+        document.getElementById('woPendingCount').textContent = pending;
+        document.getElementById('woSkippedCount').textContent = skipped;
+        document.getElementById('woOutlierCount').textContent = outlier;
+        document.getElementById('woNgramCount').textContent   = ngram;
+        document.getElementById('woEchoCount').textContent    = echo;
+        document.getElementById('woManualCount').textContent  = manual;
+
+        var ind = document.getElementById('woBatchIndicator');
+        if (pending === 0) {
+            ind.textContent  = '';
+            ind.className    = 'wo-batch-indicator';
+        } else if (pending <= 50) {
+            ind.textContent  = 'Light batch';
+            ind.className    = 'wo-batch-indicator batch-light';
+        } else if (pending <= 200) {
+            ind.textContent  = 'Moderate batch';
+            ind.className    = 'wo-batch-indicator batch-moderate';
+        } else {
+            ind.textContent  = 'Heavy batch - consider reducing scope';
+            ind.className    = 'wo-batch-indicator batch-heavy';
+        }
+    }
+
+    // ----------------------------------------------------------------
+    // Filter tab counts
+    // ----------------------------------------------------------------
+    function updateFilterTabs() {
+        var types = ['outlier-word', 'repetitive-ngram', 'proximity-echo', 'manual'];
+        var tabIds = { 'outlier-word': 'tabOutlier', 'repetitive-ngram': 'tabNgram',
+                       'proximity-echo': 'tabEcho', 'manual': 'tabManual' };
+        for (var i = 0; i < types.length; i++) {
+            var t    = types[i];
+            var btn  = document.getElementById(tabIds[t]);
+            var cnt  = manifest.filter(function (e) { return e.Type === t; }).length;
+            if (btn) btn.querySelector('.tab-count').textContent = cnt;
+        }
+    }
+
+    // ----------------------------------------------------------------
+    // Status toggle
+    // ----------------------------------------------------------------
+    document.getElementById('woTableBody').addEventListener('click', function (e) {
+        var btn = e.target.closest('.wo-status-btn');
+        if (!btn) return;
+        var row   = btn.closest('tr');
+        var id    = row.getAttribute('data-id');
+        var entry = findEntry(id);
+        if (!entry) return;
+        var newStatus = entry.Status === 'pending' ? 'skipped' : 'pending';
+        setEntryStatus(entry, row, btn, newStatus);
+        updateSummary();
+        updateFilterTabs();
+        if (activeEntryId === id) renderDetailStatus(entry);
+    });
+
+    function setEntryStatus(entry, row, btn, status) {
+        entry.Status = status;
+        row.setAttribute('data-status', status);
+        row.classList.toggle('wo-row-skipped', status === 'skipped');
+        btn.textContent = status === 'pending' ? 'Pending' : 'Skipped';
+        btn.className   = 'wo-status-btn ' + (status === 'pending' ? 'status-pending' : 'status-skipped');
+    }
+
+    // ----------------------------------------------------------------
+    // Row click -> detail panel
+    // ----------------------------------------------------------------
+    document.getElementById('woTableBody').addEventListener('click', function (e) {
+        if (e.target.closest('.wo-status-btn')) return;  // handled above
+        var row = e.target.closest('tr.wo-entry-row');
+        if (!row) return;
+        openDetail(row.getAttribute('data-id'));
+    });
+
+    function openDetail(id) {
+        var entry = findEntry(id);
+        if (!entry) return;
+        activeEntryId = id;
+        renderDetail(entry);
+        document.getElementById('woDetailPanel').style.display = '';
+        document.getElementById('woManualPanel').style.display = 'none';
+        document.getElementById('woDetailPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function renderDetail(entry) {
+        document.getElementById('detailSubject').textContent     = entry.Subject;
+        document.getElementById('detailId').textContent          = entry.Id;
+        document.getElementById('detailType').textContent        = entry.TypeLabel;
+        document.getElementById('detailSeverity').textContent    = 'Severity: ' + parseFloat(entry.Severity).toFixed(1);
+        document.getElementById('detailDescription').textContent = entry.Description;
+        document.getElementById('detailInstruction').value       = entry.Instruction || '';
+        renderDetailStatus(entry);
+        renderDetailTargets(entry);
+        renderDetailBans(entry);
+        renderDetailLimit(entry);
+    }
+
+    function renderDetailStatus(entry) {
+        // nothing extra needed — status is shown in table
+    }
+
+    function renderDetailTargets(entry) {
+        var div = document.getElementById('detailTargets');
+        div.innerHTML = '';
+        (entry.Targets || []).forEach(function (t) {
+            var row = document.createElement('div');
+            row.className = 'wo-target-row';
+
+            var link;
+            if (t.ParagraphID) {
+                link = document.createElement('a');
+                link.href = editorBase + '?projectId=' + projectId + '&paragraphId=' + t.ParagraphID;
+                link.target = '_blank';
+                link.className = 'wo-pid-link';
+                link.textContent = t.Pid + (t.Count ? ' (x' + t.Count + ')' : '');
+            } else {
+                link = document.createElement('span');
+                link.className = 'wo-pid-nolink';
+                link.textContent = t.Pid + (t.Count ? ' (x' + t.Count + ')' : '');
+            }
+            row.appendChild(link);
+
+            var rm = document.createElement('button');
+            rm.className   = 'wo-remove-btn';
+            rm.textContent = '\u00d7';
+            rm.title       = 'Remove this PID';
+            (function (pid) {
+                rm.addEventListener('click', function () {
+                    entry.Targets = entry.Targets.filter(function (x) { return x.Pid !== pid; });
+                    if (entry.Targets.length === 0) {
+                        entry.Status = 'skipped';
+                        var tr  = document.querySelector('tr[data-id="' + entry.Id + '"]');
+                        var btn = tr ? tr.querySelector('.wo-status-btn') : null;
+                        if (tr && btn) setEntryStatus(entry, tr, btn, 'skipped');
+                        updateSummary();
+                        updateFilterTabs();
+                        document.getElementById('detailTargetsHint').style.display = '';
+                    }
+                    renderDetailTargets(entry);
+                });
+            }(t.Pid));
+            row.appendChild(rm);
+            div.appendChild(row);
+        });
+
+        document.getElementById('detailTargetsHint').style.display =
+            (entry.Targets.length === 0) ? '' : 'none';
+    }
+
+    function renderDetailBans(entry) {
+        var div = document.getElementById('detailBans');
+        div.innerHTML = '';
+        (entry.Bans || []).forEach(function (b, idx) {
+            var row = document.createElement('div');
+            row.className = 'wo-ban-row';
+
+            var lbl = document.createElement('span');
+            lbl.className   = 'wo-ban-type badge-unchanged';
+            lbl.textContent = b.BanType;
+            row.appendChild(lbl);
+
+            var term = document.createElement('span');
+            term.className   = 'wo-ban-term';
+            term.textContent = b.Term;
+            row.appendChild(term);
+
+            var rm = document.createElement('button');
+            rm.className   = 'wo-remove-btn';
+            rm.textContent = '\u00d7';
+            rm.title       = 'Remove this ban';
+            (function (i) {
+                rm.addEventListener('click', function () {
+                    entry.Bans.splice(i, 1);
+                    renderDetailBans(entry);
+                });
+            }(idx));
+            row.appendChild(rm);
+            div.appendChild(row);
+        });
+    }
+
+    function renderDetailLimit(entry) {
+        var div     = document.getElementById('detailLimit');
+        var section = document.getElementById('detailLimitSection');
+        div.innerHTML = '';
+        if (!entry.Limit) {
+            section.style.display = 'none';
+            return;
+        }
+        section.style.display = '';
+        var row = document.createElement('div');
+        row.className = 'wo-limit-row';
+
+        var typeSpan = document.createElement('span');
+        typeSpan.textContent = entry.Limit.LimitType + ': ';
+        row.appendChild(typeSpan);
+
+        var inp = document.createElement('input');
+        inp.type      = 'number';
+        inp.min       = '1';
+        inp.value     = entry.Limit.Value;
+        inp.className = 'form-control-inline wo-limit-input';
+        inp.addEventListener('change', function () {
+            var v = parseInt(this.value, 10);
+            if (!isNaN(v) && v > 0) entry.Limit.Value = v;
+        });
+        row.appendChild(inp);
+        div.appendChild(row);
+    }
+
+    // Instruction live edit
+    document.getElementById('detailInstruction').addEventListener('input', function () {
+        if (!activeEntryId) return;
+        var entry = findEntry(activeEntryId);
+        if (entry) entry.Instruction = this.value;
+    });
+
+    // Add ban button
+    document.getElementById('btnAddBan').addEventListener('click', function () {
+        if (!activeEntryId) return;
+        var entry = findEntry(activeEntryId);
+        if (!entry) return;
+        var term = document.getElementById('banTermInput').value.trim();
+        if (!term) return;
+        var type = document.getElementById('banTypeInput').value;
+        entry.Bans.push({ BanType: type, Term: term });
+        document.getElementById('banTermInput').value = '';
+        renderDetailBans(entry);
+    });
+
+    document.getElementById('btnDetailClose').addEventListener('click', function () {
+        document.getElementById('woDetailPanel').style.display = 'none';
+        activeEntryId = null;
+    });
+
+    // ----------------------------------------------------------------
+    // Sort
+    // ----------------------------------------------------------------
+    document.querySelector('#woEntryTable thead').addEventListener('click', function (e) {
+        var th = e.target.closest('th.sortable');
+        if (!th) return;
+        var col = th.getAttribute('data-col');
+        if (sortCol === col) {
+            sortAsc = !sortAsc;
+        } else {
+            sortCol = col;
+            sortAsc = col !== 'severity';  // severity defaults desc; others default asc
+        }
+        sortManifest();
+        rebuildTable();
+        applyFilter(activeFilter);
+    });
+
+    function sortManifest() {
+        manifest.sort(function (a, b) {
+            var va = a[capFirst(sortCol)];
+            var vb = b[capFirst(sortCol)];
+            if (typeof va === 'number') {
+                return sortAsc ? va - vb : vb - va;
+            }
+            va = (va || '').toString().toLowerCase();
+            vb = (vb || '').toString().toLowerCase();
+            if (va < vb) return sortAsc ? -1 : 1;
+            if (va > vb) return sortAsc ? 1 : -1;
+            return 0;
+        });
+    }
+
+    function capFirst(s) {
+        return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    function rebuildTable() {
+        var tbody = document.getElementById('woTableBody');
+        tbody.innerHTML = '';
+        for (var i = 0; i < manifest.length; i++) {
+            tbody.appendChild(buildRow(manifest[i]));
+        }
+    }
+
+    function buildRow(entry) {
+        var tr = document.createElement('tr');
+        tr.className = 'wo-entry-row' + (entry.Status === 'skipped' ? ' wo-row-skipped' : '');
+        tr.setAttribute('data-id',       entry.Id);
+        tr.setAttribute('data-type',     entry.Type);
+        tr.setAttribute('data-status',   entry.Status);
+        tr.setAttribute('data-severity', parseFloat(entry.Severity).toFixed(1));
+        tr.setAttribute('data-entry',    JSON.stringify(entry));
+
+        var sev     = parseFloat(entry.Severity);
+        var sevCls  = sev > 80 ? 'severity-high' : sev >= 50 ? 'severity-medium' : 'severity-low';
+        var btnCls  = entry.Status === 'pending' ? 'status-pending' : 'status-skipped';
+        var btnTxt  = entry.Status === 'pending' ? 'Pending' : 'Skipped';
+
+        tr.innerHTML =
+            '<td class="wo-col-id">' + esc(entry.Id) + '</td>' +
+            '<td class="wo-col-status"><button class="wo-status-btn ' + btnCls + '">' + btnTxt + '</button></td>' +
+            '<td class="wo-col-type">' + esc(entry.TypeLabel) + '</td>' +
+            '<td class="wo-col-severity ' + sevCls + '">' + sev.toFixed(1) + '</td>' +
+            '<td class="wo-col-subject">' + esc(entry.Subject) + '</td>' +
+            '<td class="wo-col-pids">' + (entry.Targets ? entry.Targets.length : 0) + '</td>' +
+            '<td class="wo-col-constraints">' + esc(entry.ConstraintSummary || '') + '</td>';
+        return tr;
+    }
+
+    function esc(s) {
+        return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // ----------------------------------------------------------------
+    // Bulk actions
+    // ----------------------------------------------------------------
+    document.getElementById('btnSkipEchoes').addEventListener('click', function () {
+        bulkSetStatus(function (e) { return e.Type === 'proximity-echo'; }, 'skipped');
+    });
+
+    document.getElementById('btnResetPending').addEventListener('click', function () {
+        bulkSetStatus(function () { return true; }, 'pending');
+    });
+
+    document.getElementById('btnSkipBelow').addEventListener('click', function () {
+        var input = prompt('Skip all entries with severity below:', '50');
+        if (input === null) return;
+        var threshold = parseFloat(input);
+        if (isNaN(threshold)) { alert('Invalid threshold.'); return; }
+        bulkSetStatus(function (e) { return parseFloat(e.Severity) < threshold; }, 'skipped');
+    });
+
+    function bulkSetStatus(predicate, status) {
+        for (var i = 0; i < manifest.length; i++) {
+            if (!predicate(manifest[i])) continue;
+            manifest[i].Status = status;
+        }
+        rebuildTable();
+        applyFilter(activeFilter);
+        updateSummary();
+        updateFilterTabs();
+    }
+
+    // ----------------------------------------------------------------
+    // Manual entry
+    // ----------------------------------------------------------------
+    document.getElementById('btnAddManual').addEventListener('click', function () {
+        document.getElementById('woManualPanel').style.display = '';
+        document.getElementById('woDetailPanel').style.display = 'none';
+        document.getElementById('manualSubject').value     = '';
+        document.getElementById('manualDescription').value = '';
+        document.getElementById('manualSeverity').value    = '50';
+        document.getElementById('manualPids').value        = '';
+        document.getElementById('manualInstruction').value = '';
+    });
+
+    document.getElementById('btnManualClose').addEventListener('click', closeManual);
+    document.getElementById('btnManualCancel').addEventListener('click', closeManual);
+    function closeManual() { document.getElementById('woManualPanel').style.display = 'none'; }
+
+    document.getElementById('btnManualConfirm').addEventListener('click', function () {
+        var subject     = document.getElementById('manualSubject').value.trim();
+        var description = document.getElementById('manualDescription').value.trim();
+        var severity    = parseFloat(document.getElementById('manualSeverity').value) || 50;
+        var pidsRaw     = document.getElementById('manualPids').value.trim();
+        var instruction = document.getElementById('manualInstruction').value.trim();
+
+        if (!subject)      { alert('Subject is required.'); return; }
+        if (!pidsRaw)      { alert('At least one target PID is required.'); return; }
+        if (!instruction)  { alert('Instruction is required.'); return; }
+
+        var pidStrs = pidsRaw.split(',').map(function (s) { return s.trim(); })
+                             .filter(function (s) { return s.length > 0; });
+
+        var nextId  = 'WO-' + padId(manifest.length + 1);
+        var entry   = {
+            Id: nextId, Type: 'manual', TypeLabel: 'Manual',
+            Severity: severity, Status: 'pending',
+            Subject: subject, Description: description, Instruction: instruction,
+            Targets: pidStrs.map(function (p) { return { Pid: p, Count: null, ParagraphID: null }; }),
+            Bans: [], Limit: null, ConstraintSummary: ''
+        };
+
+        manifest.push(entry);
+        var tbody = document.getElementById('woTableBody');
+        tbody.appendChild(buildRow(entry));
+        applyFilter(activeFilter);
+        updateSummary();
+        updateFilterTabs();
+        closeManual();
+    });
+
+    function padId(n) {
+        var s = String(n);
+        while (s.length < 3) s = '0' + s;
+        return s;
+    }
+
+    // ----------------------------------------------------------------
+    // Export
+    // ----------------------------------------------------------------
+    document.getElementById('btnExport').addEventListener('click', function () {
+        var pending = manifest.filter(function (e) { return e.Status === 'pending'; }).length;
+        if (pending > 200) {
+            if (!confirm('This manifest contains ' + pending + ' pending entries. Large batches ' +
+                         'increase the risk of exceeding rate limits and token budgets during ' +
+                         'Openclaw processing. Export anyway?')) {
+                return;
+            }
+        }
+
+        var xml = buildExportXml();
+        document.getElementById('exportManifestXml').value = xml;
+        document.getElementById('exportForm').submit();
+    });
+
+    function buildExportXml() {
+        var parts = [];
+        var now   = new Date().toISOString();
+        var total = manifest.length;
+        var pendingCount = manifest.filter(function (e) { return e.Status === 'pending'; }).length;
+
+        parts.push('<?xml version="1.0" encoding="utf-8"?>');
+        parts.push('<workorder-manifest' +
+            ' xmlns="https://bookml.org/ns/workorder/1.0"' +
+            ' schema-version="1.0"' +
+            ' generated-at="' + esc(now) + '"' +
+            ' chapter-id="' + esc(bookmlId) + '"' +
+            ' source-draft="' + esc(draftNumber) + '"' +
+            ' source-analysis="' + esc(bookmlId + '_draft' + draftNumber + '_analysis.xml') + '"' +
+            ' total-entries="' + total + '"' +
+            ' status="pending">');
+
+        for (var i = 0; i < manifest.length; i++) {
+            var e = manifest[i];
+            parts.push('  <entry id="' + esc(e.Id) + '"' +
+                ' type="' + esc(e.Type) + '"' +
+                ' severity="' + parseFloat(e.Severity).toFixed(1) + '"' +
+                ' status="' + esc(e.Status) + '">');
+            parts.push('    <subject>' + escXmlText(e.Subject) + '</subject>');
+            parts.push('    <description>' + escXmlText(e.Description || '') + '</description>');
+            parts.push('    <targets>');
+            (e.Targets || []).forEach(function (t) {
+                var countAttr = t.Count != null ? ' count="' + t.Count + '"' : '';
+                parts.push('      <pid ref="' + esc(t.Pid) + '"' + countAttr + ' />');
+            });
+            parts.push('    </targets>');
+            parts.push('    <constraints>');
+            (e.Bans || []).forEach(function (b) {
+                parts.push('      <ban type="' + esc(b.BanType) + '">' + escXmlText(b.Term) + '</ban>');
+            });
+            if (e.Limit) {
+                parts.push('      <limit type="' + esc(e.Limit.LimitType) + '" value="' + e.Limit.Value + '" />');
+            }
+            parts.push('      <instruction>' + escXmlText(e.Instruction || '') + '</instruction>');
+            parts.push('    </constraints>');
+            parts.push('  </entry>');
+        }
+
+        // Processing notes
+        parts.push('  <processing-notes>');
+        parts.push('    <total-pending>' + pendingCount + '</total-pending>');
+        parts.push('    <recommended-batch-size>50</recommended-batch-size>');
+        parts.push('    <priority-order>severity-descending</priority-order>');
+        parts.push('    <note>Process outlier-word and repetitive-ngram entries first. ' +
+            'Re-analyse chapter before processing proximity-echo entries - ' +
+            'many will resolve as side effects.</note>');
+        parts.push('  </processing-notes>');
+
+        parts.push('</workorder-manifest>');
+        return parts.join('\n');
+    }
+
+    function escXmlText(s) {
+        return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // ----------------------------------------------------------------
+    // Helpers
+    // ----------------------------------------------------------------
+    function findEntry(id) {
+        for (var i = 0; i < manifest.length; i++) {
+            if (manifest[i].Id === id) return manifest[i];
+        }
+        return null;
+    }
+
+}());
+</script>
+}

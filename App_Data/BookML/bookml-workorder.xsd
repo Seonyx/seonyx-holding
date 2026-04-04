@@ -15,7 +15,8 @@
   <xs:element name="workorder-manifest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="entry" type="wo:EntryType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="entry"             type="wo:EntryType"            minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="processing-notes"  type="wo:ProcessingNotesType"  minOccurs="0" maxOccurs="1"/>
       </xs:sequence>
       <xs:attribute name="schema-version"  type="xs:string"              use="required"/>
       <xs:attribute name="generated-at"    type="xs:string"              use="required"/>
@@ -76,6 +77,16 @@
   <xs:complexType name="LimitType">
     <xs:attribute name="type"  type="xs:string"          use="required"/>
     <xs:attribute name="value" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <!-- Processing notes (advisory for Openclaw batch dispatcher) -->
+  <xs:complexType name="ProcessingNotesType">
+    <xs:sequence>
+      <xs:element name="total-pending"          type="xs:nonNegativeInteger"/>
+      <xs:element name="recommended-batch-size" type="xs:positiveInteger"/>
+      <xs:element name="priority-order"         type="xs:string"/>
+      <xs:element name="note"                   type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
   </xs:complexType>
 
   <!-- Enumerations -->

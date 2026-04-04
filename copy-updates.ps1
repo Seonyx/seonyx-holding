@@ -1,6 +1,6 @@
 # ============================================
-# Phase 2 Session 1: Work Order Schema + Generation
-# + Analysis Report XML serialisation (Phase 1 amendment)
+# Phase 2 Session 2: Work Order Review Panel (UI)
+# + Phase 2 Session 1 files (include if not already copied)
 # Run in PowerShell from any directory
 # ============================================
 
@@ -13,7 +13,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "Phase 2 Session 1 - copy to Dibbler" -ForegroundColor Cyan
+    Write-Host "Phase 2 Session 2 - copy to Dibbler" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -28,6 +28,9 @@ try {
     # New files
     Write-Host "Copying new files..." -ForegroundColor Yellow
     $newFiles = @(
+        "Models\ViewModels\BookEditor\DraftAnalysisViewModel.cs",
+        "Views\Draft\Analysis.cshtml",
+        "Content\css\work-order.css",
         "ContentAnalysisEngine\WorkOrderConfiguration.cs",
         "ContentAnalysisEngine\WorkOrderGenerator.cs",
         "App_Data\BookML\bookml-workorder.xsd"
@@ -43,6 +46,8 @@ try {
     Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
+        "Controllers\DraftController.cs",
+        "Seonyx.csproj",
         "ContentAnalysisEngine\AnalysisReport.cs",
         "ContentAnalysisEngine\ContentAnalysisEngine.csproj",
         "ContentAnalysisEngine\packages.config",
@@ -62,28 +67,21 @@ try {
     Write-Host "Post-copy steps:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. Build (Ctrl+Shift+B) in VS 2022." -ForegroundColor White
-    Write-Host "   - Newtonsoft.Json has been removed from both ContentAnalysisEngine" -ForegroundColor White
-    Write-Host "     and ContentAnalysisHarness. Build should complete with zero errors." -ForegroundColor White
+    Write-Host "1. Build (Ctrl+Shift+B) in VS 2022 - zero errors expected." -ForegroundColor White
     Write-Host ""
-    Write-Host "2. Test analysis XML output (Phase 1 amendment):" -ForegroundColor White
-    Write-Host "   Run ContentAnalysisHarness as startup project with args:" -ForegroundColor White
-    Write-Host "   --chapter <path-to-chapter.xml>" -ForegroundColor White
-    Write-Host "   Expected: well-formed XML to stdout (namespace https://bookml.org/ns/analysis/1.0)." -ForegroundColor White
-    Write-Host "   NOT JSON. Round-trip: paste XML into a parser and confirm it reads back cleanly." -ForegroundColor White
+    Write-Host "2. Navigate to:" -ForegroundColor White
+    Write-Host "   /admin/bookeditor/draft/Analysis?projectId=N" -ForegroundColor Gray
+    Write-Host "   (replace N with a project that has a BookML import)" -ForegroundColor Gray
     Write-Host ""
-    Write-Host "3. Test work order generation:" -ForegroundColor White
-    Write-Host "   --chapter <path-to-chapter.xml> --workorder ch01-workorders.xml --draft 2" -ForegroundColor White
-    Write-Host "   Expected: ch01-workorders.xml written, namespace https://bookml.org/ns/workorder/1.0." -ForegroundColor White
-    Write-Host "   Entries sorted by severity desc. source-analysis attribute ends in .xml." -ForegroundColor White
+    Write-Host "3. Select a chapter with a BookML ID and click 'Generate Work Orders'." -ForegroundColor White
+    Write-Host "   Default filter shows Outlier Words only (not all 3000+ entries)." -ForegroundColor White
     Write-Host ""
-    Write-Host "4. Test --quiet flag:" -ForegroundColor White
-    Write-Host "   --chapter <path> --workorder out.xml --quiet" -ForegroundColor White
-    Write-Host "   Expected: no stdout output, only the work order file written." -ForegroundColor White
-    Write-Host ""
-    Write-Host "5. Validate work order XML in VS XML editor:" -ForegroundColor White
-    Write-Host "   Right-click ch01-workorders.xml -> Validate" -ForegroundColor White
-    Write-Host "   (Schema must be associated: bookml-workorder.xsd)" -ForegroundColor White
+    Write-Host "4. Test interactions:" -ForegroundColor White
+    Write-Host "   - Click a row to open the detail panel" -ForegroundColor White
+    Write-Host "   - Toggle a row status (Pending/Skipped)" -ForegroundColor White
+    Write-Host "   - Use 'Skip All Echoes' to reduce batch size" -ForegroundColor White
+    Write-Host "   - Add a manual entry" -ForegroundColor White
+    Write-Host "   - Export -> verify XML file downloads with processing-notes element" -ForegroundColor White
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 
