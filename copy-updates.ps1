@@ -1,5 +1,5 @@
 # ============================================
-# Audiobook Package export feature
+# Audiobook Package export + Content Analysis Engine
 # Run in PowerShell from any directory
 # ============================================
 
@@ -31,7 +31,20 @@ try {
         "Services\PythonScript.cs",
         "Services\VoiceLibrary.cs",
         "Models\ViewModels\BookEditor\AudiobookConfigViewModel.cs",
-        "Views\Export\AudiobookConfig.cshtml"
+        "Views\Export\AudiobookConfig.cshtml",
+        "ContentAnalysisEngine\ContentAnalysisEngine.csproj",
+        "ContentAnalysisEngine\AnalysisConfiguration.cs",
+        "ContentAnalysisEngine\AnalysisReport.cs",
+        "ContentAnalysisEngine\BookmlReader.cs",
+        "ContentAnalysisEngine\ChapterAnalyser.cs",
+        "ContentAnalysisEngine\Tokeniser.cs",
+        "ContentAnalysisEngine\Metrics\WordFrequencyMetric.cs",
+        "ContentAnalysisEngine\Metrics\NgramMetric.cs",
+        "ContentAnalysisEngine\Metrics\ProximityEchoMetric.cs",
+        "ContentAnalysisEngine\Metrics\TtrMetric.cs",
+        "ContentAnalysisEngine\Metrics\HapaxMetric.cs",
+        "ContentAnalysisHarness\ContentAnalysisHarness.csproj",
+        "ContentAnalysisHarness\Program.cs"
     )
     foreach ($f in $newFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -49,7 +62,8 @@ try {
         "Services\BookmlImporter.cs",
         "Views\Export\Index.cshtml",
         "Seonyx.csproj",
-        "App_Data\BookML\bookml-common.xsd"
+        "App_Data\BookML\bookml-common.xsd",
+        "Seonyx.sln"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -63,16 +77,15 @@ try {
     Write-Host "Post-copy steps:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. Build (Ctrl+Shift+B) in VS 2022 - no DB changes, no new packages." -ForegroundColor White
-    Write-Host "   NOTE: BookML importer now treats orphan PIDs in notes files as warnings, not errors." -ForegroundColor White
-    Write-Host "2. Open any book project and go to Export." -ForegroundColor White
-    Write-Host "3. You should see a new 'Audiobook Package' option card." -ForegroundColor White
-    Write-Host "4. Select a voice and click 'Download Package' - a ZIP should download." -ForegroundColor White
-    Write-Host "5. Inspect the ZIP: it should contain config.json, README.txt," -ForegroundColor White
-    Write-Host "   generate_audiobook.py, and a chapters/ folder with .txt files." -ForegroundColor White
-    Write-Host "6. To test audio generation: extract the ZIP, open a terminal there," -ForegroundColor White
-    Write-Host "   run:  python generate_audiobook.py" -ForegroundColor White
-    Write-Host "   (Piper TTS and the voice model will download automatically on first run.)" -ForegroundColor White
+    Write-Host "1. Build (Ctrl+Shift+B) in VS 2022 - solution now has 3 projects." -ForegroundColor White
+    Write-Host "   No DB changes. No new NuGet packages (Newtonsoft.Json already in packages/)." -ForegroundColor White
+    Write-Host "2. Test Content Analysis Engine:" -ForegroundColor White
+    Write-Host "   Set ContentAnalysisHarness as startup project, run with args:" -ForegroundColor White
+    Write-Host "   --chapter <path-to-any-chapter.xml>" -ForegroundColor White
+    Write-Host "   e.g. --chapter C:\...\testdata\junk_draft2\ch01\ch01-chapter.xml" -ForegroundColor White
+    Write-Host "   Expected: JSON report to stdout with metrics, flaggedWords, flaggedNgrams, proximityEchoes." -ForegroundColor White
+    Write-Host "3. Test Audiobook export: open any book project, go to Export." -ForegroundColor White
+    Write-Host "   'Audiobook Package' card -> select draft + voice -> Download Package." -ForegroundColor White
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

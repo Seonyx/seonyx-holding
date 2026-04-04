@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seonyx.Web", "Seonyx.csproj", "{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentAnalysisEngine", "ContentAnalysisEngine\ContentAnalysisEngine.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentAnalysisHarness", "ContentAnalysisHarness\ContentAnalysisHarness.csproj", "{B2C3D4E5-F6A7-8901-BCDE-F12345678901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,5 +19,13 @@ Global
 		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Debug|Any CPU.Build.0 = Debug|AnyCPU
 		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Release|Any CPU.ActiveCfg = Release|AnyCPU
 		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Release|Any CPU.Build.0 = Release|AnyCPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|Any CPU.Build.0 = Release|AnyCPU
+		{B2C3D4E5-F6A7-8901-BCDE-F12345678901}.Debug|Any CPU.ActiveCfg = Debug|AnyCPU
+		{B2C3D4E5-F6A7-8901-BCDE-F12345678901}.Debug|Any CPU.Build.0 = Debug|AnyCPU
+		{B2C3D4E5-F6A7-8901-BCDE-F12345678901}.Release|Any CPU.ActiveCfg = Release|AnyCPU
+		{B2C3D4E5-F6A7-8901-BCDE-F12345678901}.Release|Any CPU.Build.0 = Release|AnyCPU
 	EndGlobalSection
 EndGlobal
