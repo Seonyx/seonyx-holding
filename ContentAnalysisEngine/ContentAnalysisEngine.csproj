@@ -43,6 +43,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="AnalysisConfiguration.cs" />
     <Compile Include="AnalysisReport.cs" />
     <Compile Include="BookmlReader.cs" />
