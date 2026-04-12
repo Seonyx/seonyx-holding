@@ -33,6 +33,79 @@ namespace Seonyx.Web.Services
         // PUBLIC API
         // =====================================================================
 
+        public BookmlExportResult ExportChapter(SeonyxContext db, int chapterId, Stream outputStream)
+        {
+            var result = new BookmlExportResult();
+
+            var ch = db.Chapters.Find(chapterId);
+            if (ch == null)
+            {
+                result.Warnings.Add("Chapter not found: " + chapterId);
+                return result;
+            }
+
+            var project = db.BookProjects.Find(ch.BookProjectID);
+            if (project == null)
+            {
+                result.Warnings.Add("Project not found for chapter: " + chapterId);
+                return result;
+            }
+
+            var bookId    = !string.IsNullOrEmpty(project.BookmlId)
+                ? project.BookmlId
+                : Slugify(project.ProjectName);
+            var chId      = GetChapterId(ch);
+            var chIdLower = chId.ToLowerInvariant();
+            var exportDate = DateTime.UtcNow;
+
+            var paragraphs = db.Paragraphs
+                .Where(p => p.ChapterID == ch.ChapterID)
+                .OrderBy(p => p.OrdinalPosition)
+                .ToList();
+
+            var latestVersionByPid = db.ParagraphVersions
+                .Where(v => v.ChapterID == ch.ChapterID)
+                .ToList()
+                .GroupBy(v => v.Pid, StringComparer.OrdinalIgnoreCase)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.OrderByDescending(v => v.DraftNumber).First(),
+                    StringComparer.OrdinalIgnoreCase);
+
+            var paraIds = paragraphs.Select(p => p.ParagraphID).ToList();
+
+            var metaByParaId = db.MetaNotes
+                .Where(m => paraIds.Contains(m.ParagraphID))
+                .ToList()
+                .ToDictionary(m => m.ParagraphID);
+
+            var noteByParaId = db.EditNotes
+                .Where(n => paraIds.Contains(n.ParagraphID))
+                .ToList()
+                .ToDictionary(n => n.ParagraphID);
+
+            using (var zip = new ZipArchive(outputStream, ZipArchiveMode.Create, true))
+            {
+                AddXmlEntry(zip, string.Format("{0}/{0}-chapter.xml", chIdLower),
+                    BuildChapterXml(ch, chId, bookId, project.CurrentDraftNumber,
+                        paragraphs, latestVersionByPid, result));
+
+                AddXmlEntry(zip, string.Format("{0}/{0}-meta.xml", chIdLower),
+                    BuildMetaXml(ch, chId, bookId, project.CurrentDraftNumber,
+                        paragraphs, metaByParaId));
+
+                AddXmlEntry(zip, string.Format("{0}/{0}-notes.xml", chIdLower),
+                    BuildNotesXml(ch, chId, bookId, project.CurrentDraftNumber,
+                        paragraphs, noteByParaId, exportDate));
+            }
+
+            result.Success     = true;
+            result.ZipFileName = string.Format("{0}_{1}_draft{2}_{3}.bookml.zip",
+                bookId, chIdLower, project.CurrentDraftNumber,
+                exportDate.ToString("yyyyMMdd_HHmmss"));
+            return result;
+        }
+
         public BookmlExportResult Export(SeonyxContext db, int projectId, Stream outputStream)
         {
             var result = new BookmlExportResult();

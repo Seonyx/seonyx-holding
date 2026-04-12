@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
+using System.Xml.Linq;
+using ContentAnalysisEngine;
 using Seonyx.Web.Models;
 using Seonyx.Web.Models.ViewModels.BookEditor;
 
@@ -241,6 +246,308 @@ namespace Seonyx.Web.Controllers
 
             TempData["Message"] = string.Format("Draft {0} deleted.", draftNumber);
             return RedirectToAction("Index", new { projectId });
+        }
+
+        // =====================================================================
+        // Draft Analysis + Work Order Review
+        // =====================================================================
+
+        // GET: admin/bookeditor/draft/Analysis?projectId=N[&chapterId=N][&draftNumber=N]
+        public ActionResult Analysis(int projectId, int chapterId = 0, int draftNumber = 0)
+        {
+            var project = db.BookProjects.Find(projectId);
+            if (project == null) return HttpNotFound();
+
+            var chapters = db.Chapters
+                .Where(c => c.BookProjectID == projectId)
+                .OrderBy(c => c.SortOrder)
+                .ToList();
+
+            if (draftNumber == 0)
+                draftNumber = project.CurrentDraftNumber;
+
+            var vm = new DraftAnalysisViewModel
+            {
+                BookProjectID = projectId,
+                ProjectName   = project.ProjectName,
+                DraftNumber   = draftNumber,
+                Chapters      = chapters.Select(c => new ChapterPickerItem
+                {
+                    ChapterID      = c.ChapterID,
+                    ChapterNumber  = c.ChapterNumber,
+                    ChapterTitle   = c.ChapterTitle,
+                    BookmlChapterId = c.BookmlChapterId
+                }).ToList()
+            };
+
+            // Pick the requested chapter (or first with a BookML ID)
+            Chapter chapter = null;
+            if (chapterId > 0)
+                chapter = chapters.FirstOrDefault(c => c.ChapterID == chapterId);
+            if (chapter == null)
+                chapter = chapters.FirstOrDefault(c => c.BookmlChapterId != null);
+
+            if (chapter == null)
+            {
+                // No BookML chapters imported yet
+                return View(vm);
+            }
+
+            vm.ChapterID      = chapter.ChapterID;
+            vm.ChapterTitle   = chapter.ChapterTitle;
+            vm.BookmlChapterId = chapter.BookmlChapterId;
+
+            // Check session for an existing manifest
+            var sessionKey = string.Format("WO_{0}_{1}_{2}", projectId, chapter.ChapterID, draftNumber);
+            var manifestXml = Session[sessionKey] as string;
+            if (manifestXml == null)
+            {
+                vm.HasManifest = false;
+                return View(vm);
+            }
+
+            // Parse the stored manifest and build the view model
+            try
+            {
+                var doc = XDocument.Parse(manifestXml);
+                PopulateViewModelFromManifest(vm, doc, projectId, chapter.ChapterID);
+            }
+            catch
+            {
+                // Corrupt session data — discard and show the generate button
+                Session.Remove(sessionKey);
+                vm.HasManifest = false;
+            }
+
+            return View(vm);
+        }
+
+        // POST: admin/bookeditor/draft/GenerateWorkOrders
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GenerateWorkOrders(int projectId, int chapterId, int draftNumber)
+        {
+            var project = db.BookProjects.Find(projectId);
+            if (project == null) return HttpNotFound();
+
+            var chapter = db.Chapters.FirstOrDefault(
+                c => c.ChapterID == chapterId && c.BookProjectID == projectId);
+            if (chapter == null) return HttpNotFound();
+
+            if (string.IsNullOrEmpty(chapter.BookmlChapterId))
+            {
+                TempData["Error"] = "This chapter has no BookML ID. Import the chapter via BookML first.";
+                return RedirectToAction("Analysis", new { projectId, chapterId, draftNumber });
+            }
+
+            // Resolve chapter XML path: {project.FolderPath}/bookml/{BookmlChapterId}/{BookmlChapterId}-chapter.xml
+            var chapterXmlPath = Path.Combine(
+                project.FolderPath, "bookml",
+                chapter.BookmlChapterId,
+                chapter.BookmlChapterId + "-chapter.xml");
+
+            if (!System.IO.File.Exists(chapterXmlPath))
+            {
+                TempData["Error"] = string.Format(
+                    "Chapter XML not found at: {0}. Re-import the BookML package.", chapterXmlPath);
+                return RedirectToAction("Analysis", new { projectId, chapterId, draftNumber });
+            }
+
+            try
+            {
+                var analyser   = new ChapterAnalyser();
+                var report     = analyser.Analyse(chapterXmlPath);
+                var generator  = new WorkOrderGenerator();
+                var manifestDoc = generator.Generate(report, chapter.BookmlChapterId, draftNumber);
+
+                var sessionKey = string.Format("WO_{0}_{1}_{2}", projectId, chapterId, draftNumber);
+                Session[sessionKey] = manifestDoc.ToString();
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Analysis failed: " + ex.Message;
+                return RedirectToAction("Analysis", new { projectId, chapterId, draftNumber });
+            }
+
+            return RedirectToAction("Analysis", new { projectId, chapterId, draftNumber });
+        }
+
+        // POST: admin/bookeditor/draft/ExportWorkOrders
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ExportWorkOrders(int projectId, int chapterId, int draftNumber, string manifestXml)
+        {
+            if (string.IsNullOrEmpty(manifestXml))
+                return new HttpStatusCodeResult(400, "No manifest XML provided.");
+
+            try
+            {
+                // Validate it parses (throws on malformed XML)
+                XDocument.Parse(manifestXml);
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(400, "Manifest XML is not well-formed.");
+            }
+
+            var chapter = db.Chapters.FirstOrDefault(
+                c => c.ChapterID == chapterId && c.BookProjectID == projectId);
+            var bookmlId = chapter != null && chapter.BookmlChapterId != null
+                ? chapter.BookmlChapterId
+                : "chapter";
+
+            var filename = string.Format("{0}_draft{1}_workorders.xml", bookmlId, draftNumber);
+            var bytes    = Encoding.UTF8.GetBytes(manifestXml);
+
+            return File(bytes, "application/xml", filename);
+        }
+
+        // =====================================================================
+        // Private helpers — Draft Analysis
+        // =====================================================================
+
+        private static readonly XNamespace WoNs = XNamespace.Get("https://bookml.org/ns/workorder/1.0");
+
+        private void PopulateViewModelFromManifest(
+            DraftAnalysisViewModel vm,
+            XDocument doc,
+            int projectId,
+            int chapterId)
+        {
+            var root = doc.Root;
+            if (root == null) return;
+
+            // Collect all PIDs that appear in the manifest so we can batch-resolve ParagraphIDs
+            var allPids = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var entry in root.Elements(WoNs + "entry"))
+            {
+                var targets = entry.Element(WoNs + "targets");
+                if (targets == null) continue;
+                foreach (var pid in targets.Elements(WoNs + "pid"))
+                {
+                    var r = (string)pid.Attribute("ref");
+                    if (!string.IsNullOrEmpty(r)) allPids.Add(r);
+                }
+            }
+
+            // Batch look up ParagraphID for each PID (UniqueID in working copy)
+            var pidList = allPids.ToList();
+            var pidToParaId = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            if (pidList.Count > 0)
+            {
+                var paraLookup = db.Paragraphs
+                    .Where(p => p.ChapterID == chapterId && pidList.Contains(p.UniqueID))
+                    .Select(p => new { p.UniqueID, p.ParagraphID })
+                    .ToList();
+                foreach (var row in paraLookup)
+                    pidToParaId[row.UniqueID] = row.ParagraphID;
+            }
+
+            // Map each entry
+            foreach (var entry in root.Elements(WoNs + "entry"))
+            {
+                var type    = (string)entry.Attribute("type") ?? "";
+                var subject = (string)entry.Element(WoNs + "subject") ?? "";
+
+                // Targets
+                var targets  = new List<WorkOrderPidViewModel>();
+                var targetsEl = entry.Element(WoNs + "targets");
+                if (targetsEl != null)
+                {
+                    foreach (var pidEl in targetsEl.Elements(WoNs + "pid"))
+                    {
+                        var pidRef = (string)pidEl.Attribute("ref") ?? "";
+                        var countAttr = (string)pidEl.Attribute("count");
+                        int countVal;
+                        int? count = (countAttr != null && int.TryParse(countAttr, out countVal))
+                            ? countVal : (int?)null;
+                        int paraId;
+                        targets.Add(new WorkOrderPidViewModel
+                        {
+                            Pid         = pidRef,
+                            Count       = count,
+                            ParagraphID = pidToParaId.TryGetValue(pidRef, out paraId) ? paraId : (int?)null
+                        });
+                    }
+                }
+
+                // Constraints
+                var bans  = new List<WorkOrderBanViewModel>();
+                WorkOrderLimitViewModel limit = null;
+                string instruction = "";
+                var constraintsEl = entry.Element(WoNs + "constraints");
+                if (constraintsEl != null)
+                {
+                    foreach (var ban in constraintsEl.Elements(WoNs + "ban"))
+                        bans.Add(new WorkOrderBanViewModel
+                        {
+                            BanType = (string)ban.Attribute("type") ?? "word",
+                            Term    = ban.Value
+                        });
+
+                    var limitEl = constraintsEl.Element(WoNs + "limit");
+                    if (limitEl != null)
+                    {
+                        int limitVal;
+                        limit = new WorkOrderLimitViewModel
+                        {
+                            LimitType = (string)limitEl.Attribute("type") ?? "",
+                            Value     = int.TryParse((string)limitEl.Attribute("value"), out limitVal) ? limitVal : 0
+                        };
+                    }
+
+                    var instrEl = constraintsEl.Element(WoNs + "instruction");
+                    if (instrEl != null) instruction = instrEl.Value;
+                }
+
+                // Constraint summary for table column
+                var banTerms = bans.Select(b => b.Term).Take(2).ToList();
+                var summary  = banTerms.Count > 0 ? "Ban: " + string.Join(", ", banTerms) : "";
+                if (bans.Count > 2) summary += string.Format(" (+{0} more)", bans.Count - 2);
+                if (limit != null) summary  += string.Format(". Max: {0}/chapter", limit.Value);
+
+                double severity;
+                double.TryParse((string)entry.Attribute("severity"),
+                    NumberStyles.Float, CultureInfo.InvariantCulture, out severity);
+
+                vm.Entries.Add(new WorkOrderEntryViewModel
+                {
+                    Id          = (string)entry.Attribute("id") ?? "",
+                    Type        = type,
+                    TypeLabel   = TypeLabel(type),
+                    Severity    = severity,
+                    Status      = (string)entry.Attribute("status") ?? "pending",
+                    Subject     = subject,
+                    Description = (string)entry.Element(WoNs + "description") ?? "",
+                    Instruction = instruction,
+                    ConstraintSummary = summary,
+                    Targets     = targets,
+                    Bans        = bans,
+                    Limit       = limit
+                });
+            }
+
+            // Summary counts
+            vm.HasManifest  = true;
+            vm.TotalEntries = vm.Entries.Count;
+            vm.PendingCount = vm.Entries.Count(e => e.Status == "pending");
+            vm.SkippedCount = vm.Entries.Count(e => e.Status == "skipped");
+            vm.OutlierCount = vm.Entries.Count(e => e.Type == "outlier-word");
+            vm.NgramCount   = vm.Entries.Count(e => e.Type == "repetitive-ngram");
+            vm.EchoCount    = vm.Entries.Count(e => e.Type == "proximity-echo");
+            vm.ManualCount  = vm.Entries.Count(e => e.Type == "manual");
+        }
+
+        private static string TypeLabel(string type)
+        {
+            switch (type)
+            {
+                case "outlier-word":     return "Outlier Word";
+                case "repetitive-ngram": return "Repetitive N-gram";
+                case "proximity-echo":  return "Proximity Echo";
+                case "manual":          return "Manual";
+                default:                return type;
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:wo="https://bookml.org/ns/workorder/1.0"
+           targetNamespace="https://bookml.org/ns/workorder/1.0"
+           elementFormDefault="qualified">
+
+  <!-- ============================================================
+       bookml-workorder.xsd
+       Work order manifest schema for the BookML Content Analysis
+       Engine (Phase 2). Defines the per-chapter remediation plan
+       consumed by Openclaw for batch LLM processing.
+       ============================================================ -->
+
+  <!-- Root element -->
+  <xs:element name="workorder-manifest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entry"             type="wo:EntryType"            minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="processing-notes"  type="wo:ProcessingNotesType"  minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="schema-version"  type="xs:string"              use="required"/>
+      <xs:attribute name="generated-at"    type="xs:string"              use="required"/>
+      <xs:attribute name="chapter-id"      type="xs:string"              use="required"/>
+      <xs:attribute name="source-draft"    type="xs:string"              use="required"/>
+      <xs:attribute name="source-analysis" type="xs:string"              use="required"/>
+      <xs:attribute name="total-entries"   type="xs:nonNegativeInteger"  use="required"/>
+      <xs:attribute name="status"          type="wo:ManifestStatusType"  use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Entry -->
+  <xs:complexType name="EntryType">
+    <xs:sequence>
+      <xs:element name="subject"     type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="targets"     type="wo:TargetsType"/>
+      <xs:element name="constraints" type="wo:ConstraintsType"/>
+    </xs:sequence>
+    <xs:attribute name="id"       type="xs:string"          use="required"/>
+    <xs:attribute name="type"     type="wo:EntryTypeEnum"   use="required"/>
+    <xs:attribute name="severity" type="xs:decimal"         use="required"/>
+    <xs:attribute name="status"   type="wo:EntryStatusType" use="required"/>
+  </xs:complexType>
+
+  <!-- Targets -->
+  <xs:complexType name="TargetsType">
+    <xs:sequence>
+      <xs:element name="pid" type="wo:PidRefType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- PID reference -->
+  <xs:complexType name="PidRefType">
+    <xs:attribute name="ref"   type="xs:string"           use="required"/>
+    <xs:attribute name="count" type="xs:positiveInteger"  use="optional"/>
+  </xs:complexType>
+
+  <!-- Constraints -->
+  <xs:complexType name="ConstraintsType">
+    <xs:sequence>
+      <xs:element name="ban"         type="wo:BanType"         minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="limit"       type="wo:LimitType"       minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="instruction" type="xs:string"          minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Ban constraint -->
+  <xs:complexType name="BanType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="type" type="wo:BanTypeEnum" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <!-- Limit constraint -->
+  <xs:complexType name="LimitType">
+    <xs:attribute name="type"  type="xs:string"          use="required"/>
+    <xs:attribute name="value" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+  <!-- Processing notes (advisory for Openclaw batch dispatcher) -->
+  <xs:complexType name="ProcessingNotesType">
+    <xs:sequence>
+      <xs:element name="total-pending"          type="xs:nonNegativeInteger"/>
+      <xs:element name="recommended-batch-size" type="xs:positiveInteger"/>
+      <xs:element name="priority-order"         type="xs:string"/>
+      <xs:element name="note"                   type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Enumerations -->
+
+  <xs:simpleType name="EntryTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="outlier-word"/>
+      <xs:enumeration value="repetitive-ngram"/>
+      <xs:enumeration value="proximity-echo"/>
+      <xs:enumeration value="manual"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ManifestStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pending"/>
+      <xs:enumeration value="in-progress"/>
+      <xs:enumeration value="completed"/>
+      <xs:enumeration value="partial"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="EntryStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pending"/>
+      <xs:enumeration value="dispatched"/>
+      <xs:enumeration value="completed"/>
+      <xs:enumeration value="skipped"/>
+      <xs:enumeration value="failed"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="BanTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="word"/>
+      <xs:enumeration value="phrase"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

@@ -212,6 +212,7 @@
     <Compile Include="Controllers\DraftController.cs" />
     <Compile Include="Controllers\ImportProgressController.cs" />
     <Compile Include="Models\ViewModels\BookEditor\DraftDiffViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\DraftAnalysisViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\site.css" />
@@ -276,7 +277,9 @@
     <Content Include="Views\ImportLog\Index.cshtml" />
     <Content Include="Views\ImportLog\Detail.cshtml" />
     <Content Include="Views\Draft\Diff.cshtml" />
+    <Content Include="Views\Draft\Analysis.cshtml" />
     <Content Include="Content\css\book-editor.css" />
+    <Content Include="Content\css\work-order.css" />
     <Content Include="Scripts\book-editor.js" />
     <Content Include="App_Data\BookML\bookml-common.xsd" />
     <Content Include="App_Data\BookML\bookml-book.xsd" />
