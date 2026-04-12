@@ -24,6 +24,9 @@ jobs:
         shell: cmd
         run: copy Web.config.template Web.config
 
+      - name: Build ContentAnalysisEngine
+        run: msbuild ContentAnalysisEngine\ContentAnalysisEngine.csproj /p:Configuration=Release
+
       - name: Build and Deploy
         run: |
           msbuild Seonyx.csproj `
