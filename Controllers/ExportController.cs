@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
@@ -390,6 +392,15 @@ namespace Seonyx.Web.Controllers
         }
 
         // ==================== Helpers ====================
+
+        private void AddTextEntry(ZipArchive zip, string entryName, string content)
+        {
+            var entry = zip.CreateEntry(entryName);
+            using (var writer = new System.IO.StreamWriter(entry.Open(), Encoding.UTF8))
+            {
+                writer.Write(content);
+            }
+        }
 
         private string Slugify(string text)
         {
