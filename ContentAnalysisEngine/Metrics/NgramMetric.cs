@@ -85,7 +85,7 @@ namespace ContentAnalysisEngine.Metrics
                     default: threshold = fourgramThreshold; break;
                 }
 
-                if (rate < threshold) continue;
+                if (kv.Value.Count < 2 || rate < threshold) continue;
 
                 flagged.Add(new FlaggedNgram
                 {
@@ -96,7 +96,6 @@ namespace ContentAnalysisEngine.Metrics
                     Pids            = kv.Value.Pids.Distinct().ToList()
                 });
             }
-
             return flagged.OrderByDescending(f => f.NormalisedRate).ToList();
         }
 

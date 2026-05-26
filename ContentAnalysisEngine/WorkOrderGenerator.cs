@@ -143,6 +143,7 @@ namespace ContentAnalysisEngine
                 {
                     Type        = "repetitive-ngram",
                     Severity    = severity,
+                    Count       = fn.Count,
                     Subject     = fn.Phrase ?? "",
                     Description = description,
                     Targets     = targets,
@@ -217,6 +218,8 @@ namespace ContentAnalysisEngine
                     new XAttribute("type",     e.Type),
                     new XAttribute("severity", e.Severity.ToString("F1", CultureInfo.InvariantCulture)),
                     new XAttribute("status",   "pending"));
+                if (e.Count > 0)
+                    entryEl.Add(new XAttribute("count", e.Count));
 
                 entryEl.Add(new XElement(Ns + "subject", e.Subject));
                 entryEl.Add(new XElement(Ns + "description", e.Description));
@@ -354,6 +357,7 @@ namespace ContentAnalysisEngine
         {
             public string          Type        { get; set; }
             public double          Severity    { get; set; }
+            public int             Count       { get; set; } // raw occurrence count; 0 = not applicable
             public string          Subject     { get; set; }
             public string          Description { get; set; }
             public List<XElement>  Targets     { get; set; }

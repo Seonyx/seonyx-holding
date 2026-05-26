@@ -1,3 +1,4 @@
+@* VERSION-CHECK-ABC123 *@
 @model Seonyx.Web.Models.ViewModels.BookEditor.DraftListViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -96,6 +97,8 @@ else
                     <td>@d.ParagraphCount</td>
                     <td>@d.CreatedDate.ToString("MMM d, yyyy")</td>
                     <td>
+                        <a href="/admin/bookeditor/draft/Analysis?projectId=@Model.BookProjectID&draftNumber=@d.DraftNumber"
+                           class="btn btn-secondary btn-sm">Analyse</a>
                         @if (d.CanDelete)
                         {
                             using (Html.BeginForm("DeleteDraft", "Draft", FormMethod.Post,

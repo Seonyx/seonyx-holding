@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seonyx", "Seonyx.csproj", "{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContentAnalyserCli", "ContentAnalyserCli\ContentAnalyserCli.csproj", "{8DE6CC49-4923-4668-8E0C-554F3B1FDE7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FF55BFBB-70E5-437C-A9A7-94CD8481FAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE6CC49-4923-4668-8E0C-554F3B1FDE7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE6CC49-4923-4668-8E0C-554F3B1FDE7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE6CC49-4923-4668-8E0C-554F3B1FDE7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE6CC49-4923-4668-8E0C-554F3B1FDE7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

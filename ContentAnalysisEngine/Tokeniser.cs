@@ -17,19 +17,28 @@ namespace ContentAnalysisEngine
             var tokens = new List<string>();
             var current = new System.Text.StringBuilder();
 
-            foreach (char c in text)
+            for (int i = 0; i < text.Length; i++)
             {
+                char c = text[i];
                 if (char.IsLetterOrDigit(c))
                 {
                     current.Append(char.ToLowerInvariant(c));
                 }
+                else if (c == '\'' || c == '\u2019') // straight or right-curly apostrophe
+                {
+                    // Keep as part of token only when flanked by letters on both sides
+                    bool prevLetter = current.Length > 0;
+                    bool nextLetter = (i + 1 < text.Length) && char.IsLetter(text[i + 1]);
+                    if (prevLetter && nextLetter)
+                        current.Append('\''); // normalise curly to straight
+                    else
+                    {
+                        if (current.Length > 0) { tokens.Add(current.ToString()); current.Clear(); }
+                    }
+                }
                 else
                 {
-                    if (current.Length > 0)
-                    {
-                        tokens.Add(current.ToString());
-                        current.Clear();
-                    }
+                    if (current.Length > 0) { tokens.Add(current.ToString()); current.Clear(); }
                 }
             }
             if (current.Length > 0)
@@ -78,11 +87,18 @@ namespace ContentAnalysisEngine
             "here", "there", "when", "where", "why", "how",
             "all", "both", "each", "few", "more", "most", "other", "some",
             "such", "no", "nor", "not", "only", "own", "same", "so", "than",
-            "too", "very", "s", "t", "can", "will", "just", "don", "should",
+            "too", "very", "can", "will", "just", "should",
             "now", "d", "ll", "m", "o", "re", "ve", "y",
-            "ain", "aren", "couldn", "didn", "doesn", "hadn", "hasn",
-            "haven", "isn", "ma", "mightn", "mustn", "needn", "shan",
-            "shouldn", "wasn", "weren", "won", "wouldn",
+            "ain", "ma",
+            // Contractions (tokeniser now preserves intra-word apostrophes)
+            "don't", "doesn't", "didn't", "won't", "wouldn't", "couldn't", "shouldn't",
+            "can't", "isn't", "wasn't", "aren't", "weren't", "hasn't", "haven't", "hadn't",
+            "it's", "that's", "there's", "he's", "she's",
+            "i'm", "i've", "i'd", "i'll",
+            "we're", "we've", "we'd", "we'll",
+            "they're", "they've", "they'd", "they'll",
+            "you're", "you've", "you'd", "you'll",
+            "let's", "who's", "what's",
             // Extended common function words
             "also", "back", "came", "come", "could", "every", "get", "go",
             "going", "got", "had", "has", "him", "his", "however", "into",

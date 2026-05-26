@@ -1,0 +1,75 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.CharacterListViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Characters - " + Model.ProjectName;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+}
+
+<div class="page-header">
+    <h1>Characters: @Model.ProjectName</h1>
+    <div>
+        <a href="/admin/bookeditor/projects/Edit/@Model.BookProjectID" class="btn btn-secondary">Back to Project</a>
+        <a href="/admin/bookeditor/characters/Edit?bookProjectId=@Model.BookProjectID" class="btn btn-primary">+ New Character</a>
+    </div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@if (Model.Characters.Count == 0)
+{
+    <div class="empty-state">
+        <p>No characters yet. Click <strong>+ New Character</strong> to add the first one.</p>
+    </div>
+}
+else
+{
+    <table class="draft-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Story Role</th>
+                <th>Importance</th>
+                <th>Status</th>
+                <th>POV</th>
+                <th>Tags</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.Characters)
+            {
+                <tr>
+                    <td><strong>@c.Name</strong></td>
+                    <td>@c.StoryRoleCode</td>
+                    <td>@c.ImportanceCode</td>
+                    <td>@(c.StatusCode ?? "-")</td>
+                    <td>@(c.IsPov ? Html.Raw("&#9733;") : Html.Raw(""))</td>
+                    <td>@string.Join(", ", c.Tags)</td>
+                    <td>
+                        <a href="/admin/bookeditor/characters/Edit?id=@c.CharacterId&bookProjectId=@Model.BookProjectID"
+                           class="btn btn-secondary btn-sm">Edit</a>
+                        @using (Html.BeginForm("Delete", "Character", FormMethod.Post,
+                            new { style = "display:inline",
+                                  onsubmit = "return confirm('Delete " + c.Name + "? This cannot be undone.');" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@c.CharacterId" />
+                            <input type="hidden" name="bookProjectId" value="@Model.BookProjectID" />
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

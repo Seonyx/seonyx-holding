@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -13,6 +14,7 @@ namespace Seonyx.Web
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
         }
 
         protected void Application_Error(object sender, EventArgs e)

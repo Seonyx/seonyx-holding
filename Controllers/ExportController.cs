@@ -70,6 +70,20 @@ namespace Seonyx.Web.Controllers
             return File(memoryStream, "application/zip", result.ZipFileName);
         }
 
+        public ActionResult ExportChapterReview(int chapterId)
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var chapter = db.Chapters.Find(chapterId);
+            if (chapter == null) return HttpNotFound();
+
+            var exporter = new ChapterReviewOdtExporter();
+            string fileName;
+            byte[] bytes = exporter.Export(db, chapterId, out fileName);
+
+            return File(bytes, "application/vnd.oasis.opendocument.text", fileName);
+        }
+
         public ActionResult ExportManuscriptOnly(int projectId)
         {
             if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");

@@ -28,12 +28,9 @@
         <select name="chapterId" class="form-control-inline">
             @foreach (var c in Model.Chapters)
             {
-                if (c.BookmlChapterId != null)
-                {
-                    <option value="@c.ChapterID" @(c.ChapterID == Model.ChapterID ? "selected" : "")>
-                        Ch @c.ChapterNumber: @c.ChapterTitle
-                    </option>
-                }
+                <option value="@c.ChapterID" @(c.ChapterID == Model.ChapterID ? "selected" : "")>
+                    Ch @c.ChapterNumber: @c.ChapterTitle
+                </option>
             }
         </select>
         <label>Draft</label>
@@ -45,7 +42,7 @@
 @if (Model.ChapterID == 0)
 {
     <div class="empty-state">
-        <p>No BookML chapters found for this project. Import a BookML package first.</p>
+        <p>No chapters found for this project.</p>
     </div>
 }
 else if (!Model.HasManifest)
@@ -156,15 +153,11 @@ else
                                  : "severity-low";
                     var skippedClass = entry.Status == "skipped" ? " wo-row-skipped" : "";
 
-                    @* Build data-entry JSON for JS — serialise the entry *@
-                    var entryJson = Newtonsoft.Json.JsonConvert.SerializeObject(entry);
-
                     <tr class="wo-entry-row@(skippedClass)"
                         data-id="@entry.Id"
                         data-type="@entry.Type"
                         data-status="@entry.Status"
-                        data-severity="@entry.Severity.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)"
-                        data-entry="@Html.AttributeEncode(entryJson)">
+                        data-severity="@entry.Severity.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)">
                         <td class="wo-col-id">@entry.Id</td>
                         <td class="wo-col-status">
                             <button class="wo-status-btn @(entry.Status == "pending" ? "status-pending" : "status-skipped")"
@@ -275,6 +268,9 @@ else
     <input type="hidden" id="woDraftNumber" value="@Model.DraftNumber" />
     <input type="hidden" id="woBookmlId"    value="@Model.BookmlChapterId" />
     <input type="hidden" id="woEditorBase"  value="@Url.Action("Index", "Editor")" />
+    <script id="woManifestData" type="application/json">
+        @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Entries))
+    </script>
 }
 
 @section Scripts {
@@ -300,15 +296,14 @@ else
     var bookmlId    = document.getElementById('woBookmlId').value;
 
     // ----------------------------------------------------------------
-    // Bootstrap: parse all <tr data-entry="..."> into manifest[]
+    // Bootstrap: load manifest from embedded JSON script block
     // ----------------------------------------------------------------
     (function () {
-        var rows = document.querySelectorAll('#woTableBody tr.wo-entry-row');
-        for (var i = 0; i < rows.length; i++) {
+        var dataEl = document.getElementById('woManifestData');
+        if (dataEl) {
             try {
-                var e = JSON.parse(rows[i].getAttribute('data-entry'));
-                manifest.push(e);
-            } catch (ex) { /* skip corrupt row */ }
+                manifest = JSON.parse(dataEl.textContent);
+            } catch (ex) { manifest = []; }
         }
         applyFilter(activeFilter);
         updateSummary();

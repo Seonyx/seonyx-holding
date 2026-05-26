@@ -30,6 +30,11 @@ namespace Seonyx.Web.Models
         public DbSet<ParagraphVersion> ParagraphVersions { get; set; }
         public DbSet<ImportLog> ImportLogs { get; set; }
 
+        // Character Sketch tables
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<CharacterAlias> CharacterAliases { get; set; }
+        public DbSet<CharacterTag> CharacterTags { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -91,6 +96,25 @@ namespace Seonyx.Web.Models
                 .WithMany()
                 .HasForeignKey(l => l.BookProjectID)
                 .WillCascadeOnDelete(false);
+
+            // Character Sketch relationships
+            modelBuilder.Entity<Character>()
+                .HasRequired(c => c.BookProject)
+                .WithMany()
+                .HasForeignKey(c => c.BookProjectID)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<CharacterAlias>()
+                .HasRequired(a => a.Character)
+                .WithMany(c => c.Aliases)
+                .HasForeignKey(a => a.CharacterId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<CharacterTag>()
+                .HasRequired(t => t.Character)
+                .WithMany(c => c.Tags)
+                .HasForeignKey(t => t.CharacterId)
+                .WillCascadeOnDelete(true);
         }
     }
 }

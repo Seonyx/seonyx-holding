@@ -197,6 +197,9 @@ namespace Seonyx.Web.Services
 
                 AddXmlEntry(zip, "book.xml",
                     BuildBookXml(project, bookId, drafts, components, exportDate));
+
+                AddXmlEntry(zip, "names.xml",
+                    BuildNamesXml(db, projectId));
             }
 
             result.Success     = true;
@@ -460,6 +463,50 @@ namespace Seonyx.Web.Services
             }
 
             return new XDocument(new XDeclaration("1.0", "UTF-8", null), notesEl);
+        }
+
+        // =====================================================================
+        // NAMES XML
+        // =====================================================================
+
+        private XDocument BuildNamesXml(SeonyxContext db, int projectId)
+        {
+            var characterNames = db.Characters
+                .Where(c => c.BookProjectID == projectId)
+                .Select(c => c.Name)
+                .ToList();
+
+            var aliasNames = db.CharacterAliases
+                .Where(a => a.Character.BookProjectID == projectId)
+                .Select(a => a.Alias)
+                .ToList();
+
+            var allNames = characterNames.Concat(aliasNames)
+                .Where(n => !string.IsNullOrWhiteSpace(n))
+                .Select(n => n.Trim())
+                .ToList();
+
+            // Expand multi-word names into individual tokens so e.g. "Senna Cage" also suppresses "Cage"
+            // Skip trivial parts (articles, prepositions) that would pollute the stop list
+            var stopWords = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+                { "the", "a", "an", "of", "in", "on", "at", "to", "by", "and", "or" };
+
+            var expanded = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var name in allNames)
+            {
+                expanded.Add(name);
+                foreach (var part in name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    if (!stopWords.Contains(part))
+                        expanded.Add(part);
+                }
+            }
+
+            var namesEl = new XElement(Ns + "names");
+            foreach (var name in expanded.OrderBy(n => n))
+                namesEl.Add(new XElement(Ns + "name", new XAttribute("value", name)));
+
+            return new XDocument(new XDeclaration("1.0", "UTF-8", null), namesEl);
         }
 
         // =====================================================================

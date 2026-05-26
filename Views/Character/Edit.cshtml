@@ -1,0 +1,438 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.CharacterDetailViewModel
+@using Seonyx.Web.Models.ViewModels.BookEditor
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    bool isNew = string.IsNullOrEmpty(Model.CharacterId);
+    ViewBag.Title = isNew ? "New Character" : "Edit Character: " + Model.Name;
+}
+
+@section Styles {
+    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+    <style>
+        details { border: 1px solid #ddd; border-radius: 4px; margin-bottom: 0.75rem; }
+        details summary { padding: 0.6rem 0.9rem; cursor: pointer; font-weight: bold; background: #f5f5f5; border-radius: 4px; }
+        details[open] summary { border-bottom: 1px solid #ddd; border-radius: 4px 4px 0 0; }
+        details .section-body { padding: 1rem; }
+        .alias-row { display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 0.4rem; }
+        .alias-row input, .alias-row select { flex: 1; }
+        .alias-row input.alias-order { max-width: 60px; flex: 0 0 60px; }
+        .alias-row .btn-remove { flex: 0 0 auto; }
+        textarea.narrative { width: 100%; box-sizing: border-box; }
+    </style>
+}
+
+<div class="page-header">
+    @if (isNew)
+    {
+        <h1>New Character</h1>
+    }
+    else
+    {
+        <h1>Edit Character: @Model.Name</h1>
+    }
+    <a href="/admin/bookeditor/characters/Index?bookProjectId=@Model.BookProjectID" class="btn btn-secondary">Back to Characters</a>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@using (Html.BeginForm("Save", "Character", FormMethod.Post, new { @class = "admin-form", id = "characterForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="CharacterId" id="characterIdField"
+           value="@(isNew ? "" : Model.CharacterId)" />
+    <input type="hidden" name="BookProjectID" value="@Model.BookProjectID" />
+
+    @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+
+    @* ---- IDENTITY ---- *@
+    <details open="open">
+        <summary>Identity</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Name <span class="text-danger">*</span></label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Pronouns</label>
+                @Html.TextBoxFor(m => m.Pronouns, new { @class = "form-control", placeholder = "e.g. she/her" })
+            </div>
+            <div class="form-group">
+                <label>Age / Age Display</label>
+                @Html.TextBoxFor(m => m.AgeDisplay, new { @class = "form-control", placeholder = "e.g. late 30s" })
+            </div>
+            <div class="form-group">
+                <label>Date of Birth</label>
+                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+            </div>
+            <div class="form-group">
+                <label>Species / Type</label>
+                @Html.TextBoxFor(m => m.SpeciesType, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Occupation</label>
+                @Html.TextBoxFor(m => m.Occupation, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Class / Social Status</label>
+                @Html.TextBoxFor(m => m.ClassStatus, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Reference Image URI</label>
+                @Html.TextBoxFor(m => m.ReferenceImageUri, new { @class = "form-control" })
+            </div>
+        </div>
+    </details>
+
+    @* ---- CLASSIFICATION ---- *@
+    <details>
+        <summary>Classification</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Story Role <span class="text-danger">*</span></label>
+                @Html.DropDownListFor(m => m.StoryRoleCode,
+                    new SelectList(CharacterDetailViewModel.StoryRoleCodes.Select(v => new SelectListItem { Value = v, Text = v }),
+                        "Value", "Text", Model.StoryRoleCode),
+                    "-- select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.StoryRoleCode, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Importance <span class="text-danger">*</span></label>
+                @Html.DropDownListFor(m => m.ImportanceCode,
+                    new SelectList(CharacterDetailViewModel.ImportanceCodes.Select(v => new SelectListItem { Value = v, Text = v }),
+                        "Value", "Text", Model.ImportanceCode),
+                    "-- select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ImportanceCode, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                @Html.DropDownListFor(m => m.StatusCode,
+                    new SelectList(CharacterDetailViewModel.StatusCodes.Select(v => new SelectListItem { Value = v, Text = v }),
+                        "Value", "Text", Model.StatusCode),
+                    "-- select --", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Spoiler Level</label>
+                @Html.DropDownListFor(m => m.SpoilerLevelCode,
+                    new SelectList(CharacterDetailViewModel.SpoilerLevelCodes.Select(v => new SelectListItem { Value = v, Text = v }),
+                        "Value", "Text", Model.SpoilerLevelCode),
+                    "-- select --", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>
+                    @Html.CheckBoxFor(m => m.IsPov) Point of View character
+                </label>
+            </div>
+        </div>
+    </details>
+
+    @* ---- LOCATION & FACTION ---- *@
+    <details>
+        <summary>Location &amp; Faction</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Home Location</label>
+                @Html.TextBoxFor(m => m.HomeLocation, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Current Location</label>
+                @Html.TextBoxFor(m => m.CurrentLocation, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Faction</label>
+                @Html.TextBoxFor(m => m.Faction, new { @class = "form-control" })
+            </div>
+        </div>
+    </details>
+
+    @* ---- PSYCHOLOGY ---- *@
+    <details>
+        <summary>Psychology</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Goal</label>
+                @Html.TextAreaFor(m => m.Goal, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Need</label>
+                @Html.TextAreaFor(m => m.Need, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Motivation</label>
+                @Html.TextAreaFor(m => m.Motivation, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Stakes</label>
+                @Html.TextAreaFor(m => m.Stakes, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Fear</label>
+                @Html.TextAreaFor(m => m.Fear, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Flaw</label>
+                @Html.TextAreaFor(m => m.Flaw, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Strength</label>
+                @Html.TextAreaFor(m => m.Strength, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Lie They Believe</label>
+                @Html.TextAreaFor(m => m.LieTheyBelieve, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Core Value</label>
+                @Html.TextAreaFor(m => m.CoreValue, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Internal Conflict</label>
+                @Html.TextAreaFor(m => m.InternalConflict, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>External Conflict</label>
+                @Html.TextAreaFor(m => m.ExternalConflict, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Secret</label>
+                @Html.TextAreaFor(m => m.Secret, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Line They Won't Cross</label>
+                @Html.TextAreaFor(m => m.LineTheyWontCross, 3, 80, new { @class = "form-control narrative" })
+            </div>
+        </div>
+    </details>
+
+    @* ---- APPEARANCE ---- *@
+    <details>
+        <summary>Appearance &amp; Behaviour</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Physical Description</label>
+                @Html.TextAreaFor(m => m.PhysicalDescription, 4, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Distinctive Features</label>
+                @Html.TextAreaFor(m => m.DistinctiveFeatures, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Clothing &amp; Props</label>
+                @Html.TextAreaFor(m => m.ClothingProps, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Voice Pattern</label>
+                @Html.TextAreaFor(m => m.VoicePattern, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Habits &amp; Mannerisms</label>
+                @Html.TextAreaFor(m => m.HabitsMannerisms, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Body Language</label>
+                @Html.TextAreaFor(m => m.BodyLanguage, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Public Persona</label>
+                @Html.TextAreaFor(m => m.PublicPersona, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Private Self</label>
+                @Html.TextAreaFor(m => m.PrivateSelf, 3, 80, new { @class = "form-control narrative" })
+            </div>
+        </div>
+    </details>
+
+    @* ---- BACKGROUND ---- *@
+    <details>
+        <summary>Background</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Education &amp; Training</label>
+                @Html.TextAreaFor(m => m.EducationTraining, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Origin &amp; Background</label>
+                @Html.TextAreaFor(m => m.OriginBackground, 4, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Important Past Events</label>
+                @Html.TextAreaFor(m => m.ImportantPastEvents, 4, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Family Notes</label>
+                @Html.TextAreaFor(m => m.FamilyNotes, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Weaknesses &amp; Limitations</label>
+                @Html.TextAreaFor(m => m.WeaknessesLimitations, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Health &amp; Injuries</label>
+                @Html.TextAreaFor(m => m.HealthInjuries, 3, 80, new { @class = "form-control narrative" })
+            </div>
+        </div>
+    </details>
+
+    @* ---- STORY NOTES ---- *@
+    <details>
+        <summary>Story Notes</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Story Arc Summary</label>
+                @Html.TextAreaFor(m => m.StoryArcSummary, 4, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Character Function</label>
+                @Html.TextAreaFor(m => m.CharacterFunction, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Relationship Summary</label>
+                @Html.TextAreaFor(m => m.RelationshipSummary, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Continuity Notes</label>
+                @Html.TextAreaFor(m => m.ContinuityNotes, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Unresolved Threads</label>
+                @Html.TextAreaFor(m => m.UnresolvedThreads, 3, 80, new { @class = "form-control narrative" })
+            </div>
+            <div class="form-group">
+                <label>Notes</label>
+                @Html.TextAreaFor(m => m.Notes, 4, 80, new { @class = "form-control narrative" })
+            </div>
+        </div>
+    </details>
+
+    @* ---- ALIASES ---- *@
+    <details>
+        <summary>Aliases</summary>
+        <div class="section-body">
+            <div id="aliasContainer">
+                @if (Model.Aliases != null)
+                {
+                    for (int i = 0; i < Model.Aliases.Count; i++)
+                    {
+                        <div class="alias-row">
+                            <input type="text" name="Aliases[@i].Alias" value="@Model.Aliases[i].Alias"
+                                   class="form-control" placeholder="Alias" />
+                            <select name="Aliases[@i].AliasTypeCode" class="form-control">
+                                <option value="">-- type --</option>
+                                @foreach (var code in CharacterDetailViewModel.AliasTypeCodes)
+                                {
+                                    if (Model.Aliases[i].AliasTypeCode == code)
+                                    {
+                                        <option value="@code" selected="selected">@code</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@code">@code</option>
+                                    }
+                                }
+                            </select>
+                            <input type="number" name="Aliases[@i].SortOrder" value="@Model.Aliases[i].SortOrder"
+                                   class="form-control alias-order" placeholder="#" />
+                            <button type="button" class="btn btn-danger btn-sm btn-remove"
+                                    onclick="removeAlias(this)">Remove</button>
+                        </div>
+                    }
+                }
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="addAlias()">+ Add Alias</button>
+        </div>
+    </details>
+
+    @* ---- TAGS ---- *@
+    <details>
+        <summary>Tags</summary>
+        <div class="section-body">
+            <div class="form-group">
+                <label>Tags (comma-separated)</label>
+                @Html.TextBoxFor(m => m.TagsRaw, new { @class = "form-control", placeholder = "e.g. engineer, madrid, pov" })
+                <small class="text-muted">Separate tags with commas. Tags are stored in lower case.</small>
+            </div>
+        </div>
+    </details>
+
+    @* ---- BUTTONS ---- *@
+    <div class="form-actions" style="margin-top: 1rem;">
+        <button type="submit" class="btn btn-primary" id="saveBtn">Save Character</button>
+        <a href="/admin/bookeditor/characters/Index?bookProjectId=@Model.BookProjectID"
+           class="btn btn-secondary">Cancel</a>
+    </div>
+}
+
+@if (!isNew)
+{
+    using (Html.BeginForm("Delete", "Character", FormMethod.Post,
+        new { style = "margin-top: 0.5rem;",
+              onsubmit = "return confirm('Delete this character? This cannot be undone.');" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.CharacterId" />
+        <input type="hidden" name="bookProjectId" value="@Model.BookProjectID" />
+        <button type="submit" class="btn btn-danger">Delete Character</button>
+    }
+}
+
+@section Scripts {
+<script>
+(function () {
+    // ---- New character: generate CharacterId from Name ----
+    var isNew = @(isNew ? "true" : "false");
+    if (isNew) {
+        var nameInput = document.getElementById('Name');
+        var idField   = document.getElementById('characterIdField');
+        if (nameInput && idField) {
+            nameInput.addEventListener('blur', function () {
+                if (idField.value) return; // already set
+                var slug = nameInput.value
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '_')
+                    .replace(/^_+|_+$/g, '')
+                    .substring(0, 20);
+                var token = Math.random().toString(36).substring(2, 8);
+                idField.value = 'char_' + slug + '_' + token;
+            });
+        }
+    }
+
+    // ---- Aliases: add / remove rows ----
+    window.addAlias = function () {
+        var container = document.getElementById('aliasContainer');
+        var idx = container.querySelectorAll('.alias-row').length;
+        var typeCodes = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(CharacterDetailViewModel.AliasTypeCodes));
+        var opts = '<option value="">-- type --</option>';
+        for (var i = 0; i < typeCodes.length; i++) {
+            opts += '<option value="' + typeCodes[i] + '">' + typeCodes[i] + '</option>';
+        }
+        var row = document.createElement('div');
+        row.className = 'alias-row';
+        row.innerHTML =
+            '<input type="text" name="Aliases[' + idx + '].Alias" class="form-control" placeholder="Alias" />' +
+            '<select name="Aliases[' + idx + '].AliasTypeCode" class="form-control">' + opts + '</select>' +
+            '<input type="number" name="Aliases[' + idx + '].SortOrder" class="form-control alias-order" placeholder="#" />' +
+            '<button type="button" class="btn btn-danger btn-sm btn-remove" onclick="removeAlias(this)">Remove</button>';
+        container.appendChild(row);
+    };
+
+    window.removeAlias = function (btn) {
+        var row = btn.closest('.alias-row');
+        row.parentNode.removeChild(row);
+        // Re-index remaining rows so model binding stays contiguous
+        var container = document.getElementById('aliasContainer');
+        var rows = container.querySelectorAll('.alias-row');
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].querySelectorAll('input, select').forEach(function (el) {
+                el.name = el.name.replace(/Aliases\[\d+\]/, 'Aliases[' + i + ']');
+            });
+        }
+    };
+}());
+</script>
+}

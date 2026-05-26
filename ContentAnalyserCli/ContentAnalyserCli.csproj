@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>content-analyser</AssemblyName>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Platforms>AnyCPU</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Link engine source directly — same source compiled against .NET 8 -->
+    <Compile Include="..\ContentAnalysisEngine\**\*.cs"
+             Link="Engine\%(RecursiveDir)%(Filename)%(Extension)"
+             Exclude="..\ContentAnalysisEngine\obj\**;..\ContentAnalysisEngine\bin\**;..\ContentAnalysisEngine\Properties\**" />
+  </ItemGroup>
+
+</Project>

@@ -184,6 +184,9 @@
     <Compile Include="Models\ViewModels\Admin\AdminDashboardViewModel.cs" />
     <Compile Include="Models\ViewModels\Admin\AdminPageViewModel.cs" />
     <Compile Include="Models\BookProject.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\CharacterAlias.cs" />
+    <Compile Include="Models\CharacterTag.cs" />
     <Compile Include="Models\Chapter.cs" />
     <Compile Include="Models\Paragraph.cs" />
     <Compile Include="Models\MetaNote.cs" />
@@ -197,6 +200,8 @@
     <Compile Include="Models\ViewModels\BookEditor\ExportViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\AudiobookConfigViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\EpubConfigViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\CharacterViewModel.cs" />
+    <Compile Include="Services\ChapterReviewOdtExporter.cs" />
     <Compile Include="Services\AudiobookPackageBuilder.cs" />
     <Compile Include="Services\BookFileParser.cs" />
     <Compile Include="Services\BookmlExporter.cs" />
@@ -207,6 +212,7 @@
     <Compile Include="Controllers\BookProjectController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\EditorController.cs" />
+    <Compile Include="Controllers\CharacterController.cs" />
     <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\ImportLogController.cs" />
     <Compile Include="Controllers\DraftController.cs" />
@@ -274,6 +280,8 @@
     <Content Include="Views\Export\AudiobookConfig.cshtml" />
     <Content Include="Views\Export\EpubConfig.cshtml" />
     <Content Include="Views\Export\Index.cshtml" />
+    <Content Include="Views\Character\Index.cshtml" />
+    <Content Include="Views\Character\Edit.cshtml" />
     <Content Include="Views\ImportLog\Index.cshtml" />
     <Content Include="Views\ImportLog\Detail.cshtml" />
     <Content Include="Views\Draft\Diff.cshtml" />

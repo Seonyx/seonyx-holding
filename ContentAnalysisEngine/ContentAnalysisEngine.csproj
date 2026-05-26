@@ -42,6 +42,12 @@
     <Compile Include="AnalysisConfiguration.cs" />
     <Compile Include="AnalysisReport.cs" />
     <Compile Include="BookmlReader.cs" />
+    <Compile Include="NamesReader.cs" />
+    <Compile Include="BookReader.cs" />
+    <Compile Include="BookAnalyser.cs" />
+    <Compile Include="BookAnalysisReport.cs" />
+    <Compile Include="LexicalSummaryGenerator.cs" />
+    <Compile Include="BookDeltaComparer.cs" />
     <Compile Include="ChapterAnalyser.cs" />
     <Compile Include="Metrics\HapaxMetric.cs" />
     <Compile Include="Metrics\NgramMetric.cs" />
@@ -52,6 +58,7 @@
     <Compile Include="Tokeniser.cs" />
     <Compile Include="WorkOrderConfiguration.cs" />
     <Compile Include="WorkOrderGenerator.cs" />
+    <Compile Include="WorkOrderValidator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

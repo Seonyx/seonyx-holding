@@ -70,6 +70,7 @@
                     <td>@ch.ParagraphCount</td>
                     <td>
                         <a href="@Url.Action("ExportChapter", new { chapterId = ch.ChapterID })" class="btn btn-secondary btn-sm">Export Chapter XML</a>
+                        <a href="@Url.Action("ExportChapterReview", new { chapterId = ch.ChapterID })" class="btn btn-outline-secondary btn-sm" title="Downloads a double-spaced ODT file with paragraph identifiers, ready for editor markup.">Export for Review</a>
                     </td>
                 </tr>
             }

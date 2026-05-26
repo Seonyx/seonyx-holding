@@ -10,7 +10,10 @@
 
 <div class="page-header">
     <h1>Edit Project: @Model.ProjectName</h1>
-    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to Projects</a>
+    <div>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to Projects</a>
+        <a href="/admin/bookeditor/characters/Index?bookProjectId=@Model.BookProjectID" class="btn btn-secondary">Characters</a>
+    </div>
 </div>
 
 @using (Html.BeginForm("Edit", "BookProject", FormMethod.Post, new { @class = "admin-form" }))

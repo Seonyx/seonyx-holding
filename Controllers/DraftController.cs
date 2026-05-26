@@ -280,12 +280,12 @@ namespace Seonyx.Web.Controllers
                 }).ToList()
             };
 
-            // Pick the requested chapter (or first with a BookML ID)
+            // Pick the requested chapter (or first available)
             Chapter chapter = null;
             if (chapterId > 0)
                 chapter = chapters.FirstOrDefault(c => c.ChapterID == chapterId);
             if (chapter == null)
-                chapter = chapters.FirstOrDefault(c => c.BookmlChapterId != null);
+                chapter = chapters.FirstOrDefault();
 
             if (chapter == null)
             {
@@ -293,8 +293,8 @@ namespace Seonyx.Web.Controllers
                 return View(vm);
             }
 
-            vm.ChapterID      = chapter.ChapterID;
-            vm.ChapterTitle   = chapter.ChapterTitle;
+            vm.ChapterID       = chapter.ChapterID;
+            vm.ChapterTitle    = chapter.ChapterTitle;
             vm.BookmlChapterId = chapter.BookmlChapterId;
 
             // Check session for an existing manifest
@@ -314,7 +314,6 @@ namespace Seonyx.Web.Controllers
             }
             catch
             {
-                // Corrupt session data — discard and show the generate button
                 Session.Remove(sessionKey);
                 vm.HasManifest = false;
             }
@@ -334,31 +333,51 @@ namespace Seonyx.Web.Controllers
                 c => c.ChapterID == chapterId && c.BookProjectID == projectId);
             if (chapter == null) return HttpNotFound();
 
-            if (string.IsNullOrEmpty(chapter.BookmlChapterId))
-            {
-                TempData["Error"] = "This chapter has no BookML ID. Import the chapter via BookML first.";
-                return RedirectToAction("Analysis", new { projectId, chapterId, draftNumber });
-            }
+            // Load paragraph versions for this chapter and draft from the DB
+            var versions = db.ParagraphVersions
+                .Where(pv => pv.ChapterID == chapterId && pv.DraftNumber == draftNumber)
+                .OrderBy(pv => pv.Seq)
+                .ToList();
 
-            // Resolve chapter XML path: {project.FolderPath}/bookml/{BookmlChapterId}/{BookmlChapterId}-chapter.xml
-            var chapterXmlPath = Path.Combine(
-                project.FolderPath, "bookml",
-                chapter.BookmlChapterId,
-                chapter.BookmlChapterId + "-chapter.xml");
-
-            if (!System.IO.File.Exists(chapterXmlPath))
+            if (versions.Count == 0)
             {
                 TempData["Error"] = string.Format(
-                    "Chapter XML not found at: {0}. Re-import the BookML package.", chapterXmlPath);
+                    "No paragraph data found for chapter '{0}', draft {1}. Import a BookML package first.",
+                    chapter.ChapterTitle, draftNumber);
                 return RedirectToAction("Analysis", new { projectId, chapterId, draftNumber });
             }
 
             try
             {
-                var analyser   = new ChapterAnalyser();
-                var report     = analyser.Analyse(chapterXmlPath);
-                var generator  = new WorkOrderGenerator();
-                var manifestDoc = generator.Generate(report, chapter.BookmlChapterId, draftNumber);
+                var paragraphs = versions.Select(pv => new ParagraphEntry
+                {
+                    Pid  = pv.Pid,
+                    Seq  = pv.Seq,
+                    Text = pv.Content ?? ""
+                }).ToList();
+
+                var chapterId2 = chapter.BookmlChapterId ?? chapter.ChapterID.ToString();
+
+                // Suppress character names and aliases from analysis metrics
+                var characterNames = db.Characters
+                    .Where(c => c.BookProjectID == projectId)
+                    .Select(c => c.Name)
+                    .ToList();
+                var aliasNames = db.CharacterAliases
+                    .Where(a => a.Character.BookProjectID == projectId)
+                    .Select(a => a.Alias)
+                    .ToList();
+                var config = new AnalysisConfiguration
+                {
+                    AdditionalStopWords = new HashSet<string>(
+                        characterNames.Concat(aliasNames),
+                        StringComparer.OrdinalIgnoreCase)
+                };
+
+                var analyser = new ChapterAnalyser(config);
+                var report   = analyser.Analyse(paragraphs, chapterId2);
+                var generator   = new WorkOrderGenerator();
+                var manifestDoc = generator.Generate(report, chapterId2, draftNumber);
 
                 var sessionKey = string.Format("WO_{0}_{1}_{2}", projectId, chapterId, draftNumber);
                 Session[sessionKey] = manifestDoc.ToString();
@@ -375,6 +394,7 @@ namespace Seonyx.Web.Controllers
         // POST: admin/bookeditor/draft/ExportWorkOrders
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult ExportWorkOrders(int projectId, int chapterId, int draftNumber, string manifestXml)
         {
             if (string.IsNullOrEmpty(manifestXml))
