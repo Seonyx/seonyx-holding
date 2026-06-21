@@ -74,12 +74,19 @@ try {
     Write-Host "Post-copy steps:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. Build and run the web app (Seonyx.sln, F5)." -ForegroundColor White
+    Write-Host "1. Run Database\CharacterSketch_DDL.sql on BOTH Dibbler and production." -ForegroundColor White
+    Write-Host "   Creates: Characters, CharacterAliases, CharacterTags tables." -ForegroundColor Gray
+    Write-Host "   The BookML export will fail with 'Invalid object name dbo.Characters' if skipped." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "   Dibbler:    sqlcmd -S localhost -d Seonyx -i Database\CharacterSketch_DDL.sql" -ForegroundColor Gray
+    Write-Host "   Production: run the same script via SSMS or sqlcmd against the live DB." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "2. Build and run the web app (Seonyx.sln, F5)." -ForegroundColor White
     Write-Host "   Test: open the Export page for any book, click 'Export for Review' on a chapter." -ForegroundColor Gray
     Write-Host "   Expected: browser downloads *-review.odt. Open in LibreOffice or Word." -ForegroundColor Gray
     Write-Host "   Verify: double spacing, PID labels in grey Courier, 1.5in margins, title centred bold." -ForegroundColor Gray
     Write-Host ""
-    Write-Host "2. CLI work -- open ContentAnalyserCli.sln in a separate VS window." -ForegroundColor White
+    Write-Host "3. CLI work -- open ContentAnalyserCli.sln in a separate VS window." -ForegroundColor White
     Write-Host "   Ctrl+Shift+B builds the .NET 8 project; publish for Linux:" -ForegroundColor Gray
     Write-Host "   cd $dst\ContentAnalyserCli" -ForegroundColor Gray
     Write-Host "   dotnet publish -c Release -r linux-x64 --self-contained true -o publish\linux-x64" -ForegroundColor Gray
