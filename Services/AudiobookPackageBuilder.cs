@@ -105,9 +105,20 @@ namespace Seonyx.Web.Services
             sb.AppendLine("## CHAPTER_TITLE: " + title);
             sb.AppendLine();
 
-            // Load the version snapshot at the requested draft number.
-            // For each pid, take the highest DraftNumber <= draftNumber (the last
-            // known state of that paragraph as of the chosen draft).
+            // Working-copy paragraphs are the source of truth for text and
+            // presence (one row per pid, enforced by UQ_UniqueID_Per_Chapter).
+            // ParagraphVersions is append-only history and may contain stale/
+            // orphaned pids left behind by past imports -- never source
+            // paragraph text or the paragraph list itself from it directly.
+            var paragraphs = db.Paragraphs
+                .Where(p => p.ChapterID == ch.ChapterID)
+                .OrderBy(p => p.OrdinalPosition)
+                .ToList();
+
+            if (!paragraphs.Any())
+                return sb.ToString();
+
+            // Latest ParagraphVersion per pid, used only for Seq/ParaType metadata.
             var versionsByPid = db.ParagraphVersions
                 .Where(v => v.ChapterID == ch.ChapterID && v.DraftNumber <= draftNumber)
                 .ToList()
@@ -117,20 +128,20 @@ namespace Seonyx.Web.Services
                     g => g.OrderByDescending(v => v.DraftNumber).First(),
                     StringComparer.OrdinalIgnoreCase);
 
-            if (!versionsByPid.Any())
-                return sb.ToString();
-
-            // Build para rows from version snapshots, sorted by Seq
+            // Build para rows from the working copy, sorted by Seq
             var rows = new List<ParaRow>();
             int fallback = 0;
-            foreach (var ver in versionsByPid.Values)
+            foreach (var para in paragraphs)
             {
                 fallback++;
+                ParagraphVersion ver;
+                versionsByPid.TryGetValue(para.UniqueID ?? "", out ver);
+
                 rows.Add(new ParaRow
                 {
-                    Seq      = ver.Seq > 0 ? ver.Seq : fallback * 1000,
-                    ParaType = !string.IsNullOrEmpty(ver.ParaType) ? ver.ParaType : "normal",
-                    Text     = ver.Content ?? ""
+                    Seq      = (ver != null && ver.Seq > 0) ? ver.Seq : fallback * 1000,
+                    ParaType = (ver != null && !string.IsNullOrEmpty(ver.ParaType)) ? ver.ParaType : "normal",
+                    Text     = para.ParagraphText ?? ""
                 });
             }
 

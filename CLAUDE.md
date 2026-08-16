@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 src  \\192.168.69.75\seonyx-holding
-dst  C:\Users\Steve\Dropbox\VITALIS\Seonyx\NEW_SITE_FEB26
+dst  C:\Nextcloud\VITALIS\Seonyx\NEW_SITE_FEB26
 ```
 
 ## Build & Run
