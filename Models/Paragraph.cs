@@ -18,6 +18,7 @@ namespace Seonyx.Web.Models
 
         public int OrdinalPosition { get; set; }
 
+        [Column("ParagraphText_Legacy")]
         [Required(AllowEmptyStrings = true)]
         public string ParagraphText { get; set; }
 

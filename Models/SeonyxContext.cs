@@ -22,6 +22,7 @@ namespace Seonyx.Web.Models
         public DbSet<BookProject> BookProjects { get; set; }
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Paragraph> Paragraphs { get; set; }
+        public DbSet<ParagraphRun> ParagraphRuns { get; set; }
         public DbSet<MetaNote> MetaNotes { get; set; }
         public DbSet<EditNote> EditNotes { get; set; }
 
@@ -77,6 +78,12 @@ namespace Seonyx.Web.Models
                 .HasRequired(e => e.Paragraph)
                 .WithMany()
                 .HasForeignKey(e => e.ParagraphID)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<ParagraphRun>()
+                .HasRequired(r => r.Paragraph)
+                .WithMany()
+                .HasForeignKey(r => r.ParagraphID)
                 .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<Draft>()
