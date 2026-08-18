@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyName>roundtrip-check</AssemblyName>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Platforms>AnyCPU</Platforms>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
+  <!--
+    Targets net462, not net8.0, unlike ContentAnalyserCli. Seonyx itself
+    is pinned to .NET Framework 4.6.2 by its shared hosting provider
+    (contract through Feb 2027) -- the parser/converter/serializer
+    classes below must stay within Framework 4.6.2's BCL so they can be
+    source-linked into both the web app and this CLI without
+    cross-runtime incompatibility. Revisit at the Feb 2027 hosting
+    review; see Documentation/CC-Brief-BookML-Inline-Presentation.md,
+    "Deferred decisions".
+  -->
+
+  <ItemGroup>
+    <!-- Link the framework-agnostic parser/converter source directly
+         from the web project -- same technique ContentAnalyserCli uses
+         for ContentAnalysisEngine, but same-runtime here rather than
+         cross-runtime, since both sides target net462. -->
+    <Compile Include="..\Services\MarkdownInlineParser.cs" Link="Engine\MarkdownInlineParser.cs" />
+    <Compile Include="..\Services\InlineXmlRunConverter.cs" Link="Engine\InlineXmlRunConverter.cs" />
+    <Compile Include="..\Services\RunsToMarkdownSerializer.cs" Link="Engine\RunsToMarkdownSerializer.cs" />
+  </ItemGroup>
+
+</Project>

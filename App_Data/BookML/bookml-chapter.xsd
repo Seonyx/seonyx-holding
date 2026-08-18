@@ -7,7 +7,7 @@
            version="1.0">
 
   <!-- ============================================================
-       BookML Chapter Schema v1.0
+       BookML Chapter Schema v1.1
        bookml-chapter.xsd
 
        Validates:  *-chapter.xml files
@@ -23,6 +23,13 @@
        Figures, tables, and headings are defined but commented
        out in the sample XML; they are fully supported by this
        schema for non-fiction extension.
+
+       v1.1: ParaType's inline content model changed from a fixed
+       xs:sequence of plain-string em/strong elements to a
+       repeatable xs:choice built on bml:InlineContent (see
+       bookml-common.xsd v1.1) — supports interleaved, nestable
+       emph/strong/smallcaps/overlay/linebreak elements. The
+       former "em" element is superseded by "emph".
   ============================================================ -->
 
   <xs:include schemaLocation="bookml-common.xsd"/>
@@ -247,22 +254,18 @@
         Core prose paragraph. Mixed content (text and optional
         inline markup). Every paragraph in the work is
         represented by exactly one ParaType element.
+
+        Inline markup elements (emph/strong/smallcaps/overlay/
+        linebreak, from bml:InlineContent) may occur in any order
+        and repeat freely, matching realistic prose with
+        interleaved emphasis — this is why they are a choice, not
+        a fixed sequence. footnote-ref is folded into the same
+        choice for the same reason: it may appear anywhere among
+        the inline elements, not only after all of them.
       </xs:documentation>
     </xs:annotation>
-    <xs:sequence>
-      <!-- Inline markup elements for prose formatting -->
-      <xs:element name="em"       type="xs:string" minOccurs="0"
-                  maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation>Emphasis (italic in print).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="strong"   type="xs:string" minOccurs="0"
-                  maxOccurs="unbounded">
-        <xs:annotation>
-          <xs:documentation>Strong emphasis (bold in print).</xs:documentation>
-        </xs:annotation>
-      </xs:element>
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="bml:InlineContent"/>
       <xs:element name="footnote-ref" minOccurs="0"
                   maxOccurs="unbounded">
         <xs:annotation>
@@ -285,7 +288,7 @@
           </xs:attribute>
         </xs:complexType>
       </xs:element>
-    </xs:sequence>
+    </xs:choice>
 
     <!-- Identity and ordering -->
     <xs:attribute name="pid"   type="bml:PidType" use="required"/>

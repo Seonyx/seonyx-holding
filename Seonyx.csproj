@@ -211,6 +211,9 @@
     <Compile Include="Services\VoiceLibrary.cs" />
     <Compile Include="Services\BookmlImporter.cs" />
     <Compile Include="Services\ParagraphRunService.cs" />
+    <Compile Include="Services\MarkdownInlineParser.cs" />
+    <Compile Include="Services\InlineXmlRunConverter.cs" />
+    <Compile Include="Services\RunsToMarkdownSerializer.cs" />
     <Compile Include="Controllers\BookProjectController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\EditorController.cs" />

@@ -1,8 +1,23 @@
 # BookML Schema Amendment — Inline Presentation Elements
 
-**Status:** Draft for review
+**Status:** P1 and P2 implemented (schema, migration, importer, exporter). P3 (editor UI), P4 (analytics), P5 (EPUB/audiobook), P6 (drop legacy column) not yet started.
 **Affects:** `bookml-common.xsd`, `bookml-chapter.xsd`, runtime DB schema, importer, exporter, editor UI, analytics engine, EPUB/audiobook exporters
 **Supersedes:** Nothing — net additive amendment
+
+**Implementation note (P2):** two element names in this document differ
+from what was actually built, because preflight investigation found
+they collided with elements the live schema already had:
+- **`<emph>`** supersedes an existing plain-string `<em>` element that
+  `bookml-chapter.xsd` already defined (with real usage in existing
+  chapter XML). `<emph>` is the *same concept*, now upgraded to mixed
+  content so it can nest, not a second element alongside `<em>`.
+- **`<linebreak/>`** is used instead of `<break/>` for the new inline
+  hard-line-break mark, because the schema already has a *structural*
+  `<break>` element (scene/section/page breaks between paragraphs,
+  `BreakTypeType`) at a different position in the content model. Every
+  `<break/>` reference below that means the new inline mark should be
+  read as `<linebreak/>`; the existing structural `<break>` is
+  unaffected by this amendment.
 
 ---
 
@@ -22,44 +37,48 @@ Markdown remains an authoring convenience at the plain-text import boundary only
 
 ### 2.1 New inline element group (in `bookml-common.xsd`)
 
+As implemented (`<break>` renamed to `<linebreak>` to avoid colliding
+with the existing structural `<break>` element — see implementation
+note above; the `bml:` namespace prefix reflects the actual schema):
+
 ```xml
 <xs:group name="InlineContent">
   <xs:choice minOccurs="0" maxOccurs="unbounded">
-    <xs:element ref="emph"/>
-    <xs:element ref="strong"/>
-    <xs:element ref="smallcaps"/>
-    <xs:element ref="overlay"/>
-    <xs:element ref="break"/>
+    <xs:element ref="bml:emph"/>
+    <xs:element ref="bml:strong"/>
+    <xs:element ref="bml:smallcaps"/>
+    <xs:element ref="bml:overlay"/>
+    <xs:element ref="bml:linebreak"/>
   </xs:choice>
 </xs:group>
 
 <xs:element name="emph">
   <xs:complexType mixed="true">
-    <xs:group ref="InlineContent"/>
+    <xs:group ref="bml:InlineContent"/>
     <xs:attribute name="type" type="xs:string" use="optional"/>
   </xs:complexType>
 </xs:element>
 
 <xs:element name="strong">
   <xs:complexType mixed="true">
-    <xs:group ref="InlineContent"/>
+    <xs:group ref="bml:InlineContent"/>
   </xs:complexType>
 </xs:element>
 
 <xs:element name="smallcaps">
   <xs:complexType mixed="true">
-    <xs:group ref="InlineContent"/>
+    <xs:group ref="bml:InlineContent"/>
   </xs:complexType>
 </xs:element>
 
 <xs:element name="overlay">
   <xs:complexType mixed="true">
-    <xs:group ref="InlineContent"/>
+    <xs:group ref="bml:InlineContent"/>
     <xs:attribute name="type" type="xs:string" use="required"/>
   </xs:complexType>
 </xs:element>
 
-<xs:element name="break">
+<xs:element name="linebreak">
   <xs:complexType/>
 </xs:element>
 ```
@@ -87,7 +106,7 @@ The existing `<p>` element's content model becomes **mixed** — character data 
 | `<strong>` | Bold / strong emphasis | No attributes |
 | `<smallcaps>` | Small caps | Reserved for SFX or signage where the author wants them; rare in fiction |
 | `<overlay type="...">` | Diegetic on-screen text | `@type` is a free-form classifier (`sponsored-alert`, `hud`, `system-message`, `subtitle`). Stylesheets switch on this. |
-| `<break/>` | Hard line break inside a paragraph | Use sparingly; not a paragraph break |
+| `<linebreak/>` | Hard line break inside a paragraph | Use sparingly; not a paragraph break. Named `linebreak` (not `break`) to avoid colliding with the existing structural `<break>` element used between paragraphs. |
 
 ### 2.4 Nesting rules
 
@@ -188,6 +207,40 @@ Rationale: guessing overlay intent from text is brittle; the semantic decision b
 
 After parsing, adjacent runs with identical style attributes are coalesced before insert. The importer never emits two consecutive rows differing only by `Seq`.
 
+### 4.4 Dual-path handling (as implemented, P2)
+
+Preflight investigation found that `BookmlImporter.ParsePara` was
+already silently discarding any pre-existing inline XML elements (the
+schema's original `<em>`/`<strong>`) via `XElement.Value` flattening —
+real chapter XML in the codebase already used `<em>` spans that were
+being lost on every import. P2 fixes this alongside adding the
+Markdown-subset parser, so the importer now has two paragraph-parsing
+paths that both converge on the same `ParagraphRun` output:
+
+1. **Source `<para>` has inline child elements** (`<emph>`/`<strong>`/
+   `<smallcaps>`/`<overlay>`/`<linebreak>`): flattened directly onto
+   leaf runs by walking the XML tree (style-flag/`OverlayType`
+   inheritance rules as in section 3.3), not routed through the
+   Markdown parser.
+2. **Source `<para>` is plain text** (no inline child elements,
+   possibly containing `**`/`*`/`_` markers): routed through the
+   Markdown-subset parser (section 4.1).
+
+Both paths coalesce before persisting. Additionally, `Paragraph`'s
+legacy plain-text mirror column (`ParagraphText`, deprecated by this
+amendment per section 3.2) is kept in sync with whichever runs were
+actually produced: when runs came from path 1, the plain-text mirror is
+re-derived by serializing those runs back to the Markdown-expressible
+subset, rather than using the flattened-and-marker-free `.Value` text.
+This was necessary because Seonyx's paragraph editor is still a plain
+`<textarea>` pending Phase P3 — without this resync, editing an
+imported paragraph through the textarea (which shows the mirror column,
+not the runs) and saving would silently flatten that paragraph's
+emphasis back out. See `Documentation/CC-Brief-BookML-Inline-Presentation.md`,
+Phase P2, for the full mechanism (including the analogous save-side
+sync shim added to the editor's save endpoints as temporary scaffolding
+until P3).
+
 ---
 
 ## 5. Exporter Behaviour (DB → BookML)
@@ -200,7 +253,7 @@ For each paragraph:
 2. Walk runs, maintaining an open-overlay state.
 3. When `OverlayType` changes between consecutive runs, close any open `<overlay>` and open a new one if the new value is non-null.
 4. For each run, emit text wrapped in the appropriate combination of `<emph>` / `<strong>` / `<smallcaps>` tags (deterministic nesting order: `strong` outermost, then `emph`, then `smallcaps`).
-5. For `IsBreak = 1` runs, emit `<break/>` with no text content.
+5. For `IsBreak = 1` runs, emit `<linebreak/>` with no text content.
 
 ### 5.2 Deterministic output
 
@@ -290,13 +343,13 @@ Full output transform specs are out of scope for this amendment. Recorded here s
 | `<strong>` | `<strong>` | `strong` |
 | `<smallcaps>` | `<span class="smallcaps">` | `.smallcaps { font-variant: small-caps; }` |
 | `<overlay type="X">` | `<aside class="overlay overlay-X">` | `.overlay`, `.overlay-X` |
-| `<break/>` | `<br/>` | — |
+| `<linebreak/>` | `<br/>` | — |
 
 ### 8.2 Audiobook (Piper TTS)
 
 - `<emph>`, `<strong>`, `<smallcaps>` → text passed through verbatim (Piper has no native emphasis prosody).
 - `<overlay>` content is, by default, **skipped** in the generated chapter text. An option in the export dialog allows including overlays (with a brief pause before/after).
-- `<break/>` → newline in the chapter text file.
+- `<linebreak/>` → newline in the chapter text file.
 
 ---
 
@@ -320,9 +373,17 @@ Full output transform specs are out of scope for this amendment. Recorded here s
    - Single `<emph>` span
    - Nested `<strong><emph>…</emph></strong>`
    - `<smallcaps>` (editor-applied, exported, re-imported)
-   - `<break/>` mid-paragraph (editor-applied)
+   - `<linebreak/>` mid-paragraph (editor-applied)
    - `<overlay>` containing mixed `<strong>`/`<emph>`
    - Escaped Markdown characters
+
+   As implemented (P2): this fixture set lives in `RoundTripCheckCli/Fixtures/`
+   (22 fixtures, exceeding the 20-paragraph minimum — the extra two cover
+   run-coalescing and the runs→Markdown serializer's negative contract),
+   run via the standalone `RoundTripCheckCli` console utility rather than
+   an automated test project (none exists in this solution). See that
+   directory's `README.md` for the fixture-kind taxonomy and full
+   coverage table.
 4. The editor UI supports toolbar bold / italic / line break and the context-menu actions (overlay marking, emph type, small caps), and persists changes correctly.
 5. The analytics extractor returns prose-only text by default and includes overlays only when `includeOverlays = true`.
 6. Existing chapters in the database are migrated: every `Paragraph` gains at least one `ParagraphRun` row containing the original text (one row, no styling). The legacy text column on `Paragraph` is renamed (not dropped) by this migration.
@@ -332,6 +393,28 @@ Full output transform specs are out of scope for this amendment. Recorded here s
 ---
 
 ## 11. Areas of the Book Editor Requiring Revision (Claude Code Advisory)
+
+**Status note (post-P1/P2):** this section was written before preflight
+investigation confirmed the codebase's real shape, and several of its
+assumptions turned out to be wrong — most importantly, **no
+`ParagraphRepository` (or any repository layer) exists anywhere in this
+codebase**; §11.3 below describes a class that was never built and
+never will be under the current architecture. What was actually built
+instead: a `Services/ParagraphRunService.cs` static-style service class
+(P1) following this codebase's existing `Services/`-folder convention
+(same pattern as `BookmlImporter`/`BookmlExporter`/`EpubExporter`),
+taking `SeonyxContext` as a method parameter rather than owning a
+repository abstraction. The table is `ParagraphRuns` (plural, matching
+every other table name in this schema — `Paragraphs`, `ParagraphVersions`,
+etc.), not `ParagraphRun` as originally specified. Migration A was
+delivered as a single forward-only script (`Database/add-paragraph-run.sql`)
+following this codebase's actual migration convention (no `db/migrations/`
+folder, no Up/Down pairs — see `Documentation/CC-Brief-BookML-Inline-Presentation.md`,
+"Deferred decisions", for the full account of where this spec's
+assumptions diverged from reality). §11.4 and §11.5 below were
+implemented in P2 largely as described, with the dual-path importer
+handling and `em`→`emph`/`break`→`linebreak` renames covered in §2.1
+and §4.4 above.
 
 The following existing modules will require revision in light of this amendment. Listed in roughly the order they should be addressed:
 

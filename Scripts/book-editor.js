@@ -48,7 +48,11 @@
                     var response = JSON.parse(xhr.responseText);
                     if (response.success) {
                         hasUnsavedChanges = false;
-                        updateStatus('Saved at ' + response.timestamp, 'saved');
+                        if (response.warning) {
+                            updateStatus(response.warning, 'saved');
+                        } else {
+                            updateStatus('Saved at ' + response.timestamp, 'saved');
+                        }
                     } else {
                         updateStatus('Save failed: ' + (response.message || 'Unknown error'), 'error');
                     }

@@ -77,7 +77,9 @@ namespace Seonyx.Web.Controllers
 
             db.SaveChanges();
 
-            TempData["Message"] = "Changes saved.";
+            // TODO(P3): remove once editor writes runs directly.
+            string syncWarning = SyncParagraphRuns(paragraphID, paragraph.ParagraphText);
+            TempData["Message"] = syncWarning ?? "Changes saved.";
             return RedirectToAction("Index", new { projectId = bookProjectID, paragraphId = paragraphID });
         }
 
@@ -110,12 +112,86 @@ namespace Seonyx.Web.Controllers
                 }
 
                 db.SaveChanges();
-                return Json(new { success = true, timestamp = LocalNow().ToString("h:mm:ss tt") });
+
+                // TODO(P3): remove once editor writes runs directly.
+                string syncWarning = SyncParagraphRuns(paragraphId, paragraph.ParagraphText);
+
+                return Json(new { success = true, timestamp = LocalNow().ToString("h:mm:ss tt"), warning = syncWarning });
             }
             catch (Exception ex)
             {
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        // TODO(P3): remove this whole method once the editor writes runs
+        // directly instead of a plain-text ParagraphText.
+        //
+        // Keeps ParagraphRuns in sync with a plain-text editor save, so the
+        // BookmlExporter (which reads runs, not ParagraphText) doesn't emit
+        // stale pre-edit content. Backend-only scaffolding: never produces
+        // overlay/smallcaps/linebreak runs (the textarea only ever contains
+        // Markdown-subset plain text), and never destroys markup the shim
+        // can't represent -- guards below leave runs stale rather than
+        // flattening or losing content, since stale-but-intact is always
+        // recoverable and silent data loss is not.
+        //
+        // Returns a warning string when a guard fired (non-expressible
+        // existing markup, or unparseable Markdown), or null when the sync
+        // completed normally.
+        private string SyncParagraphRuns(int paragraphId, string paragraphText)
+        {
+            var runService = new ParagraphRunService();
+
+            // Guard: leave stale-but-intact runs alone if any existing run
+            // carries markup the Markdown subset can't express (overlay,
+            // smallcaps, linebreak) -- these are new-in-this-amendment
+            // concepts with no existing testdata usage, but could exist in
+            // future BookML imports.
+            var existingRuns = runService.LoadRuns(db, paragraphId);
+            bool hasNonExpressible = existingRuns.Any(r =>
+                r.OverlayType != null || r.IsSmallCaps || r.IsBreak);
+            if (hasNonExpressible)
+            {
+                return "Changes saved. Paragraph contains formatting (overlay/small caps/line break) " +
+                       "not editable in this text box yet -- that formatting was left unchanged.";
+            }
+
+            // Guard: an unparseable Markdown subset (e.g. ***triple***)
+            // must not fail the save or destroy existing runs.
+            IList<MarkdownFragment> fragments;
+            try
+            {
+                fragments = MarkdownInlineParser.Parse(paragraphText ?? "", "paragraph-" + paragraphId);
+            }
+            catch (MarkdownParseException ex)
+            {
+                return "Changes saved, but formatting markers could not be parsed (" + ex.Message +
+                       "). Existing formatting was left unchanged.";
+            }
+
+            var runs = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
+            {
+                Text = f.Text,
+                IsEmph = f.IsEmph,
+                IsStrong = f.IsStrong,
+                IsSmallCaps = false,
+                OverlayType = null,
+                IsBreak = false
+            }).ToList());
+
+            runService.SaveRuns(db, paragraphId, runs.Select(r => new ParagraphRun
+            {
+                RunText     = r.Text,
+                IsEmph      = r.IsEmph,
+                EmphType    = r.EmphType,
+                IsStrong    = r.IsStrong,
+                IsSmallCaps = r.IsSmallCaps,
+                OverlayType = r.OverlayType,
+                IsBreak     = r.IsBreak
+            }).ToList());
+
+            return null;
         }
 
         [HttpPost]

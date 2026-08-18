@@ -84,11 +84,17 @@ namespace Seonyx.Web.Services
                 .ToList()
                 .ToDictionary(n => n.ParagraphID);
 
+            var runsByParaId = db.ParagraphRuns
+                .Where(r => paraIds.Contains(r.ParagraphID))
+                .ToList()
+                .GroupBy(r => r.ParagraphID)
+                .ToDictionary(g => g.Key, g => g.OrderBy(r => r.Seq).ToList());
+
             using (var zip = new ZipArchive(outputStream, ZipArchiveMode.Create, true))
             {
                 AddXmlEntry(zip, string.Format("{0}/{0}-chapter.xml", chIdLower),
                     BuildChapterXml(ch, chId, bookId, project.CurrentDraftNumber,
-                        paragraphs, latestVersionByPid, result));
+                        paragraphs, latestVersionByPid, runsByParaId, result));
 
                 AddXmlEntry(zip, string.Format("{0}/{0}-meta.xml", chIdLower),
                     BuildMetaXml(ch, chId, bookId, project.CurrentDraftNumber,
@@ -182,9 +188,15 @@ namespace Seonyx.Web.Services
                         .ToList()
                         .ToDictionary(n => n.ParagraphID);
 
+                    var runsByParaId = db.ParagraphRuns
+                        .Where(r => paraIds.Contains(r.ParagraphID))
+                        .ToList()
+                        .GroupBy(r => r.ParagraphID)
+                        .ToDictionary(g => g.Key, g => g.OrderBy(r => r.Seq).ToList());
+
                     AddXmlEntry(zip, string.Format("{0}/{0}-chapter.xml", chIdLower),
                         BuildChapterXml(ch, chId, bookId, project.CurrentDraftNumber,
-                            paragraphs, latestVersionByPid, result));
+                            paragraphs, latestVersionByPid, runsByParaId, result));
 
                     AddXmlEntry(zip, string.Format("{0}/{0}-meta.xml", chIdLower),
                         BuildMetaXml(ch, chId, bookId, project.CurrentDraftNumber,
@@ -291,6 +303,7 @@ namespace Seonyx.Web.Services
         private XDocument BuildChapterXml(Chapter ch, string chId, string bookId,
             int draftNumber, List<Paragraph> paragraphs,
             Dictionary<string, ParagraphVersion> latestVersionByPid,
+            Dictionary<int, List<ParagraphRun>> runsByParaId,
             BookmlExportResult result)
         {
             var sectionEl = new XElement(Ns + "section", new XAttribute("seq", 1000));
@@ -374,7 +387,30 @@ namespace Seonyx.Web.Services
                     paraEl.Add(new XAttribute("modified-date",
                         modifiedDate.Value.ToString("yyyy-MM-ddTHH:mm:ssZ")));
 
-                paraEl.Value = para.ParagraphText ?? "";
+                List<ParagraphRun> runs;
+                if (runsByParaId.TryGetValue(para.ParagraphID, out runs) && runs.Count > 0)
+                {
+                    var inlineRuns = runs.Select(r => new InlineRun
+                    {
+                        Text        = r.RunText,
+                        IsEmph      = r.IsEmph,
+                        EmphType    = r.EmphType,
+                        IsStrong    = r.IsStrong,
+                        IsSmallCaps = r.IsSmallCaps,
+                        OverlayType = r.OverlayType,
+                        IsBreak     = r.IsBreak
+                    }).ToList();
+
+                    foreach (var node in InlineXmlRunConverter.BuildParaContent(inlineRuns))
+                        paraEl.Add(node);
+                }
+                else
+                {
+                    // No runs recorded for this paragraph yet (shouldn't
+                    // happen post-P1 migration, but fall back safely).
+                    paraEl.Value = para.ParagraphText ?? "";
+                }
+
                 sectionEl.Add(paraEl);
             }
 

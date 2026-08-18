@@ -316,7 +316,7 @@ namespace Seonyx.Web.Services
 
                         var metaByPid  = BuildMetaLookup(metaDoc);
                         var notesByPid = BuildNotesLookup(notesDoc);
-                        var parsedParas = ExtractParagraphs(chapterEl);
+                        var parsedParas = ExtractParagraphs(chapterEl, result.Warnings);
 
                         // Index existing working-copy paragraphs by pid
                         var existingParas = db.Paragraphs
@@ -412,6 +412,34 @@ namespace Seonyx.Web.Services
 
                         // Flush paragraph inserts once so EF assigns ParagraphIDs
                         db.SaveChanges();
+
+                        // ---- Pass 1b: paragraph runs ----
+                        // Needs ParagraphID, so runs after the flush above.
+                        // Existing paragraphs already had a ParagraphID before
+                        // the flush, but are saved here too for simplicity and
+                        // to keep all run persistence in one place.
+                        var newParaByPid = newParas.ToDictionary(
+                            t => t.Item1.Pid, t => t.Item2, StringComparer.OrdinalIgnoreCase);
+                        var runService = new ParagraphRunService();
+
+                        foreach (var pp in parsedParas)
+                        {
+                            Paragraph workingPara;
+                            if (!existingParas.TryGetValue(pp.Pid, out workingPara))
+                                newParaByPid.TryGetValue(pp.Pid, out workingPara);
+                            if (workingPara == null || pp.Runs == null) continue;
+
+                            runService.SaveRuns(db, workingPara.ParagraphID, pp.Runs.Select(r => new ParagraphRun
+                            {
+                                RunText     = r.Text,
+                                IsEmph      = r.IsEmph,
+                                EmphType    = r.EmphType,
+                                IsStrong    = r.IsStrong,
+                                IsSmallCaps = r.IsSmallCaps,
+                                OverlayType = r.OverlayType,
+                                IsBreak     = r.IsBreak
+                            }).ToList());
+                        }
 
                         // ---- Pass 2: meta and notes ----
                         // New paragraphs: create MetaNote + EditNote with content set upfront
@@ -620,7 +648,7 @@ namespace Seonyx.Web.Services
             return errors;
         }
 
-        private List<ParsedParagraph> ExtractParagraphs(XElement chapterEl)
+        private List<ParsedParagraph> ExtractParagraphs(XElement chapterEl, List<string> warnings)
         {
             var result = new List<ParsedParagraph>();
 
@@ -633,7 +661,7 @@ namespace Seonyx.Web.Services
                 {
                     foreach (var paraEl in epigraphEl.Elements(Ns + "para"))
                     {
-                        var pp = ParsePara(paraEl);
+                        var pp = ParsePara(paraEl, warnings);
                         if (pp != null) result.Add(pp);
                     }
                 }
@@ -642,37 +670,94 @@ namespace Seonyx.Web.Services
             foreach (var section in chapterEl.Elements(Ns + "section")
                 .OrderBy(s => ParseInt(s.Attribute("seq")?.Value, 0)))
             {
-                ExtractFromSection(section, result);
+                ExtractFromSection(section, result, warnings);
             }
             return result;
         }
 
-        private void ExtractFromSection(XElement sectionEl, List<ParsedParagraph> result)
+        private void ExtractFromSection(XElement sectionEl, List<ParsedParagraph> result, List<string> warnings)
         {
             foreach (var child in sectionEl.Elements())
             {
                 if (child.Name == Ns + "section")
-                    ExtractFromSection(child, result);
+                    ExtractFromSection(child, result, warnings);
                 else if (child.Name == Ns + "para")
                 {
-                    var pp = ParsePara(child);
+                    var pp = ParsePara(child, warnings);
                     if (pp != null) result.Add(pp);
                 }
                 // headings, figures, tables, breaks are skipped for the working-copy paragraph list
             }
         }
 
-        private ParsedParagraph ParsePara(XElement paraEl)
+        private ParsedParagraph ParsePara(XElement paraEl, List<string> warnings)
         {
             var pid = paraEl.Attribute("pid")?.Value;
             if (string.IsNullOrEmpty(pid)) return null;
+
+            string flatText = paraEl.Value.Trim();
+            bool hasInlineChildren = paraEl.Elements().Any(e =>
+                e.Name.LocalName == "emph" || e.Name.LocalName == "strong" ||
+                e.Name.LocalName == "smallcaps" || e.Name.LocalName == "overlay" ||
+                e.Name.LocalName == "linebreak");
+
+            IList<InlineRun> runs;
+            string text;
+
+            if (hasInlineChildren)
+            {
+                // Path 1: source XML already has inline elements -- flatten
+                // them onto leaf runs rather than losing them via .Value.
+                runs = InlineXmlRunConverter.Coalesce(
+                    InlineXmlRunConverter.FlattenToRuns(paraEl, pid));
+
+                try
+                {
+                    // Keep ParagraphText truthful relative to the runs, so
+                    // the P1-era textarea shows markers matching the
+                    // underlying styled content (see P2 plan decision #6) --
+                    // otherwise a later no-op edit through the editor would
+                    // flatten this paragraph's emphasis back out.
+                    text = RunsToMarkdownSerializer.Serialize(runs, pid);
+                }
+                catch (NonExpressibleRunException ex)
+                {
+                    // Paragraph contains overlay/smallcaps/linebreak markup,
+                    // which Markdown can't represent. The runs themselves
+                    // are still correct and saved from FlattenToRuns above;
+                    // only the plain-text mirror can't fully represent them
+                    // -- expected, since ParagraphText is deprecated
+                    // infrastructure until P6, not the authoritative store.
+                    text = flatText;
+                    warnings.Add(string.Format(
+                        "Paragraph {0}: contains markup with no Markdown representation ({1}); " +
+                        "ParagraphText left as flattened plain text.", pid, ex.Message));
+                }
+            }
+            else
+            {
+                // Path 2: plain text, possibly with Markdown-subset markers
+                // (manuscripts authored as plain text with **/* markers).
+                text = flatText;
+                var fragments = MarkdownInlineParser.Parse(flatText, pid);
+                runs = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
+                {
+                    Text = f.Text,
+                    IsEmph = f.IsEmph,
+                    IsStrong = f.IsStrong,
+                    IsSmallCaps = false,
+                    OverlayType = null,
+                    IsBreak = false
+                }).ToList());
+            }
 
             return new ParsedParagraph
             {
                 Pid           = pid,
                 Seq           = ParseInt(paraEl.Attribute("seq")?.Value, 0),
                 ParaType      = paraEl.Attribute("type")?.Value ?? "normal",
-                Text          = paraEl.Value.Trim(),
+                Text          = text,
+                Runs          = runs,
                 DraftCreated  = ParseInt(paraEl.Attribute("draft-created")?.Value,  1),
                 DraftModified = ParseInt(paraEl.Attribute("draft-modified")?.Value, 1),
                 ModifiedBy    = paraEl.Attribute("modified-by")?.Value ?? "ai",
@@ -817,6 +902,13 @@ namespace Seonyx.Web.Services
             public string    ModifiedBy    { get; set; }
             public DateTime? ModifiedDate  { get; set; }
             public string    ChangeType    { get; set; }
+
+            /// <summary>
+            /// Coalesced inline runs for this paragraph, derived either
+            /// from pre-existing XML child elements (InlineXmlRunConverter)
+            /// or from Markdown-subset markers in Text (MarkdownInlineParser).
+            /// </summary>
+            public IList<InlineRun> Runs { get; set; }
         }
     }
 }
