@@ -484,7 +484,7 @@
   ============================================================ -->
 
   <xs:group name="InlineContent">
-    <xs:choice minOccurs="0" maxOccurs="unbounded">
+    <xs:choice>
       <xs:element ref="bml:emph"/>
       <xs:element ref="bml:strong"/>
       <xs:element ref="bml:smallcaps"/>
@@ -503,7 +503,7 @@
 
   <xs:element name="emph">
     <xs:complexType mixed="true">
-      <xs:group ref="bml:InlineContent"/>
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
       <xs:attribute name="type" type="xs:string" use="optional"/>
     </xs:complexType>
   </xs:element>
@@ -515,7 +515,7 @@
 
   <xs:element name="strong">
     <xs:complexType mixed="true">
-      <xs:group ref="bml:InlineContent"/>
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
     </xs:complexType>
   </xs:element>
 
@@ -529,7 +529,7 @@
 
   <xs:element name="smallcaps">
     <xs:complexType mixed="true">
-      <xs:group ref="bml:InlineContent"/>
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
     </xs:complexType>
   </xs:element>
 
@@ -544,7 +544,7 @@
 
   <xs:element name="overlay">
     <xs:complexType mixed="true">
-      <xs:group ref="bml:InlineContent"/>
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
       <xs:attribute name="type" type="xs:string" use="required"/>
     </xs:complexType>
   </xs:element>
