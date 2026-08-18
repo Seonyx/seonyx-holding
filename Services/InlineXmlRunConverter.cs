@@ -241,23 +241,143 @@ namespace Seonyx.Web.Services
                     continue;
                 }
 
-                // Non-overlay run(s) -- emit until the next overlay
-                // boundary, styled individually (no further grouping
-                // needed since styled wrapping already coalesces
-                // adjacent identical-style runs via BuildStyledNodes
-                // being called per-run below).
-                content.Add(BuildStyledNode(run));
-                i++;
+                // Non-overlay run(s) -- collect the contiguous run of
+                // non-overlay runs up to the next overlay boundary (or
+                // end of list) and style-group them as a block, so
+                // sibling runs sharing an outer style (e.g. two runs
+                // both IsStrong, one of which is also IsEmph) end up
+                // under a single shared wrapper element instead of each
+                // getting its own independent copy of that wrapper.
+                int k = i;
+                var block = new List<InlineRun>();
+                while (k < runs.Count && runs[k].OverlayType == null)
+                {
+                    block.Add(runs[k]);
+                    k++;
+                }
+
+                foreach (var node in BuildStyledNodes(block))
+                    content.Add(node);
+
+                i = k;
             }
 
             return content;
         }
 
-        private static IList<object> BuildStyledNodes(IEnumerable<InlineRun> runs)
+        /// <summary>
+        /// Groups a contiguous run of same-OverlayType-context runs by
+        /// nesting level (strong outermost, then emph, then smallcaps,
+        /// per amendment section 5.1). Runs sharing a style at a given
+        /// level are wrapped in ONE element together, not one element
+        /// per run -- this is what makes a nested
+        /// &lt;strong&gt;text &lt;emph&gt;text&lt;/emph&gt;&lt;/strong&gt; come back out
+        /// as a single &lt;strong&gt; with mixed content, matching how
+        /// InlineXmlRunConverter.Walk flattened it in the first place.
+        /// </summary>
+        private static IList<object> BuildStyledNodes(IList<InlineRun> runs)
+        {
+            return GroupByLevel(runs, StyleLevel.Strong);
+        }
+
+        private enum StyleLevel { Strong, Emph, SmallCaps, Leaf }
+
+        private static IList<object> GroupByLevel(IList<InlineRun> runs, StyleLevel level)
+        {
+            var result = new List<object>();
+            int i = 0;
+
+            while (i < runs.Count)
+            {
+                var run = runs[i];
+                bool active = IsActiveAtLevel(run, level);
+
+                if (!active)
+                {
+                    // This run doesn't carry the current level's style --
+                    // pass it straight through to the next level down
+                    // (or emit as a leaf) as its own single-run group.
+                    var singleGroup = new List<InlineRun> { run };
+                    result.AddRange(NextLevel(singleGroup, level));
+                    i++;
+                    continue;
+                }
+
+                // Collect the contiguous run of siblings that all carry
+                // this level's style, so they share one wrapper element.
+                // For Emph, siblings must also share the same EmphType --
+                // two adjacent emph runs with different @type values
+                // (e.g. "thought" vs "foreign") must NOT be merged into
+                // one <emph> element, or one run's type would silently
+                // overwrite the other's.
+                int j = i;
+                var group = new List<InlineRun>();
+                while (j < runs.Count && IsActiveAtLevel(runs[j], level)
+                    && (level != StyleLevel.Emph || runs[j].EmphType == run.EmphType))
+                {
+                    group.Add(runs[j]);
+                    j++;
+                }
+
+                var innerNodes = NextLevel(group, level);
+                var wrapper = WrapLevel(run, level, innerNodes);
+                result.Add(wrapper);
+                i = j;
+            }
+
+            return result;
+        }
+
+        private static bool IsActiveAtLevel(InlineRun run, StyleLevel level)
+        {
+            switch (level)
+            {
+                case StyleLevel.Strong: return run.IsStrong;
+                case StyleLevel.Emph: return run.IsEmph;
+                case StyleLevel.SmallCaps: return run.IsSmallCaps;
+                default: return false;
+            }
+        }
+
+        private static IList<object> NextLevel(IList<InlineRun> group, StyleLevel level)
+        {
+            switch (level)
+            {
+                case StyleLevel.Strong: return GroupByLevel(group, StyleLevel.Emph);
+                case StyleLevel.Emph: return GroupByLevel(group, StyleLevel.SmallCaps);
+                case StyleLevel.SmallCaps: return GroupByLevel(group, StyleLevel.Leaf);
+                default: return BuildLeafNodes(group);
+            }
+        }
+
+        private static object WrapLevel(InlineRun run, StyleLevel level, IList<object> innerNodes)
+        {
+            switch (level)
+            {
+                case StyleLevel.Strong:
+                    var strongEl = new XElement(Ns + "strong");
+                    foreach (var n in innerNodes) strongEl.Add(n);
+                    return strongEl;
+                case StyleLevel.Emph:
+                    var emphEl = new XElement(Ns + "emph");
+                    if (!string.IsNullOrEmpty(run.EmphType))
+                        emphEl.Add(new XAttribute("type", run.EmphType));
+                    foreach (var n in innerNodes) emphEl.Add(n);
+                    return emphEl;
+                case StyleLevel.SmallCaps:
+                    var scEl = new XElement(Ns + "smallcaps");
+                    foreach (var n in innerNodes) scEl.Add(n);
+                    return scEl;
+                default:
+                    throw new InvalidOperationException("WrapLevel called for leaf level.");
+            }
+        }
+
+        private static IList<object> BuildLeafNodes(IList<InlineRun> runs)
         {
             var list = new List<object>();
             foreach (var run in runs)
-                list.Add(BuildStyledNode(run));
+                list.Add(run.IsBreak ? (object)new XElement(Ns + "linebreak") : new XText(run.Text ?? ""));
             return list;
         }
 
@@ -305,32 +425,6 @@ namespace Seonyx.Web.Services
                 && a.OverlayType == b.OverlayType
                 && a.IsBreak == b.IsBreak
                 && !a.IsBreak;
-        }
-
-        private static object BuildStyledNode(InlineRun run)
-        {
-            if (run.IsBreak)
-                return new XElement(Ns + "linebreak");
-
-            object node = new XText(run.Text ?? "");
-
-            // Deterministic nesting: strong outermost, then emph, then
-            // smallcaps (amendment section 5.1).
-            if (run.IsSmallCaps)
-                node = new XElement(Ns + "smallcaps", node);
-
-            if (run.IsEmph)
-            {
-                var emphEl = new XElement(Ns + "emph", node);
-                if (!string.IsNullOrEmpty(run.EmphType))
-                    emphEl.Add(new XAttribute("type", run.EmphType));
-                node = emphEl;
-            }
-
-            if (run.IsStrong)
-                node = new XElement(Ns + "strong", node);
-
-            return node;
         }
     }
 }

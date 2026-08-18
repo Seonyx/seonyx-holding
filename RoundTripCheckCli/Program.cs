@@ -17,6 +17,20 @@ namespace RoundTripCheckCli
     {
         private static readonly XNamespace Ns = "https://bookml.org/ns/1.0";
 
+        // Fixture .md files are saved as ordinary text files with a
+        // trailing newline (standard editor/heredoc convention). That
+        // trailing newline is not meaningful fixture content -- strip it
+        // so a Markdown fixture's last fragment doesn't pick up a
+        // spurious \n that expected.txt (read via ReadAllLines, which
+        // strips line terminators) never had.
+        private static string ReadInputMarkdown(string path)
+        {
+            string text = File.ReadAllText(path);
+            if (text.EndsWith("\r\n")) return text.Substring(0, text.Length - 2);
+            if (text.EndsWith("\n")) return text.Substring(0, text.Length - 1);
+            return text;
+        }
+
         static int Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
@@ -175,7 +189,7 @@ namespace RoundTripCheckCli
         // rejection case) -- pass = exception thrown.
         private static FixtureResult RunMarkdownParse(string dir, string name)
         {
-            string input = File.ReadAllText(Path.Combine(dir, "input.md"));
+            string input = ReadInputMarkdown(Path.Combine(dir, "input.md"));
             string expectedPath = Path.Combine(dir, "expected.txt");
             var expectedLines = File.ReadAllLines(expectedPath);
 
@@ -225,7 +239,7 @@ namespace RoundTripCheckCli
         // input.md -> runs -> RunsToMarkdownSerializer -> must equal input.md byte-for-byte.
         private static FixtureResult RunMarkdownRoundtrip(string dir, string name)
         {
-            string input = File.ReadAllText(Path.Combine(dir, "input.md"));
+            string input = ReadInputMarkdown(Path.Combine(dir, "input.md"));
             var fragments = MarkdownInlineParser.Parse(input, name);
             var runs = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
             {
