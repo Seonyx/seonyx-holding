@@ -30,12 +30,25 @@
                 <div id="paragraphEditable" class="rte-root" contenteditable="true"
                      role="textbox" aria-multiline="true" aria-label="Paragraph text"></div>
                 @{
+                    // camelCase property names to match rich-text-editor.js's
+                    // field names (text/isEmph/isStrong/...) -- Json.NET's
+                    // SerializeObject emits exact PascalCase C# property
+                    // names by default (Text/IsEmph/IsStrong/...) with no
+                    // case folding, unlike DeserializeObject which binds
+                    // case-insensitively. Without this, every run loads as
+                    // an object with all-undefined fields: text renders as
+                    // empty, which is exactly the "paragraph text missing"
+                    // bug this fixes.
+                    var runsSettings = new Newtonsoft.Json.JsonSerializerSettings
+                    {
+                        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
+                    };
                     // Escape "/" as "\/" (a legal JSON escape) so a run's
                     // text can never contain a literal "</script>" that
                     // would prematurely close this tag -- paragraph prose
                     // is arbitrary user content, unlike the fixed lookup
                     // lists this pattern is used for elsewhere.
-                    var runsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model.InitialRuns).Replace("/", "\\/");
+                    var runsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model.InitialRuns, runsSettings).Replace("/", "\\/");
                 }
                 <script type="application/json" id="paragraphRunsInit">@Html.Raw(runsJson)</script>
             </div>
