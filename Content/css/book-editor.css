@@ -945,3 +945,76 @@
 .diff-wordcounts span {
     display: block;
 }
+
+/* ============================================================
+   Rich text editor (paragraph panel) — Phase P3
+   ============================================================ */
+
+.rte-toolbar {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fafafa;
+}
+
+.rte-toolbar-btn {
+    min-width: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.rte-toolbar-btn.active {
+    background: #7C3AED;
+    color: #fff;
+    border-color: #7C3AED;
+}
+
+.rte-root {
+    width: 100%;
+    min-height: 8rem;
+    border: none;
+    padding: 0.75rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-sizing: border-box;
+    outline: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.rte-root:focus {
+    background: #fffef7;
+}
+
+.rte-strong {
+    font-weight: 700;
+}
+
+.rte-emph {
+    font-style: italic;
+}
+
+.rte-smallcaps {
+    font-variant: small-caps;
+    letter-spacing: 0.02em;
+}
+
+/* Overlay: plain tint in Half A (basic rendering so imported/loaded
+   overlay runs don't visually flatten); pill shape + hover label
+   polish added in Half B. */
+.rte-overlay {
+    background: #ecfeff;
+    border-bottom: 1px dashed #0d9488;
+}
+
+.rte-break {
+    /* A hard line break inside a paragraph is otherwise invisible --
+       show a faint marker so its presence is obvious while editing. */
+    display: block;
+    height: 0;
+    border: none;
+    border-top: 1px dashed #94a3b8;
+    margin: 0.3em 0;
+}

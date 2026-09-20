@@ -12,15 +12,17 @@
     // Only run on editor page
     if (typeof editorConfig === 'undefined') return;
 
-    var paragraphText = document.getElementById('paragraphText');
+    var paragraphEditable = document.getElementById('paragraphEditable');
     var metaText = document.getElementById('metaText');
     var editNoteText = document.getElementById('editNoteText');
     var saveStatus = document.getElementById('saveStatus');
     var paragraphId = editorConfig.paragraphId;
 
-    // Track changes in all textareas
-    var textareas = [paragraphText, metaText, editNoteText];
-    textareas.forEach(function (el) {
+    // Track changes in the rich-text editable and the two plain textareas.
+    // paragraphEditable fires native 'input' events on evergreen browsers,
+    // same as a textarea, so this listener works unchanged for it.
+    var editableFields = [paragraphEditable, metaText, editNoteText];
+    editableFields.forEach(function (el) {
         if (!el) return;
         el.addEventListener('input', function () {
             hasUnsavedChanges = true;
@@ -30,6 +32,13 @@
             }
         });
     });
+
+    function getParagraphRunsJson() {
+        if (window._richTextEditor && window._richTextEditor.isReady()) {
+            return JSON.stringify(window._richTextEditor.getRuns());
+        }
+        return '';
+    }
 
     // Auto-save function
     function autoSave() {
@@ -65,7 +74,7 @@
         };
 
         var data = 'paragraphId=' + encodeURIComponent(paragraphId) +
-            '&paragraphText=' + encodeURIComponent(paragraphText ? paragraphText.value : '') +
+            '&paragraphRunsJson=' + encodeURIComponent(getParagraphRunsJson()) +
             '&metaText=' + encodeURIComponent(metaText ? metaText.value : '') +
             '&editNoteText=' + encodeURIComponent(editNoteText ? editNoteText.value : '');
         xhr.send(data);
@@ -80,7 +89,16 @@
     // Keyboard shortcuts
     document.addEventListener('keydown', function (e) {
         var activeTag = document.activeElement ? document.activeElement.tagName : '';
-        var inTextField = (activeTag === 'TEXTAREA' || activeTag === 'INPUT' || activeTag === 'SELECT');
+        // Widened to also treat the rich-text editable as a text field --
+        // without this, Ctrl+I (now bound to Italic inside the editable,
+        // see rich-text-editor.js) would fall through to "insert paragraph
+        // after" below while actively editing prose, since a contenteditable
+        // <div> is not a TEXTAREA/INPUT/SELECT. rich-text-editor.js's own
+        // keydown handler on #paragraphEditable already stops propagation
+        // for Ctrl+B/Ctrl+I, so this check is a second line of defence for
+        // any other shortcut below that shouldn't fire while typing prose.
+        var inTextField = (activeTag === 'TEXTAREA' || activeTag === 'INPUT' || activeTag === 'SELECT' ||
+            (document.activeElement && document.activeElement.isContentEditable));
 
         // Ctrl+S: Save — works everywhere including inside textareas
         if (e.ctrlKey && e.key === 's') {
@@ -178,7 +196,7 @@
                 }
             };
             var data = 'paragraphId=' + encodeURIComponent(paragraphId) +
-                '&paragraphText=' + encodeURIComponent(paragraphText ? paragraphText.value : '') +
+                '&paragraphRunsJson=' + encodeURIComponent(getParagraphRunsJson()) +
                 '&metaText=' + encodeURIComponent(metaText ? metaText.value : '') +
                 '&editNoteText=' + encodeURIComponent(editNoteText ? editNoteText.value : '');
             xhr.send(data);
@@ -238,8 +256,10 @@
 
     // Persist textarea heights within the browser session so sizes survive
     // paragraph-to-paragraph navigation. Uses sessionStorage (cleared on tab close)
-    // since preferred sizes are viewport/session dependent.
-    var taIds = ['paragraphText', 'metaText', 'editNoteText'];
+    // since preferred sizes are viewport/session dependent. The paragraph
+    // panel is no longer a resizable textarea (it's the contenteditable
+    // rich-text editor, which auto-grows with content) so it's excluded here.
+    var taIds = ['metaText', 'editNoteText'];
     taIds.forEach(function (id) {
         var el = document.getElementById(id);
         if (!el) return;

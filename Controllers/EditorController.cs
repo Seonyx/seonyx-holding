@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using Seonyx.Web.Models;
 using Seonyx.Web.Models.ViewModels.BookEditor;
 using Seonyx.Web.Services;
@@ -52,14 +53,14 @@ namespace Seonyx.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult SaveParagraph(int bookProjectID, int paragraphID, string paragraphText, string metaText, string editNoteText)
+        public ActionResult SaveParagraph(int bookProjectID, int paragraphID, string paragraphRunsJson, string metaText, string editNoteText)
         {
             if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
 
             var paragraph = db.Paragraphs.Find(paragraphID);
             if (paragraph == null) return HttpNotFound();
 
-            paragraph.ParagraphText = paragraphText ?? "";
+            SaveParagraphRuns(paragraphID, paragraph, paragraphRunsJson);
             paragraph.LastModifiedDate = DateTime.Now;
 
             var metaNote = db.MetaNotes.FirstOrDefault(m => m.ParagraphID == paragraphID);
@@ -77,14 +78,12 @@ namespace Seonyx.Web.Controllers
 
             db.SaveChanges();
 
-            // TODO(P3): remove once editor writes runs directly.
-            string syncWarning = SyncParagraphRuns(paragraphID, paragraph.ParagraphText);
-            TempData["Message"] = syncWarning ?? "Changes saved.";
+            TempData["Message"] = "Changes saved.";
             return RedirectToAction("Index", new { projectId = bookProjectID, paragraphId = paragraphID });
         }
 
         [HttpPost]
-        public JsonResult AutoSave(int paragraphId, string paragraphText, string metaText, string editNoteText)
+        public JsonResult AutoSave(int paragraphId, string paragraphRunsJson, string metaText, string editNoteText)
         {
             if (!IsAuthenticated())
                 return Json(new { success = false, message = "Not authenticated" });
@@ -95,7 +94,7 @@ namespace Seonyx.Web.Controllers
                 if (paragraph == null)
                     return Json(new { success = false, message = "Paragraph not found" });
 
-                paragraph.ParagraphText = paragraphText ?? "";
+                SaveParagraphRuns(paragraphId, paragraph, paragraphRunsJson);
                 paragraph.LastModifiedDate = DateTime.Now;
 
                 var metaNote = db.MetaNotes.FirstOrDefault(m => m.ParagraphID == paragraphId);
@@ -113,10 +112,7 @@ namespace Seonyx.Web.Controllers
 
                 db.SaveChanges();
 
-                // TODO(P3): remove once editor writes runs directly.
-                string syncWarning = SyncParagraphRuns(paragraphId, paragraph.ParagraphText);
-
-                return Json(new { success = true, timestamp = LocalNow().ToString("h:mm:ss tt"), warning = syncWarning });
+                return Json(new { success = true, timestamp = LocalNow().ToString("h:mm:ss tt") });
             }
             catch (Exception ex)
             {
@@ -124,63 +120,30 @@ namespace Seonyx.Web.Controllers
             }
         }
 
-        // TODO(P3): remove this whole method once the editor writes runs
-        // directly instead of a plain-text ParagraphText.
+        // Persists the editor's run list for a paragraph and keeps the
+        // legacy ParagraphText column in sync as plain prose text (via
+        // GetProseText), since SearchParagraphIds queries that column
+        // directly in SQL. Coalesces server-side as defense in depth --
+        // the client already coalesces before sending, but SaveRuns
+        // hard-rejects adjacent same-style runs, so a client bug must not
+        // become a 500 here.
         //
-        // Keeps ParagraphRuns in sync with a plain-text editor save, so the
-        // BookmlExporter (which reads runs, not ParagraphText) doesn't emit
-        // stale pre-edit content. Backend-only scaffolding: never produces
-        // overlay/smallcaps/linebreak runs (the textarea only ever contains
-        // Markdown-subset plain text), and never destroys markup the shim
-        // can't represent -- guards below leave runs stale rather than
-        // flattening or losing content, since stale-but-intact is always
-        // recoverable and silent data loss is not.
-        //
-        // Returns a warning string when a guard fired (non-expressible
-        // existing markup, or unparseable Markdown), or null when the sync
-        // completed normally.
-        private string SyncParagraphRuns(int paragraphId, string paragraphText)
+        // A null/missing/empty paragraphRunsJson (as opposed to the
+        // literal string "[]", meaning "user deleted all text") is treated
+        // as "nothing to update" rather than "replace with zero runs" --
+        // the rich-text editor always sends its current run list once
+        // initialised, so an absent/empty payload means the request came
+        // from somewhere that doesn't know about runs yet (or the editor
+        // hadn't finished loading), and must not silently wipe content.
+        private void SaveParagraphRuns(int paragraphId, Paragraph paragraph, string paragraphRunsJson)
         {
+            if (string.IsNullOrEmpty(paragraphRunsJson)) return;
+
             var runService = new ParagraphRunService();
+            var dtos = JsonConvert.DeserializeObject<List<InlineRun>>(paragraphRunsJson) ?? new List<InlineRun>();
+            var coalesced = InlineXmlRunConverter.Coalesce(dtos);
 
-            // Guard: leave stale-but-intact runs alone if any existing run
-            // carries markup the Markdown subset can't express (overlay,
-            // smallcaps, linebreak) -- these are new-in-this-amendment
-            // concepts with no existing testdata usage, but could exist in
-            // future BookML imports.
-            var existingRuns = runService.LoadRuns(db, paragraphId);
-            bool hasNonExpressible = existingRuns.Any(r =>
-                r.OverlayType != null || r.IsSmallCaps || r.IsBreak);
-            if (hasNonExpressible)
-            {
-                return "Changes saved. Paragraph contains formatting (overlay/small caps/line break) " +
-                       "not editable in this text box yet -- that formatting was left unchanged.";
-            }
-
-            // Guard: an unparseable Markdown subset (e.g. ***triple***)
-            // must not fail the save or destroy existing runs.
-            IList<MarkdownFragment> fragments;
-            try
-            {
-                fragments = MarkdownInlineParser.Parse(paragraphText ?? "", "paragraph-" + paragraphId);
-            }
-            catch (MarkdownParseException ex)
-            {
-                return "Changes saved, but formatting markers could not be parsed (" + ex.Message +
-                       "). Existing formatting was left unchanged.";
-            }
-
-            var runs = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
-            {
-                Text = f.Text,
-                IsEmph = f.IsEmph,
-                IsStrong = f.IsStrong,
-                IsSmallCaps = false,
-                OverlayType = null,
-                IsBreak = false
-            }).ToList());
-
-            runService.SaveRuns(db, paragraphId, runs.Select(r => new ParagraphRun
+            runService.SaveRuns(db, paragraphId, coalesced.Select(r => new ParagraphRun
             {
                 RunText     = r.Text,
                 IsEmph      = r.IsEmph,
@@ -191,7 +154,7 @@ namespace Seonyx.Web.Controllers
                 IsBreak     = r.IsBreak
             }).ToList());
 
-            return null;
+            paragraph.ParagraphText = runService.GetProseText(db, paragraphId);
         }
 
         [HttpPost]
@@ -588,6 +551,7 @@ namespace Seonyx.Web.Controllers
                 UniqueID = paragraph.UniqueID,
                 OrdinalPosition = paragraph.OrdinalPosition,
                 ParagraphText = paragraph.ParagraphText,
+                InitialRuns = GetInitialRuns(paragraph.ParagraphID),
                 MetaText = GetMetaText(paragraph.ParagraphID),
                 EditNoteText = GetEditNoteText(paragraph.ParagraphID),
                 ChapterTitle = chapter.ChapterTitle,
@@ -609,6 +573,24 @@ namespace Seonyx.Web.Controllers
         {
             var meta = db.MetaNotes.FirstOrDefault(m => m.ParagraphID == paragraphId);
             return meta != null ? meta.MetaText : "";
+        }
+
+        // Loads the paragraph's runs for the editor's hydration payload,
+        // mapped to the framework-agnostic InlineRun DTO (same shape the
+        // save path deserialises into) so load/save share one JSON contract.
+        private List<InlineRun> GetInitialRuns(int paragraphId)
+        {
+            var runService = new ParagraphRunService();
+            return runService.LoadRuns(db, paragraphId).Select(r => new InlineRun
+            {
+                Text        = r.RunText,
+                IsEmph      = r.IsEmph,
+                EmphType    = r.EmphType,
+                IsStrong    = r.IsStrong,
+                IsSmallCaps = r.IsSmallCaps,
+                OverlayType = r.OverlayType,
+                IsBreak     = r.IsBreak
+            }).ToList();
         }
 
         private string GetEditNoteText(int paragraphId)

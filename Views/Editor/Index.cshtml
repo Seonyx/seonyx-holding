@@ -23,8 +23,21 @@
                     <h3>Paragraph</h3>
                     <span class="panel-uid">[@Model.UniqueID]</span>
                 </div>
-                <textarea name="paragraphText" id="paragraphText" class="editor-textarea"
-                          rows="10" placeholder="Paragraph text...">@Model.ParagraphText</textarea>
+                <div class="rte-toolbar">
+                    <button type="button" id="rteBold" class="btn btn-sm btn-secondary rte-toolbar-btn" title="Bold (Ctrl+B)">B</button>
+                    <button type="button" id="rteItalic" class="btn btn-sm btn-secondary rte-toolbar-btn" title="Italic (Ctrl+I)"><em>I</em></button>
+                </div>
+                <div id="paragraphEditable" class="rte-root" contenteditable="true"
+                     role="textbox" aria-multiline="true" aria-label="Paragraph text"></div>
+                @{
+                    // Escape "/" as "\/" (a legal JSON escape) so a run's
+                    // text can never contain a literal "</script>" that
+                    // would prematurely close this tag -- paragraph prose
+                    // is arbitrary user content, unlike the fixed lookup
+                    // lists this pattern is used for elsewhere.
+                    var runsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model.InitialRuns).Replace("/", "\\/");
+                }
+                <script type="application/json" id="paragraphRunsInit">@Html.Raw(runsJson)</script>
             </div>
 
             <!-- META Panel -->
@@ -228,13 +241,45 @@
             }
 
             function highlightMatch(q) {
-                var ta = document.getElementById('paragraphText');
-                if (!ta || !q) return;
-                var idx = ta.value.toLowerCase().indexOf(q.toLowerCase());
-                if (idx >= 0) {
-                    ta.focus();
-                    ta.setSelectionRange(idx, idx + q.length);
+                var editable = document.getElementById('paragraphEditable');
+                if (!editable || !q) return;
+
+                // Walk text nodes across all run spans to find the match,
+                // since the plain-textarea offset trick no longer applies
+                // to a contenteditable built from multiple styled spans.
+                var walker = document.createTreeWalker(editable, NodeFilter.SHOW_TEXT, null, false);
+                var fullText = '';
+                var nodes = [];
+                var node;
+                while ((node = walker.nextNode())) {
+                    nodes.push({ node: node, start: fullText.length });
+                    fullText += node.textContent;
                 }
+
+                var idx = fullText.toLowerCase().indexOf(q.toLowerCase());
+                if (idx < 0) return;
+                var endIdx = idx + q.length;
+
+                var startInfo = null, endInfo = null;
+                for (var i = 0; i < nodes.length; i++) {
+                    var n = nodes[i];
+                    var nEnd = n.start + n.node.textContent.length;
+                    if (!startInfo && idx >= n.start && idx < nEnd) {
+                        startInfo = { node: n.node, offset: idx - n.start };
+                    }
+                    if (!endInfo && endIdx >= n.start && endIdx <= nEnd) {
+                        endInfo = { node: n.node, offset: endIdx - n.start };
+                    }
+                }
+                if (!startInfo || !endInfo) return;
+
+                editable.focus();
+                var range = document.createRange();
+                range.setStart(startInfo.node, startInfo.offset);
+                range.setEnd(endInfo.node, endInfo.offset);
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
             }
 
             function runSearch(q, ww, onDone) {

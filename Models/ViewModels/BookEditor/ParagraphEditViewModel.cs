@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Seonyx.Web.Services;
 
 namespace Seonyx.Web.Models.ViewModels.BookEditor
 {
@@ -12,6 +13,7 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         public string UniqueID { get; set; }
         public int OrdinalPosition { get; set; }
         public string ParagraphText { get; set; }
+        public IList<InlineRun> InitialRuns { get; set; }
         public string MetaText { get; set; }
         public string EditNoteText { get; set; }
 

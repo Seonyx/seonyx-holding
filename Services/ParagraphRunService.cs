@@ -6,10 +6,11 @@ using Seonyx.Web.Models;
 namespace Seonyx.Web.Services
 {
     /// <summary>
-    /// Read/write access to ParagraphRun rows. No consumer uses this yet
-    /// (Phase P1) -- importer/exporter/editor keep using
-    /// Paragraph.ParagraphText (mapped to ParagraphText_Legacy) until
-    /// their own phases switch over.
+    /// Read/write access to ParagraphRun rows. Used by the BookML
+    /// importer/exporter (P2) and the paragraph editor (P3), which is the
+    /// authoritative source of truth for a paragraph's styled content.
+    /// Paragraph.ParagraphText (mapped to ParagraphText_Legacy) is kept as
+    /// a derived plain-text mirror for SQL search only.
     /// </summary>
     public class ParagraphRunService
     {
