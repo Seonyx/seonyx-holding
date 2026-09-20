@@ -156,12 +156,18 @@
     }
 
     // Returns { startRun, startOffset, endRun, endOffset } in model
-    // coordinates for the current selection, or null if the selection
-    // isn't inside the editable root.
-    function getSelectionRunRange() {
-        var sel = window.getSelection();
-        if (!sel || sel.rangeCount === 0) return null;
-        var range = sel.getRangeAt(0);
+    // coordinates for the given Range (or the live window selection if
+    // none is passed), or null if it isn't inside the editable root.
+    // Accepting an explicit Range lets callers use a selection captured
+    // earlier (e.g. on mousedown, before a toolbar button click steals
+    // focus and collapses/replaces the live selection).
+    function getSelectionRunRange(explicitRange) {
+        var range = explicitRange;
+        if (!range) {
+            var sel = window.getSelection();
+            if (!sel || sel.rangeCount === 0) return null;
+            range = sel.getRangeAt(0);
+        }
         if (!root.contains(range.startContainer) || !root.contains(range.endContainer)) return null;
 
         var startSpan = findRunSpan(range.startContainer);
@@ -265,8 +271,8 @@
         markDirty();
     }
 
-    function toggleStyle(propName) {
-        var sel = getSelectionRunRange();
+    function toggleStyle(propName, explicitRange) {
+        var sel = getSelectionRunRange(explicitRange);
         if (!sel) return;
 
         if (sel.collapsed) {
@@ -290,6 +296,7 @@
         }
         runs = coalesce(runs);
         renderRuns();
+        root.focus();
         restoreSelectionAcrossRuns(
             Math.min(norm.first, runs.length - 1),
             Math.min(norm.last, runs.length - 1)
@@ -533,18 +540,36 @@
     var btnBold = document.getElementById('rteBold');
     var btnItalic = document.getElementById('rteItalic');
 
+    // Capture the user's selection on mousedown, BEFORE the button steals
+    // focus away from the editable root. By the time a 'click' handler
+    // runs, focus has already moved to the button and window.getSelection()
+    // no longer reflects what the user highlighted -- calling root.focus()
+    // at that point doesn't restore it, it creates a fresh (often
+    // "select everything") selection instead. preventDefault() on
+    // mousedown itself stops the focus shift from happening at all, so
+    // the original selection survives untouched into the click handler.
+    var savedSelectionRange = null;
+
+    function captureSelectionOnMouseDown(e) {
+        e.preventDefault(); // keeps focus (and the current selection) in root
+        var sel = window.getSelection();
+        if (sel && sel.rangeCount > 0 && root.contains(sel.getRangeAt(0).commonAncestorContainer)) {
+            savedSelectionRange = sel.getRangeAt(0).cloneRange();
+        }
+    }
+
     if (btnBold) {
+        btnBold.addEventListener('mousedown', captureSelectionOnMouseDown);
         btnBold.addEventListener('click', function (e) {
             e.preventDefault();
-            root.focus();
-            toggleStyle('isStrong');
+            toggleStyle('isStrong', savedSelectionRange);
         });
     }
     if (btnItalic) {
+        btnItalic.addEventListener('mousedown', captureSelectionOnMouseDown);
         btnItalic.addEventListener('click', function (e) {
             e.preventDefault();
-            root.focus();
-            toggleStyle('isEmph');
+            toggleStyle('isEmph', savedSelectionRange);
         });
     }
 
