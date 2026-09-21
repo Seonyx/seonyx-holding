@@ -11,7 +11,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="~/Content/css/site.css" rel="stylesheet" />
     <link href="~/Content/css/admin.css" rel="stylesheet" />
-    <link href="~/Content/css/book-editor.css" rel="stylesheet" />
+    @{
+        // Cache-busting query strings (file last-write time) for the
+        // book-editor-specific assets, which change often during active
+        // development and aren't covered by any bundling pipeline (this
+        // project uses none). Without this, a plain reload can keep
+        // serving a stale cached .js/.css file after a deploy, requiring
+        // a hard refresh to see new changes -- computed here as plain
+        // variables, not inline in the attribute, to keep the Razor
+        // attribute-value parsing unambiguous.
+        var bookEditorCssUrl = Url.Content("~/Content/css/book-editor.css") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Content/css/book-editor.css");
+        var richTextEditorJsUrl = Url.Content("~/Scripts/rich-text-editor.js") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Scripts/rich-text-editor.js");
+        var bookEditorJsUrl = Url.Content("~/Scripts/book-editor.js") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Scripts/book-editor.js");
+    }
+    <link href="@bookEditorCssUrl" rel="stylesheet" />
     @RenderSection("Styles", required: false)
 </head>
 <body class="editor-body">
@@ -49,8 +62,8 @@
     </main>
 
     <script src="~/Scripts/site.js"></script>
-    <script src="~/Scripts/rich-text-editor.js"></script>
+    <script src="@richTextEditorJsUrl"></script>
     @RenderSection("Scripts", required: false)
-    <script src="~/Scripts/book-editor.js"></script>
+    <script src="@bookEditorJsUrl"></script>
 </body>
 </html>
