@@ -13,9 +13,13 @@
 //   focus()             -> focus the editable root
 //
 // Internal API other rich-text-*.js modules (Half B) may call:
-//   RTE.getSelectionRunRange()
+//   RTE.getSelectionRunRange(explicitRange)
+//   RTE.getRunsRaw()
 //   RTE.splitRunAtOffset(runIndex, offset)
-//   RTE.applyStyleToRange(range, propName, value)
+//   RTE.normaliseRangeToRuns(sel)
+//   RTE.applyStyleToRange(range, propName, value)   -- boolean/string props, null clears
+//   RTE.applyEmphType(range, emphType)               -- also sets isEmph true if needed
+//   RTE.toggleStyleForRange(propName, range)         -- e.g. small caps; no collapsed support
 //   RTE.coalesceAndRerender()
 // ============================================
 
@@ -270,13 +274,70 @@
         return true;
     }
 
-    function applyStyleToRange(sel, propName, value) {
+    // explicitRange is a raw DOM Range (e.g. a captured selection handed
+    // in from rich-text-context-menu.js/rich-text-dialogs.js) -- this
+    // converts it to run-index coordinates via getSelectionRunRange
+    // before normalising, exactly like toggleStyle/toggleStyleForRange
+    // do. A no-op if the range doesn't resolve to a valid selection.
+    function applyStyleToRange(explicitRange, propName, value) {
+        var sel = getSelectionRunRange(explicitRange);
+        if (!sel) return;
         var norm = normaliseRangeToRuns(sel);
         for (var i = norm.first; i <= norm.last; i++) {
             runs[i][propName] = value;
         }
         runs = coalesce(runs);
         renderRuns();
+        markDirty();
+    }
+
+    // Sets emphType on every run in range, and -- since emphasis type is
+    // meaningless without emphasis itself -- also sets isEmph true on any
+    // run that doesn't already have it. Deliberately a single function
+    // rather than two sequential applyStyleToRange calls: each call
+    // independently normalises/coalesces/re-renders, so chaining two
+    // calls against the same (pre-first-call) range indices risks the
+    // exact class of index-inversion bug already found once in
+    // normaliseRangeToRuns. "Remove emphasis type" does NOT need this --
+    // it only clears emphType, deliberately leaving isEmph alone, so it
+    // goes through plain applyStyleToRange(range, 'emphType', null).
+    //
+    // explicitRange is a raw DOM Range, same convention as
+    // applyStyleToRange above -- converted via getSelectionRunRange
+    // before normalising.
+    function applyEmphType(explicitRange, emphType) {
+        var sel = getSelectionRunRange(explicitRange);
+        if (!sel) return;
+        var norm = normaliseRangeToRuns(sel);
+        for (var i = norm.first; i <= norm.last; i++) {
+            runs[i].emphType = emphType;
+            if (emphType && !runs[i].isEmph) runs[i].isEmph = true;
+        }
+        runs = coalesce(runs);
+        renderRuns();
+        markDirty();
+    }
+
+    // Shared core of the non-collapsed-selection toggle behaviour: flip
+    // propName on every run in range (if all already set, clear all;
+    // else set all), coalesce, re-render, restore the selection over the
+    // (possibly now-different) run range. Used by both toggleStyle
+    // (Bold/Italic, which also handles the collapsed-cursor
+    // type-here-styled case) and toggleStyleForRange (Half B's menu
+    // actions, e.g. small caps, which never see a collapsed selection
+    // since the context menu is suppressed in that case).
+    function toggleStyleOverRange(norm, propName) {
+        var allSet = allRunsHaveFlag(norm.first, norm.last, propName);
+        for (var i = norm.first; i <= norm.last; i++) {
+            runs[i][propName] = !allSet;
+        }
+        runs = coalesce(runs);
+        renderRuns();
+        root.focus();
+        restoreSelectionAcrossRuns(
+            Math.min(norm.first, runs.length - 1),
+            Math.min(norm.last, runs.length - 1)
+        );
         markDirty();
     }
 
@@ -298,19 +359,17 @@
             return;
         }
 
-        var norm = normaliseRangeToRuns(sel);
-        var allSet = allRunsHaveFlag(norm.first, norm.last, propName);
-        for (var i = norm.first; i <= norm.last; i++) {
-            runs[i][propName] = !allSet;
-        }
-        runs = coalesce(runs);
-        renderRuns();
-        root.focus();
-        restoreSelectionAcrossRuns(
-            Math.min(norm.first, runs.length - 1),
-            Math.min(norm.last, runs.length - 1)
-        );
-        markDirty();
+        toggleStyleOverRange(normaliseRangeToRuns(sel), propName);
+    }
+
+    // Half B entry point: toggles propName over an explicit Range with no
+    // collapsed-selection handling (the context menu that calls this is
+    // already suppressed on a collapsed selection, so that branch would
+    // never be exercised here -- see rich-text-context-menu.js).
+    function toggleStyleForRange(propName, explicitRange) {
+        var sel = getSelectionRunRange(explicitRange);
+        if (!sel || sel.collapsed) return;
+        toggleStyleOverRange(normaliseRangeToRuns(sel), propName);
     }
 
     function updateToolbarState() {
@@ -651,6 +710,8 @@
         splitRunAtOffset: splitRunAtOffset,
         normaliseRangeToRuns: normaliseRangeToRuns,
         applyStyleToRange: applyStyleToRange,
+        applyEmphType: applyEmphType,
+        toggleStyleForRange: toggleStyleForRange,
         coalesceAndRerender: function () { runs = coalesce(runs); renderRuns(); markDirty(); },
         getRunsRaw: function () { return runs; }
     };
