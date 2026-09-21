@@ -551,7 +551,7 @@ namespace Seonyx.Web.Controllers
                 UniqueID = paragraph.UniqueID,
                 OrdinalPosition = paragraph.OrdinalPosition,
                 ParagraphText = paragraph.ParagraphText,
-                InitialRuns = GetInitialRuns(paragraph.ParagraphID),
+                InitialRuns = GetInitialRuns(paragraph),
                 MetaText = GetMetaText(paragraph.ParagraphID),
                 EditNoteText = GetEditNoteText(paragraph.ParagraphID),
                 ChapterTitle = chapter.ChapterTitle,
@@ -578,10 +578,26 @@ namespace Seonyx.Web.Controllers
         // Loads the paragraph's runs for the editor's hydration payload,
         // mapped to the framework-agnostic InlineRun DTO (same shape the
         // save path deserialises into) so load/save share one JSON contract.
-        private List<InlineRun> GetInitialRuns(int paragraphId)
+        //
+        // Also self-heals paragraphs still carrying pre-P3 Markdown-marker
+        // text (**bold**/*italic*) that were never routed through P2's
+        // importer conversion: if the paragraph's runs are still exactly
+        // one flat, unstyled run (i.e. untouched since import/creation)
+        // and that text actually contains Markdown markers, parse and
+        // persist it as real styled runs right now, so both this page
+        // load and any subsequent export/search see the fix immediately.
+        // Any paragraph with more than one run, or any styling already
+        // applied, is left completely alone -- this only ever touches the
+        // narrow "never been parsed" case, never real edited content.
+        private List<InlineRun> GetInitialRuns(Paragraph paragraph)
         {
             var runService = new ParagraphRunService();
-            return runService.LoadRuns(db, paragraphId).Select(r => new InlineRun
+            var existingRuns = runService.LoadRuns(db, paragraph.ParagraphID);
+
+            var converted = TryConvertLegacyMarkdownRun(paragraph, existingRuns, runService);
+            if (converted != null) return converted;
+
+            return existingRuns.Select(r => new InlineRun
             {
                 Text        = r.RunText,
                 IsEmph      = r.IsEmph,
@@ -591,6 +607,72 @@ namespace Seonyx.Web.Controllers
                 OverlayType = r.OverlayType,
                 IsBreak     = r.IsBreak
             }).ToList();
+        }
+
+        // Returns the newly-converted, already-persisted run list if the
+        // paragraph qualified and was converted; null if it didn't
+        // qualify (caller should use the unmodified existingRuns as-is).
+        private List<InlineRun> TryConvertLegacyMarkdownRun(Paragraph paragraph, IList<ParagraphRun> existingRuns, ParagraphRunService runService)
+        {
+            if (existingRuns.Count != 1) return null;
+
+            var only = existingRuns[0];
+            bool isFlatAndUnstyled = !only.IsEmph && !only.IsStrong && !only.IsSmallCaps
+                && only.OverlayType == null && !only.IsBreak;
+            if (!isFlatAndUnstyled) return null;
+            if (string.IsNullOrEmpty(only.RunText)) return null;
+
+            IList<MarkdownFragment> fragments;
+            try
+            {
+                fragments = MarkdownInlineParser.Parse(only.RunText ?? "", "paragraph-" + paragraph.ParagraphID);
+            }
+            catch (MarkdownParseException)
+            {
+                // Malformed markers (e.g. ***triple***) -- leave the
+                // paragraph untouched rather than fail the page load.
+                return null;
+            }
+
+            // "Nothing to convert" means: exactly one plain fragment whose
+            // text is byte-identical to the original -- i.e. parsing was
+            // a true no-op. A single plain fragment with DIFFERENT text
+            // still counts as a real change (e.g. \*escaped\* unescaping
+            // to *escaped*), same as a multi-fragment or styled result.
+            bool isTrueNoOp = fragments.Count == 1
+                && !fragments[0].IsStrong && !fragments[0].IsEmph
+                && fragments[0].Text == (only.RunText ?? "");
+            if (isTrueNoOp) return null;
+
+            var converted = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
+            {
+                Text        = f.Text,
+                IsEmph      = f.IsEmph,
+                IsStrong    = f.IsStrong,
+                IsSmallCaps = false,
+                OverlayType = null,
+                IsBreak     = false
+            }).ToList());
+
+            runService.SaveRuns(db, paragraph.ParagraphID, converted.Select(r => new ParagraphRun
+            {
+                RunText     = r.Text,
+                IsEmph      = r.IsEmph,
+                EmphType    = r.EmphType,
+                IsStrong    = r.IsStrong,
+                IsSmallCaps = r.IsSmallCaps,
+                OverlayType = r.OverlayType,
+                IsBreak     = r.IsBreak
+            }).ToList());
+
+            // Keep the legacy plain-text mirror in sync too, same as the
+            // save endpoints do -- SearchParagraphIds queries this column
+            // directly in SQL and would otherwise still match/display the
+            // old asterisk-laden text after a fix that only touched runs.
+            paragraph.ParagraphText = runService.GetProseText(db, paragraph.ParagraphID);
+            db.SaveChanges();
+
+            return converted.ToList();
         }
 
         private string GetEditNoteText(int paragraphId)

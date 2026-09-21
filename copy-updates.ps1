@@ -1,12 +1,13 @@
 # ============================================
-# BookML Inline Presentation - Phase P3 Half A
-# Converts the plain-textarea paragraph editor into a run-native
-# contenteditable rich text editor: Bold (Ctrl+B), Italic (Ctrl+I), and
-# Shift+Enter/Enter line breaks, backed directly by ParagraphRuns. Removes
-# the P2-era SyncParagraphRuns markdown-resync shim entirely -- the editor
-# itself is now the source of truth for styled content.
-# Half B (context menu, overlay dialog, emphasis type, small caps) is a
-# separate, later phase -- not included in this copy.
+# P3 follow-up fixes
+# 1. Bold/Italic toolbar buttons and Ctrl+B/Ctrl+I selected/applied to the
+#    whole paragraph instead of the actual selection -- fixed a run-index
+#    inversion bug in normaliseRangeToRuns() plus a focus-theft issue on
+#    the toolbar mouse-click path.
+# 2. Paragraphs still carrying pre-P3 Markdown-marker text (**bold**/
+#    *italic*) that predates P2's importer conversion now self-convert
+#    into real styled runs the moment they're opened in the editor,
+#    persisted immediately so export/search see the fix right away too.
 # Run in PowerShell from any directory
 # ============================================
 
@@ -19,7 +20,7 @@ Write-Host "Log: $log"
 
 try {
 
-    Write-Host "BookML Inline Presentation P3 Half A - copy to Dibbler" -ForegroundColor Cyan
+    Write-Host "P3 follow-up fixes - copy to Dibbler" -ForegroundColor Cyan
     Write-Host "From: $src" -ForegroundColor Gray
     Write-Host "To:   $dst" -ForegroundColor Gray
     Write-Host ""
@@ -31,30 +32,11 @@ try {
         throw "ERROR: Destination not found at $dst"
     }
 
-    # New files
-    Write-Host "Copying new files..." -ForegroundColor Yellow
-    $newFiles = @(
-        "Scripts\rich-text-editor.js"
-    )
-    foreach ($f in $newFiles) {
-        $destDir = Split-Path (Join-Path $dst $f) -Parent
-        if (-not (Test-Path $destDir)) { New-Item -ItemType Directory -Path $destDir -Force | Out-Null }
-        Copy-Item (Join-Path $src $f) (Join-Path $dst $f) -Force
-        Write-Host "  NEW: $f" -ForegroundColor Green
-    }
-
     # Modified files
-    Write-Host ""
     Write-Host "Updating modified files..." -ForegroundColor Yellow
     $modifiedFiles = @(
-        "Views\Editor\Index.cshtml",
-        "Views\Shared\_BookEditorLayout.cshtml",
-        "Scripts\book-editor.js",
-        "Content\css\book-editor.css",
-        "Controllers\EditorController.cs",
-        "Models\ViewModels\BookEditor\ParagraphEditViewModel.cs",
-        "Services\ParagraphRunService.cs",
-        "Seonyx.csproj"
+        "Scripts\rich-text-editor.js",
+        "Controllers\EditorController.cs"
     )
     foreach ($f in $modifiedFiles) {
         $destDir = Split-Path (Join-Path $dst $f) -Parent
@@ -68,31 +50,22 @@ try {
     Write-Host "Post-copy steps:" -ForegroundColor Yellow
     Write-Host "============================================" -ForegroundColor Yellow
     Write-Host ""
-    Write-Host "1. No DB changes for this phase (schema already covers ParagraphRuns)." -ForegroundColor White
+    Write-Host "1. No DB changes needed." -ForegroundColor White
     Write-Host ""
     Write-Host "2. Build and run the web app (Seonyx.sln, F5)." -ForegroundColor White
     Write-Host ""
-    Write-Host "3. Open a paragraph imported via P2 with existing emph/strong spans" -ForegroundColor White
-    Write-Host "   (e.g. reimport testdata\junk_draft2.bookml.zip, chapter 04) -- confirm" -ForegroundColor Gray
-    Write-Host "   it renders as real bold/italic in the editor, not flattened text." -ForegroundColor Gray
+    Write-Host "3. Open a Chilli Racers chapter 1 paragraph with *single*/**double**" -ForegroundColor White
+    Write-Host "   asterisk markers still showing literally -- confirm it now renders" -ForegroundColor Gray
+    Write-Host "   as real italic/bold, not literal asterisks. Reload the page -- confirm" -ForegroundColor Gray
+    Write-Host "   it stays converted and nothing errors on the second load." -ForegroundColor Gray
     Write-Host ""
-    Write-Host "4. Type new text, select across a run boundary, apply Ctrl+B/Ctrl+I --" -ForegroundColor White
-    Write-Host "   confirm styling applies correctly and save succeeds (no coalescing" -ForegroundColor Gray
-    Write-Host "   errors, which would mean adjacent same-style runs weren't merged)." -ForegroundColor Gray
+    Write-Host "4. Select a PARTIAL phrase within a paragraph (not the whole thing) and" -ForegroundColor White
+    Write-Host "   click the B or I toolbar button -- confirm only the selected phrase" -ForegroundColor Gray
+    Write-Host "   is styled, not the entire paragraph. Repeat with Ctrl+B/Ctrl+I." -ForegroundColor Gray
     Write-Host ""
-    Write-Host "5. Confirm Ctrl+I inside the editor toggles italic, and Ctrl+I with focus" -ForegroundColor White
-    Write-Host "   OUTSIDE the editor (e.g. a nav button) still does 'insert paragraph" -ForegroundColor Gray
-    Write-Host "   after' as before -- both behaviours must coexist correctly." -ForegroundColor Gray
-    Write-Host ""
-    Write-Host "6. Save via both the Save button and 3-second autosave -- confirm" -ForegroundColor White
-    Write-Host "   ParagraphRuns persisted and paragraph search still finds the paragraph" -ForegroundColor Gray
-    Write-Host "   by its new text (ParagraphText legacy column must stay in sync)." -ForegroundColor Gray
-    Write-Host ""
-    Write-Host "7. Press Enter or Shift+Enter mid-paragraph -- confirm a line-break marker" -ForegroundColor White
-    Write-Host "   appears, persists on save, and re-loads correctly." -ForegroundColor Gray
-    Write-Host ""
-    Write-Host "8. Paste plain text and rich text (e.g. from Word) -- confirm both paste" -ForegroundColor White
-    Write-Host "   as plain text cleanly, no broken DOM state." -ForegroundColor Gray
+    Write-Host "5. Save and re-export (or check via SSMS) -- confirm ParagraphRuns for" -ForegroundColor White
+    Write-Host "   a converted paragraph shows separate styled rows, not one flat run," -ForegroundColor Gray
+    Write-Host "   proving the on-load conversion actually persisted." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 
