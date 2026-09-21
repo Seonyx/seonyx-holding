@@ -209,21 +209,30 @@
     // Normalises a selection range to whole-run boundaries by splitting
     // the start/end runs as needed, and returns the resulting
     // [firstIndex, lastIndex] inclusive range of whole runs covered.
+    //
+    // Splits the end boundary first (so its own split, confined to
+    // sel.endRun, never disturbs the still-unprocessed start position),
+    // then the start boundary. The start-split, when it happens, always
+    // inserts a new run at array position sel.startRun -- which is always
+    // at or before endRunIndex's current position for any valid
+    // (non-inverted) selection, whether start and end were originally the
+    // same run or different runs -- so endRunIndex must shift by one
+    // whenever the start-split actually occurs, unconditionally.
     function normaliseRangeToRuns(sel) {
-        // Split end first so start indices aren't invalidated by the
-        // insertion caused by splitting.
+        var startRunIndex = sel.startRun;
+        var startOffset = sel.startOffset;
         var endRunIndex = sel.endRun;
         var endOffset = sel.endOffset;
+
         if (endOffset > 0 && endOffset < (runs[endRunIndex].text || '').length) {
             splitRunAtOffset(endRunIndex, endOffset);
             // run at endRunIndex is now the left half (still selected);
             // the tail we don't want is at endRunIndex + 1.
         }
 
-        var startRunIndex = sel.startRun;
-        var startOffset = sel.startOffset;
         if (startOffset > 0 && startOffset < (runs[startRunIndex].text || '').length) {
             startRunIndex = splitRunAtOffset(startRunIndex, startOffset);
+            endRunIndex += 1;
         }
 
         return { first: startRunIndex, last: endRunIndex };
