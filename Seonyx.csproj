@@ -296,6 +296,8 @@
     <Content Include="Content\css\work-order.css" />
     <Content Include="Scripts\book-editor.js" />
     <Content Include="Scripts\rich-text-editor.js" />
+    <Content Include="Scripts\rich-text-context-menu.js" />
+    <Content Include="Scripts\rich-text-dialogs.js" />
     <Content Include="App_Data\BookML\bookml-common.xsd" />
     <Content Include="App_Data\BookML\bookml-book.xsd" />
     <Content Include="App_Data\BookML\bookml-chapter.xsd" />

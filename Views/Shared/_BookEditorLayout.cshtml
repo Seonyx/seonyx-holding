@@ -22,6 +22,8 @@
         // attribute-value parsing unambiguous.
         var bookEditorCssUrl = Url.Content("~/Content/css/book-editor.css") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Content/css/book-editor.css");
         var richTextEditorJsUrl = Url.Content("~/Scripts/rich-text-editor.js") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Scripts/rich-text-editor.js");
+        var richTextContextMenuJsUrl = Url.Content("~/Scripts/rich-text-context-menu.js") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Scripts/rich-text-context-menu.js");
+        var richTextDialogsJsUrl = Url.Content("~/Scripts/rich-text-dialogs.js") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Scripts/rich-text-dialogs.js");
         var bookEditorJsUrl = Url.Content("~/Scripts/book-editor.js") + "?v=" + Seonyx.Web.Helpers.AssetVersion.For("~/Scripts/book-editor.js");
     }
     <link href="@bookEditorCssUrl" rel="stylesheet" />
@@ -63,6 +65,8 @@
 
     <script src="~/Scripts/site.js"></script>
     <script src="@richTextEditorJsUrl"></script>
+    <script src="@richTextContextMenuJsUrl"></script>
+    <script src="@richTextDialogsJsUrl"></script>
     @RenderSection("Scripts", required: false)
     <script src="@bookEditorJsUrl"></script>
 </body>

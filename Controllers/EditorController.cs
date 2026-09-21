@@ -431,6 +431,25 @@ namespace Seonyx.Web.Controllers
             return Json(ids, JsonRequestBehavior.AllowGet);
         }
 
+        // Distinct overlay type values previously used anywhere in this
+        // project, for the overlay dialog's autocomplete (Phase P3 Half B).
+        [HttpGet]
+        public JsonResult GetOverlayTypes(int projectId)
+        {
+            if (!IsAuthenticated())
+                return Json(new string[0], JsonRequestBehavior.AllowGet);
+
+            var types = db.ParagraphRuns
+                .Where(r => r.OverlayType != null
+                         && r.Paragraph.Chapter.BookProjectID == projectId)
+                .Select(r => r.OverlayType)
+                .Distinct()
+                .OrderBy(t => t)
+                .ToList();
+
+            return Json(types, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult SearchList(int projectId, string q, bool wholeWord = false)
         {

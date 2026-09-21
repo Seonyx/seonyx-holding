@@ -1001,12 +1001,31 @@
     letter-spacing: 0.02em;
 }
 
-/* Overlay: plain tint in Half A (basic rendering so imported/loaded
-   overlay runs don't visually flatten); pill shape + hover label
-   polish added in Half B. */
+/* Overlay: diegetic on-screen text (HUD banners, sponsored alerts, etc.)
+   rendered as a tinted pill, with the @type shown on hover. */
 .rte-overlay {
+    position: relative;
     background: #ecfeff;
-    border-bottom: 1px dashed #0d9488;
+    border: 1px solid #99f6e4;
+    border-radius: 9999px;
+    padding: 0.05rem 0.5rem;
+}
+
+.rte-overlay:hover::after {
+    content: attr(data-overlay-type);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 0.25rem;
+    padding: 0.2rem 0.5rem;
+    background: #0f172a;
+    color: #fff;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .rte-break {
@@ -1017,4 +1036,70 @@
     border: none;
     border-top: 1px dashed #94a3b8;
     margin: 0.3em 0;
+}
+
+/* Right-click context menu */
+.rte-context-menu {
+    position: fixed;
+    margin: 0;
+    padding: 0.25rem 0;
+    list-style: none;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    min-width: 180px;
+    z-index: 1000;
+    font-size: 0.85rem;
+}
+
+.rte-context-menu[hidden] {
+    display: none;
+}
+
+.rte-context-menu li {
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    color: #1a1a2e;
+}
+
+.rte-context-menu li:hover {
+    background: #f1f5f9;
+}
+
+/* Overlay type / emphasis type dialogs */
+.rte-dialog {
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    padding: 1.25rem 1.5rem;
+    min-width: 280px;
+}
+
+.rte-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.35);
+}
+
+.rte-dialog label {
+    display: block;
+    font-size: 0.85rem;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+
+.rte-dialog input[type="text"],
+.rte-dialog select {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.rte-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }

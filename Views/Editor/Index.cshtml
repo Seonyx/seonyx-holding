@@ -51,6 +51,44 @@
                     var runsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model.InitialRuns, runsSettings).Replace("/", "\\/");
                 }
                 <script type="application/json" id="paragraphRunsInit">@Html.Raw(runsJson)</script>
+                <script type="application/json" id="rteConfigInit">{"projectId": @Model.BookProjectID, "getOverlayTypesUrl": "@Url.Action("GetOverlayTypes", "Editor")"}</script>
+
+                <!-- Right-click context menu (Phase P3 Half B) -->
+                <ul id="rteContextMenu" class="rte-context-menu" role="menu" hidden>
+                    <li role="menuitem" id="rteMenuMarkOverlay">Mark as overlay&hellip;</li>
+                    <li role="menuitem" id="rteMenuRemoveOverlay">Remove overlay</li>
+                    <li role="menuitem" id="rteMenuSetEmphType">Set emphasis type&hellip;</li>
+                    <li role="menuitem" id="rteMenuRemoveEmphType">Remove emphasis type</li>
+                    <li role="menuitem" id="rteMenuToggleSmallCaps">Apply small caps</li>
+                </ul>
+
+                <dialog id="rteOverlayDialog" class="rte-dialog">
+                    <form method="dialog">
+                        <label for="rteOverlayTypeInput">Overlay type</label>
+                        <input type="text" id="rteOverlayTypeInput" list="rteOverlayTypeList" autocomplete="off" />
+                        <datalist id="rteOverlayTypeList"></datalist>
+                        <div class="rte-dialog-actions">
+                            <button type="button" id="rteOverlayCancel">Cancel</button>
+                            <button type="submit" id="rteOverlayOk" value="ok">OK</button>
+                        </div>
+                    </form>
+                </dialog>
+
+                <dialog id="rteEmphTypeDialog" class="rte-dialog">
+                    <form method="dialog">
+                        <label for="rteEmphTypeSelect">Emphasis type</label>
+                        <select id="rteEmphTypeSelect">
+                            <option value="thought">thought</option>
+                            <option value="foreign">foreign</option>
+                            <option value="title">title</option>
+                            <option value="ship-name">ship-name</option>
+                        </select>
+                        <div class="rte-dialog-actions">
+                            <button type="button" id="rteEmphTypeCancel">Cancel</button>
+                            <button type="submit" id="rteEmphTypeOk" value="ok">OK</button>
+                        </div>
+                    </form>
+                </dialog>
             </div>
 
             <!-- META Panel -->
