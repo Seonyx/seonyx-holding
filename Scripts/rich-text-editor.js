@@ -535,7 +535,8 @@
         // fast path above -- plain text only, per project decision.
     });
 
-    root.addEventListener('selectionchange', updateToolbarState);
+    // selectionchange only ever fires on document, never on an arbitrary
+    // element -- registering it directly on root would silently never fire.
     document.addEventListener('selectionchange', function () {
         if (document.activeElement === root || root.contains(document.activeElement)) {
             updateToolbarState();
