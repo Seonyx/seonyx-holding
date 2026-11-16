@@ -20,6 +20,7 @@
 //   RTE.applyStyleToRange(range, propName, value)   -- boolean/string props, null clears
 //   RTE.applyEmphType(range, emphType)               -- also sets isEmph true if needed
 //   RTE.toggleStyleForRange(propName, range)         -- e.g. small caps; no collapsed support
+//   RTE.clearFormatting()                            -- strips all styling from the whole paragraph
 //   RTE.coalesceAndRerender()
 // ============================================
 
@@ -228,6 +229,34 @@
         var endRunIndex = sel.endRun;
         var endOffset = sel.endOffset;
 
+        // A boundary sitting exactly at a run seam is ambiguous -- it can
+        // legitimately be reported as either "offset 0 of the next run" or
+        // "offset (length) of the previous run", and different browsers
+        // pick different sides for the SAME on-screen selection. Chromium
+        // anchors a selection start to the following run; Firefox anchors
+        // it to the end of the preceding run instead (confirmed via a
+        // real-browser trace: selecting a word immediately preceded by
+        // more text reports startRun as the PREVIOUS run with startOffset
+        // equal to that run's full length, not the word's own run at
+        // offset 0). Left unhandled, this run never gets excluded and the
+        // "previous" run's text (which the user never selected) gets
+        // pulled into the mutation.
+        if (startRunIndex < endRunIndex && startOffset === (runs[startRunIndex].text || '').length) {
+            startRunIndex += 1;
+            startOffset = 0;
+        }
+
+        // The mirror case at the end boundary: offset 0 of a run after
+        // startRun selects none of that run's text (this is what
+        // double-click word-select commonly produces in Chromium when the
+        // word is followed by more text) -- treat the previous run as the
+        // real last run instead, or the mutation would spill onto text the
+        // user never selected.
+        if (endRunIndex > startRunIndex && endOffset === 0) {
+            endRunIndex -= 1;
+            endOffset = (runs[endRunIndex].text || '').length;
+        }
+
         if (endOffset > 0 && endOffset < (runs[endRunIndex].text || '').length) {
             splitRunAtOffset(endRunIndex, endOffset);
             // run at endRunIndex is now the left half (still selected);
@@ -263,6 +292,59 @@
         } catch (e) { /* best-effort */ }
     }
 
+    // Absolute character offset (from the start of the whole paragraph) of
+    // the given run-index + in-run-offset, against a caller-supplied runs
+    // array (so it can be measured against either the pre- or
+    // post-mutation array).
+    function absoluteOffset(list, runIndex, inRunOffset) {
+        var total = 0;
+        for (var i = 0; i < runIndex; i++) {
+            total += (list[i] && list[i].text || '').length;
+        }
+        return total + inRunOffset;
+    }
+
+    // Restores the on-screen selection to the same SPAN OF TEXT the user
+    // had selected before a toggle+coalesce, rather than to the run
+    // indices that used to bound it. Run indices are not stable across a
+    // toggle: un-bolding a word and coalescing it back into its
+    // now-identically-styled neighbours can merge several runs into one,
+    // so the old [firstIndex, lastIndex] can land on a single run that
+    // spans far more text than the user actually selected (visually
+    // "highlighting the whole sentence" even though the underlying model
+    // is correct) -- measuring in absolute character offsets is immune to
+    // however much merging/splitting the mutation did.
+    function restoreSelectionByCharOffset(startAbs, endAbs) {
+        reindexSpans();
+        var children = root.childNodes;
+        var pos = 0;
+        var startNode = null, startOffset = 0, endNode = null, endOffset = 0;
+        for (var i = 0; i < children.length; i++) {
+            var node = children[i];
+            var len = (node.textContent || '').length;
+            if (startNode === null && startAbs <= pos + len) {
+                startNode = node;
+                startOffset = startAbs - pos;
+            }
+            if (endAbs <= pos + len) {
+                endNode = node;
+                endOffset = endAbs - pos;
+                break;
+            }
+            pos += len;
+        }
+        if (!startNode || !endNode || !startNode.firstChild || !endNode.firstChild) return;
+
+        var range = document.createRange();
+        try {
+            range.setStart(startNode.firstChild, startOffset);
+            range.setEnd(endNode.firstChild, endOffset);
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        } catch (e) { /* best-effort */ }
+    }
+
     // ------------------------------------------------------------
     // Style toggling (Bold / Italic and, for Half B, other flags)
     // ------------------------------------------------------------
@@ -285,6 +367,26 @@
         var norm = normaliseRangeToRuns(sel);
         for (var i = norm.first; i <= norm.last; i++) {
             runs[i][propName] = value;
+        }
+        runs = coalesce(runs);
+        renderRuns();
+        markDirty();
+    }
+
+    // Strips ALL styling (bold, italic, emphasis type, small caps, overlay)
+    // from every run in the paragraph, regardless of selection -- text and
+    // line breaks (isBreak runs) are untouched. Coalesces down to a single
+    // plain run (or a plain run either side of each break), since every
+    // run now shares identical (empty) style. A whole-paragraph reset, not
+    // a range-based mutation, so it doesn't go through
+    // normaliseRangeToRuns/getSelectionRunRange at all.
+    function clearFormatting() {
+        for (var i = 0; i < runs.length; i++) {
+            runs[i].isStrong = false;
+            runs[i].isEmph = false;
+            runs[i].emphType = null;
+            runs[i].isSmallCaps = false;
+            runs[i].overlayType = null;
         }
         runs = coalesce(runs);
         renderRuns();
@@ -327,6 +429,13 @@
     // actions, e.g. small caps, which never see a collapsed selection
     // since the context menu is suppressed in that case).
     function toggleStyleOverRange(norm, propName) {
+        // Captured in absolute character offsets, against the PRE-mutation
+        // runs array, before coalesce() can merge norm.first/norm.last
+        // away -- see restoreSelectionByCharOffset for why run indices
+        // alone aren't safe to reuse after this point.
+        var selStartAbs = absoluteOffset(runs, norm.first, 0);
+        var selEndAbs = absoluteOffset(runs, norm.last, (runs[norm.last].text || '').length);
+
         var allSet = allRunsHaveFlag(norm.first, norm.last, propName);
         for (var i = norm.first; i <= norm.last; i++) {
             runs[i][propName] = !allSet;
@@ -334,10 +443,7 @@
         runs = coalesce(runs);
         renderRuns();
         root.focus();
-        restoreSelectionAcrossRuns(
-            Math.min(norm.first, runs.length - 1),
-            Math.min(norm.last, runs.length - 1)
-        );
+        restoreSelectionByCharOffset(selStartAbs, selEndAbs);
         markDirty();
     }
 
@@ -440,6 +546,20 @@
     }
 
     root.addEventListener('beforeinput', function (e) {
+        if (e.inputType === 'formatBold' || e.inputType === 'formatItalic') {
+            // Chrome's native contenteditable Ctrl+B/Ctrl+I handling fires
+            // its own beforeinput (inputType formatBold/formatItalic) and
+            // mutates the DOM natively (wrapping/rewrapping text, and
+            // observed to corrupt or delete existing rte-* spans) -- this
+            // races with and fights our own keydown handler's toggleStyle()
+            // call for the exact same keypress, corrupting the model/DOM
+            // sync (runs.length and the live DOM silently diverging).
+            // The keydown handler's preventDefault() stops the *keypress*
+            // default, but not this separate native formatting command --
+            // must be blocked here too.
+            e.preventDefault();
+            return;
+        }
         if (e.inputType === 'insertParagraph') {
             // Shift+Enter (and plain Enter, since paragraph breaks are
             // handled at the Paragraph level, not inside one) -- insert
@@ -642,6 +762,19 @@
         });
     }
 
+    var btnClearFormatting = document.getElementById('rteClearFormatting');
+    if (btnClearFormatting) {
+        // No selection to preserve -- this acts on the whole paragraph
+        // regardless of what's selected -- but still prevent the button
+        // click from stealing focus, for consistency with Bold/Italic and
+        // so the cursor position in the editable is left undisturbed.
+        btnClearFormatting.addEventListener('mousedown', function (e) { e.preventDefault(); });
+        btnClearFormatting.addEventListener('click', function (e) {
+            e.preventDefault();
+            clearFormatting();
+        });
+    }
+
     root.addEventListener('keydown', function (e) {
         if (e.ctrlKey && !e.shiftKey && (e.key === 'b' || e.key === 'B')) {
             e.preventDefault();
@@ -712,6 +845,7 @@
         applyStyleToRange: applyStyleToRange,
         applyEmphType: applyEmphType,
         toggleStyleForRange: toggleStyleForRange,
+        clearFormatting: clearFormatting,
         coalesceAndRerender: function () { runs = coalesce(runs); renderRuns(); markDirty(); },
         getRunsRaw: function () { return runs; }
     };

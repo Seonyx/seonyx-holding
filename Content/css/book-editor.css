@@ -970,6 +970,14 @@
     border-color: #7C3AED;
 }
 
+.rte-toolbar-btn-clear {
+    font-weight: 400;
+    margin-left: 0.5rem;
+    padding-left: 0.6rem;
+    border-left: 1px solid #e5e7eb;
+    border-radius: 0 3px 3px 0;
+}
+
 .rte-root {
     width: 100%;
     min-height: 8rem;

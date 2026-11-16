@@ -38,7 +38,25 @@
     function runsInRange(sel) {
         var all = RTE.getRunsRaw();
         var list = [];
-        for (var i = sel.startRun; i <= sel.endRun; i++) {
+        // A selection boundary sitting exactly at a run seam is ambiguous
+        // and different browsers resolve it to different sides for the
+        // SAME on-screen selection. Chromium reports a whole-word
+        // selection's end as offset 0 of the FOLLOWING run when more text
+        // follows; Firefox instead reports the START as the full length of
+        // the PRECEDING run when more text precedes it. Left unhandled,
+        // either shape wrongly pulls a run the user never selected into
+        // the "are all runs emphasized/overlaid/small-caps" checks below,
+        // hiding menu items that should show (or showing ones that
+        // shouldn't) for a clean whole-word selection.
+        var firstRun = sel.startRun;
+        if (firstRun < sel.endRun && sel.startOffset === (all[firstRun] && all[firstRun].text || '').length) {
+            firstRun += 1;
+        }
+        var lastRun = sel.endRun;
+        if (lastRun > firstRun && sel.endOffset === 0) {
+            lastRun -= 1;
+        }
+        for (var i = firstRun; i <= lastRun; i++) {
             if (all[i]) list.push(all[i]);
         }
         return list;
