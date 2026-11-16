@@ -13,6 +13,7 @@ namespace ContentAnalysisEngine
         public string   BookId         { get; set; }
         public int      TotalWords     { get; set; }
         public int      TotalChapters  { get; set; }
+        public bool     IncludeOverlays { get; set; }
         public List<string>             NamesExcluded    { get; set; } = new List<string>();
         public BookMetricsSummary       Metrics          { get; set; }
         public List<BookFlaggedWord>    OutlierWords     { get; set; } = new List<BookFlaggedWord>();
@@ -67,11 +68,12 @@ namespace ContentAnalysisEngine
                     new XAttribute("echo-count",    ch.EchoCount)));
 
             var root = new XElement(Ns + "book-analysis-report",
-                new XAttribute("schema-version",  SchemaVersion ?? "2.0"),
-                new XAttribute("generated-at",    GeneratedAt.ToString("o", CultureInfo.InvariantCulture)),
-                new XAttribute("book-id",         BookId ?? ""),
-                new XAttribute("total-words",     TotalWords),
-                new XAttribute("total-chapters",  TotalChapters),
+                new XAttribute("schema-version",   SchemaVersion ?? "2.0"),
+                new XAttribute("generated-at",     GeneratedAt.ToString("o", CultureInfo.InvariantCulture)),
+                new XAttribute("book-id",          BookId ?? ""),
+                new XAttribute("total-words",      TotalWords),
+                new XAttribute("total-chapters",   TotalChapters),
+                new XAttribute("include-overlays", IncludeOverlays ? "true" : "false"),
                 namesEl,
                 metricsEl,
                 outliersEl,
@@ -88,10 +90,11 @@ namespace ContentAnalysisEngine
 
             var report = new BookAnalysisReport
             {
-                SchemaVersion = (string)root.Attribute("schema-version") ?? "2.0",
-                BookId        = (string)root.Attribute("book-id") ?? "",
-                TotalWords    = ParseInt((string)root.Attribute("total-words"), 0),
-                TotalChapters = ParseInt((string)root.Attribute("total-chapters"), 0),
+                SchemaVersion   = (string)root.Attribute("schema-version") ?? "2.0",
+                BookId          = (string)root.Attribute("book-id") ?? "",
+                TotalWords      = ParseInt((string)root.Attribute("total-words"), 0),
+                TotalChapters   = ParseInt((string)root.Attribute("total-chapters"), 0),
+                IncludeOverlays = (string)root.Attribute("include-overlays") == "true",
             };
 
             var genAt = (string)root.Attribute("generated-at");

@@ -37,27 +37,29 @@ namespace ContentAnalyserCli
         // -------------------------------------------------------
         static int RunAnalyse(string[] args)
         {
-            string chapterPath = null;
-            string namesPath   = null;
-            bool   quiet       = false;
+            string chapterPath     = null;
+            string namesPath       = null;
+            bool   quiet           = false;
+            bool   includeOverlays = false;
 
             for (int i = 1; i < args.Length; i++)
             {
                 if      (args[i] == "--chapter" && i + 1 < args.Length) { chapterPath = args[++i]; }
                 else if (args[i] == "--names"   && i + 1 < args.Length) { namesPath   = args[++i]; }
                 else if (args[i] == "--quiet") { quiet = true; }
+                else if (args[i] == "--include-overlays") { includeOverlays = true; }
             }
 
             if (chapterPath == null)
             {
                 Console.Error.WriteLine("analyse: --chapter is required.");
-                Console.Error.WriteLine("Usage: content-analyser analyse --chapter path/to/chapter.xml [--names path/to/names.xml] [--quiet]");
+                Console.Error.WriteLine("Usage: content-analyser analyse --chapter path/to/chapter.xml [--names path/to/names.xml] [--include-overlays] [--quiet]");
                 return 2;
             }
 
             try
             {
-                var report = new ChapterAnalyser().Analyse(chapterPath, namesPath);
+                var report = new ChapterAnalyser().Analyse(chapterPath, namesPath, includeOverlays);
                 if (!quiet)
                     Console.WriteLine(report.ToXDocument().ToString());
                 return 0;
@@ -245,10 +247,11 @@ namespace ContentAnalyserCli
         // -------------------------------------------------------
         static int RunAnalyseBook(string[] args)
         {
-            string manifestPath = null;
-            string namesPath    = null;
-            string outputPath   = null;
-            string summaryPath  = null;
+            string manifestPath    = null;
+            string namesPath       = null;
+            string outputPath      = null;
+            string summaryPath     = null;
+            bool   includeOverlays = false;
 
             for (int i = 1; i < args.Length; i++)
             {
@@ -256,12 +259,13 @@ namespace ContentAnalyserCli
                 else if (args[i] == "--names"    && i + 1 < args.Length) { namesPath    = args[++i]; }
                 else if (args[i] == "--output"   && i + 1 < args.Length) { outputPath   = args[++i]; }
                 else if (args[i] == "--summary"  && i + 1 < args.Length) { summaryPath  = args[++i]; }
+                else if (args[i] == "--include-overlays") { includeOverlays = true; }
             }
 
             if (manifestPath == null || outputPath == null)
             {
                 Console.Error.WriteLine("analyse-book: --manifest and --output are required.");
-                Console.Error.WriteLine("Usage: content-analyser analyse-book --manifest path/to/book.xml --names path/to/names.xml --output path/to/report.xml [--summary path/to/summary.txt]");
+                Console.Error.WriteLine("Usage: content-analyser analyse-book --manifest path/to/book.xml --names path/to/names.xml --output path/to/report.xml [--summary path/to/summary.txt] [--include-overlays]");
                 return 2;
             }
 
@@ -288,7 +292,7 @@ namespace ContentAnalyserCli
             try
             {
                 var analyser = new BookAnalyser();
-                var report   = analyser.Analyse(manifestPath, namesPath);
+                var report   = analyser.Analyse(manifestPath, namesPath, includeOverlays);
 
                 var doc = report.ToXDocument();
                 doc.Save(outputPath);
@@ -406,15 +410,17 @@ namespace ContentAnalyserCli
             Console.Error.WriteLine("content-analyser <subcommand> [options]");
             Console.Error.WriteLine();
             Console.Error.WriteLine("Subcommands:");
-            Console.Error.WriteLine("  analyse      --chapter <path> [--names <path>] [--quiet]");
+            Console.Error.WriteLine("  analyse      --chapter <path> [--names <path>] [--include-overlays] [--quiet]");
             Console.Error.WriteLine("  workorder    --chapter <path> --output <path> --names <path> [--draft N] [--quiet]");
             Console.Error.WriteLine("  validate     --original <path> --rewritten <path> --entry-id <id> --manifest <path> --names <path> [--baselines <dir>]");
-            Console.Error.WriteLine("  analyse-book --manifest <book.xml> --names <path> --output <report.xml> [--summary <summary.txt>]");
+            Console.Error.WriteLine("  analyse-book --manifest <book.xml> --names <path> --output <report.xml> [--summary <summary.txt>] [--include-overlays]");
             Console.Error.WriteLine("  compare-books --from <draft-N.xml> --to <draft-N+1.xml> --from-draft N --to-draft N+1 --output <delta.xml> [--summary <summary.txt>]");
             Console.Error.WriteLine();
             Console.Error.WriteLine("Notes:");
             Console.Error.WriteLine("  --names is optional for analyse (names appear as outliers when omitted).");
             Console.Error.WriteLine("  --names is required for workorder, validate, and analyse-book.");
+            Console.Error.WriteLine("  --include-overlays includes <overlay> (diegetic on-screen text, e.g. HUD");
+            Console.Error.WriteLine("    banners) in analysed prose; excluded by default.");
             Console.Error.WriteLine();
             Console.Error.WriteLine("Exit codes: 0=success, 1=failure/error, 2=usage error");
         }

@@ -19,13 +19,16 @@ namespace ContentAnalysisEngine
         /// Analyses a BookML chapter XML file and returns a populated AnalysisReport.
         /// If namesFilePath is provided, character names in that file are added to the
         /// stop-word exclusion set so they are not flagged as outlier words or n-grams.
+        /// includeOverlays controls whether &lt;overlay&gt; text (diegetic on-screen
+        /// text, e.g. HUD banners) is included in the extracted prose -- excluded by
+        /// default per amendment section 7.1/7.2.
         /// </summary>
-        public AnalysisReport Analyse(string chapterXmlPath, string namesFilePath = null)
+        public AnalysisReport Analyse(string chapterXmlPath, string namesFilePath = null, bool includeOverlays = false)
         {
             if (!File.Exists(chapterXmlPath))
                 throw new FileNotFoundException("Chapter XML file not found.", chapterXmlPath);
 
-            var paragraphs = BookmlReader.ReadParagraphs(chapterXmlPath);
+            var paragraphs = BookmlReader.ReadParagraphs(chapterXmlPath, includeOverlays);
             var chapterId  = BookmlReader.ReadChapterId(chapterXmlPath);
 
             if (namesFilePath != null)
@@ -37,18 +40,18 @@ namespace ContentAnalysisEngine
                     _config.AdditionalStopWords.Add(n.ToLowerInvariant());
             }
 
-            return AnalyseParagraphs(paragraphs, chapterId, Path.GetFullPath(chapterXmlPath));
+            return AnalyseParagraphs(paragraphs, chapterId, Path.GetFullPath(chapterXmlPath), includeOverlays);
         }
 
         /// <summary>
         /// Analyses a list of paragraphs sourced from the database and returns a populated AnalysisReport.
         /// </summary>
-        public AnalysisReport Analyse(List<ParagraphEntry> paragraphs, string chapterId)
+        public AnalysisReport Analyse(List<ParagraphEntry> paragraphs, string chapterId, bool includeOverlays = false)
         {
-            return AnalyseParagraphs(paragraphs, chapterId, "database");
+            return AnalyseParagraphs(paragraphs, chapterId, "database", includeOverlays);
         }
 
-        private AnalysisReport AnalyseParagraphs(List<ParagraphEntry> paragraphs, string chapterId, string source)
+        private AnalysisReport AnalyseParagraphs(List<ParagraphEntry> paragraphs, string chapterId, string source, bool includeOverlays)
         {
             // Build the flat token list for TTR (all tokens, no filtering)
             var allTokens = new List<string>();
@@ -85,6 +88,7 @@ namespace ContentAnalysisEngine
                 GeneratedAt      = DateTime.UtcNow,
                 ChapterId        = chapterId,
                 SourceFile       = source,
+                IncludeOverlays  = includeOverlays,
                 Configuration    = _config,
                 Metrics          = new MetricsSummary
                 {

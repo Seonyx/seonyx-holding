@@ -12,6 +12,7 @@ namespace ContentAnalysisEngine
         public DateTime GeneratedAt { get; set; }
         public string ChapterId { get; set; }
         public string SourceFile { get; set; }
+        public bool IncludeOverlays { get; set; }
         public AnalysisConfiguration Configuration { get; set; }
         public MetricsSummary Metrics { get; set; }
         public List<FlaggedWord> FlaggedWords { get; set; }
@@ -87,10 +88,11 @@ namespace ContentAnalysisEngine
             }
 
             var root = new XElement(Ns + "analysis-report",
-                new XAttribute("schema-version", SchemaVersion ?? "1.0"),
-                new XAttribute("generated-at",   GeneratedAt.ToString("o", CultureInfo.InvariantCulture)),
-                new XAttribute("chapter-id",     ChapterId ?? ""),
-                new XAttribute("source-file",    SourceFile ?? ""),
+                new XAttribute("schema-version",   SchemaVersion ?? "1.0"),
+                new XAttribute("generated-at",     GeneratedAt.ToString("o", CultureInfo.InvariantCulture)),
+                new XAttribute("chapter-id",       ChapterId ?? ""),
+                new XAttribute("source-file",      SourceFile ?? ""),
+                new XAttribute("include-overlays", IncludeOverlays ? "true" : "false"),
                 cfgEl,
                 metricsEl,
                 wordsEl,
@@ -107,9 +109,10 @@ namespace ContentAnalysisEngine
 
             var report = new AnalysisReport
             {
-                SchemaVersion = (string)root.Attribute("schema-version") ?? "1.0",
-                ChapterId     = (string)root.Attribute("chapter-id") ?? "",
-                SourceFile    = (string)root.Attribute("source-file") ?? "",
+                SchemaVersion   = (string)root.Attribute("schema-version") ?? "1.0",
+                ChapterId       = (string)root.Attribute("chapter-id") ?? "",
+                SourceFile      = (string)root.Attribute("source-file") ?? "",
+                IncludeOverlays = (string)root.Attribute("include-overlays") == "true",
             };
 
             var genAt = (string)root.Attribute("generated-at");

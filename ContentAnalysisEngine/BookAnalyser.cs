@@ -15,7 +15,7 @@ namespace ContentAnalysisEngine
             _config = config ?? new AnalysisConfiguration();
         }
 
-        public BookAnalysisReport Analyse(string bookXmlPath, string namesFilePath)
+        public BookAnalysisReport Analyse(string bookXmlPath, string namesFilePath, bool includeOverlays = false)
         {
             var manifest = BookReader.ReadManifest(bookXmlPath);
 
@@ -47,7 +47,7 @@ namespace ContentAnalysisEngine
             {
                 try
                 {
-                    var report = chapterAnalyser.Analyse(chRef.ChapterFilePath);
+                    var report = chapterAnalyser.Analyse(chRef.ChapterFilePath, null, includeOverlays);
                     perChapterReports.Add(report);
                     chapterIds.Add(chRef.ComponentId);
                 }
@@ -187,7 +187,7 @@ namespace ContentAnalysisEngine
             var allParas = new List<ParagraphEntry>();
             foreach (var chRef in manifest.Chapters)
             {
-                try { allParas.AddRange(BookmlReader.ReadParagraphs(chRef.ChapterFilePath)); }
+                try { allParas.AddRange(BookmlReader.ReadParagraphs(chRef.ChapterFilePath, includeOverlays)); }
                 catch { /* already analysed successfully above; ignore re-read errors */ }
             }
 
@@ -246,6 +246,7 @@ namespace ContentAnalysisEngine
                 BookId           = manifest.BookId,
                 TotalWords       = totalBookWords,
                 TotalChapters    = totalChapters,
+                IncludeOverlays  = includeOverlays,
                 NamesExcluded    = namesExcluded,
                 Metrics          = new BookMetricsSummary
                 {

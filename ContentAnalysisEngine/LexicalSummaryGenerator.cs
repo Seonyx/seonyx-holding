@@ -28,6 +28,10 @@ namespace ContentAnalysisEngine
                 report.TotalChapters,
                 report.TotalChapters == 1 ? "" : "s"));
 
+            sb.AppendLine(report.IncludeOverlays
+                ? "Overlay text (HUD banners, on-screen diegetic text) INCLUDED in this analysis."
+                : "Overlay text (HUD banners, on-screen diegetic text) excluded from this analysis (default).");
+
             string ttrAssessment;
             if (m.TypeTokenRatio < 0.08)
                 ttrAssessment = "below the typical fiction range of 0.10-0.15";
