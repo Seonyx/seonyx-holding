@@ -388,28 +388,15 @@ namespace Seonyx.Web.Services
                         modifiedDate.Value.ToString("yyyy-MM-ddTHH:mm:ssZ")));
 
                 List<ParagraphRun> runs;
-                if (runsByParaId.TryGetValue(para.ParagraphID, out runs) && runs.Count > 0)
-                {
-                    var inlineRuns = runs.Select(r => new InlineRun
-                    {
-                        Text        = r.RunText,
-                        IsEmph      = r.IsEmph,
-                        EmphType    = r.EmphType,
-                        IsStrong    = r.IsStrong,
-                        IsSmallCaps = r.IsSmallCaps,
-                        OverlayType = r.OverlayType,
-                        IsBreak     = r.IsBreak
-                    }).ToList();
+                runsByParaId.TryGetValue(para.ParagraphID, out runs);
 
-                    foreach (var node in InlineXmlRunConverter.BuildParaContent(inlineRuns))
-                        paraEl.Add(node);
-                }
-                else
-                {
-                    // No runs recorded for this paragraph yet (shouldn't
-                    // happen post-P1 migration, but fall back safely).
-                    paraEl.Value = para.ParagraphText ?? "";
-                }
+                string runsWarning;
+                var inlineRuns = PlainTextRunBuilder.EffectiveRuns(para.ParagraphText, para.UniqueID,
+                    ParagraphRunService.ToInlineRuns(runs ?? new List<ParagraphRun>()), out runsWarning);
+                if (runsWarning != null) result.Warnings.Add(runsWarning);
+
+                foreach (var node in InlineXmlRunConverter.BuildParaContent(inlineRuns))
+                    paraEl.Add(node);
 
                 sectionEl.Add(paraEl);
             }

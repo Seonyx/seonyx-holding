@@ -48,40 +48,135 @@ namespace Seonyx.Web.Services
         }
 
         /// <summary>
-        /// Concatenated RunText for one paragraph, in Seq order. Break runs
-        /// contribute nothing. Overlay runs excluded unless includeOverlays
-        /// is true. Amendment section 7.3.
+        /// Builds runs from plain text via the shared route
+        /// (PlainTextRunBuilder) and saves them. Any parse warning is
+        /// appended to warnings (lenient policy only).
+        /// </summary>
+        public void SaveRunsFromPlainText(SeonyxContext db, int paragraphId, string text, string pid,
+            PlainTextParsePolicy policy, IList<string> warnings)
+        {
+            string warning;
+            var runs = PlainTextRunBuilder.BuildRunsFromPlainText(text, pid, policy, out warning);
+            if (warning != null && warnings != null) warnings.Add(warning);
+            SaveRuns(db, paragraphId, ToParagraphRuns(runs));
+        }
+
+        /// <summary>
+        /// Runs a reader should use for one paragraph: stored runs, or the
+        /// paragraph's text parsed (lenient) when it has none.
+        /// </summary>
+        public IList<InlineRun> LoadEffectiveRuns(SeonyxContext db, Paragraph paragraph, out string warning)
+        {
+            return PlainTextRunBuilder.EffectiveRuns(paragraph.ParagraphText, paragraph.UniqueID,
+                ToInlineRuns(LoadRuns(db, paragraph.ParagraphID)), out warning);
+        }
+
+        /// <summary>
+        /// Concatenated text of a paragraph's effective runs, in Seq order.
+        /// Break runs contribute nothing. Overlay runs excluded unless
+        /// includeOverlays is true. Amendment section 7.3.
         /// </summary>
         public string GetProseText(SeonyxContext db, int paragraphId, bool includeOverlays = false)
         {
-            var runs = db.ParagraphRuns
-                .Where(r => r.ParagraphID == paragraphId
-                         && !r.IsBreak
-                         && (includeOverlays || r.OverlayType == null))
-                .OrderBy(r => r.Seq)
-                .Select(r => r.RunText)
-                .ToList();
+            var stored = ToInlineRuns(LoadRuns(db, paragraphId));
+            string text = null, pid = null;
+            if (stored.Count == 0)
+            {
+                var paragraph = db.Paragraphs.Find(paragraphId);
+                if (paragraph != null)
+                {
+                    text = paragraph.ParagraphText;
+                    pid = paragraph.UniqueID;
+                }
+            }
 
-            return string.Concat(runs);
+            string warning;
+            return PlainTextRunBuilder.ProseOf(
+                PlainTextRunBuilder.EffectiveRuns(text, pid, stored, out warning), includeOverlays);
         }
 
         /// <summary>
         /// Bulk variant: prose text per paragraph across a chapter, joined
         /// with a blank line between paragraphs, in paragraph OrdinalPosition
-        /// order. For analytics ingestion (not used until P4).
+        /// order.
         /// </summary>
         public string GetProseTextForChapter(SeonyxContext db, int chapterId, bool includeOverlays = false)
         {
-            var paragraphIds = db.Paragraphs
+            var paragraphs = db.Paragraphs
                 .Where(p => p.ChapterID == chapterId)
                 .OrderBy(p => p.OrdinalPosition)
-                .Select(p => p.ParagraphID)
+                .Select(p => new { p.ParagraphID, p.UniqueID, p.ParagraphText })
                 .ToList();
 
-            var paragraphTexts = paragraphIds
-                .Select(id => GetProseText(db, id, includeOverlays));
+            var ids = paragraphs.Select(p => p.ParagraphID).ToList();
+            var runsById = db.ParagraphRuns
+                .Where(r => ids.Contains(r.ParagraphID))
+                .ToList()
+                .GroupBy(r => r.ParagraphID)
+                .ToDictionary(g => g.Key, g => ToInlineRuns(g.OrderBy(r => r.Seq).ToList()));
+
+            var paragraphTexts = paragraphs.Select(p =>
+            {
+                IList<InlineRun> stored;
+                if (!runsById.TryGetValue(p.ParagraphID, out stored)) stored = new List<InlineRun>();
+                string warning;
+                return PlainTextRunBuilder.ProseOf(
+                    PlainTextRunBuilder.EffectiveRuns(p.ParagraphText, p.UniqueID, stored, out warning), includeOverlays);
+            });
 
             return string.Join("\n\n", paragraphTexts);
+        }
+
+        /// <summary>
+        /// The editor's load-time Markdown self-conversion (W8), shared with
+        /// the repair action: if the paragraph qualifies (see
+        /// PlainTextRunBuilder.TryBuildLegacyMarkdownConversion), persist the
+        /// converted runs and resync the ParagraphText mirror. Returns the
+        /// converted runs, or null if the paragraph didn't qualify.
+        /// </summary>
+        public IList<InlineRun> TryConvertLegacyMarkdownRun(SeonyxContext db, Paragraph paragraph,
+            IList<ParagraphRun> existingRuns)
+        {
+            var converted = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(
+                ToInlineRuns(existingRuns), paragraph.UniqueID);
+            if (converted == null) return null;
+
+            SaveRuns(db, paragraph.ParagraphID, ToParagraphRuns(converted));
+
+            // Keep the plain-text mirror in sync, as the save endpoints do --
+            // SearchParagraphIds queries it directly in SQL.
+            paragraph.ParagraphText = GetProseText(db, paragraph.ParagraphID);
+            db.SaveChanges();
+
+            return converted;
+        }
+
+        public static IList<InlineRun> ToInlineRuns(IEnumerable<ParagraphRun> runs)
+        {
+            return runs.Select(r => new InlineRun
+            {
+                Text        = r.RunText,
+                IsEmph      = r.IsEmph,
+                EmphType    = r.EmphType,
+                IsStrong    = r.IsStrong,
+                IsSmallCaps = r.IsSmallCaps,
+                OverlayType = r.OverlayType,
+                IsBreak     = r.IsBreak
+            }).ToList();
+        }
+
+        public static IList<ParagraphRun> ToParagraphRuns(IEnumerable<InlineRun> runs)
+        {
+            return runs.Select(r => new ParagraphRun
+            {
+                RunText     = r.Text,
+                IsEmph      = r.IsEmph,
+                EmphType    = r.EmphType,
+                IsStrong    = r.IsStrong,
+                IsSmallCaps = r.IsSmallCaps,
+                OverlayType = r.OverlayType,
+                IsBreak     = r.IsBreak
+            }).ToList();
         }
 
         private void AssertNoAdjacentCoalescingViolations(int paragraphId, IList<ParagraphRun> runs)

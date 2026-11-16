@@ -190,10 +190,27 @@
             var xhr = new XMLHttpRequest();
             xhr.open('POST', editorConfig.autoSaveUrl, true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // Only leave the page once the save is confirmed: a refused or
+            // failed save must stay visible, with the user's changes intact.
             xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    window.location.href = url;
+                if (xhr.readyState !== 4) return;
+                var message = null;
+                if (xhr.status !== 200) {
+                    message = 'Save failed (HTTP ' + xhr.status + ')';
+                } else {
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                        if (!response.success) message = 'Save failed: ' + (response.message || 'Unknown error');
+                    } catch (e) {
+                        message = 'Save failed';
+                    }
                 }
+                if (message) {
+                    updateStatus(message, 'error');
+                    return;
+                }
+                hasUnsavedChanges = false;
+                window.location.href = url;
             };
             var data = 'paragraphId=' + encodeURIComponent(paragraphId) +
                 '&paragraphRunsJson=' + encodeURIComponent(getParagraphRunsJson()) +

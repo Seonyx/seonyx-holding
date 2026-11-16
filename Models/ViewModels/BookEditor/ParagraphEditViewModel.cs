@@ -14,6 +14,10 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         public int OrdinalPosition { get; set; }
         public string ParagraphText { get; set; }
         public IList<InlineRun> InitialRuns { get; set; }
+
+        // Set when the paragraph had no stored runs and its text could not be
+        // parsed cleanly; shown in the editor's save-status area.
+        public string RunsWarning { get; set; }
         public string MetaText { get; set; }
         public string EditNoteText { get; set; }
 

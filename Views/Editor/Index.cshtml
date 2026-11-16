@@ -133,7 +133,7 @@
         <!-- Save bar — permanently anchored below nav, right-aligned -->
         <div class="editor-save-bar">
             <button type="submit" class="btn btn-sm btn-primary" id="btnSave" title="Save changes (Ctrl+S)">Save</button>
-            <span id="saveStatus" class="save-status"></span>
+            <span id="saveStatus" class="save-status @(Model.RunsWarning != null ? "error" : "")">@Model.RunsWarning</span>
         </div>
 
     </form>

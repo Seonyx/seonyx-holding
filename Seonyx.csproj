@@ -199,6 +199,7 @@
     <Compile Include="Models\ViewModels\BookEditor\BookProjectViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\FileUploadViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\ParagraphEditViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookEditor\RepairRunsViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\ExportViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\AudiobookConfigViewModel.cs" />
     <Compile Include="Models\ViewModels\BookEditor\EpubConfigViewModel.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Services\VoiceLibrary.cs" />
     <Compile Include="Services\BookmlImporter.cs" />
     <Compile Include="Services\ParagraphRunService.cs" />
+    <Compile Include="Services\PlainTextRunBuilder.cs" />
     <Compile Include="Services\MarkdownInlineParser.cs" />
     <Compile Include="Services\InlineXmlRunConverter.cs" />
     <Compile Include="Services\RunsToMarkdownSerializer.cs" />
@@ -283,6 +285,7 @@
     <Content Include="Views\BookProject\Edit.cshtml" />
     <Content Include="Views\FileUpload\Index.cshtml" />
     <Content Include="Views\Editor\Index.cshtml" />
+    <Content Include="Views\Editor\RepairRuns.cshtml" />
     <Content Include="Views\Export\AudiobookConfig.cshtml" />
     <Content Include="Views\Export\EpubConfig.cshtml" />
     <Content Include="Views\Export\Index.cshtml" />

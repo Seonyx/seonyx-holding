@@ -1,0 +1,116 @@
+@model Seonyx.Web.Models.ViewModels.BookEditor.RepairRunsViewModel
+@{
+    Layout = "~/Views/Shared/_BookEditorLayout.cshtml";
+    ViewBag.Title = "Repair paragraph runs";
+}
+
+@section Styles {
+    <style>
+        .repair-page { max-width: 1100px; margin: 1.5rem auto; padding: 0 1rem; }
+        .repair-page h2 { margin-top: 1.5rem; }
+        .repair-counts { font-size: 1.05rem; margin: 0.5rem 0 1rem; }
+        .repair-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .repair-table th, .repair-table td { border: 1px solid #d1d5db; padding: 0.35rem 0.5rem; vertical-align: top; text-align: left; }
+        .repair-table tr.flagged td { background: #fff7ed; }
+        .repair-before { white-space: pre-wrap; font-family: monospace; }
+        .repair-after { white-space: pre-wrap; }
+        .repair-after .styled { background: #ede9fe; outline: 1px dotted #7C3AED; }
+        .repair-warnings li { color: #b45309; }
+        .repair-note { color: #475569; font-size: 0.9rem; }
+    </style>
+}
+
+<div class="repair-page">
+    <h1>Repair paragraph runs</h1>
+
+    @if (Model.IsResult)
+    {
+        <p class="repair-counts"><strong>Repair ran.</strong> Pass A changed @Model.PassA.Count paragraph(s); Pass B changed @Model.PassB.Count paragraph(s).</p>
+        if (Model.StoppedEarly)
+        {
+            <div class="alert alert-danger">Stopped at the time limit before finishing. Run the repair again to continue; already-repaired paragraphs are skipped.</div>
+        }
+        else
+        {
+            <p class="repair-note">Finished. Running the repair again should change nothing.</p>
+        }
+    }
+    else
+    {
+        <p class="repair-counts"><strong>Preview only, nothing has been written.</strong> Pass A would change @Model.PassA.Count paragraph(s); Pass B would change @Model.PassB.Count paragraph(s).</p>
+        <p class="repair-note">
+            Pass A: paragraphs with text but no runs get runs built from their text.
+            Pass B: paragraphs still holding literal Markdown markers in one plain run are converted, exactly as the editor would on opening them.
+            Rows highlighted orange leave formatting on text with no letters or digits (for example "* * *" becoming an italic space) and are listed first; check them before running.
+        </p>
+        using (Html.BeginForm("RepairRuns", "Editor", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-primary"
+                    onclick="return confirm('Run the repair now? This writes to the database.');">Run repair</button>
+        }
+    }
+
+    @foreach (var entry in new[] { System.Tuple.Create("Pass A: text with no runs", Model.PassA), System.Tuple.Create("Pass B: literal Markdown markers", Model.PassB) })
+    {
+        var pass = entry.Item2;
+        <h2>@entry.Item1 (@pass.Count)</h2>
+
+        if (pass.Warnings.Count > 0)
+        {
+            <h3>Warnings (@pass.Warnings.Count)</h3>
+            <ul class="repair-warnings">
+                @foreach (var w in pass.Warnings)
+                {
+                    <li>@w</li>
+                }
+            </ul>
+        }
+
+        if (pass.Rows.Count == 0)
+        {
+            <p class="repair-note">No paragraphs.</p>
+        }
+        else
+        {
+            if (pass.Count > pass.Rows.Count)
+            {
+                <p class="repair-note">Showing the first @pass.Rows.Count of @pass.Count (flagged rows first; limit @Model.RowLimit).</p>
+            }
+            <table class="repair-table">
+                <thead>
+                    <tr><th>Paragraph</th><th>Before</th><th>After (shaded = formatted)</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in pass.Rows)
+                    {
+                        <tr class="@(row.Flagged ? "flagged" : "")">
+                            <td><a href="@Url.Action("Index", "Editor", new { projectId = row.ProjectID, paragraphId = row.ParagraphID })" target="_blank">@row.Pid</a></td>
+                            <td class="repair-before">@row.Before</td>
+                            <td class="repair-after">@Html.Raw(RunsHtml(row.After))</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+</div>
+
+@functions {
+    // HTML-encoded rendering of runs; formatted runs are wrapped in a shaded
+    // span so whitespace-only formatting (e.g. an italic space) is visible.
+    private static string RunsHtml(System.Collections.Generic.IList<Seonyx.Web.Services.InlineRun> runs)
+    {
+        var sb = new System.Text.StringBuilder();
+        foreach (var run in runs)
+        {
+            if (run.IsBreak) { sb.Append("<br />"); continue; }
+            var text = System.Web.HttpUtility.HtmlEncode(run.Text ?? "");
+            if (!run.IsStrong && !run.IsEmph) { sb.Append(text); continue; }
+            if (run.IsStrong) text = "<strong>" + text + "</strong>";
+            if (run.IsEmph) text = "<em>" + text + "</em>";
+            sb.Append("<span class=\"styled\">").Append(text).Append("</span>");
+        }
+        return sb.ToString();
+    }
+}

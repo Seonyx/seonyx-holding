@@ -467,7 +467,8 @@ namespace Seonyx.Web.Controllers
                 try
                 {
                     var warnings = new List<string>();
-                    int added = 0, updated = 0, removed = 0, chaptersProcessed = 0;
+                    int added = 0, updated = 0, unchanged = 0, removed = 0, chaptersProcessed = 0;
+                    var runService = new ParagraphRunService();
 
                     foreach (var chapterFile in chapterFiles)
                     {
@@ -531,6 +532,8 @@ namespace Seonyx.Web.Controllers
                                 };
                                 db.Paragraphs.Add(paragraph);
                                 db.SaveChanges();
+                                runService.SaveRunsFromPlainText(db, paragraph.ParagraphID, pp.Text, pp.UniqueID,
+                                    PlainTextParsePolicy.Lenient, warnings);
 
                                 string metaText; metaDict.TryGetValue(pp.UniqueID, out metaText);
                                 db.MetaNotes.Add(new MetaNote { ParagraphID = paragraph.ParagraphID, UniqueID = pp.UniqueID, MetaText = metaText ?? "" });
@@ -567,9 +570,33 @@ namespace Seonyx.Web.Controllers
 
                                 if (existingPara != null)
                                 {
-                                    existingPara.ParagraphText    = pp.Text;
-                                    existingPara.OrdinalPosition  = pp.OrdinalPosition;
-                                    existingPara.LastModifiedDate = DateTime.Now;
+                                    // Re-import over an existing paragraph: if the .txt
+                                    // expresses nothing new, keep its text and runs (and
+                                    // so any editor-only formatting) exactly as they are.
+                                    var storedRuns = ParagraphRunService.ToInlineRuns(
+                                        runService.LoadRuns(db, existingPara.ParagraphID));
+                                    if (PlainTextRunBuilder.IsUnchangedByPlainTextReimport(
+                                            pp.Text, existingPara.ParagraphText, pp.UniqueID, storedRuns))
+                                    {
+                                        existingPara.OrdinalPosition = pp.OrdinalPosition;
+                                        unchanged++;
+                                    }
+                                    else
+                                    {
+                                        var lost = PlainTextRunBuilder.DescribeFormattingPlainTextCannotExpress(storedRuns);
+                                        existingPara.ParagraphText    = pp.Text;
+                                        existingPara.OrdinalPosition  = pp.OrdinalPosition;
+                                        existingPara.LastModifiedDate = DateTime.Now;
+                                        runService.SaveRunsFromPlainText(db, existingPara.ParagraphID, pp.Text, pp.UniqueID,
+                                            PlainTextParsePolicy.Lenient, warnings);
+                                        if (lost != null)
+                                        {
+                                            warnings.Add(string.Format(
+                                                "Paragraph {0}: text changed, so its formatting was rebuilt from the .txt file and its {1} formatting was lost (a .txt file can't express it).",
+                                                pp.UniqueID, lost));
+                                        }
+                                        updated++;
+                                    }
 
                                     string metaText;
                                     if (metaDict.TryGetValue(pp.UniqueID, out metaText))
@@ -586,7 +613,6 @@ namespace Seonyx.Web.Controllers
                                         if (n != null) { n.NoteText = noteText; n.LastModifiedDate = DateTime.Now; }
                                         else db.EditNotes.Add(new EditNote { ParagraphID = existingPara.ParagraphID, UniqueID = pp.UniqueID, NoteText = noteText, LastModifiedDate = DateTime.Now });
                                     }
-                                    updated++;
                                 }
                                 else
                                 {
@@ -601,6 +627,8 @@ namespace Seonyx.Web.Controllers
                                     };
                                     db.Paragraphs.Add(paragraph);
                                     db.SaveChanges();
+                                    runService.SaveRunsFromPlainText(db, paragraph.ParagraphID, pp.Text, pp.UniqueID,
+                                        PlainTextParsePolicy.Lenient, warnings);
 
                                     string metaText; metaDict.TryGetValue(pp.UniqueID, out metaText);
                                     db.MetaNotes.Add(new MetaNote { ParagraphID = paragraph.ParagraphID, UniqueID = pp.UniqueID, MetaText = metaText ?? "" });
@@ -631,6 +659,7 @@ namespace Seonyx.Web.Controllers
                     var parts = new List<string> { string.Format("{0} chapter(s) processed", chaptersProcessed) };
                     if (added   > 0) parts.Add(string.Format("{0} paragraphs added",   added));
                     if (updated > 0) parts.Add(string.Format("{0} paragraphs updated", updated));
+                    if (unchanged > 0) parts.Add(string.Format("{0} paragraphs unchanged", unchanged));
                     if (removed > 0) parts.Add(string.Format("{0} paragraphs removed", removed));
                     var message = "Import complete: " + string.Join(", ", parts) + ".";
 

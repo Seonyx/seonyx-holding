@@ -738,17 +738,11 @@ namespace Seonyx.Web.Services
             {
                 // Path 2: plain text, possibly with Markdown-subset markers
                 // (manuscripts authored as plain text with **/* markers).
+                // Strict: a malformed marker aborts the whole import (rolled
+                // back by the caller's transaction), as it always has.
                 text = flatText;
-                var fragments = MarkdownInlineParser.Parse(flatText, pid);
-                runs = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
-                {
-                    Text = f.Text,
-                    IsEmph = f.IsEmph,
-                    IsStrong = f.IsStrong,
-                    IsSmallCaps = false,
-                    OverlayType = null,
-                    IsBreak = false
-                }).ToList());
+                string ignored;
+                runs = PlainTextRunBuilder.BuildRunsFromPlainText(flatText, pid, PlainTextParsePolicy.Strict, out ignored);
             }
 
             return new ParsedParagraph

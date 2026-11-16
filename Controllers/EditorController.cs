@@ -60,7 +60,15 @@ namespace Seonyx.Web.Controllers
             var paragraph = db.Paragraphs.Find(paragraphID);
             if (paragraph == null) return HttpNotFound();
 
-            SaveParagraphRuns(paragraphID, paragraph, paragraphRunsJson);
+            try
+            {
+                SaveParagraphRuns(paragraphID, paragraph, paragraphRunsJson);
+            }
+            catch (BlankingSaveRefusedException ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("Index", new { projectId = bookProjectID, paragraphId = paragraphID });
+            }
             paragraph.LastModifiedDate = DateTime.Now;
 
             var metaNote = db.MetaNotes.FirstOrDefault(m => m.ParagraphID == paragraphID);
@@ -135,26 +143,46 @@ namespace Seonyx.Web.Controllers
         // initialised, so an absent/empty payload means the request came
         // from somewhere that doesn't know about runs yet (or the editor
         // hadn't finished loading), and must not silently wipe content.
+        //
+        // Refuses (BlankingSaveRefusedException, nothing written) a save
+        // that carries no text for a paragraph whose text exists only in
+        // ParagraphText (zero stored runs): that is the signature of an
+        // editor page that showed such a paragraph as empty, and saving it
+        // would erase the prose.
         private void SaveParagraphRuns(int paragraphId, Paragraph paragraph, string paragraphRunsJson)
         {
             if (string.IsNullOrEmpty(paragraphRunsJson)) return;
 
             var runService = new ParagraphRunService();
             var dtos = JsonConvert.DeserializeObject<List<InlineRun>>(paragraphRunsJson) ?? new List<InlineRun>();
+
+            bool incomingHasText = dtos.Any(d => !d.IsBreak && PlainTextRunBuilder.HasText(d.Text));
+            if (!incomingHasText
+                && PlainTextRunBuilder.HasText(paragraph.ParagraphText)
+                && !db.ParagraphRuns.Any(r => r.ParagraphID == paragraphId))
+            {
+                throw new BlankingSaveRefusedException(
+                    "Save refused: this paragraph's text has not yet been converted to editor format, " +
+                    "and this save would have erased it. Nothing was saved. Reload the page to see the " +
+                    "paragraph's text, then make your change again.");
+            }
+
             var coalesced = InlineXmlRunConverter.Coalesce(dtos);
 
-            runService.SaveRuns(db, paragraphId, coalesced.Select(r => new ParagraphRun
-            {
-                RunText     = r.Text,
-                IsEmph      = r.IsEmph,
-                EmphType    = r.EmphType,
-                IsStrong    = r.IsStrong,
-                IsSmallCaps = r.IsSmallCaps,
-                OverlayType = r.OverlayType,
-                IsBreak     = r.IsBreak
-            }).ToList());
+            // A paragraph the user has cleared keeps one empty run rather
+            // than zero, so the reader fallback can never resurrect its old
+            // ParagraphText.
+            if (coalesced.Count == 0)
+                coalesced = new List<InlineRun> { new InlineRun { Text = "" } };
+
+            runService.SaveRuns(db, paragraphId, ParagraphRunService.ToParagraphRuns(coalesced));
 
             paragraph.ParagraphText = runService.GetProseText(db, paragraphId);
+        }
+
+        private class BlankingSaveRefusedException : Exception
+        {
+            public BlankingSaveRefusedException(string message) : base(message) { }
         }
 
         [HttpPost]
@@ -512,6 +540,236 @@ namespace Seonyx.Web.Controllers
             return candidates.Select(p => p.ParagraphID).ToArray();
         }
 
+        // ------------------------------------------------------------
+        // Run repair (admin): GET is a read-only preview, POST writes.
+        //   Pass A: paragraphs with text but zero runs get runs from their
+        //           ParagraphText via the shared plain-text route (lenient).
+        //   Pass B: paragraphs the editor's load-time Markdown
+        //           self-conversion would convert are converted now, using
+        //           that same shared code (ParagraphRunService
+        //           .TryConvertLegacyMarkdownRun).
+        // Each paragraph is committed as it is repaired, and the POST stops
+        // at a time budget, so a long run on shared hosting can't hit the
+        // request timeout and roll everything back. Both passes are
+        // idempotent: re-running continues an unfinished repair and
+        // changes nothing once it is complete.
+        // ------------------------------------------------------------
+
+        private const int RepairRowLimit = 500;
+        private const int RepairBatchSize = 200;
+        private static readonly TimeSpan RepairTimeBudget = TimeSpan.FromSeconds(60);
+
+        [HttpGet]
+        public ActionResult RepairRuns()
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var model = new RepairRunsViewModel
+            {
+                PassA = new RepairPassSummary(),
+                PassB = new RepairPassSummary(),
+                RowLimit = RepairRowLimit
+            };
+
+            // Pass A, simulated. Its output is also fed to the Pass B
+            // predicate, since Pass B runs after Pass A in the same POST.
+            foreach (var p in LoadZeroRunParagraphsWithText(db))
+            {
+                string warning;
+                var runs = PlainTextRunBuilder.BuildRunsFromPlainText(
+                    p.ParagraphText, p.UniqueID, PlainTextParsePolicy.Lenient, out warning);
+                if (warning != null) model.PassA.Warnings.Add(warning);
+                model.PassA.Count++;
+                model.PassA.Rows.Add(MakeRepairRow(p.ProjectID, p.ParagraphID, p.UniqueID, p.ParagraphText, runs));
+
+                var afterB = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(runs, p.UniqueID);
+                if (afterB != null)
+                {
+                    model.PassB.Count++;
+                    model.PassB.Rows.Add(MakeRepairRow(p.ProjectID, p.ParagraphID, p.UniqueID, runs[0].Text, afterB));
+                }
+            }
+
+            // Pass B on paragraphs that already have runs.
+            foreach (var c in LoadSingleFlatRunParagraphs(db))
+            {
+                var converted = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(
+                    new List<InlineRun> { new InlineRun { Text = c.RunText } }, c.UniqueID);
+                if (converted == null) continue;
+                model.PassB.Count++;
+                model.PassB.Rows.Add(MakeRepairRow(c.ProjectID, c.ParagraphID, c.UniqueID, c.RunText, converted));
+            }
+
+            SortAndCapRows(model.PassA);
+            SortAndCapRows(model.PassB);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("RepairRuns")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RepairRunsPost()
+        {
+            if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
+
+            var model = new RepairRunsViewModel
+            {
+                IsResult = true,
+                PassA = new RepairPassSummary(),
+                PassB = new RepairPassSummary(),
+                RowLimit = RepairRowLimit
+            };
+            var clock = System.Diagnostics.Stopwatch.StartNew();
+            var runService = new ParagraphRunService();
+
+            // Pass A
+            var passAIds = LoadZeroRunParagraphsWithText(db).Select(p => p.ParagraphID).ToList();
+            foreach (var batch in Batches(passAIds))
+            {
+                if (clock.Elapsed > RepairTimeBudget) { model.StoppedEarly = true; break; }
+                using (var ctx = new SeonyxContext())
+                {
+                    foreach (var id in batch)
+                    {
+                        var para = ctx.Paragraphs.Include(x => x.Chapter).FirstOrDefault(x => x.ParagraphID == id);
+                        if (para == null || !PlainTextRunBuilder.HasText(para.ParagraphText)
+                            || ctx.ParagraphRuns.Any(r => r.ParagraphID == id))
+                            continue;
+
+                        var warnings = new List<string>();
+                        runService.SaveRunsFromPlainText(ctx, id, para.ParagraphText, para.UniqueID,
+                            PlainTextParsePolicy.Lenient, warnings);
+                        model.PassA.Warnings.AddRange(warnings);
+                        model.PassA.Count++;
+                        model.PassA.Rows.Add(MakeRepairRow(para.Chapter.BookProjectID, id, para.UniqueID,
+                            para.ParagraphText, runService.LoadEffectiveRuns(ctx, para, out _)));
+                    }
+                }
+            }
+
+            // Pass B (only once Pass A has finished, so its output is included)
+            if (!model.StoppedEarly)
+            {
+                var passBIds = LoadSingleFlatRunParagraphs(db)
+                    .Where(c => PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(
+                        new List<InlineRun> { new InlineRun { Text = c.RunText } }, c.UniqueID) != null)
+                    .Select(c => c.ParagraphID)
+                    .ToList();
+
+                foreach (var batch in Batches(passBIds))
+                {
+                    if (clock.Elapsed > RepairTimeBudget) { model.StoppedEarly = true; break; }
+                    using (var ctx = new SeonyxContext())
+                    {
+                        foreach (var id in batch)
+                        {
+                            var para = ctx.Paragraphs.Include(x => x.Chapter).FirstOrDefault(x => x.ParagraphID == id);
+                            if (para == null) continue;
+                            var existing = runService.LoadRuns(ctx, id);
+                            string before = existing.Count == 1 ? existing[0].RunText : null;
+
+                            var converted = runService.TryConvertLegacyMarkdownRun(ctx, para, existing);
+                            if (converted == null) continue;
+                            model.PassB.Count++;
+                            model.PassB.Rows.Add(MakeRepairRow(para.Chapter.BookProjectID, id, para.UniqueID, before, converted));
+                        }
+                    }
+                }
+            }
+
+            SortAndCapRows(model.PassA);
+            SortAndCapRows(model.PassB);
+            return View("RepairRuns", model);
+        }
+
+        public class RepairCandidate
+        {
+            public int ParagraphID { get; set; }
+            public int ProjectID { get; set; }
+            public string UniqueID { get; set; }
+            public string ParagraphText { get; set; }
+            public string RunText { get; set; }
+        }
+
+        // Matches the diagnostic SQL: text containing any character other
+        // than space/tab/CR/LF, and no ParagraphRuns rows.
+        private static List<RepairCandidate> LoadZeroRunParagraphsWithText(SeonyxContext context)
+        {
+            return context.Paragraphs
+                .Where(p => !context.ParagraphRuns.Any(r => r.ParagraphID == p.ParagraphID))
+                .Select(p => new RepairCandidate
+                {
+                    ParagraphID = p.ParagraphID,
+                    ProjectID = p.Chapter.BookProjectID,
+                    UniqueID = p.UniqueID,
+                    ParagraphText = p.ParagraphText
+                })
+                .ToList()
+                .Where(p => PlainTextRunBuilder.HasText(p.ParagraphText))
+                .OrderBy(p => p.ParagraphID)
+                .ToList();
+        }
+
+        // Paragraphs whose runs are exactly one flat, unstyled run -- the
+        // only shape the self-conversion predicate can accept.
+        private static List<RepairCandidate> LoadSingleFlatRunParagraphs(SeonyxContext context)
+        {
+            var singleRunIds = context.ParagraphRuns
+                .GroupBy(r => r.ParagraphID)
+                .Where(g => g.Count() == 1)
+                .Select(g => g.Key);
+
+            return context.ParagraphRuns
+                .Where(r => singleRunIds.Contains(r.ParagraphID)
+                         && !r.IsEmph && !r.IsStrong && !r.IsSmallCaps
+                         && r.OverlayType == null && !r.IsBreak)
+                .Select(r => new RepairCandidate
+                {
+                    ParagraphID = r.ParagraphID,
+                    ProjectID = r.Paragraph.Chapter.BookProjectID,
+                    UniqueID = r.Paragraph.UniqueID,
+                    RunText = r.RunText
+                })
+                .OrderBy(c => c.ParagraphID)
+                .ToList();
+        }
+
+        private static IEnumerable<List<int>> Batches(List<int> ids)
+        {
+            for (int i = 0; i < ids.Count; i += RepairBatchSize)
+                yield return ids.Skip(i).Take(RepairBatchSize).ToList();
+        }
+
+        private static RepairParagraphRow MakeRepairRow(int projectId, int paragraphId, string pid,
+            string before, IList<InlineRun> after)
+        {
+            bool styledWithoutWords = after.Any(r => (r.IsStrong || r.IsEmph) && !HasLetterOrDigit(r.Text));
+            bool lostAllWords = HasLetterOrDigit(before) && !after.Any(r => HasLetterOrDigit(r.Text));
+            return new RepairParagraphRow
+            {
+                ProjectID = projectId,
+                ParagraphID = paragraphId,
+                Pid = pid,
+                Before = before,
+                After = after,
+                Flagged = styledWithoutWords || lostAllWords
+            };
+        }
+
+        private static bool HasLetterOrDigit(string s)
+        {
+            return s != null && s.Any(char.IsLetterOrDigit);
+        }
+
+        private static void SortAndCapRows(RepairPassSummary pass)
+        {
+            pass.Rows = pass.Rows
+                .OrderByDescending(r => r.Flagged)
+                .ThenBy(r => r.ParagraphID)
+                .Take(RepairRowLimit)
+                .ToList();
+        }
+
         private ParagraphEditViewModel BuildEditViewModel(BookProject project, Paragraph paragraph)
         {
             var chapter = paragraph.Chapter;
@@ -561,6 +819,9 @@ namespace Seonyx.Web.Controllers
                 });
             }
 
+            string runsWarning;
+            var initialRuns = GetInitialRuns(paragraph, out runsWarning);
+
             return new ParagraphEditViewModel
             {
                 BookProjectID = project.BookProjectID,
@@ -570,7 +831,8 @@ namespace Seonyx.Web.Controllers
                 UniqueID = paragraph.UniqueID,
                 OrdinalPosition = paragraph.OrdinalPosition,
                 ParagraphText = paragraph.ParagraphText,
-                InitialRuns = GetInitialRuns(paragraph),
+                InitialRuns = initialRuns,
+                RunsWarning = runsWarning,
                 MetaText = GetMetaText(paragraph.ParagraphID),
                 EditNoteText = GetEditNoteText(paragraph.ParagraphID),
                 ChapterTitle = chapter.ChapterTitle,
@@ -608,90 +870,20 @@ namespace Seonyx.Web.Controllers
         // Any paragraph with more than one run, or any styling already
         // applied, is left completely alone -- this only ever touches the
         // narrow "never been parsed" case, never real edited content.
-        private List<InlineRun> GetInitialRuns(Paragraph paragraph)
+        //
+        // A paragraph with text but no stored runs is never shown as empty:
+        // the shared reader fallback parses its ParagraphText instead.
+        private List<InlineRun> GetInitialRuns(Paragraph paragraph, out string runsWarning)
         {
+            runsWarning = null;
             var runService = new ParagraphRunService();
             var existingRuns = runService.LoadRuns(db, paragraph.ParagraphID);
 
-            var converted = TryConvertLegacyMarkdownRun(paragraph, existingRuns, runService);
-            if (converted != null) return converted;
+            var converted = runService.TryConvertLegacyMarkdownRun(db, paragraph, existingRuns);
+            if (converted != null) return converted.ToList();
 
-            return existingRuns.Select(r => new InlineRun
-            {
-                Text        = r.RunText,
-                IsEmph      = r.IsEmph,
-                EmphType    = r.EmphType,
-                IsStrong    = r.IsStrong,
-                IsSmallCaps = r.IsSmallCaps,
-                OverlayType = r.OverlayType,
-                IsBreak     = r.IsBreak
-            }).ToList();
-        }
-
-        // Returns the newly-converted, already-persisted run list if the
-        // paragraph qualified and was converted; null if it didn't
-        // qualify (caller should use the unmodified existingRuns as-is).
-        private List<InlineRun> TryConvertLegacyMarkdownRun(Paragraph paragraph, IList<ParagraphRun> existingRuns, ParagraphRunService runService)
-        {
-            if (existingRuns.Count != 1) return null;
-
-            var only = existingRuns[0];
-            bool isFlatAndUnstyled = !only.IsEmph && !only.IsStrong && !only.IsSmallCaps
-                && only.OverlayType == null && !only.IsBreak;
-            if (!isFlatAndUnstyled) return null;
-            if (string.IsNullOrEmpty(only.RunText)) return null;
-
-            IList<MarkdownFragment> fragments;
-            try
-            {
-                fragments = MarkdownInlineParser.Parse(only.RunText ?? "", "paragraph-" + paragraph.ParagraphID);
-            }
-            catch (MarkdownParseException)
-            {
-                // Malformed markers (e.g. ***triple***) -- leave the
-                // paragraph untouched rather than fail the page load.
-                return null;
-            }
-
-            // "Nothing to convert" means: exactly one plain fragment whose
-            // text is byte-identical to the original -- i.e. parsing was
-            // a true no-op. A single plain fragment with DIFFERENT text
-            // still counts as a real change (e.g. \*escaped\* unescaping
-            // to *escaped*), same as a multi-fragment or styled result.
-            bool isTrueNoOp = fragments.Count == 1
-                && !fragments[0].IsStrong && !fragments[0].IsEmph
-                && fragments[0].Text == (only.RunText ?? "");
-            if (isTrueNoOp) return null;
-
-            var converted = InlineXmlRunConverter.Coalesce(fragments.Select(f => new InlineRun
-            {
-                Text        = f.Text,
-                IsEmph      = f.IsEmph,
-                IsStrong    = f.IsStrong,
-                IsSmallCaps = false,
-                OverlayType = null,
-                IsBreak     = false
-            }).ToList());
-
-            runService.SaveRuns(db, paragraph.ParagraphID, converted.Select(r => new ParagraphRun
-            {
-                RunText     = r.Text,
-                IsEmph      = r.IsEmph,
-                EmphType    = r.EmphType,
-                IsStrong    = r.IsStrong,
-                IsSmallCaps = r.IsSmallCaps,
-                OverlayType = r.OverlayType,
-                IsBreak     = r.IsBreak
-            }).ToList());
-
-            // Keep the legacy plain-text mirror in sync too, same as the
-            // save endpoints do -- SearchParagraphIds queries this column
-            // directly in SQL and would otherwise still match/display the
-            // old asterisk-laden text after a fix that only touched runs.
-            paragraph.ParagraphText = runService.GetProseText(db, paragraph.ParagraphID);
-            db.SaveChanges();
-
-            return converted.ToList();
+            return PlainTextRunBuilder.EffectiveRuns(paragraph.ParagraphText, paragraph.UniqueID,
+                ParagraphRunService.ToInlineRuns(existingRuns), out runsWarning).ToList();
         }
 
         private string GetEditNoteText(int paragraphId)
