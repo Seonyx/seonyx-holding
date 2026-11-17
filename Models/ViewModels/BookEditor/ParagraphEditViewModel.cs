@@ -18,6 +18,10 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         // Set when the paragraph had no stored runs and its text could not be
         // parsed cleanly; shown in the editor's save-status area.
         public string RunsWarning { get; set; }
+
+        // Set when this row is a structural break (BookML type: "scene",
+        // "section" or "page"); the editor shows a divider instead of text.
+        public string BreakType { get; set; }
         public string MetaText { get; set; }
         public string EditNoteText { get; set; }
 

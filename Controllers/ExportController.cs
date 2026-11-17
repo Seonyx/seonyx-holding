@@ -396,9 +396,21 @@ namespace Seonyx.Web.Controllers
                 .OrderBy(p => p.OrdinalPosition)
                 .ToList();
 
+            // Pids whose latest version is a structural break (see BreakKinds).
+            var breakPids = new HashSet<string>(
+                db.ParagraphVersions
+                    .Where(v => v.ChapterID == chapter.ChapterID)
+                    .ToList()
+                    .GroupBy(v => v.Pid, StringComparer.OrdinalIgnoreCase)
+                    .Where(g => BreakKinds.IsBreak(g.OrderByDescending(v => v.DraftNumber).First().ParaType))
+                    .Select(g => g.Key),
+                StringComparer.OrdinalIgnoreCase);
+
             foreach (var para in paragraphs)
             {
-                sb.AppendLine(para.ParagraphText);
+                sb.AppendLine(breakPids.Contains(para.UniqueID ?? "")
+                    ? BreakKinds.SceneBreakSymbol
+                    : para.ParagraphText);
                 sb.AppendLine();
             }
 

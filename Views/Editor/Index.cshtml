@@ -2,6 +2,26 @@
 @{
     Layout = "~/Views/Shared/_BookEditorLayout.cshtml";
     ViewBag.Title = Model.ProjectName + " - Editor";
+
+    // camelCase property names to match rich-text-editor.js's
+    // field names (text/isEmph/isStrong/...) -- Json.NET's
+    // SerializeObject emits exact PascalCase C# property
+    // names by default (Text/IsEmph/IsStrong/...) with no
+    // case folding, unlike DeserializeObject which binds
+    // case-insensitively. Without this, every run loads as
+    // an object with all-undefined fields: text renders as
+    // empty, which is exactly the "paragraph text missing"
+    // bug this fixes.
+    var runsSettings = new Newtonsoft.Json.JsonSerializerSettings
+    {
+        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
+    };
+    // Escape "/" as "\/" (a legal JSON escape) so a run's
+    // text can never contain a literal "</script>" that
+    // would prematurely close this tag -- paragraph prose
+    // is arbitrary user content, unlike the fixed lookup
+    // lists this pattern is used for elsewhere.
+    var runsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model.InitialRuns, runsSettings).Replace("/", "\\/");
 }
 
 @section HeaderCenter {
@@ -23,36 +43,26 @@
                     <h3>Paragraph</h3>
                     <span class="panel-uid">[@Model.UniqueID]</span>
                 </div>
-                <div class="rte-toolbar">
-                    <button type="button" id="rteBold" class="btn btn-sm btn-secondary rte-toolbar-btn" title="Bold (Ctrl+B)">B</button>
-                    <button type="button" id="rteItalic" class="btn btn-sm btn-secondary rte-toolbar-btn" title="Italic (Ctrl+I)"><em>I</em></button>
-                    <button type="button" id="rteClearFormatting" class="btn btn-sm btn-secondary rte-toolbar-btn rte-toolbar-btn-clear" title="Clear all formatting in this paragraph">Clear</button>
-                </div>
-                <div id="paragraphEditable" class="rte-root" contenteditable="true"
-                     role="textbox" aria-multiline="true" aria-label="Paragraph text"></div>
-                @{
-                    // camelCase property names to match rich-text-editor.js's
-                    // field names (text/isEmph/isStrong/...) -- Json.NET's
-                    // SerializeObject emits exact PascalCase C# property
-                    // names by default (Text/IsEmph/IsStrong/...) with no
-                    // case folding, unlike DeserializeObject which binds
-                    // case-insensitively. Without this, every run loads as
-                    // an object with all-undefined fields: text renders as
-                    // empty, which is exactly the "paragraph text missing"
-                    // bug this fixes.
-                    var runsSettings = new Newtonsoft.Json.JsonSerializerSettings
-                    {
-                        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver()
-                    };
-                    // Escape "/" as "\/" (a legal JSON escape) so a run's
-                    // text can never contain a literal "</script>" that
-                    // would prematurely close this tag -- paragraph prose
-                    // is arbitrary user content, unlike the fixed lookup
-                    // lists this pattern is used for elsewhere.
-                    var runsJson = Newtonsoft.Json.JsonConvert.SerializeObject(Model.InitialRuns, runsSettings).Replace("/", "\\/");
+                @if (Model.BreakType != null)
+                {
+                    @* A structural break has no text to edit: show a divider. *@
+                    <div class="rte-break-divider" title="@Model.BreakType break">
+                        <span class="rte-break-divider-symbol">@Seonyx.Web.Services.BreakKinds.SceneBreakSymbol</span>
+                        <span class="rte-break-divider-label">@(Model.BreakType == "scene" ? "Scene break" : Model.BreakType == "section" ? "Section break" : "Page break")</span>
+                    </div>
                 }
-                <script type="application/json" id="paragraphRunsInit">@Html.Raw(runsJson)</script>
-                <script type="application/json" id="rteConfigInit">{"projectId": @Model.BookProjectID, "getOverlayTypesUrl": "@Url.Action("GetOverlayTypes", "Editor")"}</script>
+                else
+                {
+                    <div class="rte-toolbar">
+                        <button type="button" id="rteBold" class="btn btn-sm btn-secondary rte-toolbar-btn" title="Bold (Ctrl+B)">B</button>
+                        <button type="button" id="rteItalic" class="btn btn-sm btn-secondary rte-toolbar-btn" title="Italic (Ctrl+I)"><em>I</em></button>
+                        <button type="button" id="rteClearFormatting" class="btn btn-sm btn-secondary rte-toolbar-btn rte-toolbar-btn-clear" title="Clear all formatting in this paragraph">Clear</button>
+                    </div>
+                    <div id="paragraphEditable" class="rte-root" contenteditable="true"
+                         role="textbox" aria-multiline="true" aria-label="Paragraph text"></div>
+                    <script type="application/json" id="paragraphRunsInit">@Html.Raw(runsJson)</script>
+                    <script type="application/json" id="rteConfigInit">{"projectId": @Model.BookProjectID, "getOverlayTypesUrl": "@Url.Action("GetOverlayTypes", "Editor")"}</script>
+                }
             </div>
 
             <!-- META Panel -->
@@ -170,6 +180,7 @@
                 <select id="selInsBefore" class="insert-type-select" title="Type to insert" style="height:28px;font-size:0.8em;border-radius:0 3px 3px 0;border:1px solid #aaa;padding:0 4px">
                     <option value="normal">Paragraph</option>
                     <option value="epigraph">Epigraph</option>
+                    <option value="break-scene">Scene break</option>
                 </select>
             </div>
         @{Html.EndForm();}
@@ -181,6 +192,7 @@
                 <select id="selInsAfter" class="insert-type-select" title="Type to insert" style="height:28px;font-size:0.8em;border-radius:0 3px 3px 0;border:1px solid #aaa;padding:0 4px">
                     <option value="normal">Paragraph</option>
                     <option value="epigraph">Epigraph</option>
+                    <option value="break-scene">Scene break</option>
                 </select>
             </div>
         @{Html.EndForm();}

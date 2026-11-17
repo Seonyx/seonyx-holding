@@ -192,7 +192,7 @@ namespace Seonyx.Web.Controllers
             if (!IsAuthenticated()) return RedirectToAction("Login", "Admin");
 
             // Sanitise paraType — only allow known values
-            var allowedTypes = new[] { "normal", "epigraph" };
+            var allowedTypes = new[] { "normal", "epigraph", BreakKinds.Scene };
             if (!allowedTypes.Contains(paraType)) paraType = "normal";
 
             var current = db.Paragraphs.Include(p => p.Chapter).FirstOrDefault(p => p.ParagraphID == currentParagraphId);
@@ -230,8 +230,9 @@ namespace Seonyx.Web.Controllers
                     }
                     db.SaveChanges();
 
-                    // Generate unique ID
-                    var uniqueId = parser.GenerateUniqueID(current.Chapter.ChapterNumber);
+                    // Generate unique ID (B type code for a break)
+                    bool isBreak = BreakKinds.IsBreak(paraType);
+                    var uniqueId = parser.GenerateUniqueID(current.Chapter.ChapterNumber, isBreak ? "B" : "P");
 
                     // Insert new paragraph
                     var newParagraph = new Paragraph
@@ -271,7 +272,9 @@ namespace Seonyx.Web.Controllers
                             Pid          = uniqueId,
                             ChapterID    = current.ChapterID,
                             DraftNumber  = draftNumber,
-                            Seq          = newOrdinal * 1000,
+                            Seq          = isBreak
+                                ? SeqBetweenNeighbours(current.ChapterID, newOrdinal)
+                                : newOrdinal * 1000,
                             ParaType     = paraType,
                             Content      = "",
                             DraftCreated = draftNumber,
@@ -293,6 +296,37 @@ namespace Seonyx.Web.Controllers
                     return RedirectToAction("Index", new { projectId, paragraphId = currentParagraphId });
                 }
             }
+        }
+
+        // A seq for a break inserted at newOrdinal that sorts between its
+        // neighbours' stored seqs, so seq-ordered exports (EPUB, audiobook)
+        // place it where the editor shows it. Falls back to the old
+        // newOrdinal * 1000 when the neighbours leave no room.
+        private int SeqBetweenNeighbours(int chapterId, int newOrdinal)
+        {
+            var neighbours = db.Paragraphs
+                .Where(p => p.ChapterID == chapterId
+                         && (p.OrdinalPosition == newOrdinal - 1 || p.OrdinalPosition == newOrdinal + 1))
+                .Select(p => new { p.OrdinalPosition, p.UniqueID })
+                .ToList();
+
+            Func<int, int> seqAt = ordinal =>
+            {
+                var n = neighbours.FirstOrDefault(x => x.OrdinalPosition == ordinal);
+                if (n == null) return 0;
+                return db.ParagraphVersions
+                    .Where(v => v.ChapterID == chapterId && v.Pid == n.UniqueID)
+                    .OrderByDescending(v => v.DraftNumber)
+                    .Select(v => v.Seq)
+                    .FirstOrDefault();
+            };
+
+            int prevSeq = seqAt(newOrdinal - 1);
+            int nextSeq = seqAt(newOrdinal + 1);
+            if (prevSeq > 0 && nextSeq > prevSeq + 1) return prevSeq + (nextSeq - prevSeq) / 2;
+            if (prevSeq > 0 && nextSeq == 0) return prevSeq + 500;
+            if (prevSeq == 0 && nextSeq > 1) return nextSeq / 2;
+            return newOrdinal * 1000;
         }
 
         [HttpPost]
@@ -850,6 +884,12 @@ namespace Seonyx.Web.Controllers
             string runsWarning;
             var initialRuns = GetInitialRuns(paragraph, out runsWarning);
 
+            var latestParaType = db.ParagraphVersions
+                .Where(v => v.ChapterID == paragraph.ChapterID && v.Pid == paragraph.UniqueID)
+                .OrderByDescending(v => v.DraftNumber)
+                .Select(v => v.ParaType)
+                .FirstOrDefault();
+
             return new ParagraphEditViewModel
             {
                 BookProjectID = project.BookProjectID,
@@ -861,6 +901,7 @@ namespace Seonyx.Web.Controllers
                 ParagraphText = paragraph.ParagraphText,
                 InitialRuns = initialRuns,
                 RunsWarning = runsWarning,
+                BreakType = BreakKinds.ToBookmlType(latestParaType),
                 MetaText = GetMetaText(paragraph.ParagraphID),
                 EditNoteText = GetEditNoteText(paragraph.ParagraphID),
                 ChapterTitle = chapter.ChapterTitle,

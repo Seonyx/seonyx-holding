@@ -994,6 +994,28 @@
     word-wrap: break-word;
 }
 
+/* A structural break (scene/section/page) shown in place of the text box */
+.rte-break-divider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 1.5rem 0.75rem;
+    color: #64748b;
+}
+
+.rte-break-divider-symbol {
+    font-family: Georgia, Cambria, 'Times New Roman', serif;
+    font-size: 1.4rem;
+    color: #334155;
+}
+
+.rte-break-divider-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
 .rte-root:focus {
     background: #fffef7;
 }

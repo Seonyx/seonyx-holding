@@ -389,6 +389,21 @@ navPoints.ToString() +
 "  height: auto;\r\n" +
 "}\r\n" +
 "\r\n" +
+"p.scene-break {\r\n" +
+"  text-align: center;\r\n" +
+"  text-indent: 0;\r\n" +
+"  margin: 1.2em 0;\r\n" +
+"}\r\n" +
+"\r\n" +
+"div.section-break {\r\n" +
+"  height: 2.5em;\r\n" +
+"}\r\n" +
+"\r\n" +
+"div.page-break {\r\n" +
+"  page-break-after: always;\r\n" +
+"  break-after: page;\r\n" +
+"}\r\n" +
+"\r\n" +
 "blockquote.epigraph {\r\n" +
 "  margin: 4em 3em 2em 3em;\r\n" +
 "  font-style: italic;\r\n" +
@@ -533,6 +548,12 @@ body.ToString() +
                     if (para.ParaType == "normal")
                         return string.Format("    <p>{0}</p>", text);
                     return string.Format("    <p class=\"{0}\">{1}</p>", para.ParaType, text);
+                case BreakKinds.Scene:
+                    return "    <p class=\"scene-break\">" + BreakKinds.SceneBreakSymbol + "</p>";
+                case BreakKinds.Section:
+                    return "    <div class=\"section-break\"></div>";
+                case BreakKinds.Page:
+                    return "    <div class=\"page-break\"></div>";
                 default:
                     return string.Format("    <!-- unknown paraType: {0} -->", para.ParaType);
             }

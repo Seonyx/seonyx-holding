@@ -374,6 +374,16 @@ namespace Seonyx.Web.Services
                         para.UniqueID, seq));
                 }
 
+                // A structural break round-trips as <break>, not <para>.
+                if (BreakKinds.IsBreak(paraType))
+                {
+                    sectionEl.Add(new XElement(Ns + "break",
+                        new XAttribute("pid",  para.UniqueID),
+                        new XAttribute("seq",  seq),
+                        new XAttribute("type", BreakKinds.ToBookmlType(paraType))));
+                    continue;
+                }
+
                 var paraEl = new XElement(Ns + "para",
                     new XAttribute("pid",            para.UniqueID),
                     new XAttribute("seq",            seq),

@@ -150,6 +150,14 @@ namespace Seonyx.Web.Services
             // Emit paragraphs -- all body types are read aloud as prose
             foreach (var row in rows)
             {
+                // Any structural break becomes the script's scene-break pause.
+                if (BreakKinds.IsBreak(row.ParaType))
+                {
+                    sb.AppendLine("## SCENE_BREAK");
+                    sb.AppendLine();
+                    continue;
+                }
+
                 if (ShouldSkip(row.ParaType))
                     continue;
 

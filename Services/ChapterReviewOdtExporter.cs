@@ -59,6 +59,16 @@ namespace Seonyx.Web.Services
                     g => g.OrderByDescending(v => v.DraftNumber).First().Pid,
                     StringComparer.OrdinalIgnoreCase);
 
+            // Pids whose latest version is a structural break (see BreakKinds).
+            var breakPids = new System.Collections.Generic.HashSet<string>(
+                db.ParagraphVersions
+                    .Where(v => v.ChapterID == chapterId)
+                    .ToList()
+                    .GroupBy(v => v.Pid, StringComparer.OrdinalIgnoreCase)
+                    .Where(g => BreakKinds.IsBreak(g.OrderByDescending(v => v.DraftNumber).First().ParaType))
+                    .Select(g => g.Key),
+                StringComparer.OrdinalIgnoreCase);
+
             fileName = string.Format("{0}-{1}-review.odt",
                 Slugify(bookTitle), Slugify(chapterTitle));
 
@@ -70,7 +80,7 @@ namespace Seonyx.Web.Services
                     WriteMimetype(zip);
                     WriteManifest(zip);
                     WriteStyles(zip);
-                    WriteContent(zip, chapterTitle, paragraphs, uniqueIdToPid);
+                    WriteContent(zip, chapterTitle, paragraphs, uniqueIdToPid, breakPids);
                     WriteMeta(zip, chapterTitle, bookTitle, DateTime.UtcNow);
                 }
                 return ms.ToArray();
@@ -180,7 +190,8 @@ namespace Seonyx.Web.Services
 
         private static void WriteContent(ZipArchive zip, string chapterTitle,
             System.Collections.Generic.List<Models.Paragraph> paragraphs,
-            System.Collections.Generic.Dictionary<string, string> uniqueIdToPid)
+            System.Collections.Generic.Dictionary<string, string> uniqueIdToPid,
+            System.Collections.Generic.HashSet<string> breakPids)
         {
             var body = new XElement(NsOffice + "text",
                 new XElement(NsText + "p",
@@ -203,7 +214,9 @@ namespace Seonyx.Web.Services
                     new XElement(NsText + "span",
                         new XAttribute(NsText + "style-name", "PidLabel"),
                         new XText(label + Nbsp)),
-                    new XText(para.ParagraphText ?? "")
+                    new XText(breakPids.Contains(para.UniqueID ?? "")
+                        ? BreakKinds.SceneBreakSymbol
+                        : (para.ParagraphText ?? ""))
                 );
                 body.Add(paraEl);
             }

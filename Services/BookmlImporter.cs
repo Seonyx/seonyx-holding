@@ -652,6 +652,28 @@ namespace Seonyx.Web.Services
         {
             var result = new List<ParsedParagraph>();
 
+            // A <break> without a pid gets a generated one: chapter id + the
+            // break's number in the chapter (CH01-B0001), skipping any number
+            // an explicit break pid already uses. Stable across re-imports of
+            // the same package.
+            var chapterIdUpper = ((string)chapterEl.Attribute("id") ?? "").ToUpperInvariant();
+            var explicitBreakPids = new HashSet<string>(
+                chapterEl.Descendants(Ns + "break")
+                    .Select(b => (string)b.Attribute("pid"))
+                    .Where(pid => !string.IsNullOrEmpty(pid)),
+                StringComparer.OrdinalIgnoreCase);
+            int breakNumber = 0;
+            Func<string> newBreakPid = () =>
+            {
+                string pid;
+                do
+                {
+                    breakNumber++;
+                    pid = string.Format("{0}-B{1:D4}", chapterIdUpper, breakNumber);
+                } while (explicitBreakPids.Contains(pid));
+                return pid;
+            };
+
             // Epigraph paragraphs sit inside <chapterinfo><epigraph> and come before section content
             var chapterInfoEl = chapterEl.Element(Ns + "chapterinfo");
             if (chapterInfoEl != null)
@@ -670,24 +692,49 @@ namespace Seonyx.Web.Services
             foreach (var section in chapterEl.Elements(Ns + "section")
                 .OrderBy(s => ParseInt(s.Attribute("seq")?.Value, 0)))
             {
-                ExtractFromSection(section, result, warnings);
+                ExtractFromSection(section, result, warnings, newBreakPid);
             }
             return result;
         }
 
-        private void ExtractFromSection(XElement sectionEl, List<ParsedParagraph> result, List<string> warnings)
+        private void ExtractFromSection(XElement sectionEl, List<ParsedParagraph> result, List<string> warnings,
+            Func<string> newBreakPid)
         {
             foreach (var child in sectionEl.Elements())
             {
                 if (child.Name == Ns + "section")
-                    ExtractFromSection(child, result, warnings);
+                    ExtractFromSection(child, result, warnings, newBreakPid);
                 else if (child.Name == Ns + "para")
                 {
                     var pp = ParsePara(child, warnings);
                     if (pp != null) result.Add(pp);
                 }
-                // headings, figures, tables, breaks are skipped for the working-copy paragraph list
+                else if (child.Name == Ns + "break")
+                {
+                    result.Add(ParseBreak(child, newBreakPid));
+                }
+                // headings, figures and tables are skipped for the working-copy paragraph list
             }
+        }
+
+        // A structural break becomes a working-copy row with no text and no
+        // runs; its kind travels in ParaType (see BreakKinds).
+        private ParsedParagraph ParseBreak(XElement breakEl, Func<string> newBreakPid)
+        {
+            var pid = (string)breakEl.Attribute("pid");
+            return new ParsedParagraph
+            {
+                Pid           = string.IsNullOrEmpty(pid) ? newBreakPid() : pid,
+                Seq           = ParseInt(breakEl.Attribute("seq")?.Value, 0),
+                ParaType      = BreakKinds.FromBookmlType((string)breakEl.Attribute("type")),
+                Text          = "",
+                Runs          = new List<InlineRun>(),
+                DraftCreated  = 1,
+                DraftModified = 1,
+                ModifiedBy    = "ai",
+                ModifiedDate  = null,
+                ChangeType    = null
+            };
         }
 
         private ParsedParagraph ParsePara(XElement paraEl, List<string> warnings)

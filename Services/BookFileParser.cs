@@ -168,14 +168,14 @@ namespace Seonyx.Web.Services
             "ABCDEFGHJKLMNPQRSTUVWXYZ23456789".ToCharArray();
         private static readonly Random _rng = new Random();
 
-        public string GenerateUniqueID(int chapterNumber)
+        public string GenerateUniqueID(int chapterNumber, string typeCode = "P")
         {
-            // Format: CH{nn}-P-{8 chars from safe alphabet}
-            // e.g. CH01-P-7K2Q9ZPL
+            // Format: CH{nn}-{type code}-{8 chars from safe alphabet}
+            // e.g. CH01-P-7K2Q9ZPL (paragraph), CH01-B-3XQ7M2KD (break)
             var token = new char[8];
             for (int i = 0; i < 8; i++)
                 token[i] = _pidAlphabet[_rng.Next(_pidAlphabet.Length)];
-            return string.Format("CH{0:D2}-P-{1}", chapterNumber, new string(token));
+            return string.Format("CH{0:D2}-{1}-{2}", chapterNumber, typeCode, new string(token));
         }
 
         public string ClassifyFile(string fileName)
