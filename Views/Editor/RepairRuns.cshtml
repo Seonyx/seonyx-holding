@@ -25,7 +25,7 @@
 
     @if (Model.IsResult)
     {
-        <p class="repair-counts"><strong>Repair ran.</strong> Pass A changed @Model.PassA.Count paragraph(s); Pass B changed @Model.PassB.Count paragraph(s).</p>
+        <p class="repair-counts"><strong>Repair ran.</strong> Pass A changed @Model.PassA.Count paragraph(s); Pass B changed @Model.PassB.Count paragraph(s) and skipped @Model.PassB.SkippedCount.</p>
         if (Model.StoppedEarly)
         {
             <div class="alert alert-danger">Stopped at the time limit before finishing. Run the repair again to continue; already-repaired paragraphs are skipped.</div>
@@ -37,11 +37,12 @@
     }
     else
     {
-        <p class="repair-counts"><strong>Preview only, nothing has been written.</strong> Pass A would change @Model.PassA.Count paragraph(s); Pass B would change @Model.PassB.Count paragraph(s).</p>
+        <p class="repair-counts"><strong>Preview only, nothing has been written.</strong> Pass A would change @Model.PassA.Count paragraph(s); Pass B would change @Model.PassB.Count paragraph(s) and skip @Model.PassB.SkippedCount.</p>
         <p class="repair-note">
             Pass A: paragraphs with text but no runs get runs built from their text.
-            Pass B: paragraphs still holding literal Markdown markers in one plain run are converted, exactly as the editor would on opening them.
-            Rows highlighted orange leave formatting on text with no letters or digits (for example "* * *" becoming an italic space) and are listed first; check them before running.
+            Rows highlighted orange leave formatting on text with no letters or digits (for example "* * *" becoming an italic space); check them before running.
+            Pass B: paragraphs still holding literal Markdown markers in one plain run are converted to real bold and italic.
+            Pass B skips, and leaves untouched, any paragraph where the conversion looks unsafe (asterisks meant literally, unclosed markers, escaped markers); they are listed with the reason so you can fix them by hand in the editor.
         </p>
         using (Html.BeginForm("RepairRuns", "Editor", FormMethod.Post))
         {
@@ -88,6 +89,30 @@
                             <td><a href="@Url.Action("Index", "Editor", new { projectId = row.ProjectID, paragraphId = row.ParagraphID })" target="_blank">@row.Pid</a></td>
                             <td class="repair-before">@row.Before</td>
                             <td class="repair-after">@Html.Raw(RunsHtml(row.After))</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        if (pass.SkippedCount > 0)
+        {
+            <h3>Skipped - left untouched (@pass.SkippedCount)</h3>
+            if (pass.SkippedCount > pass.SkippedRows.Count)
+            {
+                <p class="repair-note">Showing the first @pass.SkippedRows.Count of @pass.SkippedCount.</p>
+            }
+            <table class="repair-table">
+                <thead>
+                    <tr><th>Paragraph</th><th>Text</th><th>Why it was skipped</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in pass.SkippedRows)
+                    {
+                        <tr class="flagged">
+                            <td><a href="@Url.Action("Index", "Editor", new { projectId = row.ProjectID, paragraphId = row.ParagraphID })" target="_blank">@row.Pid</a></td>
+                            <td class="repair-before">@row.Before</td>
+                            <td>@row.SkipReason</td>
                         </tr>
                     }
                 </tbody>

@@ -144,6 +144,41 @@ namespace Seonyx.Web.Services
         }
 
         /// <summary>
+        /// Stricter check applied by the run repair before it converts a
+        /// paragraph's literal Markdown (TryBuildLegacyMarkdownConversion).
+        /// Returns null if the conversion is safe, otherwise a short reason
+        /// to show the user; unsafe paragraphs are left untouched. Catches
+        /// asterisks that were meant literally ("* * *", "5 * 3 * 2"),
+        /// escaped markers whose unescaped asterisks a later run would read
+        /// as formatting, and unclosed markers, which the parser extends to
+        /// the end of the paragraph.
+        /// </summary>
+        public static string ReviewLegacyMarkdownConversion(string originalText, IList<InlineRun> converted)
+        {
+            if (converted == null || converted.Count == 0) return null;
+
+            foreach (var r in converted)
+            {
+                if (!r.IsStrong && !r.IsEmph) continue;
+                var t = r.Text ?? "";
+                if (!t.Any(char.IsLetterOrDigit))
+                    return "formatting would cover only spaces or punctuation";
+                if (char.IsWhiteSpace(t[0]) || char.IsWhiteSpace(t[t.Length - 1]))
+                    return "formatting would start or end with a space";
+            }
+
+            if (converted.Any(r => !r.IsStrong && !r.IsEmph && (r.Text ?? "").IndexOf('*') >= 0))
+                return "a literal or escaped asterisk would remain, and a later repair would read it as formatting";
+
+            var last = converted[converted.Count - 1];
+            var end = (originalText ?? "").TrimEnd();
+            if ((last.IsStrong || last.IsEmph) && !end.EndsWith("*") && !end.EndsWith("_"))
+                return "a marker is never closed, so formatting would run to the end of the paragraph";
+
+            return null;
+        }
+
+        /// <summary>
         /// True when re-importing importedText over a paragraph changes
         /// nothing a .txt file can express: either the text equals the
         /// stored ParagraphText, or it parses to the same words with the

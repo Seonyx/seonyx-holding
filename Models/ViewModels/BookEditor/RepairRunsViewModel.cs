@@ -23,10 +23,16 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         public List<RepairParagraphRow> Rows { get; set; }
         public List<string> Warnings { get; set; }
 
+        // Pass B: paragraphs that would convert but failed the stricter
+        // safety check, so they are left untouched for a manual look.
+        public int SkippedCount { get; set; }
+        public List<RepairParagraphRow> SkippedRows { get; set; }
+
         public RepairPassSummary()
         {
             Rows = new List<RepairParagraphRow>();
             Warnings = new List<string>();
+            SkippedRows = new List<RepairParagraphRow>();
         }
     }
 
@@ -41,5 +47,8 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         // Conversion leaves formatting on text with no letters or digits
         // (e.g. "* * *" becoming an italic space) -- worth a look.
         public bool Flagged { get; set; }
+
+        // Why a skipped Pass B paragraph was left untouched.
+        public string SkipReason { get; set; }
     }
 }

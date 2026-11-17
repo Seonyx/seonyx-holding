@@ -128,11 +128,12 @@ namespace Seonyx.Web.Services
         }
 
         /// <summary>
-        /// The editor's load-time Markdown self-conversion (W8), shared with
-        /// the repair action: if the paragraph qualifies (see
-        /// PlainTextRunBuilder.TryBuildLegacyMarkdownConversion), persist the
-        /// converted runs and resync the ParagraphText mirror. Returns the
-        /// converted runs, or null if the paragraph didn't qualify.
+        /// Converts a paragraph's leftover literal Markdown into real runs
+        /// (run repair, Pass B): if the paragraph qualifies (see
+        /// PlainTextRunBuilder.TryBuildLegacyMarkdownConversion) AND passes
+        /// the stricter safety check (ReviewLegacyMarkdownConversion),
+        /// persist the converted runs and resync the ParagraphText mirror.
+        /// Returns the converted runs, or null if nothing was changed.
         /// </summary>
         public IList<InlineRun> TryConvertLegacyMarkdownRun(SeonyxContext db, Paragraph paragraph,
             IList<ParagraphRun> existingRuns)
@@ -140,6 +141,8 @@ namespace Seonyx.Web.Services
             var converted = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(
                 ToInlineRuns(existingRuns), paragraph.UniqueID);
             if (converted == null) return null;
+            if (PlainTextRunBuilder.ReviewLegacyMarkdownConversion(existingRuns[0].RunText, converted) != null)
+                return null;
 
             SaveRuns(db, paragraph.ParagraphID, ToParagraphRuns(converted));
 

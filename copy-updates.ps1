@@ -19,6 +19,13 @@
 # - The server refuses a save that would blank a zero-run paragraph, with
 #   a visible error; Prev/Next no longer navigate away from a failed save.
 # - New admin page: Editor/RepairRuns (read-only preview, POST to run).
+# - UPDATE: "Import All Files to Database" now always imports the legacy
+#   text files; a BookML package in the same project no longer hijacks it
+#   (that package has its own "Import BookML Package" button).
+# - UPDATE: opening a paragraph in the editor no longer converts leftover
+#   Markdown markers automatically (it also mangled asterisks typed on
+#   purpose). Only the run repair converts them, and it now skips -- and
+#   lists with a reason -- any conversion that looks unsafe.
 # Run in PowerShell from any directory
 # ============================================
 
@@ -134,6 +141,17 @@ try {
     Write-Host ""
     Write-Host "8. Regression: edit and save normally; Bold/Italic toolbar and Ctrl+B/I;" -ForegroundColor White
     Write-Host "   overlay round trip; export one chapter as BookML." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "9. Import routing (latest update): in the 'Test Formatting' project, which" -ForegroundColor White
+    Write-Host "   holds both a BookML package and ch01_reimporttest.md, click 'Import All" -ForegroundColor Gray
+    Write-Host "   Files to Database'. It must import the .md file (message mentions" -ForegroundColor Gray
+    Write-Host "   paragraphs added/unchanged), NOT the BookML package." -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "10. No conversion on open (latest update), in the Test Import project:" -ForegroundColor White
+    Write-Host "   a. Open RT01-P0003, add the text  a * b * c  at the end, Save, reload." -ForegroundColor Gray
+    Write-Host "      The asterisks must still be there, with nothing turned italic." -ForegroundColor Gray
+    Write-Host "   b. Open the RepairRuns preview: Pass B lists RT01-P0003 under" -ForegroundColor Gray
+    Write-Host "      'Skipped - left untouched' with a reason, and does not convert it." -ForegroundColor Gray
     Write-Host ""
     Write-Host "Copy complete!" -ForegroundColor Green
 

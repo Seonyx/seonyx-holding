@@ -544,10 +544,11 @@ namespace Seonyx.Web.Controllers
         // Run repair (admin): GET is a read-only preview, POST writes.
         //   Pass A: paragraphs with text but zero runs get runs from their
         //           ParagraphText via the shared plain-text route (lenient).
-        //   Pass B: paragraphs the editor's load-time Markdown
-        //           self-conversion would convert are converted now, using
-        //           that same shared code (ParagraphRunService
-        //           .TryConvertLegacyMarkdownRun).
+        //   Pass B: paragraphs still holding literal Markdown in one plain
+        //           run are converted (ParagraphRunService
+        //           .TryConvertLegacyMarkdownRun), unless the stricter safety
+        //           check rejects the conversion -- those are listed as
+        //           skipped, with the reason, and left untouched.
         // Each paragraph is committed as it is repaired, and the POST stops
         // at a time budget, so a long run on shared hosting can't hit the
         // request timeout and roll everything back. Both passes are
@@ -582,22 +583,14 @@ namespace Seonyx.Web.Controllers
                 model.PassA.Count++;
                 model.PassA.Rows.Add(MakeRepairRow(p.ProjectID, p.ParagraphID, p.UniqueID, p.ParagraphText, runs));
 
-                var afterB = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(runs, p.UniqueID);
-                if (afterB != null)
-                {
-                    model.PassB.Count++;
-                    model.PassB.Rows.Add(MakeRepairRow(p.ProjectID, p.ParagraphID, p.UniqueID, runs[0].Text, afterB));
-                }
+                ClassifyPassBCandidate(model.PassB, p.ProjectID, p.ParagraphID, p.UniqueID, runs);
             }
 
             // Pass B on paragraphs that already have runs.
             foreach (var c in LoadSingleFlatRunParagraphs(db))
             {
-                var converted = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(
-                    new List<InlineRun> { new InlineRun { Text = c.RunText } }, c.UniqueID);
-                if (converted == null) continue;
-                model.PassB.Count++;
-                model.PassB.Rows.Add(MakeRepairRow(c.ProjectID, c.ParagraphID, c.UniqueID, c.RunText, converted));
+                ClassifyPassBCandidate(model.PassB, c.ProjectID, c.ParagraphID, c.UniqueID,
+                    new List<InlineRun> { new InlineRun { Text = c.RunText } });
             }
 
             SortAndCapRows(model.PassA);
@@ -650,11 +643,17 @@ namespace Seonyx.Web.Controllers
             // Pass B (only once Pass A has finished, so its output is included)
             if (!model.StoppedEarly)
             {
-                var passBIds = LoadSingleFlatRunParagraphs(db)
-                    .Where(c => PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(
-                        new List<InlineRun> { new InlineRun { Text = c.RunText } }, c.UniqueID) != null)
-                    .Select(c => c.ParagraphID)
-                    .ToList();
+                // Unsafe conversions are recorded as skipped here and never
+                // reach the conversion loop below.
+                var preview = new RepairPassSummary();
+                foreach (var c in LoadSingleFlatRunParagraphs(db))
+                {
+                    ClassifyPassBCandidate(preview, c.ProjectID, c.ParagraphID, c.UniqueID,
+                        new List<InlineRun> { new InlineRun { Text = c.RunText } });
+                }
+                model.PassB.SkippedCount = preview.SkippedCount;
+                model.PassB.SkippedRows = preview.SkippedRows;
+                var passBIds = preview.Rows.Select(r => r.ParagraphID).ToList();
 
                 foreach (var batch in Batches(passBIds))
                 {
@@ -756,6 +755,31 @@ namespace Seonyx.Web.Controllers
             };
         }
 
+        // Adds a Pass B candidate to pass.Rows (safe to convert) or to
+        // pass.SkippedRows (rejected by the stricter check, with the reason);
+        // does nothing if the paragraph is not a candidate at all.
+        private static void ClassifyPassBCandidate(RepairPassSummary pass, int projectId, int paragraphId,
+            string pid, IList<InlineRun> currentRuns)
+        {
+            var converted = PlainTextRunBuilder.TryBuildLegacyMarkdownConversion(currentRuns, pid);
+            if (converted == null) return;
+
+            var before = currentRuns[0].Text;
+            var row = MakeRepairRow(projectId, paragraphId, pid, before, converted);
+            var reason = PlainTextRunBuilder.ReviewLegacyMarkdownConversion(before, converted);
+            if (reason == null)
+            {
+                pass.Count++;
+                pass.Rows.Add(row);
+            }
+            else
+            {
+                row.SkipReason = reason;
+                pass.SkippedCount++;
+                pass.SkippedRows.Add(row);
+            }
+        }
+
         private static bool HasLetterOrDigit(string s)
         {
             return s != null && s.Any(char.IsLetterOrDigit);
@@ -766,6 +790,10 @@ namespace Seonyx.Web.Controllers
             pass.Rows = pass.Rows
                 .OrderByDescending(r => r.Flagged)
                 .ThenBy(r => r.ParagraphID)
+                .Take(RepairRowLimit)
+                .ToList();
+            pass.SkippedRows = pass.SkippedRows
+                .OrderBy(r => r.ParagraphID)
                 .Take(RepairRowLimit)
                 .ToList();
         }
@@ -860,27 +888,17 @@ namespace Seonyx.Web.Controllers
         // mapped to the framework-agnostic InlineRun DTO (same shape the
         // save path deserialises into) so load/save share one JSON contract.
         //
-        // Also self-heals paragraphs still carrying pre-P3 Markdown-marker
-        // text (**bold**/*italic*) that were never routed through P2's
-        // importer conversion: if the paragraph's runs are still exactly
-        // one flat, unstyled run (i.e. untouched since import/creation)
-        // and that text actually contains Markdown markers, parse and
-        // persist it as real styled runs right now, so both this page
-        // load and any subsequent export/search see the fix immediately.
-        // Any paragraph with more than one run, or any styling already
-        // applied, is left completely alone -- this only ever touches the
-        // narrow "never been parsed" case, never real edited content.
+        // Read-only: opening a paragraph never rewrites it. Literal Markdown
+        // left over from before P2 is converted only by the run repair
+        // (RepairRuns), where every change is previewed first -- converting
+        // on load also "converted" asterisks the author typed on purpose.
         //
         // A paragraph with text but no stored runs is never shown as empty:
         // the shared reader fallback parses its ParagraphText instead.
         private List<InlineRun> GetInitialRuns(Paragraph paragraph, out string runsWarning)
         {
-            runsWarning = null;
             var runService = new ParagraphRunService();
             var existingRuns = runService.LoadRuns(db, paragraph.ParagraphID);
-
-            var converted = runService.TryConvertLegacyMarkdownRun(db, paragraph, existingRuns);
-            if (converted != null) return converted.ToList();
 
             return PlainTextRunBuilder.EffectiveRuns(paragraph.ParagraphText, paragraph.UniqueID,
                 ParagraphRunService.ToInlineRuns(existingRuns), out runsWarning).ToList();
