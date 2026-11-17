@@ -194,16 +194,9 @@ namespace Seonyx.Web.Controllers
             var project = db.BookProjects.Find(projectId);
             if (project == null) return HttpNotFound();
 
-            // ----------------------------------------------------------------
-            // BookML XML path: book.xml present in the bookml/ subfolder
-            // ----------------------------------------------------------------
-            var bookXmlPath = FindBookXml(project.FolderPath);
-            if (bookXmlPath != null)
-                return ImportBookml(projectId, project, bookXmlPath);
-
-            // ----------------------------------------------------------------
-            // Legacy text-file path
-            // ----------------------------------------------------------------
+            // Legacy text files only. A BookML package in the same project is
+            // imported through its own button (StartImport); it must not
+            // hijack this one.
             var uploadsPath = Path.Combine(project.FolderPath, "uploads");
             if (!Directory.Exists(uploadsPath))
             {
@@ -337,64 +330,6 @@ namespace Seonyx.Web.Controllers
                 return count;
             }
             catch { return 0; }
-        }
-
-        // ====================================================================
-        // BookML import — synchronous helper (called from background task)
-        // ====================================================================
-
-        private ActionResult ImportBookml(int projectId, BookProject project, string bookXmlPath)
-        {
-            var xsdBasePath = Server.MapPath("~/App_Data/BookML");
-            var importer    = new BookmlImporter(xsdBasePath);
-
-            // Read the original zip filename recorded at upload time
-            var bookmlDir   = Path.GetDirectoryName(bookXmlPath);
-            var markerPath  = Path.Combine(bookmlDir, ".zipname");
-            var sourceFileName = System.IO.File.Exists(markerPath)
-                ? System.IO.File.ReadAllText(markerPath).Trim()
-                : null;
-
-            // Phase 1: validate everything before touching the DB
-            List<string> validationWarnings;
-            var validationErrors = importer.Validate(bookXmlPath, out validationWarnings);
-            if (validationErrors.Any())
-            {
-                var allLines = new System.Collections.Generic.List<string>(validationErrors);
-                if (validationWarnings.Any())
-                    allLines.AddRange(validationWarnings.Select(w => "WARNING: " + w));
-                WriteImportLog(projectId, success: false, result: null, extraLines: allLines, sourceFileName: sourceFileName);
-                TempData["Error"] = string.Format(
-                    "BookML validation failed — no data was imported. {0} error(s). {1}",
-                    validationErrors.Count, ImportLogLink(projectId));
-                return RedirectToAction("Index", new { projectId });
-            }
-
-            // Phase 2: import — use a dedicated context so a failed/rolled-back import
-            // never leaves stale tracked entities in the controller's db context.
-            // WriteImportLog must always use a clean context to avoid FK errors.
-            ImportResult result;
-            using (var importDb = new SeonyxContext())
-            {
-                result = importer.Import(importDb, projectId, bookXmlPath);
-            }
-            WriteImportLog(projectId, result.Success, result, extraLines: null, sourceFileName: sourceFileName);
-
-            if (result.Success)
-            {
-                var message = result.Summary();
-                if (result.Warnings.Any())
-                    message += string.Format(" {0} warning(s). {1}", result.Warnings.Count, ImportLogLink(projectId));
-                TempData["Message"] = message;
-            }
-            else
-            {
-                TempData["Error"] = string.Format(
-                    "BookML import failed. {0} error(s). {1}",
-                    result.Errors.Count, ImportLogLink(projectId));
-            }
-
-            return RedirectToAction("Index", new { projectId });
         }
 
         private void WriteImportLog(int projectId, bool success, Services.ImportResult result,
