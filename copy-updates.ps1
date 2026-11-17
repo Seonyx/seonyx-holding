@@ -23,7 +23,7 @@
 # ============================================
 
 $src = "\\192.168.69.75\seonyx-holding"
-$dst = "C:\Nextcloud\Work\VITALIS\Seonyx\NEW_SITE_FEB26"
+$dst = "C:\Users\Steve\Nextcloud\Work\VITALIS\Seonyx\NEW_SITE_FEB26"
 $log = "$env:USERPROFILE\Desktop\copy-updates-log.txt"
 
 Start-Transcript -Path $log -Force | Out-Null
@@ -69,6 +69,7 @@ try {
         "Models\ViewModels\BookEditor\ParagraphEditViewModel.cs",
         "Views\Editor\Index.cshtml",
         "Scripts\book-editor.js",
+        "Content\css\book-editor.css",
         "Seonyx.csproj"
     )
     foreach ($f in $modifiedFiles) {

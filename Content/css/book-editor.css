@@ -983,8 +983,10 @@
     min-height: 8rem;
     border: none;
     padding: 0.75rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.95rem;
+    /* A proportional serif: Courier New's bold and italic are too faint
+       to tell apart from plain text at a glance. */
+    font-family: Georgia, Cambria, 'Times New Roman', serif;
+    font-size: 1.05rem;
     line-height: 1.6;
     box-sizing: border-box;
     outline: none;
@@ -996,8 +998,12 @@
     background: #fffef7;
 }
 
+/* Bold also gets a faint tint so it stands out while editing. A bold
+   overlay keeps the overlay pill's background (.rte-overlay comes later). */
 .rte-strong {
     font-weight: 700;
+    background: #fdecc8;
+    border-radius: 3px;
 }
 
 .rte-emph {
