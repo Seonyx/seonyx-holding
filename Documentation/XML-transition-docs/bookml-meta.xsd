@@ -25,8 +25,7 @@
        headings, figures, and tables.
   ============================================================ -->
 
-  <xs:import namespace="https://bookml.org/ns/1.0"
-             schemaLocation="bookml-common.xsd"/>
+  <xs:include schemaLocation="bookml-common.xsd"/>
 
 
   <!-- ============================================================
@@ -46,7 +45,6 @@
         <xs:element name="para-meta" type="bml:ParaMetaType"
                     minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="xmlns"          type="xs:anyURI"             use="required"/>
       <xs:attribute name="bookml-version" type="bml:BookmlVersionType" use="required"/>
       <xs:attribute name="chapter-id"     type="xs:string"             use="required">
         <xs:annotation>

@@ -7,7 +7,7 @@
            version="1.0">
 
   <!-- ============================================================
-       BookML Common Types Library v1.0
+       BookML Common Types Library v1.1
        https://bookml.org/ns/1.0
 
        Shared simple and complex types used across all BookML
@@ -18,7 +18,27 @@
          - Paragraph-level unique keying
          - Multi-draft versioning with full lineage
          - Fiction and non-fiction works
+
+       v1.1: added the InlineContent group and the emph/strong/
+       smallcaps/overlay/linebreak inline presentation elements
+       (Inline Presentation Elements amendment). "emph" replaces
+       the earlier plain-string "em" element defined directly in
+       bookml-chapter.xsd; "linebreak" is a new inline hard-break
+       mark, distinct from the existing structural "break" element
+       (BreakTypeType) used between paragraphs.
   ============================================================ -->
+
+
+  <!-- ============================================================
+       SIMPLE TYPE: ISBN with basic format validation
+       Supports ISBN-10 and ISBN-13 with optional hyphens.
+  ============================================================ -->
+
+  <xs:simpleType name="IsbnType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(97[89]-?[0-9]{1,5}-?[0-9]+-?[0-9]+-?[0-9]|[0-9]{9}[0-9X])"/>
+    </xs:restriction>
+  </xs:simpleType>
 
 
   <!-- ============================================================
@@ -451,5 +471,94 @@
       </xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
+
+
+  <!-- ============================================================
+       GROUP: InlineContent
+       Repeatable, order-free choice of inline presentation
+       elements. Used as the child content model of para (and of
+       emph/strong/smallcaps/overlay themselves, to allow nesting).
+       A plain xs:choice with maxOccurs="unbounded" (rather than an
+       xs:sequence) so realistic prose with emphasis interleaved in
+       any order validates correctly.
+  ============================================================ -->
+
+  <xs:group name="InlineContent">
+    <xs:choice>
+      <xs:element ref="bml:emph"/>
+      <xs:element ref="bml:strong"/>
+      <xs:element ref="bml:smallcaps"/>
+      <xs:element ref="bml:overlay"/>
+      <xs:element ref="bml:linebreak"/>
+    </xs:choice>
+  </xs:group>
+
+
+  <!-- ============================================================
+       ELEMENT: emph — italic / emphasis
+       Optional @type for semantic refinement (thought, foreign,
+       title, ship-name, ...). Mixed content so it may nest other
+       inline elements, except recursively into itself.
+  ============================================================ -->
+
+  <xs:element name="emph">
+    <xs:complexType mixed="true">
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:attribute name="type" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- ============================================================
+       ELEMENT: strong — bold / strong emphasis
+  ============================================================ -->
+
+  <xs:element name="strong">
+    <xs:complexType mixed="true">
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- ============================================================
+       ELEMENT: smallcaps
+       Reserved for SFX or signage where the author wants small
+       caps; rare in fiction. Editor-applied only — no Markdown
+       shorthand.
+  ============================================================ -->
+
+  <xs:element name="smallcaps">
+    <xs:complexType mixed="true">
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- ============================================================
+       ELEMENT: overlay — diegetic on-screen text
+       @type is a free-form classifier (sponsored-alert, hud,
+       system-message, subtitle, ...); stylesheets switch on it.
+       May contain any other inline element except another overlay
+       (overlay-in-overlay is disallowed).
+  ============================================================ -->
+
+  <xs:element name="overlay">
+    <xs:complexType mixed="true">
+      <xs:group ref="bml:InlineContent" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:attribute name="type" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- ============================================================
+       ELEMENT: linebreak — hard line break inside a paragraph
+       Use sparingly; not a paragraph break. Distinct from the
+       structural "break" element (BreakTypeType), which separates
+       whole paragraphs/scenes, not text within one.
+  ============================================================ -->
+
+  <xs:element name="linebreak">
+    <xs:complexType/>
+  </xs:element>
 
 </xs:schema>

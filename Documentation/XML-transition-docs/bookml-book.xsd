@@ -20,8 +20,7 @@
        One book.xml exists per work, at the root of the work folder.
   ============================================================ -->
 
-  <xs:import namespace="https://bookml.org/ns/1.0"
-             schemaLocation="bookml-common.xsd"/>
+  <xs:include schemaLocation="bookml-common.xsd"/>
 
 
   <!-- ============================================================
@@ -40,9 +39,7 @@
         <xs:element name="bookinfo"  type="bml:BookInfoType"/>
         <xs:element name="contents"  type="bml:ContentsType"/>
       </xs:sequence>
-      <xs:attribute name="xmlns"           type="xs:anyURI"           use="required"/>
       <xs:attribute name="bookml-version"  type="bml:BookmlVersionType" use="required"/>
-      <xs:attribute name="xml:lang"        type="xs:language"         use="optional"/>
       <xs:attribute name="id"              type="xs:ID"               use="optional">
         <xs:annotation>
           <xs:documentation>
@@ -176,18 +173,6 @@
       </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
-
-
-  <!-- ============================================================
-       SIMPLE TYPE: ISBN with basic format validation
-  ============================================================ -->
-
-  <xs:simpleType name="IsbnType">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(97[89]-?[0-9]{1,5}-?[0-9]+-?[0-9]+-?[0-9]|[0-9]{9}[0-9X])">
-      </xs:pattern>
-    </xs:restriction>
-  </xs:simpleType>
 
 
   <!-- ============================================================

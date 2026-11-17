@@ -34,8 +34,7 @@
          general      Catch-all
   ============================================================ -->
 
-  <xs:import namespace="https://bookml.org/ns/1.0"
-             schemaLocation="bookml-common.xsd"/>
+  <xs:include schemaLocation="bookml-common.xsd"/>
 
 
   <!-- ============================================================
@@ -55,7 +54,6 @@
         <xs:element name="para-notes" type="bml:ParaNotesType"
                     minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
-      <xs:attribute name="xmlns"          type="xs:anyURI"             use="required"/>
       <xs:attribute name="bookml-version" type="bml:BookmlVersionType" use="required"/>
       <xs:attribute name="chapter-id"     type="xs:string"             use="required">
         <xs:annotation>
@@ -368,19 +366,6 @@
   </xs:complexType>
 
 
-  <!-- ============================================================
-       Note on the IsbnType reference:
-       IsbnType is defined in bookml-book.xsd but used here in
-       CitationType. In deployment, either:
-         (a) move IsbnType to bookml-common.xsd (preferred), or
-         (b) redefine it locally here.
-       The production XSD suite should place IsbnType in common.
-  ============================================================ -->
-
-  <xs:simpleType name="IsbnType">
-    <xs:restriction base="xs:string">
-      <xs:pattern value="(97[89]-?[0-9]{1,5}-?[0-9]+-?[0-9]+-?[0-9]|[0-9]{9}[0-9X])"/>
-    </xs:restriction>
-  </xs:simpleType>
+  <!-- IsbnType is defined in bookml-common.xsd -->
 
 </xs:schema>
