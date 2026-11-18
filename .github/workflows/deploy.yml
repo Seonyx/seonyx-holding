@@ -3,9 +3,15 @@ name: Build and Deploy
 on:
   push:
     branches: [ main ]
+  # Manual "Run workflow" button, so the live site can be redeployed
+  # without pushing a commit.
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
+    # Only ever deploy main, even if the manual button is pointed at
+    # another branch.
+    if: github.ref == 'refs/heads/main'
     runs-on: windows-latest
 
     steps:
