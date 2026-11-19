@@ -332,6 +332,10 @@ A bulk variant (`GetProseTextForChapter(int chapterId, bool includeOverlays)`) r
 
 ## 8. Output Transform Notes (Forward-Looking)
 
+> **Superseded:** §8.1 and §8.2 below are replaced by Amendment 2,
+> [`BookML-Overlay-Type-Rendering-Amendment.md`](BookML-Overlay-Type-Rendering-Amendment.md),
+> which is authoritative for P5. They are kept here for history only.
+
 Full output transform specs are out of scope for this amendment. Recorded here so Claude Code is aware of the mapping intent when revising EPUB/audiobook code:
 
 ### 8.1 EPUB
