@@ -91,6 +91,22 @@
         </div>
     </div>
 
+    <div class="form-section">
+        <h2>Overlays</h2>
+
+        <div class="form-group">
+            <label>
+                @Html.CheckBoxFor(m => m.IncludeOverlays)
+                Include overlays
+            </label>
+            <p class="voice-info">
+                Overlay text (on-screen text such as HUD banners and sponsored alerts) is
+                normally left out of the narration. Tick this to read it aloud, with a short
+                pause before and after it.
+            </p>
+        </div>
+    </div>
+
     <div class="form-actions">
         <button type="submit" class="btn btn-primary">Download Package</button>
         <a href="@Url.Action("Index", new { projectId = Model.BookProjectID })" class="btn btn-secondary">Cancel</a>

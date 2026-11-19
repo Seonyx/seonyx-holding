@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Seonyx.Web.Models;
 using Seonyx.Web.Models.ViewModels.BookEditor;
+using Seonyx.Web.Services;
 
 namespace Seonyx.Web.Controllers
 {
@@ -77,6 +78,10 @@ namespace Seonyx.Web.Controllers
             Directory.CreateDirectory(Path.Combine(projectPath, "uploads"));
             Directory.CreateDirectory(Path.Combine(projectPath, "covers"));
             Directory.CreateDirectory(Path.Combine(projectPath, "exports"));
+
+            // Default overlay stylesheet, ready to edit (bundled into every EPUB)
+            string overlayWarning;
+            OverlayStyles.LoadOrCreate(projectPath, out overlayWarning);
 
             var project = new BookProject
             {

@@ -59,6 +59,33 @@ namespace Seonyx.Web.Services
                 fileIndex++;
             }
 
+            string overlayWarning;
+            var overlayCss = OverlayStyles.LoadOrCreate(project.FolderPath, out overlayWarning);
+            if (overlayWarning != null) result.Warnings.Add(overlayWarning);
+
+            WriteEpub(project, config, bookUuid, exportDate, chapterData,
+                hasCover ? coverImageBytes : null, coverExt, overlayCss, outputStream);
+
+            result.Success      = true;
+            result.EpubFileName = string.Format("{0}_{1}.epub",
+                Slugify(project.ProjectName), DateTime.UtcNow.ToString("yyyyMMdd_HHmmss"));
+            return result;
+        }
+
+        // Writes the EPUB package. Separate from Export's database loading so
+        // the generated EPUB can be built and validated (epubcheck) in tests.
+        private static void WriteEpub(
+            BookProject         project,
+            EpubConfigViewModel config,
+            string              bookUuid,
+            string              exportDate,
+            List<ChapterData>   chapterData,
+            byte[]              coverImageBytes,
+            string              coverExt,
+            string              overlayCss,
+            Stream              outputStream)
+        {
+            var hasCover = coverImageBytes != null && coverImageBytes.Length > 0;
             using (var zip = new ZipArchive(outputStream, ZipArchiveMode.Create, true))
             {
                 // mimetype MUST be first and uncompressed
@@ -82,6 +109,10 @@ namespace Seonyx.Web.Services
                 // OEBPS/css/book.css
                 AddTextEntry(zip, "OEBPS/css/book.css", BuildCss());
 
+                // OEBPS/css/overlay-styles.css -- the project's own overlay
+                // styles (BookML Amendment 2, section 2.3)
+                AddTextEntry(zip, "OEBPS/css/" + OverlayStyles.FileName, overlayCss);
+
                 // Cover files (optional)
                 if (hasCover)
                 {
@@ -102,11 +133,6 @@ namespace Seonyx.Web.Services
                     AddTextEntry(zip, "OEBPS/" + ch.FileName, BuildChapterXhtml(ch));
                 }
             }
-
-            result.Success      = true;
-            result.EpubFileName = string.Format("{0}_{1}.epub",
-                Slugify(project.ProjectName), DateTime.UtcNow.ToString("yyyyMMdd_HHmmss"));
-            return result;
         }
 
         // =====================================================================
@@ -143,6 +169,15 @@ namespace Seonyx.Web.Services
                     g => g.OrderByDescending(v => v.DraftNumber).First(),
                     StringComparer.OrdinalIgnoreCase);
 
+            // Formatting runs; a paragraph with text but none uses the shared
+            // reader fallback (PlainTextRunBuilder.EffectiveRuns).
+            var paraIds = paragraphs.Select(p => p.ParagraphID).ToList();
+            var runsByParaId = db.ParagraphRuns
+                .Where(r => paraIds.Contains(r.ParagraphID))
+                .ToList()
+                .GroupBy(r => r.ParagraphID)
+                .ToDictionary(g => g.Key, g => g.OrderBy(r => r.Seq).ToList());
+
             // Build paragraph rows, sorted by Seq where available
             var rows = new List<ParaRow>();
             int fallback = 0;
@@ -157,12 +192,20 @@ namespace Seonyx.Web.Services
                     ? ver.ParaType
                     : "normal";
 
+                List<ParagraphRun> stored;
+                runsByParaId.TryGetValue(para.ParagraphID, out stored);
+                string runsWarning;
+                var runs = PlainTextRunBuilder.EffectiveRuns(para.ParagraphText, para.UniqueID,
+                    ParagraphRunService.ToInlineRuns(stored ?? new List<ParagraphRun>()), out runsWarning);
+                if (runsWarning != null) result.Warnings.Add(runsWarning);
+
                 rows.Add(new ParaRow
                 {
                     Seq      = seq,
                     Pid      = para.UniqueID ?? "",
                     ParaType = paraType,
-                    Text     = para.ParagraphText ?? ""
+                    Text     = para.ParagraphText ?? "",
+                    Runs     = runs
                 });
             }
 
@@ -206,6 +249,7 @@ namespace Seonyx.Web.Services
             manifest.AppendLine("    <item id=\"nav\" href=\"nav.xhtml\" media-type=\"application/xhtml+xml\" properties=\"nav\"/>");
             manifest.AppendLine("    <item id=\"ncx\" href=\"toc.ncx\" media-type=\"application/x-dtbncx+xml\"/>");
             manifest.AppendLine("    <item id=\"css\" href=\"css/book.css\" media-type=\"text/css\"/>");
+            manifest.AppendLine("    <item id=\"overlay-css\" href=\"css/overlay-styles.css\" media-type=\"text/css\"/>");
 
             if (hasCover)
             {
@@ -332,6 +376,10 @@ navPoints.ToString() +
 "  text-indent: 1.2em;\r\n" +
 "  margin: 0 0 0.4em 0;\r\n" +
 "  padding: 0;\r\n" +
+"}\r\n" +
+"\r\n" +
+"span.smallcaps {\r\n" +
+"  font-variant: small-caps;\r\n" +
 "}\r\n" +
 "\r\n" +
 "p.thought {\r\n" +
@@ -482,7 +530,7 @@ arcLine + "\r\n" +
             foreach (var para in ch.Epigraphs)
             {
                 body.AppendLine(string.Format("    <blockquote class=\"epigraph\">"));
-                body.AppendLine(string.Format("      <p>{0}</p>", HtmlEncode(para.Text)));
+                body.AppendLine("      " + RunsToXhtml.RenderParagraph(para.Runs, null));
                 body.AppendLine("    </blockquote>");
             }
             body.AppendLine("  </section>");
@@ -495,6 +543,7 @@ arcLine + "\r\n" +
 "  <meta charset=\"UTF-8\"/>\r\n" +
 string.Format("  <title>Epigraph - {0}</title>\r\n", HtmlEncode(ch.Title)) +
 "  <link rel=\"stylesheet\" type=\"text/css\" href=\"css/book.css\"/>\r\n" +
+"  <link rel=\"stylesheet\" type=\"text/css\" href=\"css/overlay-styles.css\"/>\r\n" +
 "</head>\r\n" +
 "<body>\r\n" +
 body.ToString() +
@@ -525,6 +574,7 @@ body.ToString() +
 "  <meta charset=\"UTF-8\"/>\r\n" +
 string.Format("  <title>{0}</title>\r\n", HtmlEncode(ch.Title)) +
 "  <link rel=\"stylesheet\" type=\"text/css\" href=\"css/book.css\"/>\r\n" +
+"  <link rel=\"stylesheet\" type=\"text/css\" href=\"css/overlay-styles.css\"/>\r\n" +
 "</head>\r\n" +
 "<body>\r\n" +
 body.ToString() +
@@ -534,7 +584,6 @@ body.ToString() +
 
         private static string RenderPara(ParaRow para)
         {
-            var text = HtmlEncode(para.Text);
             switch (para.ParaType)
             {
                 case "normal":
@@ -545,9 +594,8 @@ body.ToString() +
                 case "verse":
                 case "caption":
                 case "pullquote":
-                    if (para.ParaType == "normal")
-                        return string.Format("    <p>{0}</p>", text);
-                    return string.Format("    <p class=\"{0}\">{1}</p>", para.ParaType, text);
+                    return "    " + RunsToXhtml.RenderParagraph(para.Runs,
+                        para.ParaType == "normal" ? null : para.ParaType);
                 case BreakKinds.Scene:
                     return "    <p class=\"scene-break\">" + BreakKinds.SceneBreakSymbol + "</p>";
                 case BreakKinds.Section:
@@ -649,6 +697,7 @@ body.ToString() +
             public string Pid      { get; set; }
             public string ParaType { get; set; }
             public string Text     { get; set; }
+            public IList<InlineRun> Runs { get; set; } = new List<InlineRun>();
         }
     }
 }

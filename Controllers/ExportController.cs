@@ -319,7 +319,8 @@ namespace Seonyx.Web.Controllers
             }
 
             var builder  = new AudiobookPackageBuilder();
-            var zipBytes = builder.BuildPackage(db, model.BookProjectID, voice, model.SelectedDraftNumber);
+            var zipBytes = builder.BuildPackage(db, model.BookProjectID, voice, model.SelectedDraftNumber,
+                model.IncludeOverlays);
 
             var dateStamp = DateTime.Today.ToString("yyyyMMdd");
             var filename  = string.Format("{0}_audiobook_draft{1}_{2}.zip",

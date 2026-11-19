@@ -18,6 +18,10 @@ namespace Seonyx.Web.Models.ViewModels.BookEditor
         [Required(ErrorMessage = "Please select a draft.")]
         public int SelectedDraftNumber { get; set; }
 
+        // Read overlay text (HUD banners, sponsored alerts...) aloud, with a
+        // short pause before and after it. Off by default (Amendment 2, s.3).
+        public bool IncludeOverlays { get; set; }
+
         public List<DraftOption> AvailableDrafts { get; set; }
     }
 

@@ -71,6 +71,7 @@ PIPER_BINARIES = {
 # ---------------------------------------------------------------------------
 SCENE_BREAK_SILENCE_SECS  = 1.5
 CHAPTER_END_SILENCE_SECS  = 2.0
+OVERLAY_PAUSE_SECS        = 0.5   # around included overlay text (## PAUSE)
 
 def make_silence_wav(duration_secs, sample_rate):
     """"""Return raw WAV bytes for a period of silence.""""""
@@ -184,6 +185,7 @@ def parse_chapter(txt_path):
     Returns a list of dicts:
       { ""type"": ""speech"",          ""text"": ""..."" }
       { ""type"": ""scene_break""                      }
+      { ""type"": ""pause""                            }
       { ""type"": ""chapter_heading"", ""text"": ""..."" }
     """"""
     items = []
@@ -220,6 +222,9 @@ def parse_chapter(txt_path):
         elif line.startswith(""## SCENE_BREAK""):
             flush_prose()
             items.append({""type"": ""scene_break""})
+        elif line.startswith(""## PAUSE""):
+            flush_prose()
+            items.append({""type"": ""pause""})
         elif line.startswith(""## ""):
             flush_prose()   # unknown directive -- skip
         elif line.strip() == """":
@@ -344,6 +349,7 @@ def main():
     print(""\n--- Generating audio ---"")
     silence_scene   = make_silence_wav(SCENE_BREAK_SILENCE_SECS, sample_rate)
     silence_chapter = make_silence_wav(CHAPTER_END_SILENCE_SECS, sample_rate)
+    silence_pause   = make_silence_wav(OVERLAY_PAUSE_SECS, sample_rate)
 
     total_duration = 0.0
     summary_lines  = [""{:>4}  {:<40}  {:>10}  File"".format("""", ""Title"", ""Duration"")]
@@ -367,6 +373,10 @@ def main():
             if item[""type""] == ""scene_break"":
                 import io
                 with wave.open(io.BytesIO(silence_scene)) as wf:
+                    chunks.append(wf.readframes(wf.getnframes()))
+            elif item[""type""] == ""pause"":
+                import io
+                with wave.open(io.BytesIO(silence_pause)) as wf:
                     chunks.append(wf.readframes(wf.getnframes()))
             else:
                 # Both ""speech"" and ""chapter_heading""

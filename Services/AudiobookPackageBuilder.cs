@@ -20,7 +20,8 @@ namespace Seonyx.Web.Services
         /// Builds the audiobook package ZIP for the given project and voice.
         /// Returns the ZIP bytes ready to stream to the browser.
         /// </summary>
-        public byte[] BuildPackage(SeonyxContext db, int bookProjectId, VoiceInfo voice, int draftNumber)
+        public byte[] BuildPackage(SeonyxContext db, int bookProjectId, VoiceInfo voice, int draftNumber,
+            bool includeOverlays = false)
         {
             if (voice == null)
                 throw new ArgumentNullException("voice");
@@ -73,7 +74,7 @@ namespace Seonyx.Web.Services
 
                     // README.txt
                     AddTextEntry(archive, "README.txt",
-                        BuildReadme(project.ProjectName ?? "", voice));
+                        BuildReadme(project.ProjectName ?? "", voice, includeOverlays));
 
                     // generate_audiobook.py
                     AddTextEntry(archive, "generate_audiobook.py", PythonScript.Source);
@@ -83,7 +84,7 @@ namespace Seonyx.Web.Services
                     foreach (var ch in chapters)
                     {
                         var fileRef = chapterFiles[chIdx++];
-                        string content = BuildChapterText(db, ch, draftNumber);
+                        string content = BuildChapterText(db, ch, draftNumber, includeOverlays);
                         AddTextEntry(archive, "chapters/" + fileRef.FileName, content);
                     }
                 }
@@ -96,7 +97,7 @@ namespace Seonyx.Web.Services
         // Chapter text file builder
         // =====================================================================
 
-        private string BuildChapterText(SeonyxContext db, Chapter ch, int draftNumber)
+        private string BuildChapterText(SeonyxContext db, Chapter ch, int draftNumber, bool includeOverlays)
         {
             var sb = new StringBuilder();
 
@@ -128,6 +129,15 @@ namespace Seonyx.Web.Services
                     g => g.OrderByDescending(v => v.DraftNumber).First(),
                     StringComparer.OrdinalIgnoreCase);
 
+            // Formatting runs; a paragraph with text but none uses the shared
+            // reader fallback (PlainTextRunBuilder.EffectiveRuns).
+            var paraIds = paragraphs.Select(p => p.ParagraphID).ToList();
+            var runsByParaId = db.ParagraphRuns
+                .Where(r => paraIds.Contains(r.ParagraphID))
+                .ToList()
+                .GroupBy(r => r.ParagraphID)
+                .ToDictionary(g => g.Key, g => g.OrderBy(r => r.Seq).ToList());
+
             // Build para rows from the working copy, sorted by Seq
             var rows = new List<ParaRow>();
             int fallback = 0;
@@ -137,11 +147,18 @@ namespace Seonyx.Web.Services
                 ParagraphVersion ver;
                 versionsByPid.TryGetValue(para.UniqueID ?? "", out ver);
 
+                List<ParagraphRun> stored;
+                runsByParaId.TryGetValue(para.ParagraphID, out stored);
+                string runsWarning;
+                var runs = PlainTextRunBuilder.EffectiveRuns(para.ParagraphText, para.UniqueID,
+                    ParagraphRunService.ToInlineRuns(stored ?? new List<ParagraphRun>()), out runsWarning);
+
                 rows.Add(new ParaRow
                 {
                     Seq      = (ver != null && ver.Seq > 0) ? ver.Seq : fallback * 1000,
                     ParaType = (ver != null && !string.IsNullOrEmpty(ver.ParaType)) ? ver.ParaType : "normal",
-                    Text     = para.ParagraphText ?? ""
+                    Text     = para.ParagraphText ?? "",
+                    Runs     = runs
                 });
             }
 
@@ -161,15 +178,71 @@ namespace Seonyx.Web.Services
                 if (ShouldSkip(row.ParaType))
                     continue;
 
-                string text = NormaliseText(row.Text);
-                if (string.IsNullOrWhiteSpace(text))
+                var lines = ParagraphLines(row.Runs, includeOverlays);
+                if (lines.Count == 0)
                     continue;
 
-                sb.AppendLine(text);
+                foreach (var line in lines)
+                    sb.AppendLine(line);
                 sb.AppendLine();
             }
 
             return sb.ToString();
+        }
+
+        // =====================================================================
+        // Paragraph text from runs (BookML Amendment 2, section 3)
+        // =====================================================================
+
+        // The lines of one paragraph in the chapter text file. Formatting is
+        // dropped (Piper has no emphasis prosody); a line break starts a new
+        // line. Overlay text is skipped unless includeOverlays, in which case
+        // it gets its own line between two "## PAUSE" directives. The overlay
+        // TYPE is never consulted, so output cannot depend on it.
+        private static List<string> ParagraphLines(IList<InlineRun> runs, bool includeOverlays)
+        {
+            var lines = new List<string>();
+            var current = new StringBuilder();
+
+            Action flush = () =>
+            {
+                var t = NormaliseText(current.ToString());
+                if (!string.IsNullOrEmpty(t)) lines.Add(t);
+                current.Clear();
+            };
+
+            int i = 0;
+            while (i < runs.Count)
+            {
+                var r = runs[i];
+                if (r.IsBreak) { flush(); i++; continue; }
+                if (r.OverlayType == null) { current.Append(r.Text); i++; continue; }
+
+                var overlay = new StringBuilder();
+                while (i < runs.Count && !runs[i].IsBreak && runs[i].OverlayType != null)
+                {
+                    overlay.Append(runs[i].Text);
+                    i++;
+                }
+
+                if (!includeOverlays)
+                {
+                    // Keep a word boundary where the overlay was cut out.
+                    current.Append(' ');
+                    continue;
+                }
+
+                flush();
+                var spoken = NormaliseText(overlay.ToString());
+                if (!string.IsNullOrEmpty(spoken))
+                {
+                    lines.Add("## PAUSE");
+                    lines.Add(spoken);
+                    lines.Add("## PAUSE");
+                }
+            }
+            flush();
+            return lines;
         }
 
         // =====================================================================
@@ -253,7 +326,7 @@ namespace Seonyx.Web.Services
         // README.txt content
         // =====================================================================
 
-        private static string BuildReadme(string bookTitle, VoiceInfo voice)
+        private static string BuildReadme(string bookTitle, VoiceInfo voice, bool includeOverlays)
         {
             return string.Format(
 @"======================================================
@@ -297,6 +370,10 @@ ESTIMATED TIME
   Roughly 1-2 minutes of processing per hour of audio on a modern laptop.
   A full novel (~8 hours of audio) takes approximately 10-15 minutes.
 
+OVERLAYS
+--------
+  {5}
+
 TROUBLESHOOTING
 ---------------
   ""python not found""
@@ -318,7 +395,12 @@ TROUBLESHOOTING
                 voice.DisplayName,
                 voice.AccentLabel,
                 voice.Gender,
-                voice.Quality);
+                voice.Quality,
+                includeOverlays
+                    ? "Overlay text (on-screen text such as HUD banners and sponsored alerts)" + Environment.NewLine +
+                      "  is INCLUDED: it is read aloud with a short pause before and after it."
+                    : "Overlay text (on-screen text such as HUD banners and sponsored alerts)" + Environment.NewLine +
+                      "  is NOT read aloud. To include it, tick \"Include overlays\" when exporting.");
         }
 
         // =====================================================================
@@ -343,6 +425,7 @@ TROUBLESHOOTING
             public int    Seq      { get; set; }
             public string ParaType { get; set; }
             public string Text     { get; set; }
+            public IList<InlineRun> Runs { get; set; } = new List<InlineRun>();
         }
 
         // Must be serialisable by Newtonsoft — use public properties

@@ -215,6 +215,8 @@
     <Compile Include="Services\ParagraphRunService.cs" />
     <Compile Include="Services\PlainTextRunBuilder.cs" />
     <Compile Include="Services\BreakKinds.cs" />
+    <Compile Include="Services\OverlayStyles.cs" />
+    <Compile Include="Services\RunsToXhtml.cs" />
     <Compile Include="Services\MarkdownInlineParser.cs" />
     <Compile Include="Services\InlineXmlRunConverter.cs" />
     <Compile Include="Services\RunsToMarkdownSerializer.cs" />
